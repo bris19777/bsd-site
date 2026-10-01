@@ -27,7 +27,9 @@ function card(p) {
   c.append(media);
 
   const body = el("div", "card-body");
-  body.append(el("div", "brand", p.brand), el("h3", "card-title", p.name), el("p", "tagline", p.tagline));
+  const meta = el("div", "card-meta");
+  meta.append(el("span", "brand", p.brand), el("span", "sku", "מק\"ט: " + p.sku));
+  body.append(meta, el("h3", "card-title", p.name), el("p", "tagline", p.tagline));
 
   const specs = el("ul", "specs");
   p.specs.forEach(s => specs.append(el("li", null, s)));
