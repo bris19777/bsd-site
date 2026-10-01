@@ -180,3 +180,33 @@ a { color: inherit; }
 @media (max-width: 380px) {
   .logo img { height: 26px; }
 }
+
+/* ---------- services: clickable card ---------- */
+.service-link { display: block; text-decoration: none; color: inherit; transition: transform .2s, border-color .2s; }
+.service-link:hover { transform: translateY(-3px); border-color: var(--accent); }
+.service-more { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 500; font-size: 14px; }
+
+/* ---------- remote support page ---------- */
+.hero-sm .hero-inner { padding: 40px 16px 48px; }
+.back { display: inline-block; color: #B9D3F5; text-decoration: none; font-size: 14px; margin-bottom: 14px; }
+.back:hover { color: #fff; }
+.remote { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: start; }
+.remote-main h2 { font-size: 24px; color: var(--navy); margin: 0 0 10px; }
+.remote-main h2:not(:first-child) { margin-top: 36px; }
+.remote-main p { color: var(--ink); margin: 0 0 18px; }
+.trust { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.trust li { display: flex; gap: 12px; align-items: flex-start; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.trust li > span { flex: none; width: 26px; height: 26px; border-radius: 50%; background: #E7F7EE; color: #11703A; display: grid; place-items: center; font-weight: 700; }
+.steps { margin: 0; padding-inline-start: 22px; display: grid; gap: 10px; }
+.steps li::marker { color: var(--accent); font-weight: 700; }
+.download-card { position: sticky; top: 92px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; display: grid; justify-items: center; gap: 10px; text-align: center; }
+.download-card img { border-radius: 16px; }
+.download-card h3 { margin: 4px 0 0; color: var(--navy); font-size: 19px; direction: ltr; }
+.download-card .muted { margin: 0 0 6px; color: var(--muted); font-size: 14px; }
+.download-card .btn { width: 100%; }
+.notes { margin-top: 10px; text-align: right; font-size: 13.5px; color: var(--muted); display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 14px; }
+.notes p { margin: 0; }
+@media (max-width: 760px) {
+  .remote { grid-template-columns: 1fr; }
+  .download-card { position: static; order: -1; }
+}

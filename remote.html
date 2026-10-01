@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>תמיכה מרחוק – BSD מחשבים</title>
+  <meta name="description" content="תוכנת התמיכה מרחוק של BSD מחשבים: חיבור מאובטח, רק באישור שלך. הורדה ל-Windows.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="index.html" class="logo"><img src="bsd-title.png" alt="BSD מחשבים – מכירה, שירות, תמיכה" width="225" height="33"></a>
+      <nav class="nav">
+        <a href="index.html#laptops">מחשבים ניידים</a>
+        <a href="index.html#services">שירותים</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <a class="btn btn-wa header-cta" data-wa="שלום, אני צריך/ה תמיכה מרחוק" href="#">וואטסאפ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="wrap hero-inner">
+        <a href="index.html#services" class="back">→ חזרה לשירותים</a>
+        <h1>תמיכה מרחוק</h1>
+        <p class="lead">פותרים את התקלה דרך האינטרנט, בלי להגיע ובלי לשלוח את המחשב. אתם רואים כל מה שקורה, וכל חיבור דורש את האישור שלכם.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap remote">
+        <div class="remote-main">
+          <h2>מה זו התוכנה?</h2>
+          <p>
+            תוכנת התמיכה של BSD מחשבים מבוססת על <strong>MeshCentral</strong>, מערכת תמיכה מרחוק בקוד פתוח
+            (בדומה ל-TeamViewer או AnyDesk). ההבדל: היא רצה על <strong>שרת פרטי של BSD מחשבים</strong>,
+            ולא דרך חברה חיצונית, והחיבור מוצפן מקצה לקצה.
+          </p>
+
+          <ul class="trust">
+            <li><span>✓</span><div><strong>רק באישור שלכם.</strong> לפני כל חיבור קופץ חלון בקשת אישור במחשב, ובלי אישור אין חיבור.</div></li>
+            <li><span>✓</span><div><strong>גלוי לאורך כל החיבור.</strong> בזמן התמיכה מוצג סרגל שמראה שיש חיבור, ואפשר לנתק בלחיצה.</div></li>
+            <li><span>✓</span><div><strong>שקוף.</strong> התוכנה מופיעה בשם "BSD Computers Support" ברשימת השירותים של Windows, ואפשר לבקש להסיר אותה בכל עת.</div></li>
+          </ul>
+
+          <h2>איך מתחילים?</h2>
+          <ol class="steps">
+            <li><strong>מתקשרים או שולחים וואטסאפ</strong> ומספרים מה התקלה.</li>
+            <li><strong>מורידים את התוכנה</strong> בכפתור שבעמוד.</li>
+            <li><strong>מפעילים את הקובץ</strong>, מאשרים את חלון ההרשאות של Windows ולוחצים <strong>Install</strong>.</li>
+            <li><strong>מודיעים לנו שסיימתם.</strong> נתחבר אחרי שתאשרו את בקשת החיבור במסך.</li>
+          </ol>
+        </div>
+
+        <aside class="download-card">
+          <img src="bsd-icon-256.png" alt="" width="72" height="72">
+          <h3>BSD Computers Support</h3>
+          <p class="muted">ל-Windows 10 / 11, ‏64 ביט</p>
+          <a class="btn btn-primary btn-lg" id="agent-download" href="https://rmm.bsd-comp.com/meshagents?id=4&amp;meshid=hPlwLk$QhXnl45C$f3BKNBAgh4hqan74P$HPtiUHevcyYpc8d6W9IgA4PQmtJGMC&amp;installflags=0" download>הורדת תוכנת התמיכה</a>
+          <a class="btn btn-wa" data-wa="שלום, אני צריך/ה תמיכה מרחוק" href="#">קודם לדבר איתנו</a>
+          <div class="notes">
+            <p><strong>Windows מזהיר?</strong> אם מופיע "Windows protected your PC", לוחצים <em>More info</em> ואז <em>Run anyway</em>.</p>
+            <p><strong>אינטרנט מסונן (נטפרי / רימון)?</strong> ספרו לנו לפני ההתקנה. ייתכן שיהיה צורך לבקש מהסינון לאשר את שרת התמיכה.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> BSD מחשבים · מכירה, שירות ותמיכה · 054-457-8946</p>
+    </div>
+  </footer>
+
+  <script>
+    // WhatsApp links + footer year (same as the main page, without the catalog)
+    document.querySelectorAll("[data-wa]").forEach(a => {
+      a.href = "https://wa.me/972544578946?text=" + encodeURIComponent(a.dataset.wa);
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
