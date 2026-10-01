@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מדריכים וקבצים – BSD מחשבים</title>
+  <meta name="description" content="מדריכים, קבצים וכלים שימושיים מבית BSD מחשבים.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="index.html" class="logo"><img src="bsd-title.png" alt="BSD מחשבים – מכירה, שירות, תמיכה" width="225" height="33"></a>
+      <nav class="nav">
+        <a href="index.html#laptops">מחשבים ניידים</a>
+        <a href="index.html#services">שירותים</a>
+        <a href="guides.html" aria-current="page">מדריכים</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה" href="#">וואטסאפ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="wrap hero-inner">
+        <a href="index.html" class="back">→ חזרה לדף הבית</a>
+        <h1>מדריכים וקבצים</h1>
+        <p class="lead">הסברים, תוכנות וכלים שימושיים למחשב שלכם. לא מצאתם מה שחיפשתם? כתבו לנו.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="guides-search">
+          <input type="search" id="q" placeholder="חיפוש מדריך או קובץ…" aria-label="חיפוש">
+        </div>
+        <div id="sections"></div>
+        <p class="guides-empty" id="empty" hidden>לא נמצאו תוצאות. <a data-wa="שלום, חיפשתי באתר מדריך ולא מצאתי" href="#">שאלו אותנו בוואטסאפ</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> BSD מחשבים · מכירה, שירות ותמיכה · 054-457-8946</p>
+    </div>
+  </footer>
+
+  <script src="guides.js"></script>
+  <script>
+    const ICONS = { pdf: "📄", doc: "📝", zip: "🗜", exe: "💾", image: "🖼", video: "🎬", link: "🔗", page: "🖥" };
+    const LABELS = { pdf: "PDF", doc: "מסמך", zip: "ZIP", exe: "תוכנה", image: "תמונה", video: "וידאו", link: "קישור", page: "עמוד" };
+
+    function el(tag, cls, text) {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text != null) e.textContent = text;
+      return e;
+    }
+
+    function item(g) {
+      const a = el("a", "guide");
+      a.href = g.href;
+      const external = /^https?:/.test(g.href);
+      const isFile = !external && g.type !== "page";
+      if (external) { a.target = "_blank"; a.rel = "noopener"; }
+      if (isFile && ["exe", "zip"].includes(g.type)) a.setAttribute("download", "");
+      a.dataset.text = (g.title + " " + (g.desc || "")).toLowerCase();
+
+      a.append(el("div", "guide-ic", ICONS[g.type] || "📄"));
+      const body = el("div", "guide-body");
+      body.append(el("h3", null, g.title));
+      if (g.desc) body.append(el("p", null, g.desc));
+      const meta = el("div", "guide-meta");
+      meta.append(el("span", "chip", LABELS[g.type] || g.type));
+      if (g.size) meta.append(el("span", "guide-size", g.size));
+      body.append(meta);
+      a.append(body);
+      a.append(el("span", "guide-go", isFile ? "הורדה ↓" : external ? "פתיחה ↗" : "צפייה ←"));
+      return a;
+    }
+
+    const root = document.getElementById("sections");
+    GUIDE_SECTIONS.forEach(s => {
+      const list = GUIDES.filter(g => g.section === s.id);
+      const sec = el("div", "guides-section");
+      sec.dataset.section = s.id;
+      const head = el("div", "section-head");
+      head.append(el("h2", null, s.name), el("p", null, s.desc));
+      sec.append(head);
+      const grid = el("div", "guides-grid");
+      if (list.length) list.forEach(g => grid.append(item(g)));
+      else grid.append(el("p", "guides-soon", "חומרים חדשים יעלו בקרוב."));
+      sec.append(grid);
+      root.append(sec);
+    });
+
+    document.getElementById("q").addEventListener("input", e => {
+      const q = e.target.value.trim().toLowerCase();
+      let any = false;
+      root.querySelectorAll(".guides-section").forEach(sec => {
+        let shown = 0;
+        sec.querySelectorAll(".guide").forEach(g => {
+          const hit = !q || g.dataset.text.includes(q);
+          g.hidden = !hit;
+          if (hit) shown++;
+        });
+        const soon = sec.querySelector(".guides-soon");
+        if (soon) soon.hidden = !!q;
+        sec.hidden = !!q && shown === 0;
+        if (!sec.hidden) any = true;
+      });
+      document.getElementById("empty").hidden = any;
+    });
+
+    document.querySelectorAll("[data-wa]").forEach(a => {
+      a.href = "https://wa.me/972544578946?text=" + encodeURIComponent(a.dataset.wa);
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

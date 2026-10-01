@@ -210,3 +210,35 @@ a { color: inherit; }
   .remote { grid-template-columns: 1fr; }
   .download-card { position: static; order: -1; }
 }
+
+/* ---------- guides page ---------- */
+.nav a[aria-current="page"] { color: var(--navy); }
+.guides-search { margin-bottom: 36px; }
+.guides-search input {
+  width: 100%; max-width: 520px; font: inherit; font-size: 16px;
+  padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+}
+.guides-search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.guides-section { margin-bottom: 44px; }
+.guides-section[hidden] { display: none; }
+.guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.guide {
+  display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit;
+  background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; box-shadow: var(--shadow);
+  transition: transform .2s, border-color .2s;
+}
+.guide:hover { transform: translateY(-2px); border-color: var(--accent); }
+.guide[hidden] { display: none; }
+.guide-ic { flex: none; width: 48px; height: 48px; border-radius: 12px; background: var(--accent-soft); display: grid; place-items: center; font-size: 22px; }
+.guide-body { flex: 1; min-width: 0; }
+.guide-body h3 { margin: 0 0 2px; font-size: 16px; color: var(--navy); }
+.guide-body p { margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+.guide-meta { display: flex; gap: 8px; align-items: center; }
+.guide-meta .chip { background: var(--bg-alt); color: var(--muted); font-size: 12px; padding: 2px 8px; }
+.guide-size { font-size: 12px; color: var(--muted); }
+.guide-go { flex: none; color: var(--accent); font-weight: 500; font-size: 14px; }
+.guides-soon { margin: 0; color: var(--muted); background: var(--bg-alt); border: 1px dashed var(--line); border-radius: 12px; padding: 16px; }
+.guides-soon[hidden] { display: none; }
+.guides-empty { color: var(--muted); }
+.guides-empty a { color: var(--accent); }
+@media (max-width: 760px) { .guides-grid { grid-template-columns: 1fr; } }
