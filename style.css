@@ -272,3 +272,21 @@ figcaption { text-align: center; color: var(--muted); font-size: 13.5px; margin-
 .btn-ghost-dark { border-color: var(--navy); color: var(--navy); }
 .btn-ghost-dark:hover { background: var(--navy); color: #fff; }
 @media (max-width: 760px) { .box { padding: 20px 18px; } .box h2 { font-size: 18px; } }
+
+/* ---------- email buttons (twin of every WhatsApp button) ---------- */
+.btn-mail { background: var(--navy); color: #fff; }
+.btn-mail:hover { background: var(--navy-2); }
+.btn-mail svg { flex: none; }
+.hero .btn-ghost svg { color: #fff; }
+.btn-mail.header-cta { margin-inline-start: -12px; }
+.order-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+.order-btns .btn { padding: 9px 8px; font-size: 13.5px; white-space: normal; text-align: center; line-height: 1.25; }
+.card-foot { flex-direction: column; align-items: stretch; }
+.mail-float {
+  position: fixed; bottom: 88px; left: 20px; z-index: 30;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--navy); color: #fff; display: grid; place-items: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+}
+.mail-float:hover { background: var(--navy-2); }
+.contact-card .btn { width: 100%; max-width: 320px; }

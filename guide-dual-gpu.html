@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header class="site-header">
@@ -21,7 +21,7 @@
         <a href="guides.html" aria-current="page">מדריכים</a>
         <a href="index.html#contact">צור קשר</a>
       </nav>
-      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה על המדריך לכרטיסי מסך" href="#">וואטסאפ</a>
+      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה על המדריך לכרטיסי מסך" data-subject="שאלה על המדריך: בעיות גרפיקה עם שני כרטיסי מסך" href="#">וואטסאפ</a>
     </div>
   </header>
 
@@ -101,7 +101,7 @@
             <p>נשמח לבצע את ההגדרות בשבילכם בתמיכה מרחוק, באישור שלכם.</p>
           </div>
           <div class="article-cta-btns">
-            <a class="btn btn-wa" data-wa="שלום, עברתי על המדריך לכרטיסי מסך והבעיה ממשיכה" href="#">פנייה בוואטסאפ</a>
+            <a class="btn btn-wa" data-wa="שלום, עברתי על המדריך לכרטיסי מסך והבעיה ממשיכה" data-subject="בעיית גרפיקה עם שני כרטיסי מסך – הבעיה ממשיכה" href="#">פנייה בוואטסאפ</a>
             <a class="btn btn-ghost-dark" href="remote.html">תמיכה מרחוק</a>
           </div>
         </div>
@@ -115,13 +115,6 @@
     </div>
   </footer>
 
-  <script>
-    document.querySelectorAll("[data-wa]").forEach(a => {
-      a.href = "https://wa.me/972544578946?text=" + encodeURIComponent(a.dataset.wa);
-      a.target = "_blank";
-      a.rel = "noopener";
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="contact.js?v=6"></script>
 </body>
 </html>

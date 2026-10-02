@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header class="site-header">
@@ -21,7 +21,7 @@
         <a href="guides.html">מדריכים</a>
         <a href="index.html#contact">צור קשר</a>
       </nav>
-      <a class="btn btn-wa header-cta" data-wa="שלום, אני צריך/ה תמיכה מרחוק" href="#">וואטסאפ</a>
+      <a class="btn btn-wa header-cta" data-wa="שלום, אני צריך/ה תמיכה מרחוק" data-subject="בקשת תמיכה מרחוק" href="#">וואטסאפ</a>
     </div>
   </header>
 
@@ -64,7 +64,7 @@
           <h3>BSD Computers Support</h3>
           <p class="muted">ל-Windows 10 / 11, ‏64 ביט</p>
           <a class="btn btn-primary btn-lg" id="agent-download" href="https://rmm.bsd-comp.com/meshagents?id=4&amp;meshid=hPlwLk$QhXnl45C$f3BKNBAgh4hqan74P$HPtiUHevcyYpc8d6W9IgA4PQmtJGMC&amp;installflags=0" download>הורדת תוכנת התמיכה</a>
-          <a class="btn btn-wa" data-wa="שלום, אני צריך/ה תמיכה מרחוק" href="#">קודם לדבר איתנו</a>
+          <a class="btn btn-wa" data-wa="שלום, אני צריך/ה תמיכה מרחוק" data-subject="בקשת תמיכה מרחוק" href="#" data-mail-label="לכתוב לנו במייל">קודם לדבר איתנו</a>
           <div class="notes">
             <p><strong>Windows מזהיר?</strong> אם מופיע "Windows protected your PC", לוחצים <em>More info</em> ואז <em>Run anyway</em>.</p>
             <p><strong>אינטרנט מסונן (נטפרי / רימון)?</strong> ספרו לנו לפני ההתקנה. ייתכן שיהיה צורך לבקש מהסינון לאשר את שרת התמיכה.</p>
@@ -80,14 +80,6 @@
     </div>
   </footer>
 
-  <script>
-    // WhatsApp links + footer year (same as the main page, without the catalog)
-    document.querySelectorAll("[data-wa]").forEach(a => {
-      a.href = "https://wa.me/972544578946?text=" + encodeURIComponent(a.dataset.wa);
-      a.target = "_blank";
-      a.rel = "noopener";
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="contact.js?v=6"></script>
 </body>
 </html>

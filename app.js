@@ -1,9 +1,4 @@
-// BSD מחשבים – בניית כרטיסי המוצרים, סינון וקישורי וואטסאפ.
-const WA_NUMBER = "972544578946";
-
-function waLink(text) {
-  return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
-}
+// BSD מחשבים – בניית כרטיסי המוצרים וסינון. קישורי וואטסאפ/מייל: contact.js
 
 function el(tag, cls, text) {
   const e = document.createElement(tag);
@@ -41,11 +36,18 @@ function card(p) {
 
   const foot = el("div", "card-foot");
   foot.append(el("div", "price", p.price ? "₪" + p.price : "מחיר לפי פנייה"));
-  const btn = el("a", "btn btn-wa", "להזמנה בוואטסאפ");
-  btn.href = waLink(`שלום, אני מתעניין/ת במחשב ${p.name} (מק"ט ${p.sku}). אשמח לפרטים ומחיר.`);
-  btn.target = "_blank";
-  btn.rel = "noopener";
-  foot.append(btn);
+  const msg = `שלום, אני מתעניין/ת במחשב ${p.name} (מק"ט ${p.sku}). אשמח לפרטים ומחיר.`;
+  const btns = el("div", "order-btns");
+  const wa = el("a", "btn btn-wa", "להזמנה בוואטסאפ");
+  wa.href = waLink(msg);
+  wa.target = "_blank";
+  wa.rel = "noopener";
+  const mail = el("a", "btn btn-mail");
+  mail.href = mailLink(`הזמנת מחשב: ${p.name} (מק"ט ${p.sku})`, msg);
+  mail.innerHTML = MAIL_ICON;
+  mail.append(el("span", null, "להזמנה במייל"));
+  btns.append(wa, mail);
+  foot.append(btns);
   body.append(foot);
 
   c.append(body);
@@ -73,13 +75,6 @@ function render() {
     });
     filters.append(b);
   });
-
-  document.querySelectorAll("[data-wa]").forEach(a => {
-    a.href = waLink(a.dataset.wa);
-    a.target = "_blank";
-    a.rel = "noopener";
-  });
-  document.getElementById("year").textContent = new Date().getFullYear();
 }
 
 render();
