@@ -290,3 +290,9 @@ figcaption { text-align: center; color: var(--muted); font-size: 13.5px; margin-
 }
 .mail-float:hover { background: var(--navy-2); }
 .contact-card .btn { width: 100%; max-width: 320px; }
+
+/* ---------- remote page: alternative support (portal + ScreenConnect) ---------- */
+.alt-support { margin-top: 40px; background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 26px; }
+.alt-support h2 { margin-top: 0 !important; }
+.alt-support .steps { margin-bottom: 20px; }
+.notes a { color: var(--accent); }
