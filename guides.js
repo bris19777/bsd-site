@@ -11,6 +11,10 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "פתרון בעיות גרפיקה במחשבים ניידים עם שני כרטיסי מסך",
+    desc: "קפיאות, ריצוד וקריסות ב-AutoCAD, Revit ותוכנות גרפיות. 5 שלבים לייצוב (Lenovo LOQ ודומיו).", href: "guide-dual-gpu.html" },
+  { section: "guides", type: "pdf", title: "פתרון בעיות גרפיקה עם שני כרטיסי מסך (PDF)",
+    desc: "אותו מדריך, בגרסה להורדה ולהדפסה.", href: "files/bsd-guide-dual-gpu-graphics.pdf", size: "1.3MB" },
   { section: "files", type: "page", title: "תוכנת התמיכה מרחוק של BSD",
     desc: "הורדה והסבר על חיבור לתמיכה מרחוק, רק באישור שלכם.", href: "remote.html" },
 ];
