@@ -27,6 +27,8 @@ function card(p) {
   const meta = el("div", "card-meta");
   meta.append(el("span", "brand", p.brand), el("span", "sku", "מק\"ט: " + p.sku));
   const title = el("h3", "card-title");
+  // names are LTR (Latin model names); mixed Hebrew names read better RTL
+  if (/[\u0590-\u05FF]/.test(p.name)) title.style.direction = "rtl";
   if (p.page) { const t = el("a", null, p.name); t.href = p.page; title.append(t); }
   else title.textContent = p.name;
   body.append(meta, title, el("p", "tagline", p.tagline));

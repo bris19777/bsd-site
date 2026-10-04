@@ -356,3 +356,16 @@ a.card-media { color: inherit; }
 .price-big-plain { color: var(--navy); }
 .other-option { color: var(--accent); font-size: 14px; font-weight: 500; text-decoration: none; }
 .other-option:hover { text-decoration: underline; }
+
+/* ---------- refurbished page ---------- */
+.upgrades { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.upgrade { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--bg-alt); border: 1px dashed var(--accent); border-radius: 10px; padding: 8px 12px; font-size: 14px; }
+.upgrade strong { color: var(--navy); font-weight: 500; }
+.upgrade span { color: var(--accent); font-weight: 700; white-space: nowrap; }
+.upgrade-note { margin: 0; color: var(--muted); font-size: 13px; }
+.reliability { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.rel-item { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.rel-ic { font-size: 28px; margin-bottom: 6px; }
+.rel-item h3 { margin: 0 0 6px; color: var(--navy); font-size: 18px; }
+.rel-item p { margin: 0; color: var(--muted); font-size: 14.5px; }
+@media (max-width: 480px) { .upgrades { grid-template-columns: 1fr; } }

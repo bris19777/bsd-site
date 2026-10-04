@@ -4,6 +4,7 @@
 // page: עמוד מוצר נפרד (לחיצה על הכרטיס מובילה אליו). deal: תגית מבצע. price: מחיר בשקלים.
 const CATEGORIES = [
   { id: "recommended", name: "מומלצים", desc: "הבחירות שלנו, במחירים מיוחדים" },
+  { id: "refurbished", name: "מחודשים", desc: "מחשבים עסקיים מחודשים באיכות גבוהה, עם אחריות" },
   { id: "basic",    name: "בסיסי",        desc: "לגלישה, Office ולימודים" },
   { id: "home",     name: "ביתי ומשרדי",  desc: "עבודה יומיומית בנוחות" },
   { id: "business", name: "עסקי",         desc: "אמינות ואחריות לעסקים" },
@@ -18,6 +19,12 @@ const PRODUCTS = [
     price: "3,249", deal: "מבצע לזמן מוגבל",
     tagline: "מסך מגע, גוף מתכת, i7 בהספק 45W ו-1TB",
     specs: ["מסך מגע 15.3 אינץ' WUXGA", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
+
+  { sku: "TP14-R-8665U", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad 14 מחודש · i7 · מסך מגע",
+    img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
+    price: "1,390", deal: "מחודש A-Grade",
+    tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
+    specs: ["מסך מגע 14 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "עמידות צבאית MIL-STD-810G", "אחריות מלאה לחצי שנה"] },
 
   { sku: "6092", cat: "basic", brand: "HP", name: "HP 250 G10", img: "images/6092.png",
     tagline: "הכי משתלם לגלישה ו-Office",
