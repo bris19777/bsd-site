@@ -9,7 +9,7 @@ function el(tag, cls, text) {
 
 function card(p) {
   const c = el("article", "card" + (p.deal ? " card-deal" : ""));
-  c.dataset.cat = p.cat;
+  c.dataset.cat = [p.cat, ...(p.also || [])].join(" ");
 
   const media = el(p.page ? "a" : "div", "card-media");
   if (p.page) media.href = p.page;
@@ -75,13 +75,13 @@ function render() {
     b.type = "button";
     b.setAttribute("role", "tab");
     b.setAttribute("aria-selected", i === 0 ? "true" : "false");
-    const count = cat.id === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat.id).length;
+    const count = cat.id === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat.id || (p.also || []).includes(cat.id)).length;
     b.append(el("span", "count", String(count)));
     b.addEventListener("click", () => {
       filters.querySelectorAll(".filter").forEach(f => { f.classList.remove("active"); f.setAttribute("aria-selected", "false"); });
       b.classList.add("active");
       b.setAttribute("aria-selected", "true");
-      grid.querySelectorAll(".card").forEach(c => { c.hidden = cat.id !== "all" && c.dataset.cat !== cat.id; });
+      grid.querySelectorAll(".card").forEach(c => { c.hidden = cat.id !== "all" && !c.dataset.cat.split(" ").includes(cat.id); });
     });
     filters.append(b);
   });

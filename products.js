@@ -1,6 +1,7 @@
 // קטלוג המחשבים הניידים של BSD מחשבים.
 // להוספה / עדכון מוצר: לערוך את הרשימה כאן. "price" ריק = "מחיר בוואטסאפ".
 // specs: שורות המפרט שמוצגות בכרטיס. "windows": true אם המחשב מגיע עם Windows מהיצרן.
+// also: קטגוריות נוספות שבהן המוצר יופיע (למשל ["recommended"]).
 // page: עמוד מוצר נפרד (לחיצה על הכרטיס מובילה אליו). deal: תגית מבצע. price: מחיר בשקלים.
 const CATEGORIES = [
   { id: "recommended", name: "מומלצים", desc: "הבחירות שלנו, במחירים מיוחדים" },
@@ -26,7 +27,7 @@ const PRODUCTS = [
     tagline: "מעבד Core 9 דור חדש, ביצועים ברמת i9: ‏14 ליבות, עד 5.8GHz",
     specs: ["Intel Core 9 270H: ‏14 ליבות / 20 תהליכונים", "16GB DDR5 (אפשרות ל-24GB או 40GB)", "1TB SSD NVMe", "מסך 16 אינץ' WUXGA ‏16:10", "Windows 11 Pro", "אחריות יצרן לשנה"] },
 
-  { sku: "TP14-R-8665U", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad 14 מחודש · i7 · מסך מגע",
+  { sku: "TP14-R-8665U", cat: "refurbished", also: ["recommended"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T490 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
     price: "1,390", deal: "מחודש A-Grade",
     tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
@@ -97,11 +98,11 @@ const PRODUCTS = [
     tagline: "דגל הגיימינג",
     specs: ["מסך 16 אינץ'", "AMD Ryzen 9 8940HX", "32GB DDR5", "1TB SSD", "RTX 5070 8GB", "אחריות 3 שנים"] },
 
-  { sku: "PM400G9-16-512", cat: "desktop", brand: "HP", name: "HP Pro Mini 400 G9 · 16GB · 512GB",
+  { sku: "PM400G9-16-512", cat: "desktop", also: ["recommended"], brand: "HP", name: "HP Pro Mini 400 G9 · 16GB · 512GB",
     img: "images/hp-pro-mini-400-g9/2.png", page: "desktop-hp-pro-mini-400-g9-16gb-512gb.html", price: "2,590",
     tagline: "מחשב מיני עסקי חזק, תופס מקום של ספר",
     specs: ["Intel Core i5-12500T (6 ליבות)", "16GB DDR4", "512GB SSD NVMe", "רשת קווית Gigabit", "עד 3 מסכים (HDMI + 2×DP)"] },
-  { sku: "PM400G9-8-256", cat: "desktop", brand: "HP", name: "HP Pro Mini 400 G9 · 8GB · 256GB",
+  { sku: "PM400G9-8-256", cat: "desktop", also: ["recommended"], brand: "HP", name: "HP Pro Mini 400 G9 · 8GB · 256GB",
     img: "images/hp-pro-mini-400-g9/2.png", page: "desktop-hp-pro-mini-400-g9-8gb-256gb.html", price: "1,890",
     tagline: "מחשב מיני עסקי במחיר משתלם",
     specs: ["Intel Core i5-12500T (6 ליבות)", "8GB DDR4", "256GB SSD NVMe", "רשת קווית Gigabit", "עד 3 מסכים (HDMI + 2×DP)"] },
