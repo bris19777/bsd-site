@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
   <header class="site-header">
@@ -55,9 +55,37 @@
           <ol class="steps">
             <li><strong>מתקשרים או שולחים וואטסאפ</strong> ומספרים מה התקלה.</li>
             <li><strong>מורידים את התוכנה</strong> בכפתור שבעמוד.</li>
-            <li><strong>מפעילים את הקובץ</strong>, מאשרים את חלון ההרשאות של Windows ולוחצים <strong>Install</strong>.</li>
+            <li><strong>מפעילים את הקובץ</strong>, מאשרים את חלון ההרשאות של Windows ולוחצים <strong>Install</strong>. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
             <li><strong>מודיעים לנו שסיימתם.</strong> נתחבר אחרי שתאשרו את בקשת החיבור במסך.</li>
           </ol>
+
+          <div class="smartscreen" id="smartscreen">
+            <h2>מופיע חלון כחול "Windows הגן על המחשב שלך"?</h2>
+            <p>זה רגיל ולא מסוכן: Windows מציג את ההודעה הזו על תוכנות שהוא עוד לא מכיר. כך ממשיכים, בשני שלבים:</p>
+            <div class="ss-steps">
+              <figure class="ss-fig">
+                <div class="ss-win">
+                  <div class="ss-close">✕</div>
+                  <div class="ss-title">Windows הגן על המחשב שלך</div>
+                  <div class="ss-text">Microsoft Defender SmartScreen מנע הפעלה של אפליקציה לא מזוהה. הפעלת אפליקציה זו עלולה לסכן את המחשב שלך.</div>
+                  <div class="ss-link ss-hl">מידע נוסף<span class="ss-pointer">👆</span></div>
+                  <div class="ss-buttons"><span class="ss-btn">אל תפעיל</span></div>
+                </div>
+                <figcaption><b>1</b> לוחצים על הקישור <strong>"מידע נוסף"</strong> (מתחת לטקסט). לא על "אל תפעיל".</figcaption>
+              </figure>
+              <figure class="ss-fig">
+                <div class="ss-win">
+                  <div class="ss-close">✕</div>
+                  <div class="ss-title">Windows הגן על המחשב שלך</div>
+                  <div class="ss-text">Microsoft Defender SmartScreen מנע הפעלה של אפליקציה לא מזוהה. הפעלת אפליקציה זו עלולה לסכן את המחשב שלך.</div>
+                  <div class="ss-meta">אפליקציה: BSDSupportAgent64.exe<br>מפרסם: מפרסם לא ידוע</div>
+                  <div class="ss-buttons"><span class="ss-btn ss-btn-run ss-hl">הפעל בכל זאת<span class="ss-pointer">👆</span></span><span class="ss-btn">אל תפעיל</span></div>
+                </div>
+                <figcaption><b>2</b> מופיע כפתור חדש: לוחצים <strong>"הפעל בכל זאת"</strong>, וההתקנה ממשיכה.</figcaption>
+              </figure>
+            </div>
+            <p class="ss-note">ב-Windows באנגלית הכפתורים נקראים <span class="kbd">More info</span> ואז <span class="kbd">Run anyway</span>. מתקשים? <a data-wa="שלום, מופיע לי חלון כחול של Windows ואני לא מצליח/ה להתקין" data-nomail href="#">כתבו לנו בוואטסאפ</a> ונעזור.</p>
+          </div>
 
           <div class="alt-support" id="alt">
             <h2>התוכנה לא עובדת? יש דרך נוספת</h2>
@@ -88,7 +116,7 @@
           <a class="btn btn-primary btn-lg" id="agent-download" href="https://rmm.bsd-comp.com/meshagents?id=4&amp;meshid=hPlwLk$QhXnl45C$f3BKNBAgh4hqan74P$HPtiUHevcyYpc8d6W9IgA4PQmtJGMC&amp;installflags=0" download>הורדת תוכנת התמיכה</a>
           <a class="btn btn-wa" data-wa="שלום, אני צריך/ה תמיכה מרחוק" data-subject="בקשת תמיכה מרחוק" href="#" data-mail-label="לכתוב לנו במייל">קודם לדבר איתנו</a>
           <div class="notes">
-            <p><strong>Windows מזהיר?</strong> אם מופיע "Windows protected your PC", לוחצים <em>More info</em> ואז <em>Run anyway</em>.</p>
+            <p><strong>מופיע חלון כחול של Windows?</strong> לוחצים <strong>"מידע נוסף"</strong> ואז <strong>"הפעל בכל זאת"</strong>. <a href="#smartscreen">הסבר עם תמונה</a></p>
             <p><strong>אינטרנט מסונן (נטפרי / רימון)?</strong> ספרו לנו לפני ההתקנה. ייתכן שיהיה צורך לבקש מהסינון לאשר את שרת התמיכה.</p>
             <p><strong>לא עובד?</strong> <a href="#alt">דרך נוספת: פורטל השירות</a></p>
           </div>
