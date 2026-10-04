@@ -438,3 +438,16 @@ a.card-media { color: inherit; }
 .cmp ul { margin: 0; padding-inline-start: 18px; display: grid; gap: 6px; font-size: 14.5px; }
 .cmp-main b { color: var(--accent); }
 @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
+
+/* ---------- CPU comparison table ---------- */
+.cmp-table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.cmp-table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+.cmp-table th, .cmp-table td { padding: 12px 14px; text-align: right; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cmp-table tbody tr:last-child th, .cmp-table tbody tr:last-child td { border-bottom: 0; }
+.cmp-table thead th { background: var(--bg-alt); color: var(--navy); font-size: 15.5px; }
+.cmp-table thead th small { display: block; font-weight: 500; font-size: 12px; color: var(--muted); }
+.cmp-table thead th.win { background: var(--accent); color: #fff; }
+.cmp-table thead th.win small { color: #DCEBFF; }
+.cmp-table tbody th { width: 22%; color: var(--muted); font-weight: 500; background: var(--bg-alt); }
+.cmp-table td.win { background: #F2F8FF; }
+.cmp-table td.win b { color: var(--accent); }
