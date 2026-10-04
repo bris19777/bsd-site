@@ -426,3 +426,15 @@ a.card-media { color: inherit; }
 .anydesk-card small { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
 .ad-go { flex: none; margin-inline-start: auto; color: #D93A31; font-weight: 700; font-size: 14px; }
 @media (max-width: 480px) { .anydesk-card { flex-wrap: wrap; } .ad-go { margin-inline-start: 62px; } }
+
+/* ---------- desktop vs mobile CPU comparison ---------- */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cmp { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); position: relative; }
+.cmp-main { border: 2px solid var(--accent); }
+.cmp-tag { display: inline-block; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 3px 10px; margin-bottom: 8px; }
+.cmp-tag-ref { background: #AFC0D9; color: var(--navy); }
+.cmp h3 { margin: 0 0 10px; color: var(--navy); font-size: 19px; }
+.cmp h3 small { display: block; font-size: 13px; color: var(--muted); font-weight: 500; }
+.cmp ul { margin: 0; padding-inline-start: 18px; display: grid; gap: 6px; font-size: 14.5px; }
+.cmp-main b { color: var(--accent); }
+@media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }

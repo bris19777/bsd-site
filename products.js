@@ -107,6 +107,10 @@ const PRODUCTS = [
     tagline: "דגל הגיימינג",
     specs: ["מסך 16 אינץ'", "AMD Ryzen 9 8940HX", "32GB DDR5", "1TB SSD", "RTX 5070 8GB", "אחריות 3 שנים"] },
 
+  { sku: "M70QG5-14500T", cat: "desktop", also: ["recommended"], brand: "Lenovo ThinkCentre", name: "Lenovo ThinkCentre M70q Tiny Gen 5",
+    img: "images/m70q-gen5/m70q-01.jpg", page: "desktop-lenovo-m70q-gen5-i5-14500t.html", price: "2,790", deal: "מעבד שולחני",
+    tagline: "מעבד שולחני אמיתי, לא מעבד נייד, בגוף זעיר",
+    specs: ["Intel Core i5-14500T (שולחני): ‏14 ליבות", "16GB DDR5", "512GB SSD NVMe + חריץ פנוי", "Windows 11 Pro מקורית", "כולל תושבת VESA לגב המסך", "אחריות 3 שנים באתר הלקוח"] },
   { sku: "PM400G9-16-512", cat: "desktop", also: ["recommended"], brand: "HP", name: "HP Pro Mini 400 G9 · 16GB · 512GB",
     img: "images/hp-pro-mini-400-g9/2.png", page: "desktop-hp-pro-mini-400-g9-16gb-512gb.html", price: "2,590",
     tagline: "מחשב מיני עסקי חזק, תופס מקום של ספר",
