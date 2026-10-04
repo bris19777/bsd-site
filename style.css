@@ -170,7 +170,9 @@ a { color: inherit; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 760px) {
-  .nav { display: none; }
+  .header-row { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 8px; row-gap: 6px; }
+  .nav { order: 3; width: 100%; margin-inline-start: 0; gap: 16px; overflow-x: auto; white-space: nowrap; font-size: 14px; padding-bottom: 2px; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
   .header-cta { margin-inline-start: auto; }
   .hero-inner { padding: 48px 16px 56px; }
   .section { padding: 52px 0; }
@@ -411,3 +413,16 @@ a.card-media { color: inherit; }
 .feature-big b { font-size: 28px; font-weight: 800; color: #8FC0FF; }
 .feature-big small { color: #C9DBF5; font-size: 12.5px; line-height: 1.45; }
 @media (max-width: 480px) { .feature-duo { grid-template-columns: 1fr; } }
+
+/* remote-support link in the top nav */
+.nav a.nav-remote { color: var(--accent); font-weight: 700; }
+.nav a.nav-remote:hover, .nav a.nav-remote[aria-current="page"] { color: var(--navy); }
+
+/* ---------- AnyDesk card on the remote page ---------- */
+.anydesk-card { margin-top: 20px; display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; background: #fff; border: 1.5px solid var(--line); border-inline-start: 5px solid #EF443B; border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); transition: transform .2s, border-color .2s; }
+.anydesk-card:hover { transform: translateY(-2px); border-color: #EF443B; }
+.ad-ic { flex: none; width: 48px; height: 48px; border-radius: 12px; background: #FDECEB; display: grid; place-items: center; font-size: 22px; }
+.anydesk-card strong { display: block; color: var(--navy); font-size: 17px; }
+.anydesk-card small { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+.ad-go { flex: none; margin-inline-start: auto; color: #D93A31; font-weight: 700; font-size: 14px; }
+@media (max-width: 480px) { .anydesk-card { flex-wrap: wrap; } .ad-go { margin-inline-start: 62px; } }

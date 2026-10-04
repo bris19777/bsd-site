@@ -17,6 +17,8 @@ const GUIDES = [
     desc: "אותו מדריך, בגרסה להורדה ולהדפסה.", href: "files/bsd-guide-dual-gpu-graphics.pdf", size: "1.3MB" },
   { section: "files", type: "page", title: "תוכנת התמיכה מרחוק של BSD",
     desc: "הורדה והסבר על חיבור לתמיכה מרחוק, רק באישור שלכם.", href: "remote.html" },
+  { section: "guides", type: "page", title: "תמיכה מרחוק עם AnyDesk",
+    desc: "הוראות פשוטות: מורידים, מוסרים לנו את הכתובת ומאשרים את החיבור.", href: "anydesk.html" },
   { section: "files", type: "exe", title: "AnyDesk",
     desc: "תוכנת שליטה מרחוק פופולרית. הקישור מוריד תמיד את הגרסה האחרונה מהאתר הרשמי.",
     href: "https://download.anydesk.com/AnyDesk.exe", size: "8.6MB" },
