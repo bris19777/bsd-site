@@ -27,6 +27,15 @@ const PRODUCTS = [
     tagline: "מעבד Core 9 דור חדש, ביצועים ברמת i9: ‏14 ליבות, עד 5.8GHz",
     specs: ["Intel Core 9 270H: ‏14 ליבות / 20 תהליכונים", "16GB DDR5 (אפשרות ל-24GB או 40GB)", "1TB SSD NVMe", "מסך 16 אינץ' WUXGA ‏16:10", "Windows 11 Pro", "אחריות יצרן לשנה"] },
 
+  { sku: "83K100KPIV", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 16GB",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-16gb.html", price: "2,690",
+    tagline: "מסך IPS בהיר ומעבד i5 מהיר מסדרת H",
+    specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "16GB DDR5", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
+  { sku: "83K1-I5-8GB", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 8GB",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb.html", price: "2,350",
+    tagline: "מסך IPS בהיר ומעבד i5 מהיר, במחיר משתלם",
+    specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "8GB DDR5 (ניתן להרחבה)", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
+
   { sku: "TP14-R-8665U", cat: "refurbished", also: ["recommended"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T490 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
     price: "1,390", deal: "מחודש A-Grade",

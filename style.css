@@ -402,3 +402,12 @@ a.card-media { color: inherit; }
   .bench-gain { justify-self: start; }
   .cpu-stats b { font-size: 17px; }
 }
+
+/* ---------- two big feature tiles (screen + CPU) ---------- */
+.feature-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.feature-big { background: linear-gradient(135deg, var(--navy) 0%, #1F4FA0 100%); color: #fff; border-radius: var(--radius); padding: 16px; display: grid; gap: 2px; }
+.fb-ic { font-size: 24px; }
+.feature-big strong { font-size: 16px; }
+.feature-big b { font-size: 28px; font-weight: 800; color: #8FC0FF; }
+.feature-big small { color: #C9DBF5; font-size: 12.5px; line-height: 1.45; }
+@media (max-width: 480px) { .feature-duo { grid-template-columns: 1fr; } }
