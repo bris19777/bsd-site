@@ -369,3 +369,36 @@ a.card-media { color: inherit; }
 .rel-item h3 { margin: 0 0 6px; color: var(--navy); font-size: 18px; }
 .rel-item p { margin: 0; color: var(--muted); font-size: 14.5px; }
 @media (max-width: 480px) { .upgrades { grid-template-columns: 1fr; } }
+
+/* ---------- CPU emphasis + benchmark bars ---------- */
+.cpu-hero { background: linear-gradient(135deg, var(--navy) 0%, #1F4FA0 100%); color: #fff; border-radius: var(--radius); padding: 18px 20px; margin-bottom: 18px; }
+.cpu-hero-top { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+.cpu-chip { flex: none; background: #fff; color: var(--navy); font-weight: 800; font-size: 20px; padding: 10px 14px; border-radius: 12px; direction: ltr; }
+.cpu-hero strong { display: block; font-size: 18px; }
+.cpu-hero small { display: block; color: #C9DBF5; font-size: 13.5px; margin-top: 2px; }
+.cpu-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cpu-stats div { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 8px; text-align: center; }
+.cpu-stats b { display: block; font-size: 20px; direction: ltr; }
+.cpu-stats span { font-size: 12px; color: #C9DBF5; }
+.ram-options { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; background: var(--bg-alt); border: 1px dashed var(--accent); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+.ram-options b { background: var(--accent); color: #fff; border-radius: 8px; padding: 2px 10px; }
+.ram-options small { color: var(--muted); }
+.bench { display: grid; gap: 16px; }
+.bench-row { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); display: grid; grid-template-columns: 180px 1fr auto; gap: 16px; align-items: center; }
+.bench-title strong { display: block; color: var(--navy); }
+.bench-title small { color: var(--muted); font-size: 12.5px; direction: ltr; display: block; text-align: right; }
+.bench-bars { display: grid; gap: 8px; }
+.bar { position: relative; height: 34px; border-radius: 8px; background: var(--bg-alt); overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 13.5px; }
+.bar::before { content: ""; position: absolute; inset-block: 0; inset-inline-start: 0; width: var(--w); border-radius: 8px; }
+.bar-main::before { background: linear-gradient(90deg, #1F4FA0, var(--accent)); }
+.bar-ref::before { background: #AFC0D9; }
+.bar span, .bar b { position: relative; }
+.bar-main span, .bar-main b { color: #fff; }
+.bar-ref span, .bar-ref b { color: var(--navy); }
+.bench-gain { background: #E7F7EE; color: #11703A; font-weight: 700; border-radius: 999px; padding: 6px 14px; white-space: nowrap; }
+.spec-note a { color: var(--accent); }
+@media (max-width: 760px) {
+  .bench-row { grid-template-columns: 1fr; }
+  .bench-gain { justify-self: start; }
+  .cpu-stats b { font-size: 17px; }
+}

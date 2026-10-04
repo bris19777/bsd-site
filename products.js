@@ -20,6 +20,12 @@ const PRODUCTS = [
     tagline: "מסך מגע, גוף מתכת, i7 בהספק 45W ו-1TB",
     specs: ["מסך מגע 15.3 אינץ' WUXGA", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
 
+  { sku: "X1605VA-MB2558", cat: "recommended", brand: "ASUS", name: "ASUS Vivobook 16 · Intel Core 9 270H",
+    img: "images/x1605va-mb2558/main.jpg", page: "laptop-asus-vivobook16-core9-270h.html",
+    price: "3,590", deal: "מעבד Core 9",
+    tagline: "מעבד Core 9 דור חדש, ביצועים ברמת i9: ‏14 ליבות, עד 5.8GHz",
+    specs: ["Intel Core 9 270H: ‏14 ליבות / 20 תהליכונים", "16GB DDR5 (אפשרות ל-24GB או 40GB)", "1TB SSD NVMe", "מסך 16 אינץ' WUXGA ‏16:10", "Windows 11 Pro", "אחריות יצרן לשנה"] },
+
   { sku: "TP14-R-8665U", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad 14 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
     price: "1,390", deal: "מחודש A-Grade",
