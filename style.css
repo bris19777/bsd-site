@@ -347,3 +347,12 @@ a.card-media { color: inherit; }
   .highlights { grid-template-columns: 1fr; }
   .thumbs { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* ---------- desktop product pages ---------- */
+.thumbs-3 { grid-template-columns: repeat(3, 1fr); max-width: 300px; }
+.gallery-main img[width="800"] { object-fit: contain; }
+.price-box-plain { border-color: var(--line); }
+.price-label-plain { color: var(--muted); }
+.price-big-plain { color: var(--navy); }
+.other-option { color: var(--accent); font-size: 14px; font-weight: 500; text-decoration: none; }
+.other-option:hover { text-decoration: underline; }

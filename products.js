@@ -9,6 +9,7 @@ const CATEGORIES = [
   { id: "business", name: "עסקי",         desc: "אמינות ואחריות לעסקים" },
   { id: "premium",  name: "פרימיום",      desc: "דקים, קלים ומסכי OLED" },
   { id: "gaming",   name: "גיימינג",      desc: "כרטיסי מסך RTX למשחקים ועריכה" },
+  { id: "desktop",  name: "מחשבים נייחים", desc: "מחשבים שולחניים לבית ולמשרד" },
 ];
 
 const PRODUCTS = [
@@ -82,4 +83,13 @@ const PRODUCTS = [
   { sku: "6332", cat: "gaming", brand: "Lenovo", name: "Lenovo Legion 5 16", img: "images/6332.webp",
     tagline: "דגל הגיימינג",
     specs: ["מסך 16 אינץ'", "AMD Ryzen 9 8940HX", "32GB DDR5", "1TB SSD", "RTX 5070 8GB", "אחריות 3 שנים"] },
+
+  { sku: "PM400G9-16-512", cat: "desktop", brand: "HP", name: "HP Pro Mini 400 G9 · 16GB · 512GB",
+    img: "images/hp-pro-mini-400-g9/2.png", page: "desktop-hp-pro-mini-400-g9-16gb-512gb.html", price: "2,590",
+    tagline: "מחשב מיני עסקי חזק, תופס מקום של ספר",
+    specs: ["Intel Core i5-12500T (6 ליבות)", "16GB DDR4", "512GB SSD NVMe", "רשת קווית Gigabit", "עד 3 מסכים (HDMI + 2×DP)"] },
+  { sku: "PM400G9-8-256", cat: "desktop", brand: "HP", name: "HP Pro Mini 400 G9 · 8GB · 256GB",
+    img: "images/hp-pro-mini-400-g9/2.png", page: "desktop-hp-pro-mini-400-g9-8gb-256gb.html", price: "1,890",
+    tagline: "מחשב מיני עסקי במחיר משתלם",
+    specs: ["Intel Core i5-12500T (6 ליבות)", "8GB DDR4", "256GB SSD NVMe", "רשת קווית Gigabit", "עד 3 מסכים (HDMI + 2×DP)"] },
 ];
