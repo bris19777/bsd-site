@@ -8,10 +8,11 @@ function el(tag, cls, text) {
 }
 
 function card(p) {
-  const c = el("article", "card");
+  const c = el("article", "card" + (p.deal ? " card-deal" : ""));
   c.dataset.cat = p.cat;
 
-  const media = el("div", "card-media");
+  const media = el(p.page ? "a" : "div", "card-media");
+  if (p.page) media.href = p.page;
   const img = el("img");
   img.src = p.img;
   img.alt = p.name;
@@ -19,12 +20,16 @@ function card(p) {
   img.width = 510;
   img.height = 510;
   media.append(img, el("span", "badge-cat", CATEGORIES.find(x => x.id === p.cat).name));
+  if (p.deal) media.append(el("span", "badge-deal", p.deal));
   c.append(media);
 
   const body = el("div", "card-body");
   const meta = el("div", "card-meta");
   meta.append(el("span", "brand", p.brand), el("span", "sku", "מק\"ט: " + p.sku));
-  body.append(meta, el("h3", "card-title", p.name), el("p", "tagline", p.tagline));
+  const title = el("h3", "card-title");
+  if (p.page) { const t = el("a", null, p.name); t.href = p.page; title.append(t); }
+  else title.textContent = p.name;
+  body.append(meta, title, el("p", "tagline", p.tagline));
 
   const specs = el("ul", "specs");
   p.specs.forEach(s => specs.append(el("li", null, s)));
@@ -35,7 +40,10 @@ function card(p) {
   body.append(incl);
 
   const foot = el("div", "card-foot");
-  foot.append(el("div", "price", p.price ? "₪" + p.price : "מחיר לפי פנייה"));
+  const priceRow = el("div", "price-row");
+  priceRow.append(el("div", "price" + (p.deal ? " price-deal" : ""), p.price ? "₪" + p.price : "מחיר לפי פנייה"));
+  if (p.page) { const more = el("a", "more-link", "לכל הפרטים ←"); more.href = p.page; priceRow.append(more); }
+  foot.append(priceRow);
   const msg = `שלום, אני מתעניין/ת במחשב ${p.name} (מק"ט ${p.sku}). אשמח לפרטים ומחיר.`;
   const btns = el("div", "order-btns");
   const wa = el("a", "btn btn-wa", "להזמנה בוואטסאפ");
