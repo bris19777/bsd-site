@@ -12,6 +12,7 @@ const CATEGORIES = [
   { id: "premium",  name: "פרימיום",      desc: "דקים, קלים ומסכי OLED" },
   { id: "gaming",   name: "גיימינג",      desc: "כרטיסי מסך RTX למשחקים ועריכה" },
   { id: "desktop",  name: "מחשבים נייחים", desc: "מחשבים שולחניים לבית ולמשרד" },
+  { id: "arch",     name: "אדריכלות ומולטימדיה", desc: "תחנות עבודה ניידות לתלת-ממד, תכנון ועריכת וידאו" },
 ];
 
 const PRODUCTS = [
@@ -102,6 +103,10 @@ const PRODUCTS = [
   { sku: "6318", cat: "gaming", brand: "Lenovo", name: "Lenovo LOQ 15", img: "images/6318.webp",
     tagline: "הכניסה לעולם הגיימינג",
     specs: ["מסך 15.6 אינץ'", "Intel Core i7-13650HX", "16GB זיכרון", "1TB SSD", "RTX 3050 6GB", "אחריות שנה"] },
+  { sku: "6320", cat: "arch", also: ["gaming"], brand: "ASUS", name: "ASUS TUF Gaming A16 · Ryzen 9 · RTX 5060",
+    img: "images/fa608pm/01.webp", page: "laptop-asus-tuf-a16-ryzen9-8940hx-rtx5060.html", price: "6,590", deal: "Ryzen 9",
+    tagline: "תחנת עבודה ניידת לאדריכלות, תלת-ממד ועריכת וידאו",
+    specs: ["AMD Ryzen 9 8940HX: ‏16 ליבות / 32 תהליכונים", "RTX 5060 8GB", "32GB DDR5", "1TB SSD NVMe", "מסך 16 אינץ' IPS ‏165Hz", "סוללה 90Wh · אחריות 3 שנים"] },
   { sku: "6236", cat: "gaming", brand: "ASUS", name: "ASUS TUF Gaming A16", img: "images/6236.webp",
     tagline: "גיימינג חזק עם 3 שנות אחריות",
     specs: ["מסך 16 אינץ'", "AMD Ryzen 9 8940HX", "16GB זיכרון", "1TB SSD", "RTX 5060 8GB", "אחריות 3 שנים"] },
