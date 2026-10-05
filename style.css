@@ -498,3 +498,7 @@ a.card-media { color: inherit; }
 .must { color: #11703A; }
 .mustnot { color: #C62828; }
 @media (max-width: 640px) { .iw-body { grid-template-columns: 1fr; } }
+
+/* 9-image galleries wrap to a second row */
+.thumbs:has(.thumb:nth-child(9)) { grid-template-columns: repeat(9, 1fr); }
+@media (max-width: 480px) { .thumbs:has(.thumb:nth-child(9)) { grid-template-columns: repeat(5, 1fr); } }

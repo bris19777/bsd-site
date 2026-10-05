@@ -42,6 +42,10 @@ const PRODUCTS = [
     tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
     specs: ["מסך מגע 14 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "עמידות צבאית MIL-STD-810G", "אחריות מלאה לחצי שנה"] },
 
+  { sku: "82XB004UIV", cat: "basic", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i3-N305",
+    img: "images/82xb004uiv/1.avif", page: "laptop-ideapad-slim3-15ian8-i3.html", price: "1,950",
+    tagline: "מחשב חדש לגלישה, Office ולימודים, כולל התקנות",
+    specs: ["מסך 15.6 אינץ' FHD", "Intel Core i3-N305 (8 ליבות)", "8GB זיכרון", "256GB SSD NVMe", "Wi-Fi 6", "אחריות שנה באתר הלקוח"] },
   { sku: "6092", cat: "basic", brand: "HP", name: "HP 250 G10", img: "images/6092.png",
     tagline: "הכי משתלם לגלישה ו-Office",
     specs: ["מסך 15.6 אינץ' FHD", "Intel Core 3 100U", "8GB זיכרון", "512GB SSD", "אחריות שנה"] },
