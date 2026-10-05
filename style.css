@@ -474,3 +474,27 @@ a.card-media { color: inherit; }
 .ss-note { color: var(--muted); font-size: 14px; }
 .ss-note a, .remote-main a { color: var(--accent); }
 @media (max-width: 640px) { .ss-steps { grid-template-columns: 1fr; gap: 28px; } }
+
+/* ---------- MeshCentral installer: Install, not Connect ---------- */
+.install-warn { margin-top: 36px; background: #FFF8E6; border: 1px solid #F3D58A; border-radius: var(--radius); padding: 22px 24px; }
+.install-warn h2 { margin-top: 0 !important; }
+.iw-body { display: grid; grid-template-columns: minmax(0, 1.1fr) 1fr; gap: 20px; align-items: center; }
+.mesh-win { background: #fff; border: 1px solid #C9CFD8; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.12); overflow: visible; direction: ltr; font-family: "Segoe UI", system-ui, Arial, sans-serif; }
+.mesh-titlebar { display: flex; justify-content: space-between; background: #1F4E8C; color: #fff; font-size: 13px; padding: 7px 10px; border-radius: 6px 6px 0 0; }
+.mesh-content { display: flex; gap: 12px; align-items: center; padding: 14px; font-size: 12.5px; color: #333; text-align: left; }
+.mesh-content p { margin: 0; }
+.mesh-content img { border-radius: 10px; flex: none; }
+.mesh-buttons { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 14px 34px; }
+.mesh-btn { position: relative; background: #F3F3F3; border: 1px solid #BBB; color: #111; font-size: 13px; padding: 5px 12px; }
+.mesh-yes { outline: 3px solid #1FA855; outline-offset: 2px; background: #fff; font-weight: 700; }
+.mesh-no { outline: 3px solid #E5383B; outline-offset: 2px; text-decoration: line-through; color: #888; }
+.mesh-tag { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; font-weight: 700; color: #11703A; direction: rtl; text-decoration: none; display: inline-block; }
+.mesh-tag-no { color: #C62828; }
+.iw-points { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14.5px; }
+.iw-points li { padding-inline-start: 26px; position: relative; }
+.iw-points li::before { position: absolute; inset-inline-start: 0; top: 0; font-weight: 700; }
+.iw-points li.ok::before { content: "✓"; color: #11703A; }
+.iw-points li.no::before { content: "✕"; color: #C62828; }
+.must { color: #11703A; }
+.mustnot { color: #C62828; }
+@media (max-width: 640px) { .iw-body { grid-template-columns: 1fr; } }

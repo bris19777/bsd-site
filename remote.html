@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
   <header class="site-header">
@@ -55,9 +55,32 @@
           <ol class="steps">
             <li><strong>מתקשרים או שולחים וואטסאפ</strong> ומספרים מה התקלה.</li>
             <li><strong>מורידים את התוכנה</strong> בכפתור שבעמוד.</li>
-            <li><strong>מפעילים את הקובץ</strong>, מאשרים את חלון ההרשאות של Windows ולוחצים <strong>Install</strong>. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
+            <li><strong>מפעילים את הקובץ</strong> ומאשרים את חלון ההרשאות של Windows. בחלון ההתקנה לוחצים <strong class="must">Install</strong>, <strong class="mustnot">לא Connect</strong> (<a href="#install-not-connect">ראו תמונה</a>). אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
             <li><strong>מודיעים לנו שסיימתם.</strong> נתחבר אחרי שתאשרו את בקשת החיבור במסך.</li>
           </ol>
+
+          <div class="install-warn" id="install-not-connect">
+            <h2>בחלון ההתקנה: לוחצים Install, לא Connect</h2>
+            <div class="iw-body">
+              <div class="mesh-win" aria-hidden="true">
+                <div class="mesh-titlebar">BSD Computers Support <span>✕</span></div>
+                <div class="mesh-content">
+                  <img src="bsd-icon-256.png" alt="" width="56" height="56">
+                  <p>BSD Computers support agent. Installed under your support agreement. Remote sessions require your approval.</p>
+                </div>
+                <div class="mesh-buttons">
+                  <span class="mesh-btn mesh-yes">Install<span class="mesh-tag">✓ לוחצים כאן</span></span>
+                  <span class="mesh-btn">Uninstall</span>
+                  <span class="mesh-btn mesh-no">Connect<span class="mesh-tag mesh-tag-no">✕ לא כאן</span></span>
+                  <span class="mesh-btn">Cancel</span>
+                </div>
+              </div>
+              <ul class="iw-points">
+                <li class="ok"><strong>Install</strong> מתקין את תוכנת התמיכה, כך שנוכל לעזור לכם גם בפעם הבאה (תמיד באישור שלכם).</li>
+                <li class="no"><strong>Connect</strong> רק פותח חיבור זמני: הוא נסגר עם החלון ולא מתקין כלום, ואז נצטרך להתחיל מההתחלה.</li>
+              </ul>
+            </div>
+          </div>
 
           <div class="smartscreen" id="smartscreen">
             <h2>מופיע חלון כחול "Windows הגן על המחשב שלך"?</h2>
