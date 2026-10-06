@@ -502,3 +502,12 @@ a.card-media { color: inherit; }
 /* 9-image galleries wrap to a second row */
 .thumbs:has(.thumb:nth-child(9)) { grid-template-columns: repeat(9, 1fr); }
 @media (max-width: 480px) { .thumbs:has(.thumb:nth-child(9)) { grid-template-columns: repeat(5, 1fr); } }
+
+/* ---------- price extras (cash discount / installments) ---------- */
+.price-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pe { display: block; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; font-size: 13px; color: var(--muted); line-height: 1.4; text-decoration: none; }
+.pe strong { display: block; color: var(--navy); font-size: 15px; margin-bottom: 2px; }
+.pe-cash { background: #E7F7EE; border-color: #A8DDBC; color: #1E5E37; }
+.pe-cash strong { color: #11703A; }
+a.pe-cash:hover { border-color: #11703A; }
+@media (max-width: 480px) { .price-extras { grid-template-columns: 1fr; } }
