@@ -64,12 +64,55 @@ function card(p) {
   return c;
 }
 
+// קישור ישיר לקטגוריה: bsd-comp.com/#arch, ‏bsd-comp.com/#recommended וכו'
+const SITE_URL = "https://bsd-comp.com/";
+
 function render() {
   const grid = document.getElementById("grid");
   PRODUCTS.forEach(p => grid.append(card(p)));
 
   const filters = document.getElementById("filters");
+  const share = el("div", "cat-share");
+  share.hidden = true;
+  filters.after(share);
+
   const all = [{ id: "all", name: "הכל" }, ...CATEGORIES];
+  const buttons = {};
+
+  function select(cat, updateUrl) {
+    filters.querySelectorAll(".filter").forEach(f => { f.classList.remove("active"); f.setAttribute("aria-selected", "false"); });
+    const b = buttons[cat.id];
+    b.classList.add("active");
+    b.setAttribute("aria-selected", "true");
+    grid.querySelectorAll(".card").forEach(c => { c.hidden = cat.id !== "all" && !c.dataset.cat.split(" ").includes(cat.id); });
+    if (updateUrl) history.replaceState(null, "", cat.id === "all" ? "#laptops" : "#" + cat.id);
+    renderShare(cat);
+  }
+
+  function renderShare(cat) {
+    share.replaceChildren();
+    share.hidden = cat.id === "all";
+    if (share.hidden) return;
+    const url = SITE_URL + "#" + cat.id;
+    const label = el("span", "cat-share-label", "קישור ישיר לקטגוריה:");
+    const link = el("a", "cat-share-url", url);
+    link.href = url;
+    link.dir = "ltr";
+    const copy = el("button", "cat-share-btn", "📋 העתקה");
+    copy.type = "button";
+    copy.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(url); }
+      catch { const t = el("textarea"); t.value = url; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); }
+      copy.textContent = "✓ הועתק";
+      setTimeout(() => { copy.textContent = "📋 העתקה"; }, 1800);
+    });
+    const wa = el("a", "cat-share-btn cat-share-wa", "שליחה בוואטסאפ");
+    wa.href = "https://wa.me/?text=" + encodeURIComponent(`${cat.name} – BSD מחשבים\n${url}`);
+    wa.target = "_blank";
+    wa.rel = "noopener";
+    share.append(label, link, copy, wa);
+  }
+
   all.forEach((cat, i) => {
     const b = el("button", "filter" + (i === 0 ? " active" : ""), cat.name);
     b.type = "button";
@@ -77,14 +120,25 @@ function render() {
     b.setAttribute("aria-selected", i === 0 ? "true" : "false");
     const count = cat.id === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat.id || (p.also || []).includes(cat.id)).length;
     b.append(el("span", "count", String(count)));
-    b.addEventListener("click", () => {
-      filters.querySelectorAll(".filter").forEach(f => { f.classList.remove("active"); f.setAttribute("aria-selected", "false"); });
-      b.classList.add("active");
-      b.setAttribute("aria-selected", "true");
-      grid.querySelectorAll(".card").forEach(c => { c.hidden = cat.id !== "all" && !c.dataset.cat.split(" ").includes(cat.id); });
-    });
+    b.addEventListener("click", () => select(cat, true));
+    buttons[cat.id] = b;
     filters.append(b);
   });
+
+  // opening the site with #<category> selects it and scrolls to the catalog
+  function fromHash() {
+    const cat = CATEGORIES.find(c => "#" + c.id === location.hash);
+    if (!cat) return false;
+    select(cat, false);
+    document.getElementById("laptops").scrollIntoView();
+    return true;
+  }
+  window.addEventListener("hashchange", fromHash);
+  if (fromHash()) {
+    // the browser may restore the old scroll position; scroll again once everything loaded
+    history.scrollRestoration = "manual";
+    window.addEventListener("load", () => document.getElementById("laptops").scrollIntoView());
+  }
 }
 
 render();
