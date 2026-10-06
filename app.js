@@ -7,9 +7,16 @@ function el(tag, cls, text) {
   return e;
 }
 
+// lower-case, drop direction marks, quotes and punctuation so "i7 14700" finds "i7-14700HX"
+function norm(t) {
+  return t.toLowerCase().replace(/[\u200e\u200f"'״׳`]/g, "").replace(/[-·,:()/+]/g, " ").replace(/\s+/g, " ").trim();
+}
+
 function card(p) {
   const c = el("article", "card" + (p.deal ? " card-deal" : ""));
   c.dataset.cat = [p.cat, ...(p.also || [])].join(" ");
+  const catNames = [p.cat, ...(p.also || [])].map(id => CATEGORIES.find(x => x.id === id).name);
+  c.dataset.search = norm([p.sku, p.brand, p.name, p.tagline, p.deal || "", ...p.specs, ...catNames].join(" "));
 
   const media = el(p.page ? "a" : "div", "card-media");
   if (p.page) media.href = p.page;
@@ -72,6 +79,48 @@ function render() {
   PRODUCTS.forEach(p => grid.append(card(p)));
 
   const filters = document.getElementById("filters");
+
+  // search box: matches model, SKU, processor, specs and category (all words must match)
+  const search = el("div", "search");
+  const input = el("input", "search-input");
+  input.type = "search";
+  input.placeholder = "חיפוש: דגם, מעבד, מק\"ט או מפרט";
+  input.setAttribute("aria-label", "חיפוש מחשב");
+  input.autocomplete = "off";
+  const clear = el("button", "search-clear", "✕");
+  clear.type = "button";
+  clear.setAttribute("aria-label", "ניקוי החיפוש");
+  clear.hidden = true;
+  search.append(el("span", "search-ic", "🔍"), input, clear);
+  filters.before(search);
+  const empty = el("p", "no-results");
+  empty.hidden = true;
+  grid.after(empty);
+  let current = { id: "all" };
+
+  function apply() {
+    const words = norm(input.value).split(" ").filter(Boolean);
+    let shown = 0;
+    grid.querySelectorAll(".card").forEach(c => {
+      const inCat = current.id === "all" || c.dataset.cat.split(" ").includes(current.id);
+      const hit = words.every(w => c.dataset.search.includes(w));
+      c.hidden = !(inCat && hit);
+      if (!c.hidden) shown++;
+    });
+    clear.hidden = !input.value;
+    empty.hidden = shown > 0;
+    if (!shown) {
+      empty.replaceChildren(`לא נמצאו מחשבים עבור "${input.value.trim()}"${current.id !== "all" ? " בקטגוריה " + current.name : ""}. `);
+      const ask = el("a", null, "שאלו אותנו בוואטסאפ");
+      ask.href = waLink(`שלום, אני מחפש/ת מחשב: ${input.value.trim()}`);
+      ask.target = "_blank";
+      ask.rel = "noopener";
+      empty.append(ask);
+    }
+  }
+  input.addEventListener("input", apply);
+  clear.addEventListener("click", () => { input.value = ""; apply(); input.focus(); });
+
   const share = el("div", "cat-share");
   share.hidden = true;
   filters.after(share);
@@ -84,7 +133,8 @@ function render() {
     const b = buttons[cat.id];
     b.classList.add("active");
     b.setAttribute("aria-selected", "true");
-    grid.querySelectorAll(".card").forEach(c => { c.hidden = cat.id !== "all" && !c.dataset.cat.split(" ").includes(cat.id); });
+    current = cat;
+    apply();
     if (updateUrl) history.replaceState(null, "", cat.id === "all" ? "#laptops" : "#" + cat.id);
     renderShare(cat);
   }
