@@ -2,6 +2,7 @@
 // להוספה / עדכון מוצר: לערוך את הרשימה כאן. "price" ריק = "מחיר בוואטסאפ".
 // specs: שורות המפרט שמוצגות בכרטיס. "windows": true אם המחשב מגיע עם Windows מהיצרן.
 // also: קטגוריות נוספות שבהן המוצר יופיע (למשל ["recommended"]).
+// soldOut: true = מוסתר זמנית מהקטלוג (חסר במלאי).
 // page: עמוד מוצר נפרד (לחיצה על הכרטיס מובילה אליו). deal: תגית מבצע. price: מחיר בשקלים.
 const CATEGORIES = [
   { id: "recommended", name: "מומלצים", desc: "הבחירות שלנו, במחירים מיוחדים" },
@@ -39,7 +40,7 @@ const PRODUCTS = [
 
   { sku: "TP14-R-8665U", cat: "refurbished", also: ["recommended"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T490 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
-    price: "1,390", deal: "מחודש A-Grade",
+    price: "1,390", deal: "מחודש A-Grade", soldOut: true, // חסר זמנית במלאי: למחוק את soldOut כדי להחזיר
     tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
     specs: ["מסך מגע 14 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "עמידות צבאית MIL-STD-810G", "אחריות מלאה לחצי שנה"] },
   { sku: "TP14G1-R-I7-10", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T14 מחודש · i7 דור 10 · 16GB",

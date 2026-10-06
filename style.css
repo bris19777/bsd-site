@@ -534,3 +534,8 @@ a.pe-cash:hover { border-color: #11703A; }
 .no-results a { color: var(--accent); font-weight: 500; }
 @media (max-width: 480px) { .search-input { font-size: 16px; } }
 .cat-share[hidden], .search-clear[hidden], .no-results[hidden] { display: none; }
+
+/* ---------- temporarily out of stock ---------- */
+.soldout-note { background: #FFF4E0; border: 1px solid #F0C27A; color: #6B4200; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: 14.5px; }
+.soldout-note strong { color: #8A5300; }
+.soldout-note a { color: var(--accent); font-weight: 500; }

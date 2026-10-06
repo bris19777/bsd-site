@@ -74,9 +74,12 @@ function card(p) {
 // קישור ישיר לקטגוריה: bsd-comp.com/#arch, ‏bsd-comp.com/#recommended וכו'
 const SITE_URL = "https://bsd-comp.com/";
 
+// soldOut: true hides a product from the catalog (temporarily out of stock)
+const SHOWN = PRODUCTS.filter(p => !p.soldOut);
+
 function render() {
   const grid = document.getElementById("grid");
-  PRODUCTS.forEach(p => grid.append(card(p)));
+  SHOWN.forEach(p => grid.append(card(p)));
 
   const filters = document.getElementById("filters");
 
@@ -168,7 +171,7 @@ function render() {
     b.type = "button";
     b.setAttribute("role", "tab");
     b.setAttribute("aria-selected", i === 0 ? "true" : "false");
-    const count = cat.id === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat.id || (p.also || []).includes(cat.id)).length;
+    const count = cat.id === "all" ? SHOWN.length : SHOWN.filter(p => p.cat === cat.id || (p.also || []).includes(cat.id)).length;
     b.append(el("span", "count", String(count)));
     b.addEventListener("click", () => select(cat, true));
     buttons[cat.id] = b;
