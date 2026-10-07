@@ -539,3 +539,6 @@ a.pe-cash:hover { border-color: #11703A; }
 .soldout-note { background: #FFF4E0; border: 1px solid #F0C27A; color: #6B4200; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: 14.5px; }
 .soldout-note strong { color: #8A5300; }
 .soldout-note a { color: var(--accent); font-weight: 500; }
+
+/* brand line above the home hero title (also helps "BSD מחשבים" searches) */
+.hero-brand { margin: 0 0 8px; color: #9CC3F5; font-weight: 700; font-size: 15px; letter-spacing: .3px; }
