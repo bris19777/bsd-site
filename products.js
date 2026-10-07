@@ -125,6 +125,10 @@ const PRODUCTS = [
   { sku: "6332", cat: "gaming", brand: "Lenovo", name: "Lenovo Legion 5 16", img: "images/6332.webp",
     tagline: "דגל הגיימינג",
     specs: ["מסך 16 אינץ'", "AMD Ryzen 9 8940HX", "32GB DDR5", "1TB SSD", "RTX 5070 8GB", "אחריות 3 שנים"] },
+  { sku: "83LT0065IV", cat: "gaming", also: ["arch"], brand: "Lenovo", name: "Lenovo Legion Pro 5 16 · Ryzen 9 · RTX 5070",
+    img: "images/legion-pro5/01.jpg", page: "laptop-lenovo-legion-pro5-ryzen9-rtx5070.html", price: "7,890", deal: "RTX 5070",
+    tagline: "מסך ⁦2560×1600⁩ ‏240Hz ‏500 ניט, ביצועים בלי פשרות",
+    specs: ["מסך 16 אינץ' ⁦2560×1600⁩ ‏IPS ‏240Hz", "AMD Ryzen 9 8940HX: ‏16 ליבות", "RTX 5070 8GB GDDR7", "32GB DDR5", "1TB SSD + חריץ פנוי", "סוללה 80Wh · אחריות 3 שנים"] },
 
   { sku: "M70QG5-14500T", cat: "desktop", also: ["recommended"], brand: "Lenovo ThinkCentre", name: "Lenovo ThinkCentre M70q Tiny Gen 5",
     img: "images/m70q-gen5/m70q-01.jpg", page: "desktop-lenovo-m70q-gen5-i5-14500t.html", price: "2,790", deal: "מעבד שולחני",
