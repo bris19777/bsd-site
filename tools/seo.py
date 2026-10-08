@@ -3,12 +3,26 @@
     python3 tools/seo.py
 - adds canonical + Open Graph tags to every page (idempotent)
 - regenerates sitemap.xml and robots.txt
+- wraps "2560×1600"-style numbers in LTR isolates so RTL text doesn't reverse them
 """
 import datetime, html, pathlib, re, subprocess
 
 SITE = "https://bsd-comp.com/"
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MARK = "<!-- seo -->"
+LRI, PDI = "\u2066", "\u2069"
+_num = r"\d[\d.]*(?:[–-]\d[\d.]*)?"
+_dims = re.compile(rf"(?<![\d.])({_num}(?:\s*×\s*{_num})+|\d+–\d+)(?![\d.])")
+
+def fix_bidi(text):
+    # rebuild from scratch each run (idempotent): drop old isolates, then wrap
+    text = text.replace(LRI, "").replace(PDI, "")
+    return _dims.sub(lambda m: LRI + m.group(1) + PDI, text)
+
+def fix_bidi_html(src):
+    head, sep, body = src.partition("<body>")
+    parts = re.split(r"(<[^>]+>)", body)
+    return head + sep + "".join(x if x.startswith("<") else fix_bidi(x) for x in parts)
 
 def page_url(name):
     return SITE if name == "index.html" else SITE + name
@@ -49,7 +63,10 @@ for p in pages:
     # replace an earlier block, or insert before the favicon link
     src = re.sub(rf"  {re.escape(MARK)}.*?{re.escape(MARK)}", lambda _: tags, src, flags=re.S) \
         if MARK in src else src.replace('  <link rel="icon"', tags + '\n  <link rel="icon"', 1)
-    p.write_text(src, encoding="utf-8")
+    p.write_text(fix_bidi_html(src), encoding="utf-8")
+
+prod = ROOT / "products.js"
+prod.write_text(fix_bidi(prod.read_text(encoding="utf-8")), encoding="utf-8")
 
 urls = []
 for p in pages:

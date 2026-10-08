@@ -142,6 +142,14 @@ const PRODUCTS = [
     img: "images/hp-pro-mini-400-g9/2.png", page: "desktop-hp-pro-mini-400-g9-8gb-256gb.html", price: "1,890",
     tagline: "מחשב מיני עסקי במחיר משתלם",
     specs: ["Intel Core i5-12500T (6 ליבות)", "8GB DDR4", "256GB SSD NVMe", "רשת קווית Gigabit", "עד 3 מסכים (HDMI + 2×DP)"] },
+  { sku: "CG4H5EA", cat: "desktop", also: ["arch"], brand: "HP", name: "HP OmniDesk AI · Core Ultra 7 265 · RTX 5060",
+    img: "images/omnidesk/01.jpg", page: "desktop-hp-omnidesk-ultra7-265-rtx5060.html", price: "6,990", deal: "20 ליבות",
+    tagline: "מחשב שולחני חזק עם Windows 11 Pro, מקלדת ועכבר",
+    specs: ["Intel Core Ultra 7 265: ‏20 ליבות", "RTX 5060 8GB", "32GB DDR5", "1TB SSD NVMe", "Windows 11 Pro + מקלדת ועכבר", "אחריות 3 שנים באתר הלקוח"] },
+  { sku: "6020-1", cat: "desktop", also: ["gaming"], brand: "ASUS", name: "ASUS TUF Gaming T500MV · RTX 5060 · 2TB",
+    img: "images/tuf-t500/01.jpg", page: "desktop-asus-tuf-t500mv-core7-rtx5060.html", price: "6,990", deal: "2TB",
+    tagline: "מחשב גיימינג נייח עם פאנל זכוכית ו-RGB",
+    specs: ["Intel Core 7 240H", "RTX 5060 8GB", "32GB DDR5 (עד 64GB)", "2TB SSD NVMe", "עד 4 מסכים · תקן צבאי", "אחריות יצרן 3 שנים"] },
 
   // ---------- מדפסות ----------
   { sku: "5530", cat: "printers", brand: "Brother", name: "Brother HL-L2445DW", img: "images/printers/5530.jpg",
