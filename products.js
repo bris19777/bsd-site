@@ -95,6 +95,10 @@ const PRODUCTS = [
     tagline: "הכי חזק בלי כרטיס מסך נפרד",
     specs: ["מסך 16 אינץ' IPS", "Intel Core 9 270H", "24GB DDR5", "1TB SSD", "אחריות שנה"] },
 
+  { sku: "PB4G1I-16-U5", cat: "business", also: ["recommended"], brand: "HP", name: "HP ProBook 4 G1i 16 · Core Ultra 5 · 4 שנות אחריות",
+    img: "images/probook4-g1i-16/01.jpg", page: "laptop-hp-probook4-g1i-16-core-ultra5.html", price: "3,890", deal: "4 שנות אחריות",
+    tagline: "מחשב עסקי עם מקלדת מוארת ו-4 שנות אחריות HP באתר הלקוח",
+    specs: ["Intel Core Ultra 5 225U · מאיץ AI", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' WUXGA אנטי-בוהק", "מקלדת מוארת · קורא טביעת אצבע", "Windows 11 Pro מקורית", "4 שנות אחריות HP באתר הלקוח"] },
   { sku: "6028", cat: "business", brand: "HP", name: "HP 250R G9", img: "images/6028.webp",
     tagline: "עסקי במחיר נוח, אחריות באתר הלקוח",
     specs: ["מסך 15.6 אינץ' FHD", "Intel Core 7 150U", "16GB זיכרון", "512GB SSD", "קורא טביעת אצבע", "אחריות 3 שנים באתר"] },
