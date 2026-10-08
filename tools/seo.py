@@ -12,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 MARK = "<!-- seo -->"
 LRI, PDI = "\u2066", "\u2069"
 _num = r"\d[\d.]*(?:[–-]\d[\d.]*)?"
-_dims = re.compile(rf"(?<![\d.])({_num}(?:\s*×\s*{_num})+|\d+–\d+)(?![\d.])")
+_dims = re.compile(rf"(?<![\d.])({_num}(?:\s*×\s*{_num})+[A-Za-z]*|\d+–\d+)(?![\d.])")
 
 def fix_bidi(text):
     # rebuild from scratch each run (idempotent): drop old isolates, then wrap

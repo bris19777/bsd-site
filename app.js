@@ -44,9 +44,9 @@ function card(p) {
   p.specs.forEach(s => specs.append(el("li", null, s)));
   body.append(specs);
 
-  // computers come installed + free shipping; printers don't carry those chips
-  const isPrinter = p.cat === "printers";
-  if (!isPrinter) {
+  // computers come installed + free shipping; printers and monitors don't carry those chips
+  const noun = { printers: "מדפסת", monitors: "מסך" }[p.cat] || "מחשב";
+  if (noun === "מחשב") {
     const incl = el("div", "included");
     incl.append(el("span", "chip chip-ok", "✓ כולל התקנות מלאות"), el("span", "chip chip-ship", "🚚 משלוח חינם"));
     body.append(incl);
@@ -57,14 +57,14 @@ function card(p) {
   priceRow.append(el("div", "price" + (p.deal ? " price-deal" : ""), p.price ? "₪" + p.price : "מחיר לפי פנייה"));
   if (p.page) { const more = el("a", "more-link", "לכל הפרטים ←"); more.href = p.page; priceRow.append(more); }
   foot.append(priceRow);
-  const msg = `שלום, אני מתעניין/ת ב${isPrinter ? "מדפסת" : "מחשב"} ${p.name} (מק"ט ${p.sku}). אשמח לפרטים ומחיר.`;
+  const msg = `שלום, אני מתעניין/ת ב${noun} ${p.name} (מק"ט ${p.sku}). אשמח לפרטים ומחיר.`;
   const btns = el("div", "order-btns");
   const wa = el("a", "btn btn-wa", "להזמנה בוואטסאפ");
   wa.href = waLink(msg);
   wa.target = "_blank";
   wa.rel = "noopener";
   const mail = el("a", "btn btn-mail");
-  mail.href = mailLink(`הזמנת ${isPrinter ? "מדפסת" : "מחשב"}: ${p.name} (מק"ט ${p.sku})`, msg);
+  mail.href = mailLink(`הזמנת ${noun}: ${p.name} (מק"ט ${p.sku})`, msg);
   mail.innerHTML = MAIL_ICON;
   mail.append(el("span", null, "להזמנה במייל"));
   btns.append(wa, mail);

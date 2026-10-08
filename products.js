@@ -15,6 +15,7 @@ const CATEGORIES = [
   { id: "desktop",  name: "מחשבים נייחים", desc: "מחשבים שולחניים לבית ולמשרד" },
   { id: "arch",     name: "אדריכלות ומולטימדיה", desc: "תחנות עבודה ניידות לתלת-ממד, תכנון ועריכת וידאו" },
   { id: "printers", name: "מדפסות", desc: "מדפסות לייזר, דיו ומשולבות לבית ולמשרד" },
+  { id: "monitors", name: "מסכים", desc: "מסכי Dell לבית, למשרד ולמקצוענים" },
 ];
 
 const PRODUCTS = [
@@ -153,7 +154,7 @@ const PRODUCTS = [
   { sku: "BSD-KIT-U7-5060", cat: "desktop", also: ["gaming", "recommended"], brand: "BSD מחשבים", name: "ערכת מחשב מלאה · Core Ultra 7 · RTX 5060 + מסך Dell 24",
     img: "images/pc-kit/01.jpg", page: "desktop-kit-ultra7-265kf-rtx5060-dell24.html", price: "8,450", deal: "כולל מסך",
     tagline: "מחשב, מסך, מקלדת ועכבר: הכל מוכן לעבודה",
-    specs: ["Intel Core Ultra 7 265KF: ‏20 ליבות", "RTX 5060 8GB", "32GB DDR5-5600", "2TB SSD סמסונג (⁦2×1⁩TB)", "מסך Dell 24 אינץ' IPS מתכוונן", "סט אלחוטי Lenovo · ספק 850W"] },
+    specs: ["Intel Core Ultra 7 265KF: ‏20 ליבות", "RTX 5060 8GB", "32GB DDR5-5600", "2TB SSD סמסונג (⁦2×1TB⁩)", "מסך Dell 24 אינץ' IPS מתכוונן", "סט אלחוטי Lenovo · ספק 850W"] },
 
   // ---------- מדפסות ----------
   { sku: "5530", cat: "printers", brand: "Brother", name: "Brother HL-L2445DW", img: "images/printers/5530.jpg",
@@ -222,4 +223,26 @@ const PRODUCTS = [
   { sku: "5127-2", cat: "printers", brand: "Pantum", name: "Pantum M7100DW + זוג טונרים", img: "images/printers/5127-2.jpg", deal: "כולל 2 טונרים",
     tagline: "משולבת לייזר, כולל זוג טונרים מקוריים",
     specs: ["לייזר שחור-לבן", "הדפסה · צילום · סריקה", "הדפסה דו-צדדית אוטומטית", "Wi-Fi · כולל 2 טונרים מקוריים"] },
+
+  // ---------- מסכים ----------
+  { sku: "SE2425HM", cat: "monitors", brand: "Dell", name: "Dell 24 SE2425HM", img: "images/monitors/se2425hm/01.jpg",
+    page: "monitor-dell-se2425hm-24-ips-100hz.html", price: "319", deal: "הכי משתלם",
+    tagline: "מסך 24 אינץ' IPS ‏100Hz במחיר נמוך",
+    specs: ["23.8 אינץ' Full HD ‏IPS", "100Hz", "ComfortView Plus", "HDMI + VGA"] },
+  { sku: "E2425HSM", cat: "monitors", brand: "Dell", name: "Dell Pro 24 E2425HSM", img: "images/monitors/e2425hsm/01.jpg",
+    page: "monitor-dell-pro-e2425hsm-24-adjustable.html", price: "389",
+    tagline: "מתכוונן לגובה, עם רמקולים מובנים",
+    specs: ["23.8 אינץ' Full HD ‏IPS ‏100Hz", "מעמד מתכוונן לגובה + Pivot", "רמקולים מובנים", "HDMI · DP · VGA"] },
+  { sku: "P2425H", cat: "monitors", brand: "Dell", name: "Dell Pro 24 Plus P2425H", img: "images/monitors/p2425h/01.jpg",
+    page: "monitor-dell-pro-p2425h-24-usb-hub.html", price: "490",
+    tagline: "מסך מקצועי: 99% sRGB ורכזת USB",
+    specs: ["23.8 אינץ' Full HD ‏IPS ‏100Hz", "99% sRGB · ניגודיות 1,500:1", "רכזת USB עם USB-C", "מעמד מתכוונן 15 ס\"מ"] },
+  { sku: "S2725QC", cat: "monitors", brand: "Dell", name: "Dell 27 Plus 4K S2725QC", img: "images/monitors/s2725qc/01.jpg",
+    page: "monitor-dell-27-plus-4k-s2725qc-usb-c.html", price: "1,199", deal: "4K",
+    tagline: "27 אינץ' 4K ‏120Hz עם USB-C",
+    specs: ["27 אינץ' 4K UHD ‏IPS", "120Hz · ‏99% sRGB", "USB-C עם טעינה 65W", "רמקולים ⁦2×5W⁩ · מעמד מתכוונן"] },
+  { sku: "P3424WEB", cat: "monitors", brand: "Dell", name: "Dell Pro 34 Curved P3424WEB", img: "images/monitors/p3424web/01.jpg",
+    page: "monitor-dell-pro-34-curved-p3424web-webcam.html", price: "2,070", deal: "קעור 34",
+    tagline: "34 אינץ' קעור עם מצלמה לשיחות וידאו",
+    specs: ["34 אינץ' קעור WQHD ‏⁦3440×1440⁩", "מצלמה 2K + מיקרופונים", "USB-C עם טעינה 90W", "רשת מובנית · KVM"] },
 ];
