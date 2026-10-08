@@ -150,6 +150,10 @@ const PRODUCTS = [
     img: "images/tuf-t500/01.jpg", page: "desktop-asus-tuf-t500mv-core7-rtx5060.html", price: "6,990", deal: "2TB",
     tagline: "מחשב גיימינג נייח עם פאנל זכוכית ו-RGB",
     specs: ["Intel Core 7 240H", "RTX 5060 8GB", "32GB DDR5 (עד 64GB)", "2TB SSD NVMe", "עד 4 מסכים · תקן צבאי", "אחריות יצרן 3 שנים"] },
+  { sku: "BSD-KIT-U7-5060", cat: "desktop", also: ["gaming", "recommended"], brand: "BSD מחשבים", name: "ערכת מחשב מלאה · Core Ultra 7 · RTX 5060 + מסך Dell 24",
+    img: "images/pc-kit/01.jpg", page: "desktop-kit-ultra7-265kf-rtx5060-dell24.html", price: "8,450", deal: "כולל מסך",
+    tagline: "מחשב, מסך, מקלדת ועכבר: הכל מוכן לעבודה",
+    specs: ["Intel Core Ultra 7 265KF: ‏20 ליבות", "RTX 5060 8GB", "32GB DDR5-5600", "2TB SSD סמסונג (⁦2×1⁩TB)", "מסך Dell 24 אינץ' IPS מתכוונן", "סט אלחוטי Lenovo · ספק 850W"] },
 
   // ---------- מדפסות ----------
   { sku: "5530", cat: "printers", brand: "Brother", name: "Brother HL-L2445DW", img: "images/printers/5530.jpg",
