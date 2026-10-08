@@ -99,6 +99,10 @@ const PRODUCTS = [
   { sku: "6335", cat: "business", brand: "ASUS", name: "ASUS ExpertBook B3", img: "images/6335.webp", windows: true,
     tagline: "סים 4G מובנה, לאנשי שטח",
     specs: ["מסך מגע 14 אינץ'", "Intel Core Ultra 5 225H", "16GB זיכרון", "512GB SSD", "4G LTE מובנה", "Windows 11 Pro", "אחריות 3 שנים באתר"] },
+  { sku: "LAT7455-X1P", cat: "business", also: ["premium"], brand: "Dell", name: "Dell Latitude 7455 · Snapdragon X Plus",
+    img: "images/latitude7455/01.jpg", page: "laptop-dell-latitude-7455-snapdragon-x-plus.html", price: "3,890", deal: "Copilot+ PC",
+    tagline: "נייד עסקי יוקרתי מאלומיניום, סוללה ליום עבודה מלא",
+    specs: ["מסך מגע 14 אינץ' QHD+ ‏400 ניט", "Snapdragon X Plus: ‏10 ליבות", "16GB LPDDR5x", "512GB SSD", "1.44 ק\"ג · Wi-Fi 7", "Windows 11 Pro · אחריות שנה"] },
 
   { sku: "6098", cat: "premium", brand: "ASUS", name: "ASUS Zenbook 14 OLED", img: "images/6098.png",
     tagline: "דק, קל ומסך OLED מרהיב",
