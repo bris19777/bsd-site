@@ -16,7 +16,7 @@ const CATEGORIES = [
   { id: "desktop",  name: "מחשבים נייחים", desc: "מחשבים שולחניים לבית ולמשרד" },
   { id: "arch",     name: "אדריכלות ומולטימדיה", desc: "תחנות עבודה ניידות לתלת-ממד, תכנון ועריכת וידאו" },
   { id: "printers", name: "מדפסות", desc: "מדפסות לייזר, דיו ומשולבות לבית ולמשרד" },
-  { id: "monitors", name: "מסכים", desc: "מסכי Dell לבית, למשרד ולמקצוענים" },
+  { id: "monitors", name: "מסכים", desc: "מסכי Dell ו-LG לבית, למשרד ולמקצוענים" },
 ];
 
 const PRODUCTS = [
@@ -234,6 +234,10 @@ const PRODUCTS = [
     page: "monitor-dell-se2425hm-24-ips-100hz.html", price: "319", deal: "הכי משתלם",
     tagline: "מסך 24 אינץ' IPS ‏100Hz במחיר נמוך",
     specs: ["23.8 אינץ' Full HD ‏IPS", "100Hz", "ComfortView Plus", "HDMI + VGA"] },
+  { sku: "24U411A-B", cat: "monitors", brand: "LG", name: "LG 24U411A-B", img: "images/monitors/lg24u411a/01.jpg",
+    page: "monitor-lg-24u411a-24-ips-120hz.html", price: "365", deal: "120Hz",
+    tagline: "24 אינץ' IPS ‏120Hz עם 99% sRGB",
+    specs: ["23.8 אינץ' Full HD ‏IPS", "120Hz · ‏1ms MBR", "99% sRGB · ‏HDR10", "HDMI + VGA"] },
   { sku: "E2425HSM", cat: "monitors", brand: "Dell", name: "Dell Pro 24 E2425HSM", img: "images/monitors/e2425hsm/01.jpg",
     page: "monitor-dell-pro-e2425hsm-24-adjustable.html", price: "389",
     tagline: "מתכוונן לגובה, עם רמקולים מובנים",
