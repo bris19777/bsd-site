@@ -546,3 +546,23 @@ a.pe-cash:hover { border-color: #11703A; }
 /* ---------- low stock ---------- */
 .stock-low { display: inline-flex; align-items: center; gap: 8px; justify-self: start; background: #FFF4E0; color: #8A5300; border: 1px solid #F0C27A; border-radius: 999px; padding: 5px 14px; font-weight: 700; font-size: 14px; }
 .stock-dot { width: 9px; height: 9px; border-radius: 50%; background: #E5383B; box-shadow: 0 0 0 3px rgba(229,56,59,.18); }
+
+/* ---------- touch technology callout (on-cell vs glass overlay) ---------- */
+.touch-tech { border: 2px solid var(--accent); border-radius: var(--radius); background: #fff; padding: 14px 16px; margin-bottom: 16px; }
+.tt-head { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.tt-ic { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--accent-soft); display: grid; place-items: center; font-size: 22px; }
+.tt-head strong { display: block; color: var(--navy); font-size: 17px; }
+.tt-head small { display: block; color: var(--muted); font-size: 13px; }
+.tt-cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tt-col { border-radius: 10px; padding: 10px 12px; font-size: 13.5px; }
+.tt-col b { display: block; margin-bottom: 6px; }
+.tt-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 5px; }
+.tt-col li { position: relative; padding-inline-start: 20px; line-height: 1.4; }
+.tt-col li::before { position: absolute; inset-inline-start: 0; top: 0; font-weight: 700; }
+.tt-yes { background: #E7F7EE; color: #1E5E37; }
+.tt-yes b { color: #11703A; }
+.tt-yes li::before { content: "✓"; color: #11703A; }
+.tt-no { background: var(--bg-alt); color: var(--muted); }
+.tt-no b { color: var(--navy); }
+.tt-no li::before { content: "✕"; color: #C62828; }
+@media (max-width: 480px) { .tt-cmp { grid-template-columns: 1fr; } }
