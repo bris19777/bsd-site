@@ -112,8 +112,8 @@ const DEALS = [
       "אחריות יצרן עד 18/04/2029"
     ],
     "zap": {
-      "price": "2,680",
-      "label": "Dell Pro 14 חדש (גרסת Intel, ‏16GB, ‏512GB)"
+      "price": "4,449",
+      "label": "Dell Pro 14 ‏PB14250 חדש (‏Ultra 5, ‏16GB, ‏512GB)"
     }
   },
   {
