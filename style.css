@@ -595,3 +595,9 @@ a.pe-cash:hover { border-color: #11703A; }
 .flip-modes b { display: block; color: var(--navy); font-size: 15px; }
 .flip-modes small { display: block; color: var(--muted); font-size: 12px; }
 @media (max-width: 480px) { .flip-modes { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- key feature banner (e.g. built-in LTE) ---------- */
+.key-banner { display: flex; gap: 14px; align-items: center; background: linear-gradient(135deg, #0E7C4A, #13A463); color: #fff; border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.kb-ic { flex: none; width: 54px; height: 54px; border-radius: 14px; background: rgba(255,255,255,.18); display: grid; place-items: center; font-size: 28px; }
+.key-banner strong { display: block; font-size: 21px; font-weight: 800; line-height: 1.25; }
+.key-banner small { display: block; color: #D9F5E6; font-size: 14px; margin-top: 4px; line-height: 1.45; }
