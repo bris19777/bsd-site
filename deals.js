@@ -161,5 +161,28 @@ const DEALS = [
       "price": "3,788",
       "label": "Lenovo ThinkBook 14 חדש (G7, ‏Ultra 5 125U)"
     }
+  },
+  {
+    "sku": "MZ-X1-CARBON-GEN9",
+    "cat": "deals",
+    "brand": "Lenovo",
+    "name": "Lenovo ThinkPad X1 Carbon Gen 9 · i7-1165G7",
+    "img": "images/deals/x1-carbon-gen9/01.jpg",
+    "page": "deal-x1-carbon-gen9.html",
+    "price": "2,990",
+    "deal": "מצב מעולה",
+    "tagline": "מצב מעולה",
+    "specs": [
+      "i7-1165G7",
+      "16GB LPDDR4X",
+      "512GB SSD",
+      "14 אינץ' WUXGA ‏(1920×1200) ‏IPS",
+      "מצב מעולה",
+      "אחריות BSD לחצי שנה"
+    ],
+    "zap": {
+      "price": "9,149",
+      "label": "ThinkPad X1 Carbon חדש (Gen 13, ‏512GB)"
+    }
   }
 ];
