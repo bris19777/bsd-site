@@ -587,3 +587,11 @@ a.pe-cash:hover { border-color: #11703A; }
 .zc-save { justify-self: start; background: #E7F7EE; color: #11703A; font-weight: 800; border-radius: 999px; padding: 4px 14px; font-size: 15px; }
 .zap-cmp small { color: var(--muted); font-size: 12px; }
 .zap-cmp small a { color: var(--accent); }
+
+/* ---------- 2-in-1 flip modes ---------- */
+.flip-modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+.flip-modes div { background: #fff; border: 1.5px solid var(--accent); border-radius: 12px; padding: 10px 6px; text-align: center; }
+.flip-modes span { display: block; font-size: 24px; }
+.flip-modes b { display: block; color: var(--navy); font-size: 15px; }
+.flip-modes small { display: block; color: var(--muted); font-size: 12px; }
+@media (max-width: 480px) { .flip-modes { grid-template-columns: repeat(2, 1fr); } }
