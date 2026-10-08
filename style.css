@@ -566,3 +566,24 @@ a.pe-cash:hover { border-color: #11703A; }
 .tt-no b { color: var(--navy); }
 .tt-no li::before { content: "✕"; color: #C62828; }
 @media (max-width: 480px) { .tt-cmp { grid-template-columns: 1fr; } }
+
+/* ---------- מציאון (deals) ---------- */
+.zap-line { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px; background: var(--bg-alt); border: 1px dashed var(--line); border-radius: 10px; padding: 6px 10px; margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.zap-line span { text-decoration: line-through; }
+.zap-line b { background: #E7F7EE; color: #11703A; border-radius: 999px; padding: 2px 10px; font-size: 12.5px; }
+.cond-box { display: flex; gap: 14px; align-items: center; background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 14px; }
+.cond-score { flex: none; width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #1F4FA0); color: #fff; display: grid; place-content: center; text-align: center; direction: ltr; line-height: 1; }
+.cond-score b { font-size: 26px; }
+.cond-score span { font-size: 12px; color: #C9DBF5; }
+.cond-box strong { display: block; color: var(--navy); font-size: 16px; }
+.cond-box small { display: block; color: var(--ink); font-size: 14px; margin-top: 2px; }
+.cond-box em { display: block; font-style: normal; color: var(--muted); font-size: 13px; margin-top: 4px; }
+.cond-note { display: inline-block; margin-top: 4px; background: #FFF4E0; color: #8A5300; border-radius: 8px; padding: 2px 8px; font-size: 13px; }
+.zap-cmp { border: 2px solid #11703A; border-radius: var(--radius); padding: 12px 14px; margin-bottom: 14px; background: #fff; display: grid; gap: 6px; }
+.zc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; }
+.zc-ours b { color: var(--navy); font-size: 22px; }
+.zc-zap { color: var(--muted); }
+.zc-zap b { text-decoration: line-through; font-size: 17px; }
+.zc-save { justify-self: start; background: #E7F7EE; color: #11703A; font-weight: 800; border-radius: 999px; padding: 4px 14px; font-size: 15px; }
+.zap-cmp small { color: var(--muted); font-size: 12px; }
+.zap-cmp small a { color: var(--accent); }
