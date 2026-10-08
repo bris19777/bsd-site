@@ -192,7 +192,7 @@ const DEALS = [
     "name": "Lenovo ThinkPad X1 Carbon Gen 9 · i7-1165G7",
     "img": "images/deals/x1-carbon-gen9/01.jpg",
     "page": "deal-x1-carbon-gen9-wifi.html",
-    "price": "2,990",
+    "price": "2,790",
     "deal": "מצב מעולה",
     "tagline": "מצב מעולה",
     "specs": [
