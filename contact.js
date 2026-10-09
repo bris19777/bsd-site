@@ -40,11 +40,7 @@ function wireContactLinks(root) {
     m.href = mailLink(subject, a.dataset.wa);
 
     if (a.classList.contains("wa-float")) {
-      // floating bubble: a matching email bubble above the WhatsApp one
-      m.className = "mail-float";
-      m.setAttribute("aria-label", "מייל");
-      m.innerHTML = MAIL_ICON.replace('width="18" height="18"', 'width="28" height="28"');
-      a.after(m);
+      return;   // one floating bubble only (WhatsApp); email buttons are in the header
     } else if (a.classList.contains("btn")) {
       m.className = a.className.replace("btn-wa", "btn-mail");
       m.innerHTML = MAIL_ICON + "<span></span>";
@@ -58,8 +54,24 @@ function wireContactLinks(root) {
   });
 }
 
+// "back to top" button, shown after scrolling down a long page
+function addBackToTop() {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "to-top";
+  b.setAttribute("aria-label", "לראש העמוד");
+  b.textContent = "↑";
+  b.hidden = true;
+  b.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  document.body.append(b);
+  const onScroll = () => { b.hidden = window.scrollY < 900; };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   wireContactLinks();
+  addBackToTop();
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 });

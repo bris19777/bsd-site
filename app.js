@@ -15,6 +15,7 @@ function norm(t) {
 function card(p) {
   const c = el("article", "card" + (p.deal ? " card-deal" : ""));
   c.dataset.cat = [p.cat, ...(p.also || [])].join(" ");
+  c.dataset.price = p.price ? parseInt(p.price.replace(/,/g, ""), 10) : "";
   const catNames = [p.cat, ...(p.also || [])].map(id => CATEGORIES.find(x => x.id === id).name);
   c.dataset.search = norm([p.sku, p.brand, p.name, p.tagline, p.deal || "", ...p.specs, ...catNames].join(" "));
 
@@ -108,6 +109,24 @@ const SITE_URL = "https://bsd-comp.com/";
 const SHOWN = PRODUCTS.concat(typeof DEALS !== "undefined" ? DEALS : []).filter(p => !p.soldOut)
   .sort((a, b) => (b.price ? 1 : 0) - (a.price ? 1 : 0));
 
+// owner mode: bsd-comp.com/?owner=1 turns on the "direct link to category" box on this device (?owner=0 turns it off)
+const OWNER = (() => {
+  const q = new URLSearchParams(location.search).get("owner");
+  try {
+    if (q === "1") localStorage.setItem("bsd-owner", "1");
+    if (q === "0") localStorage.removeItem("bsd-owner");
+    return localStorage.getItem("bsd-owner") === "1";
+  } catch { return q === "1"; }
+})();
+
+const BUDGETS = [
+  { id: "any", name: "כל התקציבים" },
+  { id: "b1", name: "עד ₪2,500", min: 0, max: 2500 },
+  { id: "b2", name: "\u2066₪2,500–3,500\u2069", min: 2500, max: 3500 },
+  { id: "b3", name: "\u2066₪3,500–5,000\u2069", min: 3500, max: 5000 },
+  { id: "b4", name: "מעל ₪5,000", min: 5000, max: Infinity },
+];
+
 function render() {
   const grid = document.getElementById("grid");
   SHOWN.forEach(p => grid.append(card(p)));
@@ -131,20 +150,75 @@ function render() {
   empty.hidden = true;
   grid.after(empty);
   let current = { id: "all" };
+  let budget = BUDGETS[0];
+  let showUnpriced = false;
+
+  // sort + budget toolbar (under the category buttons)
+  const tools = el("div", "cat-tools");
+  const sortSel = el("select", "sort-select");
+  sortSel.setAttribute("aria-label", "מיון");
+  [["rec", "מיון: מומלץ"], ["asc", "מחיר: מהזול ליקר"], ["desc", "מחיר: מהיקר לזול"]].forEach(([v, t]) => {
+    const o = el("option", null, t); o.value = v; sortSel.append(o);
+  });
+  const budgets = el("div", "budgets");
+  const budgetBtns = {};
+  BUDGETS.forEach((b, i) => {
+    const btn = el("button", "budget" + (i === 0 ? " active" : ""), b.name);
+    btn.type = "button";
+    btn.addEventListener("click", () => {
+      budget = b;
+      Object.values(budgetBtns).forEach(x => x.classList.remove("active"));
+      btn.classList.add("active");
+      apply();
+    });
+    budgetBtns[b.id] = btn;
+    budgets.append(btn);
+  });
+  tools.append(sortSel, budgets);
+  filters.after(tools);
+
+  const order = [...grid.children];   // recommended order (priced first)
+  sortSel.addEventListener("change", () => {
+    const priced = c => c.dataset.price !== "";
+    let list = order.slice();
+    if (sortSel.value !== "rec") {
+      const dir = sortSel.value === "asc" ? 1 : -1;
+      list.sort((a, b) => (priced(b) - priced(a)) || (priced(a) ? dir * (a.dataset.price - b.dataset.price) : 0));
+    }
+    grid.append(...list);
+  });
+
+  // models without a price are folded behind a button while the view has priced ones
+  const more = el("button", "show-more");
+  more.type = "button";
+  more.hidden = true;
+  more.addEventListener("click", () => { showUnpriced = true; apply(); });
+  grid.after(more);
 
   function apply() {
     const words = norm(input.value).split(" ").filter(Boolean);
-    let shown = 0;
-    grid.querySelectorAll(".card").forEach(c => {
+    const cards = [...grid.querySelectorAll(".card")];
+    const match = cards.filter(c => {
       const inCat = current.id === "all" || c.dataset.cat.split(" ").includes(current.id);
       const hit = words.every(w => c.dataset.search.includes(w));
-      c.hidden = !(inCat && hit);
-      if (!c.hidden) shown++;
+      const price = c.dataset.price === "" ? null : +c.dataset.price;
+      const inBudget = budget.id === "any" || (price !== null && price > budget.min && price <= budget.max);
+      return inCat && hit && inBudget;
     });
+    const priced = match.filter(c => c.dataset.price !== "");
+    // fold the "price on request" models unless searching, asked for, or nothing else to show
+    const fold = !words.length && !showUnpriced && priced.length > 0;
+    const visible = new Set(fold ? priced : match);
+    cards.forEach(c => { c.hidden = !visible.has(c); });
+    const folded = match.length - visible.size;
+    more.hidden = folded === 0;
+    more.textContent = `הצגת עוד ${folded} דגמים במחיר לפי פנייה ↓`;
+    const shown = visible.size;
     clear.hidden = !input.value;
     empty.hidden = shown > 0;
     if (!shown) {
-      empty.replaceChildren(`לא נמצאו מחשבים עבור "${input.value.trim()}"${current.id !== "all" ? " בקטגוריה " + current.name : ""}. `);
+      const what = input.value.trim() ? ` עבור "${input.value.trim()}"` : "";
+      empty.replaceChildren(`לא נמצאו מוצרים${what}${current.id !== "all" ? " בקטגוריה " + current.name : ""}${budget.id !== "any" ? " בטווח " + budget.name : ""}. `);
       const ask = el("a", null, "שאלו אותנו בוואטסאפ");
       ask.href = waLink(`שלום, אני מחפש/ת מחשב: ${input.value.trim()}`);
       ask.target = "_blank";
@@ -168,14 +242,16 @@ function render() {
     b.classList.add("active");
     b.setAttribute("aria-selected", "true");
     current = cat;
+    showUnpriced = false;
     apply();
+    b.scrollIntoView({ block: "nearest", inline: "center" });
     if (updateUrl) history.replaceState(null, "", cat.id === "all" ? "#laptops" : "#" + cat.id);
     renderShare(cat);
   }
 
   function renderShare(cat) {
     share.replaceChildren();
-    share.hidden = cat.id === "all";
+    share.hidden = cat.id === "all" || !OWNER;
     if (share.hidden) return;
     const url = SITE_URL + "#" + cat.id;
     const label = el("span", "cat-share-label", "קישור ישיר לקטגוריה:");
@@ -222,6 +298,8 @@ function render() {
     // the browser may restore the old scroll position; scroll again once everything loaded
     history.scrollRestoration = "manual";
     window.addEventListener("load", () => document.getElementById("laptops").scrollIntoView());
+  } else {
+    apply();
   }
 }
 
