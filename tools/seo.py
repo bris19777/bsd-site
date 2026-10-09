@@ -41,7 +41,8 @@ def lastmod(path):
         pass
     return datetime.date.today().isoformat()
 
-pages = sorted(ROOT.glob("*.html"))
+# redirect stubs (old URLs) stay out of the SEO tags and the sitemap
+pages = sorted(p for p in ROOT.glob("*.html") if 'http-equiv="refresh"' not in p.read_text(encoding="utf-8"))
 for p in pages:
     src = p.read_text(encoding="utf-8")
     title = html.unescape(re.search(r"<title>(.*?)</title>", src, re.S).group(1).strip())

@@ -114,7 +114,7 @@ const PRODUCTS = [
     tagline: "ThinkPad חדש: מקלדת מעולה, עמידות צבאית ושדרוג עד 64GB",
     specs: ["AMD Ryzen 5 7535U: ‏6 ליבות", "16GB DDR5 (עד 64GB)", "512GB SSD + חריץ פנוי", "מסך 14 אינץ' ‏16:10", "מקלדת עמידה לשפיכה · ‏MIL-STD-810H", "אחריות יצרן מלאה"] },
   { sku: "E14G7-R5-16-512", cat: "business", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E14 Gen 7 · Ryzen 5 · 16GB",
-    img: "images/deals/e14-gen7/01.jpg", page: "laptop-thinkpad-e14-gen7-ryzen5-230-32gb.html", price: "2,990", deal: "AI PC",
+    img: "images/deals/e14-gen7/01.jpg", page: "laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html", price: "2,990", deal: "AI PC",
     tagline: "הדור החדש של ThinkPad, עם מעבד AI ויציאת USB4",
     specs: ["AMD Ryzen 5 230 · מעבד AI", "16GB DDR5 (עד 64GB)", "512GB SSD + חריץ פנוי", "מסך 14 אינץ' WUXGA ‏16:10", "USB4 · רשת RJ-45 · ‏MIL-STD-810H", "אחריות יצרן מלאה"] },
   { sku: "6028", cat: "business", brand: "HP", name: "HP 250R G9", img: "images/6028.webp",
