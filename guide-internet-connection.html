@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>חיבור קווי או סלולרי? 4G או 5G? המדריך למהירות גלישה – BSD מחשבים</title>
+  <meta name="description" content="מה ההבדל בין אינטרנט קווי לסלולרי, בין 4G ל-5G, למה פסי הקליטה לא מספרים את כל הסיפור, ומה ההבדל בין רוחב פס לשיהוי (פינג). מדריך פשוט של BSD מחשבים.">
+  
+  
+  <!-- seo -->
+  <link rel="canonical" href="https://bsd-comp.com/guide-internet-connection.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BSD מחשבים">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:url" content="https://bsd-comp.com/guide-internet-connection.html">
+  <meta property="og:title" content="חיבור קווי או סלולרי? 4G או 5G? המדריך למהירות גלישה – BSD מחשבים">
+  <meta property="og:description" content="מה ההבדל בין אינטרנט קווי לסלולרי, בין 4G ל-5G, למה פסי הקליטה לא מספרים את כל הסיפור, ומה ההבדל בין רוחב פס לשיהוי (פינג). מדריך פשוט של BSD מחשבים.">
+  <meta property="og:image" content="https://bsd-comp.com/bsd-icon-256.png">
+  <!-- seo -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=35">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="index.html" class="logo"><img src="bsd-title.png" alt="BSD מחשבים – מכירה, שירות, תמיכה" width="225" height="33"></a>
+      <nav class="nav">
+        <a href="index.html#laptops">מחשבים</a>
+        <a href="index.html#services">שירותים</a>
+        <a href="guides.html" aria-current="page">מדריכים</a>
+        <a href="remote.html" class="nav-remote">🖥 תמיכה מרחוק</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה על המדריך לחיבור אינטרנט" data-subject="שאלה על המדריך: חיבור קווי או סלולרי" href="#">וואטסאפ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="wrap hero-inner">
+        <a href="guides.html" class="back">→ חזרה למדריכים</a>
+        <h1>חיבור קווי או סלולרי?<br><span>4G, ‏5G, פסי קליטה ומה באמת קובע את מהירות הגלישה</span></h1>
+        <p class="lead">למה לפעמים יש "פסים מלאים" והאינטרנט איטי? מתי 5G באמת עוזר? ומה ההבדל בין מהירות לפינג? כל מה שצריך לדעת, בשפה פשוטה.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap article">
+        <div class="box">
+          <h2>בקצרה</h2>
+          <ul>
+            <li><strong>חיבור קווי</strong> (סיבים, כבלים או טלפון) הוא היציב והמהיר ביותר לבית ולמשרד.</li>
+            <li><strong>חיבור סלולרי</strong> נוח, נייד ומהיר להקמה, אבל המהירות שלו משתנה לפי המיקום, השעה וכמות המשתמשים באזור.</li>
+            <li><strong>5G</strong> יכול להיות מהיר בהרבה מ-4G, אבל רק במקום עם כיסוי טוב, ובדרך כלל הוא חלש יותר בתוך מבנים.</li>
+            <li><strong>מספר הפסים</strong> מראה רק את עוצמת האות, לא את איכות החיבור ולא את העומס על האנטנה.</li>
+            <li><strong>רוחב פס</strong> קובע כמה מידע עובר בשנייה. <strong>שיהוי (פינג)</strong> קובע כמה מהר החיבור מגיב. לזום, לשיחות וידאו ולשליטה מרחוק השיהוי חשוב לא פחות.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">1</span><h2>חיבור קווי מול חיבור סלולרי</h2></div>
+          <p><strong>חיבור קווי</strong> מגיע עד הבית בכבל: סיב אופטי, כבל של חברת הכבלים או קו טלפון.</p>
+          <ul>
+            <li><strong>יתרונות:</strong> מהירות גבוהה וקבועה, שיהוי נמוך, בלי הגבלת נפח, ולא מושפע ממזג אוויר, מקירות או מכמות האנשים ברחוב.</li>
+            <li><strong>חסרונות:</strong> צריך התקנה של טכנאי, וזה לא עובר איתכם כשאתם יוצאים מהבית.</li>
+          </ul>
+          <p><strong>חיבור סלולרי</strong> עובר באוויר לאנטנה של חברת הסלולר, דרך הטלפון, נקודה חמה או נתב סלולרי.</p>
+          <ul>
+            <li><strong>יתרונות:</strong> עובד כמעט בכל מקום, מוכן תוך דקות, ומתאים גם כגיבוי כשהקו נופל.</li>
+            <li><strong>חסרונות:</strong> המהירות משתנה, השיהוי לרוב גבוה יותר, ולפעמים יש הגבלת נפח. כל המשתמשים באזור חולקים את אותה אנטנה.</li>
+          </ul>
+          <p><strong>כלל אצבע:</strong> לבית ולמשרד, חיבור קווי. לנסיעות, לאתר בנייה, לדירה זמנית או כגיבוי, סלולרי.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">2</span><h2>4G מול 5G</h2></div>
+          <ul>
+            <li><strong>מהירות:</strong> ‏4G מספק בדרך כלל עשרות מגה-ביט בשנייה, ומספיק לגלישה, למייל, לזום ולעבודה מהבית. ‏5G בתנאים טובים מגיע למאות מגה-ביט, ולעיתים יותר.</li>
+            <li><strong>שיהוי:</strong> ‏5G יכול להגיב מהר יותר, וזה מורגש בשיחות וידאו ובשליטה מרחוק.</li>
+            <li><strong>כיסוי וחדירה למבנים:</strong> חלק גדול מרשתות ה-5G פועלות בתדרים גבוהים יותר. בתדרים כאלה עובר הרבה מידע, אבל האות מגיע פחות רחוק וחלש יותר מאחורי קירות וחלונות. לכן 5G מצוין ליד חלון או בחוץ, ובעומק הבית הוא נופל לפעמים בחזרה ל-4G.</li>
+            <li><strong>ציוד:</strong> כדי ליהנות מ-5G צריך גם מכשיר או נתב שתומך בו, וגם כיסוי של ספק שתומך בו באזור שלכם.</li>
+          </ul>
+          <p>בשורה התחתונה: ‏5G הוא שדרוג אמיתי כשיש כיסוי טוב. איפה שאין, 4G טוב ויציב עדיף על 5G חלש.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">3</span><h2>למה פסים מלאים לא אומרים אינטרנט מהיר?</h2></div>
+          <p>הפסים בטלפון או בנתב מראים <strong>רק את עוצמת האות</strong>: כמה חזק "שומעים" את האנטנה. אבל המהירות תלויה בעוד כמה דברים:</p>
+          <ul>
+            <li><strong>איכות האות (רעש והפרעות):</strong> אפשר לשמוע מישהו חזק בחדר רועש ועדיין לא להבין אותו. אות חזק עם הרבה הפרעות נותן מהירות נמוכה.</li>
+            <li><strong>עומס על האנטנה:</strong> כל המשתמשים באזור חולקים את אותה אנטנה. בערב, באירוע או באזור צפוף, גם פסים מלאים יכולים לתת אינטרנט איטי.</li>
+            <li><strong>התדר והטכנולוגיה:</strong> מכשיר שמחובר ל-4G בתדר נמוך יכול להראות יותר פסים מאשר מכשיר שמחובר ל-5G מהיר בתדר גבוה, ובכל זאת להיות איטי יותר.</li>
+            <li><strong>החיבור של האנטנה עצמה לרשת:</strong> אם האנטנה מחוברת לרשת של הספק בחיבור חלש, היא מגבילה את כל המשתמשים שלה.</li>
+            <li><strong>כל מכשיר מציג פסים אחרת:</strong> אין תקן אחיד, ושני טלפונים באותו מקום יכולים להראות מספר פסים שונה.</li>
+          </ul>
+          <p><strong>מה כן עוזר:</strong> להציב נתב סלולרי ליד חלון ובמקום גבוה, לבדוק מהירות בכמה שעות שונות, ובמקרים קשים להוסיף אנטנה חיצונית. בנתבים סלולריים אפשר לראות גם נתוני איכות מדויקים יותר מהפסים, ואנחנו יכולים לעזור לקרוא אותם.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">4</span><h2>רוחב פס מול שיהוי: מהירות היא לא רק מגה-ביט</h2></div>
+          <p>תחשבו על כביש:</p>
+          <ul>
+            <li><strong>רוחב פס</strong> (נמדד במגה-ביט לשנייה, Mbps) הוא <strong>מספר הנתיבים</strong>: כמה מכוניות, כלומר מידע, עוברות בבת אחת. הוא קובע כמה מהר יורד קובץ גדול, וכמה מחשבים יכולים לעבוד במקביל בלי להאט.</li>
+            <li><strong>שיהוי</strong> (פינג, נמדד באלפיות שנייה, ms) הוא <strong>זמן הנסיעה</strong>: כמה זמן לוקח לכל בקשה להגיע ולחזור. הוא קובע כמה מהר נפתח עמוד, כמה מהר מגיבים בשיחת זום, ואם השליטה מרחוק מרגישה חלקה.</li>
+          </ul>
+          <div class="cmp-table-wrap">
+            <table class="cmp-table">
+              <thead><tr><th>שימוש</th><th>מה חשוב יותר</th></tr></thead>
+              <tbody>
+                <tr><th>הורדת קבצים, עדכונים, גיבוי לענן</th><td>רוחב פס</td></tr>
+                <tr><th>כמה מחשבים שעובדים במקביל בבית או במשרד</th><td>רוחב פס</td></tr>
+                <tr><th>זום, ‏Teams ושיחות וידאו</th><td><b>שיהוי ויציבות</b>, ורוחב פס בינוני מספיק</td></tr>
+                <tr><th>תוכנות ענן: הנהלת חשבונות, ‏CRM ומערכות אונליין</th><td><b>שיהוי ויציבות</b></td></tr>
+                <tr><th>שליטה מרחוק ועבודה מול שרת במשרד</th><td><b>שיהוי</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>עוד שני מושגים: <strong>ריצוד (Jitter)</strong> הוא שינוי לא קבוע בשיהוי, וגורם לשיחות "לקפוץ". <strong>איבוד חבילות</strong> הוא מידע שלא מגיע בכלל, וגורם לניתוקים ולתקיעות. בחיבור קווי שני אלה בדרך כלל נמוכים בהרבה.</p>
+          <p><strong>טיפ:</strong> ספקים מפרסמים מהירות במגה-ביט (Mb), ומחשבים מציגים הורדות במגה-בייט (MB). מגה-בייט אחד שווה 8 מגה-ביט, ולכן חיבור של 100 מגה-ביט מוריד בערך 12 מגה-בייט בשנייה.</p>
+        </div>
+
+        <div class="callout">
+          <span class="callout-ic">📶</span>
+          <p><strong>לפעמים הבעיה בכלל לא בקו:</strong> הרבה פעמים "האינטרנט איטי" בגלל ה-Wi-Fi בבית: נתב בפינה רחוקה, קירות עבים או נתב ישן. חיבור המחשב בכבל רשת, העברת הנתב למקום מרכזי, או מערכת Mesh שמפזרת Wi-Fi בכל הבית, פותרים את רוב המקרים.</p>
+        </div>
+
+        <div class="box">
+          <h2>ההמלצה שלנו בקצרה</h2>
+          <ul>
+            <li><strong>בית ומשרד:</strong> חיבור סיבים ונתב איכותי במקום מרכזי. מחשב נייח, מחובר בכבל.</li>
+            <li><strong>עסק שלא יכול להרשות לעצמו נפילות:</strong> חיבור קווי, ועוד נתב סלולרי שנכנס לפעולה אוטומטית כשהקו נופל.</li>
+            <li><strong>בלי קו קווי, או בתנועה:</strong> נתב סלולרי שתומך ב-5G, ליד חלון.</li>
+            <li><strong>עבודה מרחוק וזום:</strong> שימו לב לשיהוי וליציבות, לא רק למספר המגה-ביט.</li>
+          </ul>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <h3>האינטרנט איטי ולא ברור למה?</h3>
+            <p>נבדוק את הקו, הנתב וה-Wi-Fi, וגם בתמיכה מרחוק, ונמצא איפה הבעיה.</p>
+          </div>
+          <div class="article-cta-btns">
+            <a class="btn btn-wa" data-wa="שלום, קראתי את המדריך על חיבור אינטרנט ואשמח לעזרה" data-subject="עזרה בחיבור אינטרנט" href="#">ייעוץ בוואטסאפ</a>
+            <a class="btn btn-ghost-dark" href="remote.html">תמיכה מרחוק</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div class="foot-brand">
+          <img src="bsd-title.png" alt="BSD מחשבים" width="205" height="30" loading="lazy">
+          <p>מכירה, שירות ותמיכה טכנית למחשבים, לבית ולעסק.</p>
+          <p>כל מחשב מגיע מותקן ומוכן לעבודה, עם משלוח חינם.</p>
+        </div>
+        <div>
+          <h3>קטגוריות</h3>
+          <ul>
+            <li><a href="index.html#recommended">מומלצים</a></li>
+            <li><a href="index.html#deals">מציאון</a></li>
+            <li><a href="index.html#basic">בסיסי</a></li>
+            <li><a href="index.html#home">ביתי ומשרדי</a></li>
+            <li><a href="index.html#business">עסקי</a></li>
+            <li><a href="index.html#gaming">גיימינג</a></li>
+            <li><a href="index.html#desktop">מחשבים נייחים</a></li>
+            <li><a href="index.html#monitors">מסכים</a></li>
+            <li><a href="index.html#printers">מדפסות</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>מידע ושירות</h3>
+          <ul>
+            <li><a href="guides.html">מדריכים</a></li>
+            <li><a href="guide-business-vs-home.html">מחשב עסקי או ביתי?</a></li>
+            <li><a href="guide-printers.html">איך בוחרים מדפסת</a></li>
+            <li><a href="remote.html">תמיכה מרחוק</a></li>
+            <li><a href="index.html#services">שירותים</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>צור קשר</h3>
+          <ul>
+            <li><a href="tel:+972544578946" dir="ltr">054-457-8946</a></li>
+            <li><a href="mailto:hanan@bsd-comp.com">hanan@bsd-comp.com</a></li>
+            <li><a data-wa="שלום, הגעתי מהאתר ואשמח לפרטים" data-nomail href="#">וואטסאפ</a></li>
+            <li>אזור שירות: המרכז וירושלים</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© <span id="year"></span> BSD מחשבים · מכירה, שירות ותמיכה · <span class="nowrap" dir="ltr">054-457-8946</span></p>
+        <p class="small">התמונות להמחשה בלבד. המפרט עשוי להשתנות בהתאם ליצרן.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="contact.js?v=9"></script>
+</body>
+</html>

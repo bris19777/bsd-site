@@ -11,6 +11,8 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "חיבור קווי או סלולרי? 4G או 5G? המדריך למהירות גלישה",
+    desc: "קווי מול סלולרי, ‏4G מול 5G, למה פסים מלאים לא אומרים אינטרנט מהיר, ומה ההבדל בין רוחב פס לשיהוי.", href: "guide-internet-connection.html" },
   { section: "guides", type: "page", title: "AMD או Intel? המדריך לבחירת מעבד במחשב נייד",
     desc: "למה Ryzen 5 ו-Core 5 הם מעבדים מאותה רמה, למה הדור חשוב יותר מהיצרן, ואיך AMD הגיעה לכמעט 30% מהניידים בעולם.", href: "guide-amd-vs-intel.html" },
   { section: "guides", type: "page", title: "מי צריך כרטיס מסך במחשב נייד?",
