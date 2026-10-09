@@ -11,6 +11,8 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "סינון אינטרנט במחשב: נטפרי, רימון, אתרוג ונתיב – ההסבר הטכני",
+    desc: "סינון על הקו מול תוכנה על המחשב, תעודת האבטחה (רישיון הגנה), ומה עושה תוכנת WiFree בגרסאות 2 ו-3. הסבר טכני בלבד.", href: "guide-internet-filtering.html" },
   { section: "guides", type: "page", title: "מחשב חדש או מחודש? היתרונות, החסרונות ומה חשוב לבדוק",
     desc: "כל רמות ה\"מחודש\", למה מחשב עסקי מחודש אמין, למה הדור של המעבד קובע, וצ'קליסט לפני קנייה.", href: "guide-new-vs-refurbished.html" },
   { section: "guides", type: "page", title: "למה המחשבים התייקרו? משבר הזיכרון והרכיבים",

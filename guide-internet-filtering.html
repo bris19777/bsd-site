@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>סינון אינטרנט: נטפרי, רימון, אתרוג ונתיב – ההסבר הטכני – BSD מחשבים</title>
+  <meta name="description" content="הסבר טכני בלבד על שיטות סינון האינטרנט: סינון על הקו מול תוכנה על המחשב, תעודת האבטחה (רישיון הגנה), נטפרי, רימון, אתרוג, נתיב, ותוכנת WiFree בגרסאות 2 ו-3.">
+  
+  
+  <!-- seo -->
+  <link rel="canonical" href="https://bsd-comp.com/guide-internet-filtering.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BSD מחשבים">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:url" content="https://bsd-comp.com/guide-internet-filtering.html">
+  <meta property="og:title" content="סינון אינטרנט: נטפרי, רימון, אתרוג ונתיב – ההסבר הטכני – BSD מחשבים">
+  <meta property="og:description" content="הסבר טכני בלבד על שיטות סינון האינטרנט: סינון על הקו מול תוכנה על המחשב, תעודת האבטחה (רישיון הגנה), נטפרי, רימון, אתרוג, נתיב, ותוכנת WiFree בגרסאות 2 ו-3.">
+  <meta property="og:image" content="https://bsd-comp.com/bsd-icon-256.png">
+  <!-- seo -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=35">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="index.html" class="logo"><img src="bsd-title.png" alt="BSD מחשבים – מכירה, שירות, תמיכה" width="225" height="33"></a>
+      <nav class="nav">
+        <a href="index.html#laptops">מחשבים</a>
+        <a href="index.html#services">שירותים</a>
+        <a href="guides.html" aria-current="page">מדריכים</a>
+        <a href="remote.html" class="nav-remote">🖥 תמיכה מרחוק</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה טכנית על סינון אינטרנט במחשב" data-subject="שאלה טכנית: סינון אינטרנט" href="#">וואטסאפ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="wrap hero-inner">
+        <a href="guides.html" class="back">→ חזרה למדריכים</a>
+        <h1>סינון אינטרנט במחשב<br><span>ההסבר הטכני: איך זה עובד ומה ההבדלים</span></h1>
+        <p class="lead">נטפרי, רימון, אתרוג, נתיב, WiFree, "רישיון הגנה"... הרבה לקוחות שואלים אותנו מה ההבדל בין השיטות ואיך הן משפיעות על המחשב. ריכזנו כאן את הרקע הטכני, בשפה פשוטה.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap article">
+        <div class="callout">
+          <span class="callout-ic">ℹ️</span>
+          <p><strong>חשוב להבהיר:</strong> המדריך הזה מסביר <strong>רק את הצד הטכני</strong>, כלומר איך כל סוג סינון עובד ומה המשמעות שלו למחשב. אין בו שום עמדה או המלצה לגבי ההכשר, הרמה או ההתאמה של גוף סינון כזה או אחר. בשאלות האלה יש לפנות לגורמים המוסמכים לכך.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">1</span><h2>שתי שיטות: סינון על הקו וסינון על המחשב</h2></div>
+          <p><strong>סינון על הקו</strong> נעשה אצל ספק הסינון, לפני שהמידע מגיע אליכם. כל מכשיר שמתחבר דרך הקו המסונן (מחשב, טלפון בחיבור Wi-Fi, מדפסת) עובר דרך הסינון.</p>
+          <ul>
+            <li><strong>יתרונות:</strong> סינון אחיד לכל המכשירים בבית או במשרד, כמעט בלי התקנות, ובלי להעמיס על המחשב.</li>
+            <li><strong>מגבלה:</strong> הסינון פועל רק כשהמכשיר מחובר דרך הקו הזה. מחשב נייד שמתחבר לרשת אחרת, לנקודה חמה של טלפון או לסלולר, יוצא מחוץ לסינון.</li>
+          </ul>
+          <p><strong>סינון על המחשב</strong> הוא תוכנה שמותקנת על המכשיר עצמו ובודקת את התעבורה שלו.</p>
+          <ul>
+            <li><strong>יתרונות:</strong> הסינון "נוסע" עם המחשב ועובד בכל רשת: בבית, בעבודה ובחוץ.</li>
+            <li><strong>מגבלות:</strong> צריך להתקין ולתחזק אותה בכל מכשיר בנפרד, היא עלולה להאט מעט את המחשב, ועדכוני מערכת לפעמים משבשים אותה. מי שיש לו הרשאות מנהל על המחשב יכול לנסות לעקוף אותה.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">2</span><h2>תעודת האבטחה ("רישיון הגנה"): למה צריך אותה?</h2></div>
+          <p>רוב האתרים היום מוצפנים (הכתובת מתחילה ב-https). כדי שסינון על הקו יוכל לבדוק גם את התוכן של אתר מוצפן, ולא רק את שמו, ספק הסינון "פותח" את ההצפנה בשרתים שלו, בודק את התוכן ומצפין אותו מחדש לפני שהוא מגיע אליכם.</p>
+          <p>כדי שהמחשב יסכים לקבל את התוכן המוצפן מחדש, מתקינים עליו <strong>תעודת אבטחה</strong> של ספק הסינון. אצל חלק מהספקים היא נקראת "רישיון הגנה". בלי התעודה, הדפדפן מציג הודעה כמו "החיבור שלך אינו פרטי" ולא פותח את האתרים.</p>
+          <ul>
+            <li><strong>צריך להתקין אותה בכל מכשיר:</strong> מחשב, טלפון וטאבלט.</li>
+            <li><strong>חלק מהתוכנות משתמשות במאגר תעודות משלהן,</strong> כמו Firefox, ‏Thunderbird, ‏Java, חלק מתוכנות האנטי-וירוס ותוכנות סנכרון לענן. בהן צריך להתקין את התעודה בנפרד.</li>
+            <li><strong>חלק מהאפליקציות לא יעבדו עם פתיחת ההצפנה בכלל:</strong> אפליקציות בנקים, תוכנות תמיכה מרחוק ועוד. במקרים כאלה מבקשים מספק הסינון להחריג את האתר מפתיחת ההצפנה. לרוב הספקים יש מנגנון כזה.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">3</span><h2>נטפרי</h2></div>
+          <ul>
+            <li><strong>סינון על הקו</strong> דרך ספקי אינטרנט שעובדים עם נטפרי, בחיבור קווי (סיבים, נחושת או כבלים) או בחיבור סלולרי (נטסטיק או נקודה חמה).</li>
+            <li><strong>תעודת אבטחה:</strong> נדרשת בכל מכשיר כדי לפתוח אתרים מוצפנים. נטפרי מחליטה לגבי כל אתר אם צריך לפתוח את ההצפנה שלו. אתרים מסוימים עוברים בלי פתיחה, עם התעודה המקורית שלהם.</li>
+            <li><strong>רמות לכל אתר:</strong> פתוח, סינון טקסט אוטומטי, בדיקת תמונות על ידי צוות אנושי, או חסום. אתר שלא מוכר למערכת אפשר להגיש לבדיקה דרך מערכת הפניות.</li>
+            <li><strong>פרופילים:</strong> אפשר להגדיר הגדרות שונות לכל משתמש, ולנעול אותן.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">4</span><h2>תוכנת WiFree: גרסה 2 (כולל 2.8) וגרסה 3</h2></div>
+          <p>WiFree היא תוכנה של נטפרי למחשבי Windows. חשוב להבין מה היא עושה ומה לא:</p>
+          <p><strong>WiFree 2 (כולל גרסה 2.8):</strong></p>
+          <ul>
+            <li><strong>היא לא מסננת תוכן בעצמה.</strong> התפקיד שלה הוא רק <strong>לחסום חיבור לרשתות שאינן מסוננות דרך נטפרי</strong>.</li>
+            <li>כך מחשב נייד לא יכול "לצאת" מהסינון: אם מחברים אותו לרשת Wi-Fi אחרת, לנקודה חמה של טלפון או לכבל ברשת אחרת, התוכנה חוסמת את הגלישה. זה נכון גם לרשת שמסוננת על ידי ספק סינון אחר.</li>
+            <li>זו גרסה ישנה, ל-Windows 7 ו-8, ונטפרי כבר לא תומכת בה.</li>
+          </ul>
+          <p><strong>WiFree 3 ("תוכנת נטפרי"), ל-Windows 10 ו-11 בגרסת 64 ביט:</strong></p>
+          <ul>
+            <li><strong>אותה חסימה כמו בגרסה 2:</strong> לא מאפשרת גלישה בחיבור שאינו מסונן דרך נטפרי.</li>
+            <li><strong>חידוש: "קו מסונן וירטואלי".</strong> התוכנה יכולה לחבר את המחשב לסינון של נטפרי דרך כל חיבור אינטרנט. בחו"ל זה עובד אוטומטית. בארץ השימוש מיועד למקרים זמניים, ושימוש קבוע דורש אישור של נטפרי.</li>
+            <li><strong>פרופיל נפרד לכל מחשב</strong>, גם כשכמה מחשבים חולקים את אותה רשת.</li>
+            <li><strong>הסרה:</strong> מתבצעת בתהליך מסודר עם זמן המתנה, לפי ההגדרות שנבחרו בזמן ההתקנה.</li>
+          </ul>
+          <p>יש גם גרסת WiFree לטאבלטים עם Android: היא חוסמת גלישה ברשתות שאינן מסוננות דרך נטפרי, ומגבילה התקנת אפליקציות לחנות של נטפרי.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">5</span><h2>רימון</h2></div>
+          <ul>
+            <li><strong>ספק אינטרנט עם סינון על הקו</strong>, מהוותיקים בתחום.</li>
+            <li><strong>שיטת הסינון:</strong> בדיקה של הטקסט והתמונות בכל עמוד בזמן אמת, ולא רק רשימות של אתרים. אפשר להוסיף רשימות אישיות של אתרים מותרים וחסומים.</li>
+            <li><strong>רמות ומסלולים:</strong> יש כמה רמות סינון, ויש מסלול שבו כל הבית מסונן ומסלול שבו בוחרים אילו מכשירים יסוננו ומתי.</li>
+            <li><strong>"רישיון הגנה":</strong> תעודת האבטחה של רימון. חובה להתקין אותה בכל מחשב, טלפון וטאבלט.</li>
+            <li><strong>תוכנות:</strong> אפליקציה לטלפונים, שמעבירה את הגלישה דרך שרת הסינון גם מחוץ לבית, ותוכנה למחשבי Windows.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">6</span><h2>אתרוג</h2></div>
+          <ul>
+            <li><strong>מסלול של רימון</strong> עם סינון מחמיר יותר, שמיועד לציבור החרדי.</li>
+            <li><strong>אפשרויות חיבור:</strong> קו מסונן (סיבים או נחושת), נטסטיק מסונן, ותוכנת סינון למחשב.</li>
+            <li><strong>תוכנת אתרוג:</strong> תוכנה למחשבי Windows בלבד, לא לטלפונים ולטאבלטים.</li>
+            <li><strong>אפליקציית ההגנה למחשב:</strong> חוסמת גלישה בכל רשת שאינה של אתרוג, בדומה ל-WiFree. ההסרה שלה נעשית דרך התמיכה של אתרוג.</li>
+            <li><strong>רישיון הגנה:</strong> אותה שיטה כמו ברימון, חובה בכל מכשיר.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">7</span><h2>נתיב</h2></div>
+          <ul>
+            <li><strong>מבוסס בעיקר על תוכנה שמותקנת על המחשב</strong> (Windows), ולכן ממשיך לסנן בכל רשת, גם מחוץ לבית.</li>
+            <li><strong>שיטת "רשימה לבנה":</strong> רק אתרים שאושרו מראש פתוחים, עם אפשרות לסנן גם בתוך אתר.</li>
+            <li><strong>פרופילים</strong> נפרדים לכל משתמש במחשב.</li>
+          </ul>
+          <p class="spec-note">על נתיב יש פחות מידע טכני מפורסם, ולכן הפירוט כאן כללי.</p>
+        </div>
+
+        <div class="cmp-table-wrap">
+          <table class="cmp-table">
+            <thead><tr><th></th><th>סינון על הקו</th><th>תוכנה על המחשב</th><th>תוכנת חסימה (כמו WiFree)</th></tr></thead>
+            <tbody>
+              <tr><th>מה היא עושה</th><td>מסננת את כל מה שעובר בקו</td><td>מסננת את התעבורה של המחשב</td><td>חוסמת חיבור לרשתות לא מסוננות</td></tr>
+              <tr><th>מכסה את כל המכשירים בבית</th><td>כן, כשהם מחוברים לקו</td><td>רק מכשירים שהותקנה בהם</td><td>רק המחשב שהותקנה בו</td></tr>
+              <tr><th>עובדת מחוץ לבית</th><td>לא</td><td>כן</td><td>חוסמת גלישה (בגרסה 3 יש גם קו וירטואלי)</td></tr>
+              <tr><th>דורשת התקנה במחשב</th><td>תעודת אבטחה בלבד</td><td>כן</td><td>כן</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box">
+          <h2>טיפים טכניים</h2>
+          <ul>
+            <li><strong>נקודה חמה מהטלפון</strong> אינה עוברת דרך הסינון של הקו בבית. הסינון שלה תלוי בקו הסלולרי של הטלפון.</li>
+            <li><strong>משתמש בלי הרשאות מנהל:</strong> כדי שאי אפשר יהיה לשנות או להסיר תוכנה בקלות, מומלץ לעבוד ב-Windows עם משתמש רגיל, ולשמור את סיסמת המנהל אצל מישהו אחר. אפשר להוסיף גם סיסמת BIOS.</li>
+            <li><strong>תמיכה מרחוק ותוכנות מאובטחות:</strong> תוכנות שבודקות את התעודה של השרת שלהן (כמו תוכנות שליטה מרחוק או אפליקציות בנקים) עלולות לא לעבוד בסינון שפותח הצפנה. הפתרון הוא לבקש מספק הסינון להחריג את הכתובת שלהן.</li>
+            <li><strong>לפי החוק,</strong> ספקי האינטרנט וחברות הסלולר בישראל חייבים להציע ללקוחות תוכנת סינון בסיסית בחינם.</li>
+          </ul>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <h3>צריכים עזרה טכנית?</h3>
+            <p>נשמח לעזור בהתקנת תעודת האבטחה, בהגדרת המחשב ובפתרון תקלות שנגרמות מהסינון, בכל אחד מהספקים.</p>
+          </div>
+          <div class="article-cta-btns">
+            <a class="btn btn-wa" data-wa="שלום, קראתי את המדריך על סינון אינטרנט ואשמח לעזרה טכנית" data-subject="עזרה טכנית: סינון אינטרנט" href="#">ייעוץ בוואטסאפ</a>
+            <a class="btn btn-ghost-dark" href="remote.html">תמיכה מרחוק</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div class="foot-brand">
+          <img src="bsd-title.png" alt="BSD מחשבים" width="205" height="30" loading="lazy">
+          <p>מכירה, שירות ותמיכה טכנית למחשבים, לבית ולעסק.</p>
+          <p>כל מחשב מגיע מותקן ומוכן לעבודה, עם משלוח חינם.</p>
+        </div>
+        <div>
+          <h3>קטגוריות</h3>
+          <ul>
+            <li><a href="index.html#recommended">מומלצים</a></li>
+            <li><a href="index.html#deals">מציאון</a></li>
+            <li><a href="index.html#basic">בסיסי</a></li>
+            <li><a href="index.html#home">ביתי ומשרדי</a></li>
+            <li><a href="index.html#business">עסקי</a></li>
+            <li><a href="index.html#gaming">גיימינג</a></li>
+            <li><a href="index.html#desktop">מחשבים נייחים</a></li>
+            <li><a href="index.html#monitors">מסכים</a></li>
+            <li><a href="index.html#printers">מדפסות</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>מידע ושירות</h3>
+          <ul>
+            <li><a href="guides.html">מדריכים</a></li>
+            <li><a href="guide-business-vs-home.html">מחשב עסקי או ביתי?</a></li>
+            <li><a href="guide-printers.html">איך בוחרים מדפסת</a></li>
+            <li><a href="remote.html">תמיכה מרחוק</a></li>
+            <li><a href="index.html#services">שירותים</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>צור קשר</h3>
+          <ul>
+            <li><a href="tel:+972544578946" dir="ltr">054-457-8946</a></li>
+            <li><a href="mailto:hanan@bsd-comp.com">hanan@bsd-comp.com</a></li>
+            <li><a data-wa="שלום, הגעתי מהאתר ואשמח לפרטים" data-nomail href="#">וואטסאפ</a></li>
+            <li>אזור שירות: המרכז וירושלים</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© <span id="year"></span> BSD מחשבים · מכירה, שירות ותמיכה · <span class="nowrap" dir="ltr">054-457-8946</span></p>
+        <p class="small">התמונות להמחשה בלבד. המפרט עשוי להשתנות בהתאם ליצרן.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="contact.js?v=9"></script>
+</body>
+</html>
