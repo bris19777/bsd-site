@@ -11,6 +11,10 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "מחשב חדש או מחודש? היתרונות, החסרונות ומה חשוב לבדוק",
+    desc: "כל רמות ה\"מחודש\", למה מחשב עסקי מחודש אמין, למה הדור של המעבד קובע, וצ'קליסט לפני קנייה.", href: "guide-new-vs-refurbished.html" },
+  { section: "guides", type: "page", title: "למה המחשבים התייקרו? משבר הזיכרון והרכיבים",
+    desc: "למה מחירי המחשבים, הזיכרון והכוננים עלו, מה הקשר לבינה המלאכותית, ומה כדאי לעשות כשקונים מחשב עכשיו.", href: "guide-component-prices.html" },
   { section: "guides", type: "page", title: "חיבור קווי או סלולרי? 4G או 5G? המדריך למהירות גלישה",
     desc: "קווי מול סלולרי, ‏4G מול 5G, למה פסים מלאים לא אומרים אינטרנט מהיר, ומה ההבדל בין רוחב פס לשיהוי.", href: "guide-internet-connection.html" },
   { section: "guides", type: "page", title: "AMD או Intel? המדריך לבחירת מעבד במחשב נייד",
