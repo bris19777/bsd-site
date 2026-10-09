@@ -11,6 +11,8 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "דיו או לייזר? משולבת או ייעודית? המדריך לבחירת מדפסת",
+    desc: "הזרקת דיו, לייזר שחור-לבן ולייזר צבעוני, מדפסת ייעודית מול משולבת, סורק משולב מול ייעודי, ומה עם פקס.", href: "guide-printers.html" },
   { section: "guides", type: "page", title: "מחשב עסקי או מחשב ביתי? המדריך המלא",
     desc: "למה ThinkPad ו-Dell Pro שווים יותר ממחשב ביתי זול עם אותו מעבד: עמידות, מקלדת, שדרוג, אחריות, אבטחה ומחיר לשנה.", href: "guide-business-vs-home.html" },
   { section: "guides", type: "page", title: "פתרון בעיות גרפיקה במחשבים ניידים עם שני כרטיסי מסך",
