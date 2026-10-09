@@ -226,3 +226,16 @@ function render() {
 }
 
 render();
+
+// homepage: a random guide teaser above the catalog (picks from the guide pages in guides.js)
+(function () {
+  const box = document.getElementById("guide-teaser");
+  if (!box || typeof GUIDES === "undefined") return;
+  const pages = GUIDES.filter(g => g.section === "guides" && g.type === "page");
+  if (!pages.length) return;
+  const g = pages[Math.floor(Math.random() * pages.length)];
+  box.href = g.href;
+  document.getElementById("gt-title").textContent = g.title;
+  document.getElementById("gt-desc").textContent = g.desc;
+  box.hidden = false;
+})();
