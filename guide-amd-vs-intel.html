@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AMD או Intel? המדריך לבחירת מעבד במחשב נייד – BSD מחשבים</title>
+  <meta name="description" content="AMD Ryzen או Intel Core? מה באמת ההבדל בין המעבדים במחשבים ניידים, למה הדור חשוב יותר מהיצרן, ואיך נתח השוק של AMD בניידים גדל מ-12% ל-29%. מדריך של BSD מחשבים.">
+  
+  
+  <!-- seo -->
+  <link rel="canonical" href="https://bsd-comp.com/guide-amd-vs-intel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BSD מחשבים">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:url" content="https://bsd-comp.com/guide-amd-vs-intel.html">
+  <meta property="og:title" content="AMD או Intel? המדריך לבחירת מעבד במחשב נייד – BSD מחשבים">
+  <meta property="og:description" content="AMD Ryzen או Intel Core? מה באמת ההבדל בין המעבדים במחשבים ניידים, למה הדור חשוב יותר מהיצרן, ואיך נתח השוק של AMD בניידים גדל מ-12% ל-29%. מדריך של BSD מחשבים.">
+  <meta property="og:image" content="https://bsd-comp.com/bsd-icon-256.png">
+  <!-- seo -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=35">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="index.html" class="logo"><img src="bsd-title.png" alt="BSD מחשבים – מכירה, שירות, תמיכה" width="225" height="33"></a>
+      <nav class="nav">
+        <a href="index.html#laptops">מחשבים</a>
+        <a href="index.html#services">שירותים</a>
+        <a href="guides.html" aria-current="page">מדריכים</a>
+        <a href="remote.html" class="nav-remote">🖥 תמיכה מרחוק</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה על המדריך AMD או Intel" data-subject="שאלה על המדריך: AMD או Intel" href="#">וואטסאפ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="wrap hero-inner">
+        <a href="guides.html" class="back">→ חזרה למדריכים</a>
+        <h1>AMD או Intel?<br><span>מה באמת חשוב כשבוחרים מעבד למחשב נייד</span></h1>
+        <p class="lead">הרבה לקוחות רגילים לחפש "i5 של Intel" ומהססים מול Ryzen 5 של AMD. החדשות הטובות: בעבודה יומיומית אין ביניהם הבדל משמעותי. מה שקובע באמת הוא הדור של המעבד, וכמובן המחשב שסביבו.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap article">
+        <div class="box">
+          <h2>בקצרה</h2>
+          <ul>
+            <li><strong>Ryzen 5 של AMD ו-Core 5 (או i5) של Intel הם מעבדים מאותה רמה.</strong> שניהם מריצים את אותן תוכנות בדיוק: Windows, ‏Office, תוכנות הנהלת חשבונות, דפדפן וזום.</li>
+            <li><strong>הדור חשוב יותר מהיצרן.</strong> Ryzen 5 חדש מהיר יותר מ-i5 ישן, ו-i5 חדש מהיר יותר מ-Ryzen 5 ישן.</li>
+            <li><strong>AMD כבר מזמן לא "האלטרנטיבה הזולה".</strong> היא מחזיקה היום כמעט 30% מהמעבדים בניידים בעולם, ונמצאת בסדרות העסקיות של Lenovo, ‏Dell ו-HP.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">1</span><h2>למה בכלל יש תדמית ש-Intel עדיפה?</h2></div>
+          <p>לפני עשור זה היה נכון: Intel שלטה בשוק, ו-AMD מכרה בעיקר מעבדים חלשים לניידים זולים. משם נשארה האמונה ש"מחשב טוב = Intel".</p>
+          <p>ב-2017 הכל השתנה. AMD הציגה את משפחת <strong>Ryzen</strong>, שסגרה את הפער ובמקרים רבים עקפה את Intel, במיוחד ביעילות האנרגטית ובגרפיקה המשולבת. מאז, כל יצרני המחשבים הגדולים מציעים דגמים עם Ryzen, כולל הסדרות העסקיות שלהם.</p>
+        </div>
+
+        <div class="box">
+          <h2>נתח השוק של AMD במחשבים ניידים</h2>
+          <p>אחוז המעבדים למחשבים ניידים (x86) שמיוצרים על ידי AMD, ברבעון האחרון של כל שנה:</p>
+          <figure class="chart-fig">
+            <svg class="share-chart" viewBox="0 0 640 300" role="img" aria-labelledby="sc-t" dir="ltr" xmlns="http://www.w3.org/2000/svg"><title id="sc-t">נתח השוק של AMD במעבדים למחשבים ניידים, ⁦2018–2026⁩</title><line class="sc-grid" x1="44" x2="628" y1="197.4" y2="197.4"/><text class="sc-ax" x="36" y="201.4" text-anchor="end">10%</text><line class="sc-grid" x1="44" x2="628" y1="128.9" y2="128.9"/><text class="sc-ax" x="36" y="132.9" text-anchor="end">20%</text><line class="sc-grid" x1="44" x2="628" y1="60.3" y2="60.3"/><text class="sc-ax" x="36" y="64.3" text-anchor="end">30%</text><line class="sc-base" x1="44" x2="628" y1="266" y2="266"/><g class="sc-bar"><title>2018: 12.2%</title><path d="M58.3,266 V186.3 Q58.3,182.3 62.3,182.3 H90.6 Q94.6,182.3 94.6,186.3 V266 Z"/><rect x="44.0" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="76.4" y="288" text-anchor="middle">2018</text><text class="sc-val" x="76.4" y="175.3" text-anchor="middle">12.2%</text><g class="sc-bar"><title>2019: 16.2%</title><path d="M123.2,266 V158.9 Q123.2,154.9 127.2,154.9 H155.5 Q159.5,154.9 159.5,158.9 V266 Z"/><rect x="108.9" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="141.3" y="288" text-anchor="middle">2019</text><g class="sc-bar"><title>2020: 19.0%</title><path d="M188.1,266 V139.7 Q188.1,135.7 192.1,135.7 H220.4 Q224.4,135.7 224.4,139.7 V266 Z"/><rect x="173.8" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="206.2" y="288" text-anchor="middle">2020</text><g class="sc-bar"><title>2021: 21.6%</title><path d="M252.9,266 V121.9 Q252.9,117.9 256.9,117.9 H285.3 Q289.3,117.9 289.3,121.9 V266 Z"/><rect x="238.7" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="271.1" y="288" text-anchor="middle">2021</text><g class="sc-bar"><title>2022: 16.4%</title><path d="M317.8,266 V157.5 Q317.8,153.5 321.8,153.5 H350.2 Q354.2,153.5 354.2,157.5 V266 Z"/><rect x="303.6" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="336.0" y="288" text-anchor="middle">2022</text><text class="sc-val" x="336.0" y="146.5" text-anchor="middle">16.4%</text><g class="sc-bar"><title>2023: 20.3%</title><path d="M382.7,266 V130.8 Q382.7,126.8 386.7,126.8 H415.1 Q419.1,126.8 419.1,130.8 V266 Z"/><rect x="368.4" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="400.9" y="288" text-anchor="middle">2023</text><g class="sc-bar"><title>2024: 23.7%</title><path d="M447.6,266 V107.5 Q447.6,103.5 451.6,103.5 H479.9 Q483.9,103.5 483.9,107.5 V266 Z"/><rect x="433.3" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="465.8" y="288" text-anchor="middle">2024</text><g class="sc-bar"><title>2025: 26.0%</title><path d="M512.5,266 V91.7 Q512.5,87.7 516.5,87.7 H544.8 Q548.8,87.7 548.8,91.7 V266 Z"/><rect x="498.2" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="530.7" y="288" text-anchor="middle">2025</text><g class="sc-bar"><title>2026 (Q2): 28.9%</title><path d="M577.4,266 V71.8 Q577.4,67.8 581.4,67.8 H609.7 Q613.7,67.8 613.7,71.8 V266 Z"/><rect x="563.1" y="26" width="64.9" height="240" fill="transparent"/></g><text class="sc-ax" x="595.6" y="288" text-anchor="middle">2026</text><text class="sc-val" x="595.6" y="60.8" text-anchor="middle">28.9%</text></svg>
+            <figcaption>מקור: Mercury Research, כפי שפורסם ב-Tom's Hardware וב-Wccftech. ‏2026: רבעון שני. מחשבי Apple ושאר מחשבי ARM אינם כלולים.</figcaption>
+          </figure>
+          <details class="chart-table">
+            <summary>הנתונים בטבלה</summary>
+            <table class="spec"><tr><th>שנה</th><td><strong>נתח שוק AMD</strong></td></tr><tr><th>2018</th><td>12.2%</td></tr><tr><th>2019</th><td>16.2%</td></tr><tr><th>2020</th><td>19.0%</td></tr><tr><th>2021</th><td>21.6%</td></tr><tr><th>2022</th><td>16.4%</td></tr><tr><th>2023</th><td>20.3%</td></tr><tr><th>2024</th><td>23.7%</td></tr><tr><th>2025</th><td>26.0%</td></tr><tr><th>2026 (רבעון 2)</th><td>28.9%</td></tr></table>
+          </details>
+          <p><strong>מה רואים בגרף:</strong> בתוך שמונה שנים AMD יותר מהכפילה את חלקה, מ-12% לכמעט 29%, והשנים האחרונות שוברות שיאים. בפועל, כמעט אחד מכל שלושה מחשבים ניידים חדשים בעולם מגיע היום עם מעבד AMD. יצרנים כמו Lenovo ו-Dell לא היו מכניסים את Ryzen לסדרות העסקיות שלהם, שנמכרות לחברות ולבנקים, אם לא היו סומכים עליו.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">2</span><h2>איך קוראים את שמות המעבדים</h2></div>
+          <p>שני היצרנים משתמשים באותה "שפה" של רמות:</p>
+          <div class="cmp-table-wrap">
+            <table class="cmp-table">
+              <thead><tr><th>רמה</th><th>Intel</th><th>AMD</th><th>מתאים ל</th></tr></thead>
+              <tbody>
+                <tr><th>בסיסי</th><td>Core 3 / ‏i3</td><td>Ryzen 3</td><td>גלישה, Office קל</td></tr>
+                <tr><th>מרכזי</th><td><b>Core 5 / ‏i5 / ‏Core Ultra 5</b></td><td><b>Ryzen 5 / ‏Ryzen AI 5</b></td><td>עבודה משרדית ועסקית, רוב האנשים</td></tr>
+                <tr><th>מתקדם</th><td>Core 7 / ‏i7 / ‏Core Ultra 7</td><td>Ryzen 7 / ‏Ryzen AI 7</td><td>עבודה כבדה, ריבוי משימות</td></tr>
+                <tr><th>עוצמתי</th><td>Core 9 / ‏i9</td><td>Ryzen 9</td><td>גיימינג, תלת-ממד, עריכה</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>המספרים שאחרי השם מסמנים את הדור והסדרה. למשל ב-<span class="kbd">i5-1335U</span> ה-13 הוא הדור, וב-<span class="kbd">Ryzen 5 7535U</span> ה-7 הוא סדרת 7000. האות בסוף מספרת לאיזה מחשב נועד המעבד: <strong>U</strong> = חסכוני לניידים דקים, <strong>H / HX</strong> = עוצמתי לניידים כבדים וגיימינג.</p>
+          <p><strong>הכלל החשוב:</strong> משווים מעבדים מאותה תקופה ומאותה סדרה. Ryzen 5 מול Core 5 מאותה שנה, שניהם בסדרת U, יתנו חוויה כמעט זהה.</p>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">3</span><h2>אז איפה בכל זאת יש הבדלים?</h2></div>
+          <ul>
+            <li><strong>ביצועים:</strong> באותו דור ובאותה רמה ההבדלים קטנים, ובכל מבחן מוביל מישהו אחר. בעבודה יומיומית לא מרגישים את זה.</li>
+            <li><strong>גרפיקה משולבת:</strong> כאן ל-AMD יש לרוב יתרון. כרטיסי ה-Radeon המובנים במעבדי Ryzen חזקים יחסית, וזה מורגש בתמונות, בווידאו, בעבודה עם כמה מסכים ובמשחקים קלים. בדורות החדשים של Intel ‏(Core Ultra) הפער הצטמצם.</li>
+            <li><strong>סוללה ויעילות:</strong> שני היצרנים יעילים מאוד בדורות החדשים. אורך חיי הסוללה תלוי יותר בדגם המחשב, בגודל הסוללה ובמסך.</li>
+            <li><strong>ניהול ארגוני:</strong> בארגונים גדולים עם מחלקת IT יש משמעות לטכנולוגיות הניהול מרחוק (vPro של Intel, ‏PRO של AMD). לעסק קטן ולבית זה לא רלוונטי.</li>
+          </ul>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">4</span><h2>מיתוסים נפוצים</h2></div>
+          <ul>
+            <li><strong>"תוכנות לא עובדות על AMD."</strong> לא נכון. AMD ו-Intel מייצרות מעבדים מאותה משפחה (x86), וכל תוכנה ל-Windows רצה על שניהם בדיוק אותו דבר. (ההבדל הזה קיים רק במחשבים עם מעבדי ARM, כמו Snapdragon, וזה כבר נושא אחר.)</li>
+            <li><strong>"AMD מתחמם יותר."</strong> בדורות האחרונים מעבדי Ryzen לניידים נחשבים מהיעילים בשוק. חום ורעש תלויים בעיקר בקירור של המחשב עצמו.</li>
+            <li><strong>"AMD פחות אמין."</strong> אין לזה בסיס. שני היצרנים אמינים מאוד, ומה שקובע את אורך חיי המחשב הוא איכות הבנייה שלו. לכן מחשב עסקי עם Ryzen יחזיק יותר ממחשב ביתי זול עם Intel.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2>מה באמת חשוב כשבוחרים מחשב</h2>
+          <ol class="steps">
+            <li><strong>דור עדכני של המעבד</strong>, משני היצרנים.</li>
+            <li><strong>16GB זיכרון</strong>, ואפשרות להרחיב בעתיד.</li>
+            <li><strong>כונן SSD מהיר</strong> של 512GB לפחות.</li>
+            <li><strong>איכות המחשב עצמו:</strong> מקלדת, מסך, עמידות ואחריות. כאן מחשב עסקי מנצח. ראו <a href="guide-business-vs-home.html">המדריך: מחשב עסקי או מחשב ביתי</a>.</li>
+          </ol>
+          <p>היצרן של המעבד נמצא נמוך ברשימה. ולפעמים דווקא הוא מה שמאפשר לקבל מחשב עסקי איכותי במחיר נמוך יותר.</p>
+        </div>
+
+        <div class="box">
+          <h2>דוגמאות מהחנות שלנו</h2>
+          <p>מחשבים עסקיים חדשים עם Ryzen 5, אחריות יצרן מלאה, התקנות ומשלוח חינם:</p>
+          <ul>
+            <li><a href="laptop-dell-pro14-pc14255-ryzen5.html"><strong>Dell Pro 14</strong></a> עם Ryzen 5 ו-16GB: <strong>₪2,690</strong> במבצע (במקום ₪4,500).</li>
+            <li><a href="laptop-thinkpad-e14-gen6-ryzen5-7535u.html"><strong>Lenovo ThinkPad E14 Gen 6</strong></a> עם Ryzen 5 ו-16GB: <strong>₪2,690</strong>.</li>
+            <li><a href="laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html"><strong>Lenovo ThinkPad E14 Gen 7</strong></a> עם Ryzen 5 עם מעבד AI ו-16GB: <strong>₪2,990</strong>.</li>
+          </ul>
+          <p>אותם מחשבים בדיוק בגרסת Intel ‏Core 5 נמכרים בדרך כלל במחיר גבוה יותר, בלי שתרגישו הבדל בעבודה.</p>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <h3>עדיין מתלבטים?</h3>
+            <p>ספרו לנו למה המחשב ישמש, ונמליץ על המעבד והדגם המתאימים.</p>
+          </div>
+          <div class="article-cta-btns">
+            <a class="btn btn-wa" data-wa="שלום, קראתי את המדריך AMD או Intel ואשמח להמלצה" data-subject="המלצה על מחשב: AMD או Intel" href="#">ייעוץ בוואטסאפ</a>
+            <a class="btn btn-ghost-dark" href="index.html#business">למחשבים העסקיים</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div class="foot-brand">
+          <img src="bsd-title.png" alt="BSD מחשבים" width="205" height="30" loading="lazy">
+          <p>מכירה, שירות ותמיכה טכנית למחשבים, לבית ולעסק.</p>
+          <p>כל מחשב מגיע מותקן ומוכן לעבודה, עם משלוח חינם.</p>
+        </div>
+        <div>
+          <h3>קטגוריות</h3>
+          <ul>
+            <li><a href="index.html#recommended">מומלצים</a></li>
+            <li><a href="index.html#deals">מציאון</a></li>
+            <li><a href="index.html#basic">בסיסי</a></li>
+            <li><a href="index.html#home">ביתי ומשרדי</a></li>
+            <li><a href="index.html#business">עסקי</a></li>
+            <li><a href="index.html#gaming">גיימינג</a></li>
+            <li><a href="index.html#desktop">מחשבים נייחים</a></li>
+            <li><a href="index.html#monitors">מסכים</a></li>
+            <li><a href="index.html#printers">מדפסות</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>מידע ושירות</h3>
+          <ul>
+            <li><a href="guides.html">מדריכים</a></li>
+            <li><a href="guide-business-vs-home.html">מחשב עסקי או ביתי?</a></li>
+            <li><a href="guide-printers.html">איך בוחרים מדפסת</a></li>
+            <li><a href="remote.html">תמיכה מרחוק</a></li>
+            <li><a href="index.html#services">שירותים</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>צור קשר</h3>
+          <ul>
+            <li><a href="tel:+972544578946" dir="ltr">054-457-8946</a></li>
+            <li><a href="mailto:hanan@bsd-comp.com">hanan@bsd-comp.com</a></li>
+            <li><a data-wa="שלום, הגעתי מהאתר ואשמח לפרטים" data-nomail href="#">וואטסאפ</a></li>
+            <li>אזור שירות: המרכז וירושלים</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© <span id="year"></span> BSD מחשבים · מכירה, שירות ותמיכה · <span class="nowrap" dir="ltr">054-457-8946</span></p>
+        <p class="small">התמונות להמחשה בלבד. המפרט עשוי להשתנות בהתאם ליצרן.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="contact.js?v=9"></script>
+</body>
+</html>

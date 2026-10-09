@@ -69,9 +69,37 @@ function addBackToTop() {
   onScroll();
 }
 
+// "save as PDF": product and guide pages get a button that opens the print dialog (Save as PDF),
+// plus a print-only header with the logo, phone and page address
+function addPdfButton() {
+  const priceBox = document.querySelector(".product-info .price-box");
+  const guideHero = document.querySelector(".hero-sm .hero-inner");
+  const isGuide = guideHero && document.querySelector(".article");
+  if (!priceBox && !isGuide) return;
+  if (!priceBox && guideHero.querySelector('a[href$=".pdf"]')) return;   // guide already offers its own PDF
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "pdf-btn";
+  b.textContent = "📄 שמירת העמוד כ-PDF";
+  b.addEventListener("click", () => window.print());
+  if (priceBox) priceBox.after(b); else guideHero.append(b);
+
+  const head = document.createElement("div");
+  head.className = "print-head";
+  const logo = document.createElement("img");
+  logo.src = "bsd-title.png";
+  logo.alt = "BSD מחשבים";
+  const info = document.createElement("span");
+  info.textContent = "054-457-8946 · " + location.href.replace(/[?#].*$/, "");
+  info.dir = "ltr";
+  head.append(logo, info);
+  document.body.prepend(head);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   wireContactLinks();
   addBackToTop();
+  addPdfButton();
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 });

@@ -11,6 +11,10 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "AMD או Intel? המדריך לבחירת מעבד במחשב נייד",
+    desc: "למה Ryzen 5 ו-Core 5 הם מעבדים מאותה רמה, למה הדור חשוב יותר מהיצרן, ואיך AMD הגיעה לכמעט 30% מהניידים בעולם.", href: "guide-amd-vs-intel.html" },
+  { section: "guides", type: "page", title: "מי צריך כרטיס מסך במחשב נייד?",
+    desc: "למי כרטיס RTX הוא חובה, למי הוא עוזר, ולמי הוא רק משקל, רעש, סוללה קצרה ומחיר גבוה.", href: "guide-laptop-gpu.html" },
   { section: "guides", type: "page", title: "דיו או לייזר? משולבת או ייעודית? המדריך לבחירת מדפסת",
     desc: "הזרקת דיו, לייזר שחור-לבן ולייזר צבעוני, מדפסת ייעודית מול משולבת, סורק משולב מול ייעודי, ומה עם פקס.", href: "guide-printers.html" },
   { section: "guides", type: "page", title: "מחשב עסקי או מחשב ביתי? המדריך המלא",

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מי צריך כרטיס מסך במחשב נייד? – BSD מחשבים</title>
+  <meta name="description" content="כרטיס מסך נפרד (RTX) במחשב נייד: למי הוא חובה, למי הוא עוזר, ולמי הוא סתם משקל, רעש וסוללה קצרה. המדריך של BSD מחשבים.">
+  
+  
+  <!-- seo -->
+  <link rel="canonical" href="https://bsd-comp.com/guide-laptop-gpu.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BSD מחשבים">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:url" content="https://bsd-comp.com/guide-laptop-gpu.html">
+  <meta property="og:title" content="מי צריך כרטיס מסך במחשב נייד? – BSD מחשבים">
+  <meta property="og:description" content="כרטיס מסך נפרד (RTX) במחשב נייד: למי הוא חובה, למי הוא עוזר, ולמי הוא סתם משקל, רעש וסוללה קצרה. המדריך של BSD מחשבים.">
+  <meta property="og:image" content="https://bsd-comp.com/bsd-icon-256.png">
+  <!-- seo -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=35">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="index.html" class="logo"><img src="bsd-title.png" alt="BSD מחשבים – מכירה, שירות, תמיכה" width="225" height="33"></a>
+      <nav class="nav">
+        <a href="index.html#laptops">מחשבים</a>
+        <a href="index.html#services">שירותים</a>
+        <a href="guides.html" aria-current="page">מדריכים</a>
+        <a href="remote.html" class="nav-remote">🖥 תמיכה מרחוק</a>
+        <a href="index.html#contact">צור קשר</a>
+      </nav>
+      <a class="btn btn-wa header-cta" data-wa="שלום, יש לי שאלה על המדריך לכרטיסי מסך בניידים" data-subject="שאלה על המדריך: כרטיס מסך במחשב נייד" href="#">וואטסאפ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-sm">
+      <div class="wrap hero-inner">
+        <a href="guides.html" class="back">→ חזרה למדריכים</a>
+        <h1>מי צריך כרטיס מסך במחשב נייד?<br><span>ולמי הוא רק מוסיף משקל ומחיר</span></h1>
+        <p class="lead">כרטיס מסך נפרד (NVIDIA RTX) נשמע כמו שדרוג שתמיד כדאי. בפועל, לרוב האנשים הוא מיותר, ויש לו מחיר: במשקל, בסוללה, ברעש ובכסף.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap article">
+        <div class="box">
+          <h2>בקצרה: שני סוגי גרפיקה</h2>
+          <ul>
+            <li><strong>גרפיקה משולבת</strong> נמצאת בתוך המעבד (למשל Intel Graphics או AMD Radeon). היא מספיקה לכל עבודה משרדית, לסרטים ב-4K, לזום ולחיבור של כמה מסכים.</li>
+            <li><strong>כרטיס מסך נפרד</strong> (למשל NVIDIA RTX 5060) הוא שבב גרפי עצמאי עם זיכרון משלו. הוא חזק פי כמה, אבל צורך הרבה חשמל, מתחמם ודורש מחשב גדול וכבד יותר.</li>
+          </ul>
+        </div>
+
+        <div class="gpu-tiers">
+          <div class="gpu-tier gt-need">
+            <h3>✅ צריכים כרטיס מסך</h3>
+            <p>בלעדיו העבודה איטית מאוד או לא אפשרית:</p>
+            <ul>
+              <li><strong>גיימינג:</strong> משחקים חדשים בהגדרות בינוניות וגבוהות.</li>
+              <li><strong>אדריכלות ותלת-ממד:</strong> Revit, ‏3ds Max, ‏SketchUp עם מודלים גדולים, ‏Lumion, ‏Twinmotion, ‏D5, ‏Blender.</li>
+              <li><strong>עריכת וידאו מקצועית:</strong> Premiere ו-DaVinci Resolve ב-4K, אפקטים ו-Color.</li>
+              <li><strong>בינה מלאכותית מקומית:</strong> הרצת מודלים ויצירת תמונות על המחשב עצמו.</li>
+            </ul>
+          </div>
+          <div class="gpu-tier gt-help">
+            <h3>➕ עוזר, אבל לא קריטי</h3>
+            <p>יעבוד גם בלי, כרטיס מסך פשוט ירגיש מהר יותר:</p>
+            <ul>
+              <li><strong>AutoCAD דו-ממדי</strong> ותוכניות שרטוט רגילות.</li>
+              <li><strong>Photoshop ו-Lightroom</strong> לצילום חובבני וחצי מקצועי.</li>
+              <li><strong>עריכת וידאו ביתית</strong> לסרטונים לרשתות, ב-Full HD.</li>
+              <li><strong>משחקים קלים</strong> כמו Minecraft או Fortnite בהגדרות נמוכות: גרפיקה משולבת חזקה (כמו Radeon 760M) מסתדרת.</li>
+            </ul>
+          </div>
+          <div class="gpu-tier gt-no">
+            <h3>✖ מיותר לגמרי</h3>
+            <p>כרטיס מסך לא ישפר כאן כלום, רק יכביד:</p>
+            <ul>
+              <li><strong>Office:</strong> ‏Word, ‏Excel, ‏Outlook ו-PowerPoint.</li>
+              <li><strong>גלישה, מייל, זום ו-Teams.</strong></li>
+              <li><strong>הנהלת חשבונות, CRM וניהול עסק.</strong></li>
+              <li><strong>לימודים, נטפליקס ויוטיוב</strong>, גם ב-4K.</li>
+              <li><strong>חיבור של שניים או שלושה מסכים</strong> לעבודה משרדית.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">1</span><h2>המחיר של כרטיס מסך: לא רק בשקלים</h2></div>
+          <ul>
+            <li><strong>משקל:</strong> מחשב עם כרטיס מסך שוקל לרוב 2.2–2.6 ק"ג, ועוד מטען גדול וכבד. מחשב עסקי בלי כרטיס שוקל כ-1.4 ק"ג, עם מטען USB-C קטן.</li>
+            <li><strong>סוללה:</strong> כרטיס מסך צורך הרבה חשמל. גם כשהמחשב מכבה אותו בעבודה קלה, חיי הסוללה בדרך כלל קצרים יותר, ובעבודה גרפית על סוללה היא נגמרת מהר והביצועים יורדים.</li>
+            <li><strong>חום ורעש:</strong> כרטיס מסך מייצר הרבה חום, והמאווררים עובדים חזק כשהוא בעומס.</li>
+            <li><strong>גודל:</strong> מחשבים עם כרטיס מסך עבים יותר, ולרוב בגודל ⁦15–16⁩ אינץ'.</li>
+            <li><strong>תקלות של מעבר בין כרטיסים:</strong> מחשב עם שני מעבדים גרפיים עובר ביניהם אוטומטית, ולפעמים זה גורם לבעיות בתוכנות גרפיות. כתבנו על זה <a href="guide-dual-gpu.html">מדריך נפרד</a>.</li>
+            <li><strong>מחיר:</strong> מחשב עם כרטיס RTX עולה בדרך כלל אלפי שקלים יותר ממחשב עם אותו מעבד וזיכרון בלי כרטיס.</li>
+          </ul>
+        </div>
+
+        <div class="cmp-table-wrap">
+          <table class="cmp-table">
+            <thead>
+              <tr><th></th><th>מחשב עסקי בלי כרטיס מסך<small>לדוגמה: ThinkPad E14 Gen 7</small></th><th>מחשב עם כרטיס מסך<small>לדוגמה: Lenovo LOQ 15 עם RTX 5060</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th>משקל</th><td><b>1.41 ק"ג</b></td><td>2.4 ק"ג</td></tr>
+              <tr><th>מטען</th><td><b>65W ‏USB-C קטן</b></td><td>170W, מטען גדול</td></tr>
+              <tr><th>מסך</th><td>14 אינץ'</td><td>15.6 אינץ'</td></tr>
+              <tr><th>מתאים ל</th><td>עבודה משרדית, ניידות, סוללה</td><td>גיימינג, תלת-ממד, עריכה</td></tr>
+              <tr><th>המחיר אצלנו</th><td><b>₪2,990</b></td><td>₪6,390</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box step">
+          <div class="step-head"><span class="step-num">2</span><h2>אם בכל זאת צריך: על מה להסתכל</h2></div>
+          <ul>
+            <li><strong>דגם הכרטיס וכמות הזיכרון שלו:</strong> ‏RTX 5060 עם 8GB מספיק לרוב המשחקים ולתוכנות תלת-ממד בהיקף רגיל. לעבודה כבדה מאוד כדאי לשקול RTX 5070 ומעלה.</li>
+            <li><strong>הספק הכרטיס (TGP):</strong> אותו כרטיס יכול לעבוד בהספק שונה במחשבים שונים. מחשב עם קירור טוב והספק גבוה יהיה מהיר יותר.</li>
+            <li><strong>קירור:</strong> מחשבי גיימינג ותחנות עבודה בנויים לפזר חום. מחשב דק עם כרטיס חזק יתחמם ויאט.</li>
+            <li><strong>לעבוד מחובר לחשמל:</strong> בעבודה גרפית מחברים תמיד את המטען, אחרת המחשב מגביל את הביצועים.</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <span class="callout-ic">💡</span>
+          <p><strong>ההמלצה שלנו:</strong> אם אתם לא משחקים ולא עובדים בתלת-ממד או בעריכת וידאו מקצועית, אל תשלמו על כרטיס מסך. את ההפרש עדיף להשקיע במחשב עסקי איכותי, ב-16GB זיכרון ובמסך טוב. ואם אתם כן צריכים, תקבלו מחשב שבנוי לזה, עם קירור מתאים.</p>
+        </div>
+
+        <div class="box">
+          <h2>המחשבים שלנו</h2>
+          <ul>
+            <li><strong>צריכים כרטיס מסך?</strong> ראו את קטגוריות <a href="index.html#gaming">גיימינג</a> ו<a href="index.html#arch">אדריכלות ומולטימדיה</a>, למשל <a href="laptop-lenovo-loq15-i7-14700hx-rtx5060.html">Lenovo LOQ 15 עם RTX 5060</a> או <a href="laptop-lenovo-legion-pro5-ryzen9-rtx5070.html">Legion Pro 5 עם RTX 5070</a>.</li>
+            <li><strong>לא צריכים?</strong> מחשבים עסקיים קלים עם גרפיקה משולבת טובה, כמו <a href="laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html">ThinkPad E14 Gen 7</a> עם Radeon 760M או <a href="laptop-dell-pro14-pc14255-ryzen5.html">Dell Pro 14</a>.</li>
+          </ul>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <h3>לא בטוחים מה אתם צריכים?</h3>
+            <p>ספרו לנו באילו תוכנות אתם עובדים, ונגיד לכם אם כרטיס מסך שווה את ההשקעה.</p>
+          </div>
+          <div class="article-cta-btns">
+            <a class="btn btn-wa" data-wa="שלום, קראתי את המדריך על כרטיס מסך במחשב נייד ואשמח להמלצה" data-subject="המלצה: האם צריך כרטיס מסך" href="#">ייעוץ בוואטסאפ</a>
+            <a class="btn btn-ghost-dark" href="index.html#gaming">למחשבי הגיימינג</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-cols">
+        <div class="foot-brand">
+          <img src="bsd-title.png" alt="BSD מחשבים" width="205" height="30" loading="lazy">
+          <p>מכירה, שירות ותמיכה טכנית למחשבים, לבית ולעסק.</p>
+          <p>כל מחשב מגיע מותקן ומוכן לעבודה, עם משלוח חינם.</p>
+        </div>
+        <div>
+          <h3>קטגוריות</h3>
+          <ul>
+            <li><a href="index.html#recommended">מומלצים</a></li>
+            <li><a href="index.html#deals">מציאון</a></li>
+            <li><a href="index.html#basic">בסיסי</a></li>
+            <li><a href="index.html#home">ביתי ומשרדי</a></li>
+            <li><a href="index.html#business">עסקי</a></li>
+            <li><a href="index.html#gaming">גיימינג</a></li>
+            <li><a href="index.html#desktop">מחשבים נייחים</a></li>
+            <li><a href="index.html#monitors">מסכים</a></li>
+            <li><a href="index.html#printers">מדפסות</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>מידע ושירות</h3>
+          <ul>
+            <li><a href="guides.html">מדריכים</a></li>
+            <li><a href="guide-business-vs-home.html">מחשב עסקי או ביתי?</a></li>
+            <li><a href="guide-printers.html">איך בוחרים מדפסת</a></li>
+            <li><a href="remote.html">תמיכה מרחוק</a></li>
+            <li><a href="index.html#services">שירותים</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>צור קשר</h3>
+          <ul>
+            <li><a href="tel:+972544578946" dir="ltr">054-457-8946</a></li>
+            <li><a href="mailto:hanan@bsd-comp.com">hanan@bsd-comp.com</a></li>
+            <li><a data-wa="שלום, הגעתי מהאתר ואשמח לפרטים" data-nomail href="#">וואטסאפ</a></li>
+            <li>אזור שירות: המרכז וירושלים</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© <span id="year"></span> BSD מחשבים · מכירה, שירות ותמיכה · <span class="nowrap" dir="ltr">054-457-8946</span></p>
+        <p class="small">התמונות להמחשה בלבד. המפרט עשוי להשתנות בהתאם ליצרן.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="contact.js?v=9"></script>
+</body>
+</html>
