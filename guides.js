@@ -11,6 +11,8 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "מחשב עסקי או מחשב ביתי? המדריך המלא",
+    desc: "למה ThinkPad ו-Dell Pro שווים יותר ממחשב ביתי זול עם אותו מעבד: עמידות, מקלדת, שדרוג, אחריות, אבטחה ומחיר לשנה.", href: "guide-business-vs-home.html" },
   { section: "guides", type: "page", title: "פתרון בעיות גרפיקה במחשבים ניידים עם שני כרטיסי מסך",
     desc: "קפיאות, ריצוד וקריסות ב-AutoCAD, Revit ותוכנות גרפיות. 5 שלבים לייצוב (Lenovo LOQ ודומיו).", href: "guide-dual-gpu.html" },
   { section: "guides", type: "pdf", title: "פתרון בעיות גרפיקה עם שני כרטיסי מסך (PDF)",

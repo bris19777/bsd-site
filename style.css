@@ -545,6 +545,7 @@ a.pe-cash:hover { border-color: #11703A; }
 
 /* ---------- low stock ---------- */
 .stock-low { display: inline-flex; align-items: center; gap: 8px; justify-self: start; background: #FFF4E0; color: #8A5300; border: 1px solid #F0C27A; border-radius: 999px; padding: 5px 14px; font-weight: 700; font-size: 14px; }
+.stock-low-card { margin: 0 0 12px; font-size: 13px; padding: 3px 12px; }
 .stock-dot { width: 9px; height: 9px; border-radius: 50%; background: #E5383B; box-shadow: 0 0 0 3px rgba(229,56,59,.18); }
 
 /* ---------- touch technology callout (on-cell vs glass overlay) ---------- */
@@ -601,3 +602,8 @@ a.pe-cash:hover { border-color: #11703A; }
 .kb-ic { flex: none; width: 54px; height: 54px; border-radius: 14px; background: rgba(255,255,255,.18); display: grid; place-items: center; font-size: 28px; }
 .key-banner strong { display: block; font-size: 21px; font-weight: 800; line-height: 1.25; }
 .key-banner small { display: block; color: #D9F5E6; font-size: 14px; margin-top: 4px; line-height: 1.45; }
+
+/* ---------- sale price (market price struck) ---------- */
+.price-was { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin-top: 4px; font-size: 15px; color: var(--muted); }
+.price-was s { font-size: 19px; font-weight: 700; }
+.price-was b { background: #E7F7EE; color: #11703A; border-radius: 999px; padding: 2px 12px; font-size: 14px; }

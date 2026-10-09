@@ -62,6 +62,20 @@ function card(p) {
     body.append(z);
   }
 
+  // regular products on sale: strike the market price and show the saving
+  if (p.was) {
+    const saving = parseInt(p.was.replace(/,/g, ""), 10) - parseInt(p.price.replace(/,/g, ""), 10);
+    const w = el("div", "zap-line");
+    w.append(el("span", null, "מחיר שוק: ₪" + p.was));
+    if (saving > 0) w.append(el("b", null, "חוסכים ₪" + saving.toLocaleString("en-US")));
+    body.append(w);
+  }
+  if (p.stockLow) {
+    const st = el("div", "stock-low stock-low-card");
+    st.append(el("span", "stock-dot"), document.createTextNode("יחידות בודדות במלאי"));
+    body.append(st);
+  }
+
   const foot = el("div", "card-foot");
   const priceRow = el("div", "price-row");
   priceRow.append(el("div", "price" + (p.deal ? " price-deal" : ""), p.price ? "₪" + p.price : "מחיר לפי פנייה"));
