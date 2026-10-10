@@ -1,5 +1,5 @@
 // מציאון: נוצר אוטומטית על ידי skill update-deals. לא לערוך ידנית.
-// עודכן: 2026-10-09
+// עודכן: 2026-10-10
 const DEALS = [
   {
     "sku": "MZ-E14-GEN5",
@@ -206,6 +206,29 @@ const DEALS = [
     "zap": {
       "price": "9,149",
       "label": "ThinkPad X1 Carbon חדש (Gen 13, ‏512GB)"
+    }
+  },
+  {
+    "sku": "MZ-THINKBOOK-PLUS-G3",
+    "cat": "deals",
+    "brand": "Lenovo",
+    "name": "Lenovo ThinkBook Plus G3 · מסך כפול · i7-12700H",
+    "img": "images/deals/thinkbook-plus-g3/01.jpg",
+    "page": "deal-thinkbook-plus-g3.html",
+    "price": "3,900",
+    "deal": "מצב מעולה",
+    "tagline": "מצב מעולה",
+    "specs": [
+      "i7-12700H",
+      "32GB LPDDR5",
+      "1TB SSD",
+      "מסך ראשי 17.3 אינץ' 3K ‏(3072×1440) מגע",
+      "מצב מעולה",
+      "אחריות BSD לחצי שנה"
+    ],
+    "zap": {
+      "price": "8,250",
+      "label": "המחשב הנייד החדש הזול ביותר עם מסך שני מובנה (ASUS Zenbook Duo)"
     }
   }
 ];
