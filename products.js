@@ -75,7 +75,7 @@ const PRODUCTS = [
     tagline: "קל ונייד: 1.38 ק\"ג, מושלם לתלמידים",
     specs: ["מסך 14 אינץ' Full HD", "Intel Core i3-N305: ‏8 ליבות", "8GB זיכרון", "512GB SSD", "NumberPad · עמידות צבאית", "אחריות שנה"] },
   { sku: "TP1401KA-EC170WS", cat: "basic", brand: "ASUS", name: "ASUS Vivobook Go 14 Flip · מתהפך",
-    img: "images/vivobook-go14-flip/01.jpg", page: "laptop-asus-vivobook-go14-flip-tp1401ka.html", deal: "מתהפך 360°",
+    img: "images/vivobook-go14-flip/01.jpg", page: "laptop-asus-vivobook-go14-flip-tp1401ka.html", price: "1,990", deal: "מתהפך 360°",
     tagline: "נייד וטאבלט במכשיר אחד, עם מסך מגע",
     specs: ["מסך מגע 14 אינץ' Full HD", "מתהפך 360°: נייד, טאבלט, אוהל", "Intel Celeron N4500", "4GB · ‏128GB eMMC", "Windows 11 מקורית", "1.45 ק\"ג"] },
   { sku: "6294", cat: "basic", brand: "ASUS", name: "ASUS Vivobook 15", img: "images/6294.webp", windows: true,
