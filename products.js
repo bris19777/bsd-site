@@ -135,6 +135,10 @@ const PRODUCTS = [
     tagline: "נייד עסקי יוקרתי מאלומיניום, סוללה ליום עבודה מלא",
     specs: ["מסך מגע 14 אינץ' QHD+ ‏400 ניט", "Snapdragon X Plus: ‏10 ליבות", "16GB LPDDR5x", "512GB SSD", "1.44 ק\"ג · Wi-Fi 7", "Windows 11 Pro · אחריות שנה"] },
 
+  { sku: "UM3406GA-QD010", cat: "premium", also: ["recommended"], brand: "ASUS", name: "ASUS Zenbook 14 OLED · Ryzen AI 7 · 1TB",
+    img: "images/zenbook14-um3406ga/01.jpg", page: "laptop-asus-zenbook14-oled-ryzen-ai7-445.html", price: "3,890", deal: "מבצע במזומן",
+    tagline: "OLED, ‏1.2 ק\"ג ואלומיניום מלא, כולל Windows 11 Pro",
+    specs: ["AMD Ryzen AI 7 445 · ‏NPU ‏50 TOPS", "16GB LPDDR5X · ‏1TB SSD", "מסך OLED ‏14 אינץ' ‏100% DCI-P3", "1.2 ק\"ג · אלומיניום · תקן צבאי", "Wi-Fi 6E · ‏USB4 · ‏HDMI 2.1", "Windows 11 Pro מקורי"] },
   { sku: "6098", cat: "premium", brand: "ASUS", name: "ASUS Zenbook 14 OLED", img: "images/6098.png",
     tagline: "דק, קל ומסך OLED מרהיב",
     specs: ["מסך 14 אינץ' 3K OLED", "Intel Core Ultra 5 225H", "16GB זיכרון", "1TB SSD", "אחריות שנה באתר"] },
