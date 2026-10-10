@@ -153,7 +153,9 @@ function render() {
   clear.setAttribute("aria-label", "ניקוי החיפוש");
   clear.hidden = true;
   search.append(el("span", "search-ic", "🔍"), input, clear);
-  filters.before(search);
+  const intro = el("p", "smart-intro");
+  intro.append(el("strong", null, "✨ חיפוש חכם: "), document.createTextNode("כתבו במילים שלכם מה אתם צריכים, למשל "), el("b", null, "\"מחשב קל ללימודים\""), document.createTextNode(", ונציג את המחשבים המתאימים."));
+  filters.before(intro, search);
   const tips = el("div", "smart-tips");
   tips.append(el("span", "smart-tips-label", "💡 נסו:"));
   ["מחשב קל", "עם מודם סלולרי", "ללימודי תכנות", "מסך מגע", "לעריכה ואדריכלות", "מחשב עסקי עד 3000 ש\"ח"].forEach(t => {
