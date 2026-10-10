@@ -48,6 +48,7 @@ FOOTER = '''<footer class="site-footer">
             <li><a href="index.html#home">ביתי ומשרדי</a></li>
             <li><a href="index.html#business">עסקי</a></li>
             <li><a href="index.html#gaming">גיימינג</a></li>
+            <li><a href="index.html#mac">מחשבי מקינטוש</a></li>
             <li><a href="index.html#desktop">מחשבים נייחים</a></li>
             <li><a href="index.html#monitors">מסכים</a></li>
             <li><a href="index.html#printers">מדפסות</a></li>

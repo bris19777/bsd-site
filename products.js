@@ -13,6 +13,7 @@ const CATEGORIES = [
   { id: "business", name: "עסקי",         desc: "אמינות ואחריות לעסקים" },
   { id: "premium",  name: "פרימיום",      desc: "דקים, קלים ומסכי OLED" },
   { id: "gaming",   name: "גיימינג",      desc: "כרטיסי מסך RTX למשחקים ועריכה" },
+  { id: "mac",      name: "מחשבי מקינטוש", desc: "MacBook של Apple" },
   { id: "desktop",  name: "מחשבים נייחים", desc: "מחשבים שולחניים לבית ולמשרד" },
   { id: "arch",     name: "אדריכלות ומולטימדיה", desc: "תחנות עבודה ניידות לתלת-ממד, תכנון ועריכת וידאו" },
   { id: "printers", name: "מדפסות", desc: "מדפסות לייזר, דיו ומשולבות לבית ולמשרד" },
@@ -165,6 +166,12 @@ const PRODUCTS = [
     img: "images/legion-pro5/01.jpg", page: "laptop-lenovo-legion-pro5-ryzen9-rtx5070.html", price: "7,890", deal: "RTX 5070",
     tagline: "מסך ⁦2560×1600⁩ ‏240Hz ‏500 ניט, ביצועים בלי פשרות",
     specs: ["מסך 16 אינץ' ⁦2560×1600⁩ ‏IPS ‏240Hz", "AMD Ryzen 9 8940HX: ‏16 ליבות", "RTX 5070 8GB GDDR7", "32GB DDR5", "1TB SSD + חריץ פנוי", "סוללה 80Wh · אחריות 3 שנים"] },
+
+  { sku: "MBA15-M3-24-512", cat: "mac", brand: "Apple", name: "MacBook Air 15 · M3 · 24GB · 512GB",
+    img: "images/macbook-air-15-m3/01.jpg", page: "laptop-macbook-air-15-m3-24gb-512gb.html", price: "4,490", deal: "כמעט חדש", stockLow: true,
+    zap: { price: "7,648", label: "MacBook Air 15 חדש עם 24GB ו-512GB (דור M4)" },
+    tagline: "מצב מעולה, כמעט חדש: דק, שקט ועם סוללה ליום שלם",
+    specs: ["Apple M3: ‏8 ליבות מעבד, 10 ליבות גרפיקה", "24GB זיכרון · ‏512GB SSD", "מסך 15.3 אינץ' Liquid Retina", "עד 18 שעות סוללה · ללא מאוורר", "1.51 ק\"ג · ‏Touch ID", "אחריות BSD לחצי שנה"] },
 
   { sku: "M70QG5-14500T", cat: "desktop", also: ["recommended"], brand: "Lenovo ThinkCentre", name: "Lenovo ThinkCentre M70q Tiny Gen 5",
     img: "images/m70q-gen5/m70q-01.jpg", page: "desktop-lenovo-m70q-gen5-i5-14500t.html", price: "2,790", deal: "מעבד שולחני",
