@@ -58,6 +58,11 @@ const PRODUCTS = [
     tagline: "ThinkPad עסקי עם מסך מגע ו-16GB זיכרון, אמין לשנים",
     specs: ["מסך מגע 14 אינץ'", "Intel Core i7 דור 10", "16GB זיכרון", "256GB SSD", "סוללה במצב מעולה", "אחריות מלאה לחצי שנה"] },
 
+  { sku: "EB840-R-I7-8", cat: "refurbished", brand: "HP EliteBook", name: "HP EliteBook 840 מחודש · i7 דור 8 · מסך מגע",
+    img: "images/elitebook-840/01.jpg", page: "laptop-hp-elitebook-840-refurbished-i7-touch.html", price: "1,390", deal: "מסך מגע",
+    tagline: "מחשב עסקי באלומיניום, עם מסך מגע מט שלא נשבר",
+    specs: ["מסך מגע 14 אינץ' מט · אפשר לכבות", "Intel Core i7 דור 8", "8GB זיכרון", "256GB SSD", "גוף אלומיניום · רשת RJ-45", "אחריות מלאה לחצי שנה"] },
+
   { sku: "82XB004UIV", cat: "basic", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i3-N305",
     img: "images/82xb004uiv/1.avif", page: "laptop-ideapad-slim3-15ian8-i3.html", price: "1,950",
     tagline: "מחשב חדש לגלישה, Office ולימודים, כולל התקנות",
