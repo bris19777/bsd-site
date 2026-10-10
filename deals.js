@@ -189,7 +189,7 @@ const DEALS = [
     "sku": "MZ-X1-CARBON-GEN9-WIFI",
     "cat": "deals",
     "brand": "Lenovo",
-    "name": "Lenovo ThinkPad X1 Carbon Gen 9 · i7-1165G7",
+    "name": "Lenovo ThinkPad X1 Carbon Gen 9 · מסך מגע · i7-1165G7",
     "img": "images/deals/x1-carbon-gen9/01.jpg",
     "page": "deal-x1-carbon-gen9-wifi.html",
     "price": "2,790",
