@@ -759,3 +759,15 @@ a.pe-cash:hover { border-color: #11703A; }
 }
 .article > * { min-width: 0; }
 .box .cmp-table-wrap { margin: 10px 0 12px; box-shadow: none; }
+
+/* ---------- smart search ---------- */
+.smart-tips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -6px 0 14px; font-size: 13.5px; }
+.smart-tips-label { color: var(--muted); }
+.smart-tip { font: inherit; font-size: 13px; color: var(--accent); background: var(--accent-soft); border: 1px solid #C9DDF9; border-radius: 999px; padding: 4px 11px; cursor: pointer; }
+.smart-tip:hover { background: #fff; border-color: var(--accent); }
+.smart-understood { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 16px; padding: 9px 12px; background: #F2F8FF; border: 1px solid #C9DDF9; border-radius: 12px; font-size: 14px; }
+.smart-understood[hidden] { display: none; }
+.su-label { color: var(--navy); font-weight: 700; }
+.su-chip { background: var(--accent); color: #fff; border-radius: 999px; padding: 2px 10px; font-size: 13px; font-weight: 500; }
+.su-chip.su-word { background: #fff; color: var(--navy); border: 1px solid #C9DDF9; }
+@media (max-width: 760px) { .smart-tips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; } .smart-tips::-webkit-scrollbar { display: none; } .smart-tip { flex: none; white-space: nowrap; } .smart-tips-label { flex: none; } }

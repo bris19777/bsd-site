@@ -44,6 +44,7 @@ def lastmod(path):
 # site-wide layout first (footer, breadcrumbs, similar products, cache versions)
 import importlib.util as _ilu
 _spec = _ilu.spec_from_file_location("layout", ROOT / "tools" / "layout.py"); _lay = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_lay); _lay.run()
+_spec2 = _ilu.spec_from_file_location("searchindex", ROOT / "tools" / "searchindex.py"); _si = _ilu.module_from_spec(_spec2); _spec2.loader.exec_module(_si); _si.run(_lay.load_products()[0].keys())
 
 # redirect stubs (old URLs) stay out of the SEO tags and the sitemap
 pages = sorted(p for p in ROOT.glob("*.html") if 'http-equiv="refresh"' not in p.read_text(encoding="utf-8"))

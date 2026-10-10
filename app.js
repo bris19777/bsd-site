@@ -18,6 +18,14 @@ function card(p) {
   c.dataset.price = p.price ? parseInt(p.price.replace(/,/g, ""), 10) : "";
   const catNames = [p.cat, ...(p.also || [])].map(id => CATEGORIES.find(x => x.id === id).name);
   c.dataset.search = norm([p.sku, p.brand, p.name, p.tagline, p.deal || "", ...p.specs, ...catNames].join(" "));
+  // smart search: facts from the product page (search-index.js) + the card itself
+  const idx = (typeof SEARCH_INDEX !== "undefined" && p.page && SEARCH_INDEX[p.page]) || {};
+  const all = [p.name, p.tagline, ...p.specs].join(" ");
+  const pick = (v, re) => v != null ? v : ((all.match(re) || [])[1] ? parseFloat(all.match(re)[1]) : null);
+  if (idx.t) c.dataset.search += " " + norm(idx.t);
+  c._meta = { p, t: (all + " " + (idx.t || "")).toLowerCase(), cats: [p.cat, ...(p.also || [])],
+    kg: pick(idx.kg, /(\d(?:\.\d+)?)\s*ק"?ג/), ram: pick(idx.ram, /(\d{1,2})GB/), inch: pick(idx.inch, /(\d{2}(?:\.\d)?)\s*אינץ/),
+    wh: idx.wh != null ? idx.wh : null, price: p.price ? parseInt(p.price.replace(/,/g, ""), 10) : null };
 
   const media = el(p.page ? "a" : "div", "card-media");
   if (p.page) media.href = p.page;
@@ -137,7 +145,7 @@ function render() {
   const search = el("div", "search");
   const input = el("input", "search-input");
   input.type = "search";
-  input.placeholder = "חיפוש: דגם, מעבד, מק\"ט או מפרט";
+  input.placeholder = "חיפוש חכם: למשל \"מחשב קל עם מודם סלולרי\"";
   input.setAttribute("aria-label", "חיפוש מחשב");
   input.autocomplete = "off";
   const clear = el("button", "search-clear", "✕");
@@ -146,6 +154,17 @@ function render() {
   clear.hidden = true;
   search.append(el("span", "search-ic", "🔍"), input, clear);
   filters.before(search);
+  const tips = el("div", "smart-tips");
+  tips.append(el("span", "smart-tips-label", "💡 נסו:"));
+  ["מחשב קל", "עם מודם סלולרי", "ללימודי תכנות", "מסך מגע", "לעריכה ואדריכלות", "מחשב עסקי עד 3000 ש\"ח"].forEach(t => {
+    const b = el("button", "smart-tip", t);
+    b.type = "button";
+    b.addEventListener("click", () => { input.value = t; apply(); input.focus(); });
+    tips.append(b);
+  });
+  const understood = el("div", "smart-understood");
+  understood.hidden = true;
+  search.after(tips, understood);
   const empty = el("p", "no-results");
   empty.hidden = true;
   grid.after(empty);
@@ -178,7 +197,7 @@ function render() {
   filters.after(tools);
 
   const order = [...grid.children];   // recommended order (priced first)
-  sortSel.addEventListener("change", () => {
+  function applyOrder() {
     const priced = c => c.dataset.price !== "";
     let list = order.slice();
     if (sortSel.value !== "rec") {
@@ -186,7 +205,8 @@ function render() {
       list.sort((a, b) => (priced(b) - priced(a)) || (priced(a) ? dir * (a.dataset.price - b.dataset.price) : 0));
     }
     grid.append(...list);
-  });
+  }
+  sortSel.addEventListener("change", applyOrder);
 
   // models without a price are folded behind a button while the view has priced ones
   const more = el("button", "show-more");
@@ -198,13 +218,43 @@ function render() {
   function apply() {
     const words = norm(input.value).split(" ").filter(Boolean);
     const cards = [...grid.querySelectorAll(".card")];
-    const match = cards.filter(c => {
+    const base = c => {
       const inCat = current.id === "all" || c.dataset.cat.split(" ").includes(current.id);
-      const hit = words.every(w => c.dataset.search.includes(w));
       const price = c.dataset.price === "" ? null : +c.dataset.price;
       const inBudget = budget.id === "any" || (price !== null && price > budget.min && price <= budget.max);
-      return inCat && hit && inBudget;
-    });
+      return inCat && inBudget;
+    };
+    const smart = smartParse(input.value);
+    let match, partial = false;
+    if (smart.intents.length || smart.maxPrice) {
+      // smart search: score each product by how many of the understood needs it meets
+      const need = smart.intents.filter(i => !i.soft);
+      const scored = cards.filter(base).map(c => {
+        const m = c._meta;
+        if (smart.maxPrice && (m.price == null || m.price > smart.maxPrice)) return null;
+        if (smart.intents.some(i => i.soft) && !smart.intents.find(i => i.soft).test(m)) return null;
+        const score = need.filter(i => i.test(m)).length + smart.rest.filter(w => c.dataset.search.includes(w)).length;
+        return { c, m, score };
+      }).filter(Boolean);
+      const required = need.length + smart.rest.length;
+      const best = Math.max(0, ...scored.map(s => s.score));
+      const keep = scored.filter(s => required === 0 || (best > 0 && s.score === best));
+      partial = required > 0 && best < required && keep.length > 0;
+      const ranker = need.find(i => i.rank);
+      keep.sort((a, b) => (ranker ? ranker.rank(b.m) - ranker.rank(a.m) : 0) || ((a.m.price ?? 1e9) - (b.m.price ?? 1e9)));
+      match = keep.map(s => s.c);
+      grid.append(...match, ...cards.filter(c => !match.includes(c)));
+      understood.replaceChildren(el("span", "su-label", partial ? "לא מצאנו מוצר שעונה על הכל. הכי קרובים ל:" : "חיפוש חכם, הבנתי:"));
+      smart.intents.forEach(i => understood.append(el("span", "su-chip", i.label)));
+      if (smart.maxPrice) understood.append(el("span", "su-chip", "עד ₪" + smart.maxPrice.toLocaleString("en-US")));
+      smart.rest.forEach(w => understood.append(el("span", "su-chip su-word", w)));
+      understood.hidden = false;
+    } else {
+      match = cards.filter(c => base(c) && words.every(w => c.dataset.search.includes(w)));
+      understood.hidden = true;
+      if (grid.dataset.smart) applyOrder();
+    }
+    grid.dataset.smart = understood.hidden ? "" : "1";
     const priced = match.filter(c => c.dataset.price !== "");
     // fold the "price on request" models unless searching, asked for, or nothing else to show
     const fold = !words.length && !showUnpriced && priced.length > 0;
