@@ -230,5 +230,31 @@ const DEALS = [
       "price": "8,250",
       "label": "המחשב הנייד החדש הזול ביותר עם מסך שני מובנה (ASUS Zenbook Duo)"
     }
+  },
+  {
+    "sku": "MZ-X1-NANO-GEN2",
+    "cat": "deals",
+    "brand": "Lenovo",
+    "name": "Lenovo ThinkPad X1 Nano Gen 2 · 4G LTE · i7-1260P",
+    "img": "images/deals/x1-nano-gen2/01.jpg",
+    "page": "deal-x1-nano-gen2.html",
+    "price": "4,490",
+    "deal": "חדש באריזה",
+    "tagline": "חדש לגמרי, באריזה סגורה (ניילון)",
+    "specs": [
+      "i7-1260P",
+      "16GB LPDDR5",
+      "512GB SSD",
+      "13 אינץ' 2K ‏(2160×1350)",
+      "מצב 10/10",
+      "כולל אחריות יצרן"
+    ],
+    "zap": {
+      "price": "8,688",
+      "label": "אותו דגם בדיוק, חדש (21E80020IV)"
+    },
+    "also": [
+      "business"
+    ]
   }
 ];
