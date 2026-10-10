@@ -264,7 +264,7 @@ const DEALS = [
     "name": "ASUS Zenbook 14 OLED · Ultra 7 255H",
     "img": "images/deals/zenbook14-ux3405ca/01.jpg",
     "page": "deal-zenbook14-ux3405ca.html",
-    "price": "3,990",
+    "price": "2,990",
     "deal": "חדש",
     "tagline": "חדש, ללא אריזה מקורית",
     "specs": [
