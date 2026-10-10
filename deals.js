@@ -256,5 +256,31 @@ const DEALS = [
     "also": [
       "business"
     ]
+  },
+  {
+    "sku": "MZ-ZENBOOK14-UX3405CA",
+    "cat": "deals",
+    "brand": "ASUS",
+    "name": "ASUS Zenbook 14 OLED · Ultra 7 255H",
+    "img": "images/deals/zenbook14-ux3405ca/01.jpg",
+    "page": "deal-zenbook14-ux3405ca.html",
+    "price": "3,990",
+    "deal": "חדש",
+    "tagline": "חדש, ללא אריזה מקורית",
+    "specs": [
+      "Ultra 7 255H",
+      "16GB LPDDR5X",
+      "1TB SSD",
+      "14 אינץ' 3K OLED ‏(2880×1800)",
+      "חדש, ללא אריזה מקורית",
+      "אחריות BSD לחצי שנה"
+    ],
+    "zap": {
+      "price": "4,664",
+      "label": "ASUS Zenbook 14 OLED חדש באותה תצורה (Ultra 7, ‏16GB, ‏1TB)"
+    },
+    "also": [
+      "premium"
+    ]
   }
 ];
