@@ -774,3 +774,10 @@ a.pe-cash:hover { border-color: #11703A; }
 .smart-intro { margin: 0 0 8px; font-size: 14.5px; color: var(--ink); }
 .smart-intro strong { color: var(--accent); }
 .smart-intro b { color: var(--navy); }
+
+/* search strip right under the header */
+.top-search { background: var(--bg-alt); border-bottom: 1px solid var(--line); padding: 14px 0 6px; }
+.top-search .search { max-width: 720px; }
+.top-search .smart-intro { margin-bottom: 6px; }
+.searching .hero, .searching #guide-teaser, .searching #laptops > .wrap > .section-head { display: none; }
+.searching #laptops { padding-top: 20px; }

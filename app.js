@@ -155,7 +155,9 @@ function render() {
   search.append(el("span", "search-ic", "🔍"), input, clear);
   const intro = el("p", "smart-intro");
   intro.append(el("strong", null, "✨ חיפוש חכם: "), document.createTextNode("כתבו במילים שלכם מה אתם צריכים, למשל "), el("b", null, "\"מחשב קל ללימודים\""), document.createTextNode(", ונציג את המחשבים המתאימים."));
-  filters.before(intro, search);
+  // the search sits in its own strip right under the header (falls back to above the filters)
+  const topSearch = document.getElementById("top-search");
+  if (topSearch) topSearch.append(intro, search); else filters.before(intro, search);
   const tips = el("div", "smart-tips");
   tips.append(el("span", "smart-tips-label", "💡 נסו:"));
   ["מחשב קל", "עם מודם סלולרי", "ללימודי תכנות", "מסך מגע", "לעריכה ואדריכלות", "מחשב עסקי עד 3000 ש\"ח"].forEach(t => {
@@ -219,6 +221,8 @@ function render() {
 
   function apply() {
     const words = norm(input.value).split(" ").filter(Boolean);
+    // while searching, hide the banner so the results come right under the search box
+    document.body.classList.toggle("searching", words.length > 0);
     const cards = [...grid.querySelectorAll(".card")];
     const base = c => {
       const inCat = current.id === "all" || c.dataset.cat.split(" ").includes(current.id);
@@ -279,6 +283,7 @@ function render() {
     }
   }
   input.addEventListener("input", apply);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); input.blur(); } });
   clear.addEventListener("click", () => { input.value = ""; apply(); input.focus(); });
 
   const share = el("div", "cat-share");
