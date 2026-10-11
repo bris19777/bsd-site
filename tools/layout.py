@@ -2,6 +2,7 @@
 """Site-wide layout pass (run by seo.py, idempotent):
 - full footer on every page
 - breadcrumbs + "similar products" (related.js) on every product page
+- smart-search box under the header on every page except index.html
 - keeps ?v= cache versions of shared files in sync with index.html
 """
 import json, re
@@ -81,6 +82,18 @@ FOOTER = '''<footer class="site-footer">
     </div>
   </footer>'''
 
+TOPSEARCH = """  <!-- topsearch -->
+  <form class="top-search" action="index.html" method="get" role="search">
+    <div class="wrap">
+      <div class="search">
+        <span class="search-ic">🔍</span>
+        <input class="search-input" type="search" name="q" placeholder='חיפוש חכם: למשל "מחשב קל ללימודים"' aria-label="חיפוש מחשב" autocomplete="off" required>
+        <button class="search-go" type="submit">חיפוש</button>
+      </div>
+    </div>
+  </form>
+  <!-- topsearch -->"""
+
 SHARED = ["style.css", "contact.js", "products.js", "deals.js", "app.js", "guides.js"]
 
 def run():
@@ -94,6 +107,12 @@ def run():
             continue
         orig = src
         src = re.sub(r'<footer class="site-footer">.*?</footer>', lambda _: FOOTER, src, count=1, flags=re.S)
+        # smart-search box at the top of every page except the home page (there it sits under the guide teaser)
+        if p.name != "index.html":
+            if "<!-- topsearch -->" in src:
+                src = re.sub(r"  <!-- topsearch -->.*?<!-- topsearch -->", lambda _: TOPSEARCH, src, count=1, flags=re.S)
+            else:
+                src = src.replace("  </header>\n", "  </header>\n" + TOPSEARCH + "\n", 1)
 
         if p.name in pages:
             cat, name = pages[p.name]

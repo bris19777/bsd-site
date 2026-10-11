@@ -775,9 +775,11 @@ a.pe-cash:hover { border-color: #11703A; }
 .smart-intro strong { color: var(--accent); }
 .smart-intro b { color: var(--navy); }
 
-/* search strip right under the header */
-.top-search { background: var(--bg-alt); border-bottom: 1px solid var(--line); padding: 14px 0 6px; }
-.top-search .search { max-width: 720px; }
-.top-search .smart-intro { margin-bottom: 6px; }
-.searching .hero, .searching #guide-teaser, .searching #laptops > .wrap > .section-head { display: none; }
-.searching #laptops { padding-top: 20px; }
+/* smart search: on the home page under the guide teaser; on other pages a strip under the header */
+.top-search { background: var(--bg-alt); border-bottom: 1px solid var(--line); padding: 10px 0; margin: 0; }
+.top-search .search { max-width: 720px; margin: 0; }
+.top-search .search-input { padding-inline-end: 92px; }
+.search-go { position: absolute; inset-inline-end: 6px; top: 50%; transform: translateY(-50%); border: 0; background: var(--accent); color: #fff; font: inherit; font-size: 14.5px; font-weight: 700; padding: 7px 16px; border-radius: 9px; cursor: pointer; }
+.search-go:hover { background: var(--navy); }
+.searching #laptops > .wrap > .section-head { display: none; }
+.smart-intro { scroll-margin-top: 40px; }

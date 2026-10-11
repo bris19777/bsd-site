@@ -155,9 +155,11 @@ function render() {
   search.append(el("span", "search-ic", "🔍"), input, clear);
   const intro = el("p", "smart-intro");
   intro.append(el("strong", null, "✨ חיפוש חכם: "), document.createTextNode("כתבו במילים שלכם מה אתם צריכים, למשל "), el("b", null, "\"מחשב קל ללימודים\""), document.createTextNode(", ונציג את המחשבים המתאימים."));
-  // the search sits in its own strip right under the header (falls back to above the filters)
-  const topSearch = document.getElementById("top-search");
-  if (topSearch) topSearch.append(intro, search); else filters.before(intro, search);
+  // the search sits right under the random guide teaser, above the catalog title
+  document.getElementById("guide-teaser").after(intro, search);
+  // a search sent from the box at the top of the other pages (index.html?q=...)
+  const q0 = new URLSearchParams(location.search).get("q");
+  if (q0) input.value = q0;
   const tips = el("div", "smart-tips");
   tips.append(el("span", "smart-tips-label", "💡 נסו:"));
   ["מחשב קל", "עם מודם סלולרי", "ללימודי תכנות", "מסך מגע", "לעריכה ואדריכלות", "מחשב עסקי עד 3000 ש\"ח"].forEach(t => {
@@ -221,7 +223,7 @@ function render() {
 
   function apply() {
     const words = norm(input.value).split(" ").filter(Boolean);
-    // while searching, hide the banner so the results come right under the search box
+    // while searching, hide the catalog title so the results come right under the search box
     document.body.classList.toggle("searching", words.length > 0);
     const cards = [...grid.querySelectorAll(".card")];
     const base = c => {
@@ -357,6 +359,11 @@ function render() {
     window.addEventListener("load", () => document.getElementById("laptops").scrollIntoView());
   } else {
     apply();
+    if (q0) {
+      history.scrollRestoration = "manual";
+      intro.scrollIntoView();
+      window.addEventListener("load", () => intro.scrollIntoView());
+    }
   }
 }
 
