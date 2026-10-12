@@ -111,7 +111,8 @@ const PRODUCTS = [
     specs: ["מסך 16 אינץ' IPS", "Intel Core 9 270H", "24GB DDR5", "1TB SSD", "אחריות שנה"] },
 
   { sku: "PB4G1I-16-U5", cat: "business", also: ["recommended"], brand: "HP", name: "HP ProBook 4 G1i 16 · Core Ultra 5 · 4 שנות אחריות",
-    img: "images/probook4-g1i-16/01.jpg", page: "laptop-hp-probook4-g1i-16-core-ultra5.html", price: "3,890", deal: "4 שנות אחריות",
+    img: "images/probook4-g1i-16/01.jpg", page: "laptop-hp-probook4-g1i-16-core-ultra5.html",
+    deal: "4 שנות אחריות", soldOut: true, // אזל מהמלאי: להחזיר price: "3,890" ולמחוק את soldOut
     tagline: "מחשב עסקי עם מקלדת מוארת ו-4 שנות אחריות HP באתר הלקוח",
     specs: ["Intel Core Ultra 5 225U · מאיץ AI", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' WUXGA אנטי-בוהק", "מקלדת מוארת · קורא טביעת אצבע", "Windows 11 Pro מקורית", "4 שנות אחריות HP באתר הלקוח"] },
   { sku: "PC14255-R5-512", cat: "business", brand: "Dell", name: "Dell Pro 14 · Ryzen 5 · 16GB · 512GB",
