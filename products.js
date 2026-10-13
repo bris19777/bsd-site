@@ -350,4 +350,12 @@ const PRODUCTS = [
     img: "images/hp15-fd1097nj/01.jpg", page: "laptop-hp-15-fd1097nj-ultra5-24gb.html", price: "3,190", deal: "24GB זיכרון",
     tagline: "Core Ultra 5 סדרת H ו-24GB · ‏3 שנות אחריות באתר",
     specs: ["מסך 15.6 אינץ' Full HD", "Intel Core Ultra 5 125H", "24GB DDR5", "512GB SSD", "גרפיקת Intel Arc · לבן", "3 שנות אחריות באתר"] },
+  { sku: "M75Q2-R5-16-256", cat: "desktop", also: ['deals'], brand: "Lenovo", name: "Lenovo ThinkCentre M75q Gen 2 · Ryzen 5 · מחודש",
+    img: "images/thinkcentre-m75q-g2/01.jpg", page: "desktop-thinkcentre-m75q-gen2-ryzen5-refurbished.html", price: "1,500", deal: "מחודש",
+    tagline: "מיני עסקי מחודש · Ryzen 5 · ‏16GB",
+    specs: ["AMD Ryzen 5 (סדרה 4000)", "16GB DDR4", "256GB SSD", "מחשב מיני · ליטר אחד", "מחודש ונבדק", "אחריות BSD לחצי שנה"] },
+  { sku: "M75Q2-R7-16-256", cat: "desktop", also: ['deals'], brand: "Lenovo", name: "Lenovo ThinkCentre M75q Gen 2 · Ryzen 7 · מחודש",
+    img: "images/thinkcentre-m75q-g2/01.jpg", page: "desktop-thinkcentre-m75q-gen2-ryzen7-refurbished.html", price: "1,800", deal: "מחודש",
+    tagline: "מיני עסקי מחודש · Ryzen 7 עם 8 ליבות · ‏16GB",
+    specs: ["AMD Ryzen 7 (סדרה 4000)", "16GB DDR4", "256GB SSD", "מחשב מיני · ליטר אחד", "מחודש ונבדק", "אחריות BSD לחצי שנה"] },
 ];
