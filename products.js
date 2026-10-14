@@ -359,4 +359,8 @@ const PRODUCTS = [
     img: "images/thinkcentre-m75q-g2/01.jpg", page: "desktop-thinkcentre-m75q-gen2-ryzen7-refurbished.html", price: "1,800", deal: "מחודש",
     tagline: "מיני עסקי מחודש · Ryzen 7 עם 8 ליבות · ‏16GB",
     specs: ["AMD Ryzen 7 (סדרה 4000)", "16GB DDR4", "256GB SSD", "מחשב מיני · ליטר אחד", "מחודש ונבדק", "אחריות BSD לחצי שנה"] },
+  { sku: "TP3607SA-RJ054", cat: "refurbished", brand: "ASUS", name: "ASUS Vivobook 16 Flip OLED · Ultra 7 · 32GB · 1TB",
+    img: "images/vivobook16-flip-tp3607/01.jpg", page: "laptop-asus-vivobook16-flip-oled-ultra7-258v-refurbished.html", price: "5,250", deal: "מחודש · אחריות יצרן",
+    tagline: "מתהפך 360° עם מסך מגע OLED · מחודש עם אחריות יצרן",
+    specs: ["מסך מגע OLED ‏16 אינץ' 3K ‏120Hz", "Intel Core Ultra 7 258V", "32GB · ‏1TB SSD", "מתהפך 360° · Wi-Fi 7", "מחודש, נבדק אצלנו", "כולל אחריות יצרן"] },
 ];
