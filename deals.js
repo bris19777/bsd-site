@@ -1,5 +1,5 @@
 // מציאון: נוצר אוטומטית על ידי skill update-deals. לא לערוך ידנית.
-// עודכן: 2026-10-11
+// עודכן: 2026-10-14
 const DEALS = [
   {
     "sku": "MZ-E14-GEN5",
@@ -182,7 +182,8 @@ const DEALS = [
     "zap": {
       "price": "9,149",
       "label": "ThinkPad X1 Carbon חדש (Gen 13, ‏512GB)"
-    }
+    },
+    "soldOut": true
   },
   {
     "sku": "MZ-X1-CARBON-GEN9-WIFI",
@@ -205,7 +206,8 @@ const DEALS = [
     "zap": {
       "price": "9,149",
       "label": "ThinkPad X1 Carbon חדש (Gen 13, ‏512GB)"
-    }
+    },
+    "soldOut": true
   },
   {
     "sku": "MZ-THINKBOOK-PLUS-G3",
@@ -281,5 +283,28 @@ const DEALS = [
     "also": [
       "premium"
     ]
+  },
+  {
+    "sku": "MZ-X1-CARBON-GEN9-I5",
+    "cat": "deals",
+    "brand": "Lenovo",
+    "name": "Lenovo ThinkPad X1 Carbon Gen 9 · i5 דור 11",
+    "img": "images/deals/x1-carbon-gen9/01.jpg",
+    "page": "deal-x1-carbon-gen9-i5.html",
+    "price": "2,990",
+    "deal": "חדש באריזה",
+    "tagline": "חדש לגמרי, באריזה סגורה (ניילון)",
+    "specs": [
+      "i5 דור 11",
+      "16GB",
+      "512GB SSD",
+      "14 אינץ' WUXGA ‏(1920×1200)",
+      "מצב 10/10",
+      "אחריות לשנה"
+    ],
+    "zap": {
+      "price": "9,149",
+      "label": "ThinkPad X1 Carbon חדש (Gen 13, ‏512GB)"
+    }
   }
 ];
