@@ -18,6 +18,7 @@ const CATEGORIES = [
   { id: "arch",     name: "אדריכלות ומולטימדיה", desc: "תחנות עבודה ניידות לתלת-ממד, תכנון ועריכת וידאו" },
   { id: "printers", name: "מדפסות", desc: "מדפסות לייזר, דיו ומשולבות לבית ולמשרד" },
   { id: "monitors", name: "מסכים", desc: "מסכי Dell ו-LG לבית, למשרד ולמקצוענים" },
+  { id: "accessories", name: "ציוד היקפי", desc: "מקלדות, עכברים ואביזרים למחשב" },
 ];
 
 const PRODUCTS = [
@@ -363,4 +364,8 @@ const PRODUCTS = [
     img: "images/vivobook16-flip-tp3607/01.jpg", page: "laptop-asus-vivobook16-flip-oled-ultra7-258v-refurbished.html", price: "5,250", deal: "מחודש · אחריות יצרן",
     tagline: "מתהפך 360° עם מסך מגע OLED · מחודש עם אחריות יצרן",
     specs: ["מסך מגע OLED ‏16 אינץ' 3K ‏120Hz", "Intel Core Ultra 7 258V", "32GB · ‏1TB SSD", "מתהפך 360° · Wi-Fi 7", "מחודש, נבדק אצלנו", "כולל אחריות יצרן"] },
+  { sku: "GX30W22197", cat: "accessories", brand: "Lenovo", name: "Lenovo 510 · סט מקלדת ועכבר אלחוטיים", img: "images/accessories/lenovo-510-combo/01.jpg",
+    page: "accessory-lenovo-510-wireless-combo-keyboard-mouse.html", price: "119",
+    tagline: "מקלדת אלחוטית ועכבר אלחוטי עם מקלט USB זעיר, עברית / אנגלית",
+    specs: ["מקלדת מלאה עם מקשי ספרות", "עכבר אופטי 1200DPI", "אלחוטי 2.4GHz · מקלט Nano USB", "עברית / אנגלית · שחור"] },
 ];

@@ -53,8 +53,8 @@ function card(p) {
   p.specs.forEach(s => specs.append(el("li", null, s)));
   body.append(specs);
 
-  // computers come installed + free shipping; printers and monitors don't carry those chips
-  const noun = { printers: "מדפסת", monitors: "מסך" }[p.cat] || "מחשב";
+  // computers come installed + free shipping; printers, monitors and accessories don't carry those chips
+  const noun = { printers: "מדפסת", monitors: "מסך", accessories: "מוצר" }[p.cat] || "מחשב";
   if (noun === "מחשב") {
     const incl = el("div", "included");
     incl.append(el("span", "chip chip-ok", "✓ כולל התקנות מלאות"), el("span", "chip chip-ship", "🚚 משלוח חינם"));

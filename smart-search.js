@@ -6,13 +6,13 @@ const SMART_STOP = new Set(["מחשב", "מחשבים", "עם", "של", "בשב�
   "מחפש", "מחפשת", "מחפשים", "צריך", "צריכה", "אני", "לי", "יש", "משהו", "גם", "או", "ו", "את", "דגם", "לא", "יותר", "כמה", "מאוד", "ממש", "מסך", "מסכי", "מחשבון"]);
 
 const LAPTOP_CATS = ["recommended", "deals", "refurbished", "basic", "home", "business", "premium", "gaming", "arch", "mac"];
-const isLaptop = m => !["desktop", "printers", "monitors"].includes(m.p.cat) && !/נייח|desktop|מיני pc|mini pc/i.test(m.t.slice(0, 120));
+const isLaptop = m => !["desktop", "printers", "monitors", "accessories"].includes(m.p.cat) && !/נייח|desktop|מיני pc|mini pc/i.test(m.t.slice(0, 120));
 const has = (m, re) => re.test(m.t);
-const isComputer = m => !["printers", "monitors"].includes(m.p.cat);
+const isComputer = m => !["printers", "monitors", "accessories"].includes(m.p.cat);
 
 const SMART_INTENTS = [
   { id: "light", label: "קל לסחיבה", words: ["קל", "קלה", "קלים", "קליל", "קלילה", "לסחוב", "לנסיעות", "נסיעות", "נוצה", "משקל"],
-    test: m => m.kg != null && m.kg <= 1.45, rank: m => -(m.kg || 9) },
+    test: m => isComputer(m) && m.kg != null && m.kg <= 1.45, rank: m => -(m.kg || 9) },
   { id: "lte", label: "מודם סלולרי", words: ["סלולרי", "סלולארי", "מודם", "סים", "sim", "esim", "lte", "4g", "5g", "נטסטיק"],
     test: m => has(m, /\blte\b|מודם סלולרי|\b[45]g\b/) },
   { id: "touch", label: "מסך מגע", words: ["מגע", "טאץ", "touch", "עט"],
