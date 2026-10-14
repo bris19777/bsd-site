@@ -71,7 +71,8 @@ const PRODUCTS = [
     tagline: "הכי משתלם לגלישה ו-Office",
     specs: ["מסך 15.6 אינץ' FHD", "Intel Core 3 100U", "8GB זיכרון", "512GB SSD", "אחריות שנה"] },
   { sku: "6022", cat: "basic", brand: "ASUS", name: "ASUS Vivobook Go 14 · i3-N305",
-    img: "images/e1404ga/01.jpg", page: "laptop-asus-vivobook-go14-i3-n305.html", price: "1,950",
+    img: "images/e1404ga/01.jpg", page: "laptop-asus-vivobook-go14-i3-n305.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,950" ולמחוק את soldOut
+   
     tagline: "קל ונייד: 1.38 ק\"ג, מושלם לתלמידים",
     specs: ["מסך 14 אינץ' Full HD", "Intel Core i3-N305: ‏8 ליבות", "8GB זיכרון", "512GB SSD", "NumberPad · עמידות צבאית", "אחריות שנה"] },
   { sku: "6044", cat: "basic", brand: "ASUS", name: "ASUS Vivobook 14 · i3-1315U",
