@@ -368,4 +368,8 @@ const PRODUCTS = [
     page: "accessory-lenovo-510-wireless-combo-keyboard-mouse.html", price: "119",
     tagline: "מקלדת אלחוטית ועכבר אלחוטי עם מקלט USB זעיר, עברית / אנגלית",
     specs: ["מקלדת מלאה עם מקשי ספרות", "עכבר אופטי 1200DPI", "אלחוטי 2.4GHz · מקלט Nano USB", "עברית / אנגלית · שחור"] },
+  { sku: "D16BQEA", cat: "home", brand: "HP", name: "HP 15 · Core Ultra 7 155H · 24GB · 1TB",
+    img: "images/hp15-fd1053nj/01.jpg", page: "laptop-hp-15-fd1053nj-ultra7-155h-24gb-1tb.html", price: "3,690", deal: "מעבד סדרת H",
+    tagline: "מעבד Ultra 7 מסדרת H, ‏24GB ודיסק 1TB · ‏3 שנות אחריות",
+    specs: ["מסך 15.6 אינץ' Full HD", "Intel Core Ultra 7 155H (סדרת H)", "24GB DDR5", "1TB SSD", "גרפיקת Intel Arc", "3 שנות אחריות"] },
 ];
