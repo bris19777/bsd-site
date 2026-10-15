@@ -29,7 +29,7 @@ const PRODUCTS = [
     tagline: "מסך מגע, גוף מתכת, i7 בהספק 45W ו-1TB",
     specs: ["מסך מגע 15.3 אינץ' WUXGA", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
 
-  { sku: "83K1-I7-512", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i7-13620H · 512GB",
+  { sku: "83K1-I7-512", cat: "home", also: ["recommended", "programming"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i7-13620H · 512GB",
     img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-13620h-512gb.html", price: "3,090", deal: "מחיר משוער",
     tagline: "i7 בהספק 45W, גוף מתכת ומסך 15.3 אינץ' בהיר",
     specs: ["מסך 15.3 אינץ' WUXGA IPS", "Intel Core i7-13620H (45W)", "16GB DDR5", "512GB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
