@@ -51,7 +51,7 @@ const PRODUCTS = [
 
   { sku: "TP14-R-8665U", cat: "refurbished", also: ["recommended"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T490 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
-    deal: "מחודש A-Grade", soldOut: true, // אזל זמנית מהמלאי: להחזיר price: "1,390" ולמחוק את soldOut
+    price: "1,390", deal: "מחודש A-Grade",
     tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
     specs: ["מסך מגע 14 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "עמידות צבאית MIL-STD-810G", "אחריות מלאה לחצי שנה"] },
   { sku: "TP14G1-R-I7-10", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T14 מחודש · i7 דור 10 · 16GB · מסך מגע",
