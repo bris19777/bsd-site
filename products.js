@@ -30,7 +30,7 @@ const PRODUCTS = [
     specs: ["מסך מגע 15.3 אינץ' WUXGA", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
 
   { sku: "83K1-I7-512", cat: "home", also: ["recommended", "programming"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i7-13620H · 512GB",
-    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-13620h-512gb.html", price: "3,090", deal: "מחיר משוער",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-13620h-512gb.html", price: "3,290",
     tagline: "i7 בהספק 45W, גוף מתכת ומסך 15.3 אינץ' בהיר",
     specs: ["מסך 15.3 אינץ' WUXGA IPS", "Intel Core i7-13620H (45W)", "16GB DDR5", "512GB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
 
@@ -41,11 +41,11 @@ const PRODUCTS = [
     specs: ["Intel Core 9 270H: ‏14 ליבות / 20 תהליכונים", "16GB DDR5 (אפשרות ל-24GB או 40GB)", "1TB SSD NVMe", "מסך 16 אינץ' WUXGA ‏16:10", "Windows 11 Pro", "אחריות יצרן לשנה"] },
 
   { sku: "83K100KPIV", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 16GB",
-    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-16gb.html", price: "2,750", deal: "מחיר משוער",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-16gb.html", price: "2,849",
     tagline: "מסך IPS בהיר ומעבד i5 מהיר מסדרת H",
     specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "16GB DDR5", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
   { sku: "83K1-I5-8GB", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 8GB",
-    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb.html", price: "2,350",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb.html", price: "2,490",
     tagline: "מסך IPS בהיר ומעבד i5 מהיר, במחיר משתלם",
     specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "8GB DDR5 (ניתן להרחבה)", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
 
