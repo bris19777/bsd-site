@@ -373,4 +373,8 @@ const PRODUCTS = [
     img: "images/hp15-fd1053nj/01.jpg", page: "laptop-hp-15-fd1053nj-ultra7-155h-24gb-1tb.html", price: "3,690", deal: "מעבד סדרת H",
     tagline: "מעבד Ultra 7 מסדרת H, ‏24GB ודיסק 1TB · ‏3 שנות אחריות",
     specs: ["מסך 15.6 אינץ' Full HD", "Intel Core Ultra 7 155H (סדרת H)", "24GB DDR5", "1TB SSD", "גרפיקת Intel Arc", "3 שנות אחריות"] },
+  { sku: "D79XNEA", cat: "home", brand: "HP", name: "HP 15 · Core 5 120U · 16GB · Windows 11",
+    img: "images/hp15-fd1048nj/01.jpg", page: "laptop-hp-15-fd1048nj-core5-120u-16gb-windows.html", price: "2,850", was: "3,679", deal: "Windows 11 כלול",
+    tagline: "Windows 11 מקורית, ‏16GB ו-3 שנות אחריות",
+    specs: ["מסך 15.6 אינץ' Full HD", "Intel Core 5 120U (10 ליבות)", "16GB זיכרון", "512GB SSD", "Windows 11 Home מקורית", "3 שנות אחריות יבואן"] },
 ];
