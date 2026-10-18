@@ -783,3 +783,7 @@ a.pe-cash:hover { border-color: #11703A; }
 .search-go:hover { background: var(--navy); }
 .searching #laptops > .wrap > .section-head { display: none; }
 .smart-intro { scroll-margin-top: 40px; }
+
+/* product page: installation + free shipping, emphasized right under the title */
+.incl-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 14px; }
+.incl-strip .chip { font-size: 15.5px; font-weight: 700; padding: 7px 14px; border-radius: 10px; }

@@ -1,5 +1,5 @@
 // מציאון: נוצר אוטומטית על ידי skill update-deals. לא לערוך ידנית.
-// עודכן: 2026-10-14
+// עודכן: 2026-10-18
 const DEALS = [
   {
     "sku": "MZ-E14-GEN5",
@@ -90,29 +90,6 @@ const DEALS = [
     "zap": {
       "price": "4,449",
       "label": "מחשב עסקי חדש של Lenovo עם אותו מעבד (ThinkPad E14 Gen 7, ‏Ultra 5 225U)"
-    }
-  },
-  {
-    "sku": "MZ-DELL-PRO14",
-    "cat": "deals",
-    "brand": "Dell",
-    "name": "Dell Pro 14 · Ryzen 5 220",
-    "img": "images/deals/dell-pro14/01.jpg",
-    "page": "deal-dell-pro14.html",
-    "price": "2,600",
-    "deal": "חדש באריזה",
-    "tagline": "חדש לגמרי, באריזה סגורה (ניילון)",
-    "specs": [
-      "Ryzen 5 220",
-      "16GB DDR5",
-      "512GB SSD",
-      "14 אינץ' ‏FHD+ ‏(1920×1200) ‏IPS",
-      "מצב 10/10",
-      "אחריות יצרן עד 18/04/2029"
-    ],
-    "zap": {
-      "price": "4,449",
-      "label": "Dell Pro 14 ‏PB14250 חדש (‏Ultra 5, ‏16GB, ‏512GB)"
     }
   },
   {

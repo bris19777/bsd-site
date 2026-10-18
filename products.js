@@ -118,7 +118,7 @@ const PRODUCTS = [
     deal: "4 שנות אחריות", soldOut: true, // אזל מהמלאי: להחזיר price: "3,890" ולמחוק את soldOut
     tagline: "מחשב עסקי עם מקלדת מוארת ו-4 שנות אחריות HP באתר הלקוח",
     specs: ["Intel Core Ultra 5 225U · מאיץ AI", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' WUXGA אנטי-בוהק", "מקלדת מוארת · קורא טביעת אצבע", "Windows 11 Pro מקורית", "4 שנות אחריות HP באתר הלקוח"] },
-  { sku: "PC14255-R5-512", cat: "business", brand: "Dell", name: "Dell Pro 14 · Ryzen 5 · 16GB · 512GB",
+  { sku: "PC14255-R5-512", cat: "business", also: ["deals"], brand: "Dell", name: "Dell Pro 14 · Ryzen 5 · 16GB · 512GB",
     img: "images/deals/dell-pro14/01.jpg", page: "laptop-dell-pro14-pc14255-ryzen5.html",
     price: "2,990", was: "4,500", deal: "חדש באריזה", stockLow: true,
     tagline: "חדש באריזה סגורה · מחיר במזומן",
