@@ -1,5 +1,5 @@
 // מציאון: נוצר אוטומטית על ידי skill update-deals. לא לערוך ידנית.
-// עודכן: 2026-10-18
+// עודכן: 2026-10-20
 const DEALS = [
   {
     "sku": "MZ-E14-GEN5",
@@ -21,7 +21,8 @@ const DEALS = [
     "zap": {
       "price": "4,706",
       "label": "ThinkPad E14 חדש (Gen 8, ‏16GB, ‏512GB)"
-    }
+    },
+    "soldOut": true
   },
   {
     "sku": "MZ-E14-GEN6",
@@ -44,7 +45,8 @@ const DEALS = [
     "zap": {
       "price": "5,090",
       "label": "ThinkPad E14 Gen 6 חדש (גרסת Intel, ‏512GB)"
-    }
+    },
+    "soldOut": true
   },
   {
     "sku": "MZ-E14-GEN7",
@@ -67,7 +69,8 @@ const DEALS = [
     "zap": {
       "price": "4,449",
       "label": "ThinkPad E14 Gen 7 חדש (גרסת Intel, ‏512GB)"
-    }
+    },
+    "soldOut": true
   },
   {
     "sku": "MZ-THINKBOOK14-G8",

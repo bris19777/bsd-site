@@ -81,7 +81,7 @@ function card(p) {
   }
   if (p.stockLow) {
     const st = el("div", "stock-low stock-low-card");
-    st.append(el("span", "stock-dot"), document.createTextNode("יחידות בודדות במלאי"));
+    st.append(el("span", "stock-dot"), document.createTextNode(typeof p.stockLow === "string" ? p.stockLow : "יחידות בודדות במלאי"));
     body.append(st);
   }
 

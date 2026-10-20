@@ -124,15 +124,17 @@ const PRODUCTS = [
     specs: ["Intel Core Ultra 5 225U · מאיץ AI", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' WUXGA אנטי-בוהק", "מקלדת מוארת · קורא טביעת אצבע", "Windows 11 Pro מקורית", "4 שנות אחריות HP באתר הלקוח"] },
   { sku: "PC14255-R5-512", cat: "business", also: ["deals"], brand: "Dell", name: "Dell Pro 14 · Ryzen 5 · 16GB · 512GB",
     img: "images/deals/dell-pro14/01.jpg", page: "laptop-dell-pro14-pc14255-ryzen5.html",
-    price: "2,990", was: "4,500", deal: "חדש באריזה", stockLow: true,
+    price: "2,990", was: "4,500", deal: "חדש באריזה", stockLow: "נשארה יחידה בודדת!",
     tagline: "חדש באריזה סגורה · מחיר במזומן",
     specs: ["AMD Ryzen 5 220: ‏6 ליבות", "16GB DDR5 (עד 64GB)", "512GB SSD NVMe", "מסך 14 אינץ' FHD+ ‏16:10", "רשת RJ-45 · ‏Wi-Fi 6E · ‏1.36 ק\"ג", "אחריות יצרן מלאה"] },
   { sku: "E14G6-R5-512", cat: "business", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E14 Gen 6 · Ryzen 5 · 16GB",
-    img: "images/deals/e14-gen6/01.jpg", page: "laptop-thinkpad-e14-gen6-ryzen5-7535u.html", price: "2,690",
+    img: "images/deals/e14-gen6/01.jpg", page: "laptop-thinkpad-e14-gen6-ryzen5-7535u.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "2,690" ולמחוק את soldOut
+   
     tagline: "ThinkPad חדש: מקלדת מעולה, עמידות צבאית ושדרוג עד 64GB",
     specs: ["AMD Ryzen 5 7535U: ‏6 ליבות", "16GB DDR5 (עד 64GB)", "512GB SSD + חריץ פנוי", "מסך 14 אינץ' ‏16:10", "מקלדת עמידה לשפיכה · ‏MIL-STD-810H", "אחריות יצרן מלאה"] },
   { sku: "E14G7-R5-16-512", cat: "business", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E14 Gen 7 · Ryzen 5 · 16GB",
-    img: "images/deals/e14-gen7/01.jpg", page: "laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html", price: "2,990", deal: "AI PC",
+    img: "images/deals/e14-gen7/01.jpg", page: "laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "2,990" ולמחוק את soldOut
+    deal: "AI PC",
     tagline: "הדור החדש של ThinkPad, עם מעבד AI ויציאת USB4",
     specs: ["AMD Ryzen 5 230 · מעבד AI", "16GB DDR5 (עד 64GB)", "512GB SSD + חריץ פנוי", "מסך 14 אינץ' WUXGA ‏16:10", "USB4 · רשת RJ-45 · ‏MIL-STD-810H", "אחריות יצרן מלאה"] },
   { sku: "6028", cat: "business", brand: "HP", name: "HP 250R G9", img: "images/6028.webp",
@@ -141,7 +143,7 @@ const PRODUCTS = [
   { sku: "6113", cat: "business", brand: "ASUS", name: "ASUS ExpertBook P1", img: "images/6113.webp",
     tagline: "סדרה עסקית עם אחריות באתר",
     specs: ["מסך 14 אינץ' FHD", "Intel Core 5 210H", "16GB זיכרון", "512GB SSD", "אחריות שנה באתר"] },
-  { sku: "6245", cat: "business", brand: "Lenovo", name: "Lenovo ThinkPad E14 Gen 7", img: "images/6245.avif",
+  { sku: "6245", cat: "business", brand: "Lenovo", name: "Lenovo ThinkPad E14 Gen 7", img: "images/6245.avif", soldOut: true, // חסר זמנית במלאי
     tagline: "ThinkPad: עמיד, עם מקלדת מעולה",
     specs: ["מסך 14 אינץ'", "Intel Core Ultra 7 255H", "16GB זיכרון", "512GB SSD", "אחריות 3 שנים"] },
   { sku: "6335", cat: "business", brand: "ASUS", name: "ASUS ExpertBook B3", img: "images/6335.webp", windows: true,
@@ -330,7 +332,8 @@ const PRODUCTS = [
     tagline: "34 אינץ' קעור עם מצלמה לשיחות וידאו",
     specs: ["34 אינץ' קעור WQHD ‏⁦3440×1440⁩", "מצלמה 2K + מיקרופונים", "USB-C עם טעינה 90W", "רשת מובנית · KVM"] },
   { sku: "21SX0057IV", cat: "business", brand: "Lenovo", name: "Lenovo ThinkPad E14 Gen 7 · Core Ultra 5",
-    img: "images/thinkpad-e14-g7-intel/01.jpg", page: "laptop-thinkpad-e14-gen7-ultra5-225u.html", price: "4,590", deal: "3 שנות אחריות באתר",
+    img: "images/thinkpad-e14-g7-intel/01.jpg", page: "laptop-thinkpad-e14-gen7-ultra5-225u.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "4,590" ולמחוק את soldOut
+    deal: "3 שנות אחריות באתר",
     tagline: "Core Ultra 5 · ‏3 שנות אחריות באתר הלקוח",
     specs: ["מסך 14 אינץ' WUXGA", "Intel Core Ultra 5 225U", "16GB DDR5", "512GB SSD", "Thunderbolt 4 · ‏1.34 ק\"ג", "3 שנות אחריות באתר"] },
   { sku: "21SR004FIV", cat: "business", brand: "Lenovo", name: "Lenovo ThinkPad E16 Gen 3 · Core Ultra 5",
