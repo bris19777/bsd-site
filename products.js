@@ -388,4 +388,8 @@ const PRODUCTS = [
     img: "images/dell-pro14-essential/01.jpg", page: "laptop-dell-pro14-essential-pv14250-core5-120u.html", price: "3,290", was: "3,623", deal: "הנחת מזומן", stockLow: true,
     tagline: "מחשב עסקי חדש · מלאי מוגבל · יש הנחת מזומן",
     specs: ["Intel Core 5 120U (10 ליבות)", "16GB DDR5", "512GB SSD", "מסך 14 אינץ' ‏16:10", "3 שנות אחריות באתר הלקוח", "יש הנחת מזומן"] },
+  { sku: "BSD-PC-I7-14700-5060", cat: "desktop", also: ['gaming'], brand: "BSD מחשבים", name: "מחשב נייח · Core i7-14700 · RTX 5060 · ‏1TB + 4TB",
+    img: "images/pc-i7-14700-5060/01.jpg", page: "desktop-pc-i7-14700-rtx5060-32gb-1tb-4tb.html", price: "8,590", deal: "RTX 5060 · ‏5TB",
+    tagline: "i7 עם 20 ליבות, ‏RTX 5060 ו-5TB אחסון · יש הנחת מזומן",
+    specs: ["Intel Core i7-14700 ‏(20 ליבות)", "RTX 5060 8GB", "32GB DDR4", "1TB SSD NVMe + ‏4TB", "ספק 850W · מארז Antec VX510", "סט אלחוטי Lenovo"] },
 ];
