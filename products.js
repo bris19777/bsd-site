@@ -416,4 +416,8 @@ const PRODUCTS = [
     img: "images/thinkpad-x13-g5/01.jpg", page: "laptop-thinkpad-x13-gen5-ultra7-155u-32gb-refurbished.html", price: "3,390", was: "12,149", deal: "מחודש · אחריות יצרן",
     tagline: "ThinkPad פרימיום של 1.17 ק\"ג עם 32GB · מחודש עם אחריות יצרן",
     specs: ["Intel Core Ultra 7 155U", "32GB LPDDR5X", "512GB SSD", "מסך 13.3 אינץ' ‏100% sRGB", "1.17 ק\"ג · ‏2× Thunderbolt 4", "אחריות יצרן"] },
+  { sku: "X1CG12-U7-32-512-5G", cat: "premium", also: ['business', 'deals'], brand: "Lenovo", name: "Lenovo ThinkPad X1 Carbon Gen 12 · Ultra 7 · 32GB · מודם 5G · כמו חדש",
+    img: "images/thinkpad-x1c-g12/01.jpg", page: "laptop-thinkpad-x1-carbon-gen12-ultra7-155u-5g-like-new.html", price: "4,459", was: "11,199", deal: "מודם 5G · כמו חדש",
+    tagline: "ספינת הדגל של ThinkPad, עם מודם 5G · כמו חדש, שנתיים אחריות",
+    specs: ["Intel Core Ultra 7 155U", "32GB LPDDR5X", "512GB SSD", "מודם סלולרי 5G מובנה", "1.09 ק\"ג · סיבי פחמן", "שנתיים אחריות"] },
 ];
