@@ -408,4 +408,8 @@ const PRODUCTS = [
     img: "images/pc-u7-265k-5060ti/01.jpg", page: "desktop-pc-ultra7-265k-rtx5060ti-64gb-2tb.html", price: "10,590", deal: "64GB · RTX 5060 Ti",
     tagline: "64GB DDR5, ‏RTX 5060 Ti ו-Samsung 990 PRO · התקנה באתר הלקוח",
     specs: ["Intel Core Ultra 7 265K ‏(20 ליבות)", "RTX 5060 Ti", "64GB DDR5-5600", "2TB Samsung 990 PRO", "מארז שקט Antec P10 FLUX · ‏850W", "משלוח והתקנה באתר הלקוח"] },
+  { sku: "BSD-PC-I7-14700-A2000", cat: "desktop", brand: "BSD מחשבים", name: "מחשב נייח לאדריכלות ודפוס · Core i7-14700 · NVIDIA RTX A2000",
+    img: "images/pc-i7-14700-5060/01.jpg", page: "desktop-pc-i7-14700-rtx-a2000-32gb-1tb-4tb.html", price: "7,190", deal: "RTX A2000 מקצועי",
+    tagline: "תחנת עבודה לאדריכלות ודפוס עם כרטיס NVIDIA מקצועי · יש הנחת מזומן",
+    specs: ["Intel Core i7-14700 ‏(20 ליבות)", "NVIDIA RTX A2000 מקצועי", "32GB DDR4", "1TB SSD NVMe + ‏4TB", "עד 4 מסכים · צבע 10-bit", "סט אלחוטי Lenovo"] },
 ];
