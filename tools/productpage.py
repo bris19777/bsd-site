@@ -136,13 +136,19 @@ def was_line(p):
     return f'\n                <div class="price-was">{label}: <s>₪{p["was"]}</s><b>חוסכים ₪{save:,}</b></div>'
 
 
+def js(v):
+    """a JS string literal; escapes quotes (Hebrew abbreviations like ק"ג) so products.js stays valid"""
+    v = str(v).replace('\\"', '"')          # accept values that were already escaped
+    return '"' + v.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
 def card(p):
     also = f', also: {p["also"]}' if p.get("also") else ""
-    was = f', was: "{p["was"]}"' if p.get("was") else ""
-    specs = ", ".join(f'"{s}"' for s in p["cardspecs"])
-    return (f'  {{ sku: "{p["sku"]}", cat: "{p["cat"]}"{also}, brand: "{p["brand"]}", name: "{p["card"]}",\n'
-            f'    img: "images/{p["img"]}/01.jpg", page: "{p["file"]}", price: "{p["price"]}"{was}, deal: "{p["badge"]}",\n'
-            f'    tagline: "{p["cardtag"]}",\n'
+    was = f', was: {js(p["was"])}' if p.get("was") else ""
+    specs = ", ".join(js(s) for s in p["cardspecs"])
+    return (f'  {{ sku: {js(p["sku"])}, cat: {js(p["cat"])}{also}, brand: {js(p["brand"])}, name: {js(p["card"])},\n'
+            f'    img: "images/{p["img"]}/01.jpg", page: {js(p["file"])}, price: {js(p["price"])}{was}, deal: {js(p["badge"])},\n'
+            f'    tagline: {js(p["cardtag"])},\n'
             f'    specs: [{specs}] }},\n')
 
 

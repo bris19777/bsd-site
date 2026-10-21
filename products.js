@@ -414,6 +414,6 @@ const PRODUCTS = [
     specs: ["Intel Core i7-14700 ‏(20 ליבות)", "NVIDIA RTX A2000 מקצועי", "32GB DDR4", "1TB SSD NVMe + ‏4TB", "עד 4 מסכים · צבע 10-bit", "סט אלחוטי Lenovo"] },
   { sku: "X13G5-U7-32-512-R", cat: "refurbished", also: ['business'], brand: "Lenovo", name: "Lenovo ThinkPad X13 Gen 5 · Ultra 7 · 32GB · 512GB · מחודש",
     img: "images/thinkpad-x13-g5/01.jpg", page: "laptop-thinkpad-x13-gen5-ultra7-155u-32gb-refurbished.html", price: "3,390", was: "12,149", deal: "מחודש · אחריות יצרן",
-    tagline: "ThinkPad פרימיום של 1.17 ק"ג עם 32GB · מחודש עם אחריות יצרן",
+    tagline: "ThinkPad פרימיום של 1.17 ק\"ג עם 32GB · מחודש עם אחריות יצרן",
     specs: ["Intel Core Ultra 7 155U", "32GB LPDDR5X", "512GB SSD", "מסך 13.3 אינץ' ‏100% sRGB", "1.17 ק\"ג · ‏2× Thunderbolt 4", "אחריות יצרן"] },
 ];
