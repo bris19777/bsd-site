@@ -400,4 +400,8 @@ const PRODUCTS = [
     img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-new.html", price: "4,490", was: "9,449", deal: "חדש",
     tagline: "תחנת עבודה ניידת חדשה, ‏16 ליבות ו-32GB",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB DDR5 (עד 96GB)", "512GB SSD", "2× Thunderbolt 4 · ‏RJ-45", "תחנת עבודה ניידת · אלומיניום", "חדש לחלוטין"] },
+  { sku: "M5406WA-QD093W", cat: "premium", also: ['programming'], brand: "ASUS", name: "ASUS Vivobook S14 OLED · Ryzen AI 9 365 · 24GB · 1TB",
+    img: "images/vivobook-s14-m5406wa/01.jpg", page: "laptop-asus-vivobook-s14-oled-ryzen-ai9-365.html", price: "4,490", deal: "מסך OLED · Ryzen AI 9",
+    tagline: "מסך OLED, מעבד Ryzen AI 9 וגרפיקה ברמת כרטיס מסך · עד 6 תשלומים",
+    specs: ["מסך OLED ‏14 אינץ' · ‏100% DCI-P3", "AMD Ryzen AI 9 365 ‏(10 ליבות)", "גרפיקת Radeon 880M", "24GB · ‏1TB SSD", "1.3 ק\"ג · ‏Windows 11", "עד 6 תשלומים"] },
 ];

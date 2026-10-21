@@ -787,3 +787,8 @@ a.pe-cash:hover { border-color: #11703A; }
 /* product page: installation + free shipping, emphasized right under the title */
 .incl-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 14px; }
 .incl-strip .chip { font-size: 15.5px; font-weight: 700; padding: 7px 14px; border-radius: 10px; }
+
+/* benchmark comparison tables with score bars */
+.bars-table td b { display: block; }
+.bars-table .sbar { display: block; height: 6px; border-radius: 3px; background: var(--accent); opacity: .45; margin-top: 5px; min-width: 4px; }
+.bars-table td.win .sbar { opacity: 1; }
