@@ -404,4 +404,8 @@ const PRODUCTS = [
     img: "images/vivobook-s14-m5406wa/01.jpg", page: "laptop-asus-vivobook-s14-oled-ryzen-ai9-365.html", price: "4,490", deal: "מסך OLED · Ryzen AI 9",
     tagline: "מסך OLED, מעבד Ryzen AI 9 וגרפיקה ברמת כרטיס מסך · עד 6 תשלומים",
     specs: ["מסך OLED ‏14 אינץ' · ‏100% DCI-P3", "AMD Ryzen AI 9 365 ‏(10 ליבות)", "גרפיקת Radeon 880M", "24GB · ‏1TB SSD", "1.3 ק\"ג · ‏Windows 11", "עד 6 תשלומים"] },
+  { sku: "BSD-PC-U7-265K-5060TI", cat: "desktop", also: ['gaming'], brand: "BSD מחשבים", name: "מחשב נייח · Core Ultra 7 265K · RTX 5060 Ti · ‏64GB · ‏2TB",
+    img: "images/pc-u7-265k-5060ti/01.jpg", page: "desktop-pc-ultra7-265k-rtx5060ti-64gb-2tb.html", price: "10,590", deal: "64GB · RTX 5060 Ti",
+    tagline: "64GB DDR5, ‏RTX 5060 Ti ו-Samsung 990 PRO · התקנה באתר הלקוח",
+    specs: ["Intel Core Ultra 7 265K ‏(20 ליבות)", "RTX 5060 Ti", "64GB DDR5-5600", "2TB Samsung 990 PRO", "מארז שקט Antec P10 FLUX · ‏850W", "משלוח והתקנה באתר הלקוח"] },
 ];
