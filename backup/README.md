@@ -1,198 +1,198 @@
-# BSD Managed Backup
+# מערכת גיבוי מנוהלת של BSD
 
-A managed, client-side backup system for Windows PCs:
+מערכת גיבוי מנוהלת למחשבי Windows של לקוחות, בשני חלקים:
 
-- **`bsd-backup-server`**: the cloud Central Management Server. It handles authentication, subscriptions and quotas, the backup policy, telemetry, and Google Drive token brokering.
-- **`bsd-backup-agent.exe`**: a native Windows Service on each PC. It backs files up **directly** to Google Drive or to a NAS reached over Tailscale. Backup data never passes through the management server.
+- **`bsd-backup-server`**: שרת הניהול המרכזי, שרץ בענן. הוא אחראי על הזדהות, מנויים ומכסות אחסון, מדיניות הגיבוי, ניטור, והנפקת הרשאות גישה ל-Google Drive.
+- **`bsd-backup-agent.exe`**: שירות Windows שרץ ברקע בכל מחשב. הוא מגבה קבצים **ישירות** ל-Google Drive או ל-NAS דרך Tailscale. נתוני הגיבוי עצמם לא עוברים דרך שרת הניהול.
 
-Everything is written in Go with no runtime dependencies. The agent is one static `.exe` and the server is one static binary.
+הכל כתוב ב-Go ואין צורך בהתקנות נוספות. הסוכן הוא קובץ `.exe` יחיד, והשרת הוא קובץ הרצה יחיד.
 
 ```
                          ┌──────────────────────────────────────┐
-                         │   Central Management Server (cloud)  │
-                         │  auth · subscriptions · quotas       │
-                         │  policy engine · telemetry           │
-                         │  Google token broker                 │
+                         │      שרת ניהול מרכזי (בענן)           │
+                         │  הזדהות · מנויים · מכסות               │
+                         │  מדיניות גיבוי · ניטור                 │
+                         │  הנפקת הרשאות Google Drive            │
                          └──────▲──────────────▲────────────────┘
-       enroll / JWT / policy /  │              │ admin API (curl, scripts, future UI)
-       heartbeat / reports /    │ HTTPS        │
-       logs / Drive tokens      │              │
+        רישום / הזדהות /         │              │ ממשק ניהול (curl, סקריפטים)
+        מדיניות / דופק /         │ HTTPS        │
+        דוחות / לוגים            │              │
 ┌───────────────────────────────┴───┐
-│ Windows PC: BSDBackupAgent service│        payload goes direct, never via server
-│  DPAPI-protected credentials      │──────────────────────────┐
-│  scan → hash → dedup → gzip →     │                          │
-│  AES-256-GCM → throttle → upload  │                          ▼
+│ מחשב Windows: השירות BSDBackupAgent│      הנתונים עוברים ישירות, לא דרך השרת
+│  פרטי גישה מוצפנים (DPAPI)          │──────────────────────────┐
+│  סריקה → גיבוב → מניעת כפילויות →   │                          │
+│  דחיסה → הצפנה → הגבלת קצב → העלאה  │                          ▼
 └───────────────────────────────────┘    ┌──────────────────────────┬────────────────────────────┐
-                                         │ Google Drive (REST v3,   │ NAS SMB share via Tailscale│
-                                         │ resumable chunked upload)│ \\nas.tailnet.ts.net\share │
+                                         │ Google Drive             │ NAS דרך Tailscale           │
+                                         │ (העלאה במקטעים עם המשך)    │ \\nas.tailnet.ts.net\share │
                                          └──────────────────────────┴────────────────────────────┘
 ```
 
-## Contents
+## מבנה
 
-| Path | What it is |
+| נתיב | תפקיד |
 |---|---|
-| `cmd/bsd-backup-server` | Server entry point (flags, TLS, graceful shutdown) |
-| `cmd/bsd-backup-agent` | Agent CLI and Windows Service wrapper (`service_windows.go`) |
-| `internal/api` | JSON wire types shared by both sides |
-| `internal/auth` | PBKDF2 password hashes, device tokens, HS256 JWTs |
-| `internal/server` | HTTP handlers, JSON-file store, subscription/quota decisions, Google token minting |
-| `internal/agent` | Enrollment, DPAPI secret storage, sync loop, enforcement, scheduling, log shipping |
-| `internal/backup` | Engine: scan, change detection, dedup, snapshots, retention/GC, restore |
-| `internal/crypt` | Object format: gzip + streaming AES-256-GCM |
-| `internal/storage` | `Backend` interface with Google Drive and NAS implementations |
-| `deploy/` | Dockerfile, systemd unit, Caddyfile, `install-agent.ps1` |
-| `examples/` | Account and policy JSON for the admin API |
+| `cmd/bsd-backup-server` | הפעלת השרת (הגדרות, TLS, כיבוי מסודר) |
+| `cmd/bsd-backup-agent` | פקודות הסוכן ועטיפת שירות Windows (`service_windows.go`) |
+| `internal/api` | מבני הנתונים המשותפים לשרת ולסוכן |
+| `internal/auth` | גיבוב סיסמאות, אסימוני מכשיר, אסימוני JWT |
+| `internal/server` | ממשק השרת, מסד הנתונים (קובץ JSON), כללי מנוי ומכסה, הנפקת הרשאות Google |
+| `internal/agent` | רישום, אחסון סודות מוצפן, סנכרון מול השרת, אכיפה, תזמון, שליחת לוגים |
+| `internal/backup` | מנוע הגיבוי: סריקה, זיהוי שינויים, מניעת כפילויות, גרסאות, ניקוי ושחזור |
+| `internal/crypt` | פורמט האחסון: דחיסה והצפנה |
+| `internal/storage` | יעדי האחסון: Google Drive ו-NAS |
+| `deploy/` | קובצי התקנה: Dockerfile, systemd, Caddy, סקריפט התקנה למחשב |
+| `examples/` | דוגמאות ללקוחות ולמדיניות גיבוי |
 
-## How it works
+## איך זה עובד
 
-### Authentication
+### הזדהות
 
-1. **Enroll (once per PC).** The installer runs `enroll` with the account's username and password. The server checks the PBKDF2-SHA256 hash and creates a device record. It returns a random 256-bit **device token** and stores only that token's SHA-256. Five failed attempts per IP+username lock enrollment for 15 minutes.
-2. **Session.** The agent exchanges the device token for a **15-minute JWT** (HS256) and renews it automatically. The password is never stored on the PC.
-3. **Local secrets.** The device token, the encryption passphrase and the cached policy are sealed with **machine-scope DPAPI**. They live in `%ProgramData%\BSDBackup`, whose ACL allows only SYSTEM and Administrators with inheritance off. That is required because the installer (an admin) and the service (LocalSystem) are different accounts.
-4. **Revocation.** `POST /admin/devices/{id}/revoke` invalidates a device at once. Its next heartbeat or token renewal fails and it suspends.
+1. **רישום (פעם אחת לכל מחשב).** בזמן ההתקנה מריצים `enroll` עם שם המשתמש והסיסמה של הלקוח. השרת בודק את הסיסמה (שנשמרת אצלו רק כגיבוב), רושם את המחשב ומחזיר לו **אסימון מכשיר** אקראי. השרת עצמו שומר רק גיבוב של האסימון. אחרי חמישה ניסיונות כושלים מאותה כתובת ולאותו משתמש, הרישום ננעל ל-15 דקות.
+2. **התחברות שוטפת.** הסוכן מחליף את אסימון המכשיר באסימון JWT שתקף ל-15 דקות, ומחדש אותו אוטומטית. הסיסמה של הלקוח לא נשמרת במחשב.
+3. **סודות במחשב.** אסימון המכשיר, מפתח ההצפנה והמדיניות השמורה מוצפנים בהצפנה המובנית של Windows (DPAPI ברמת המחשב). הם נשמרים בתיקייה `%ProgramData%\BSDBackup`, שרק SYSTEM ומנהלי המערכת יכולים לפתוח. זה נחוץ כי מי שמתקין (מנהל) ומי שמריץ את השירות (SYSTEM) הם חשבונות שונים.
+4. **ביטול מכשיר.** הקריאה `POST /admin/devices/{id}/revoke` חוסמת מחשב מיד. בפעם הבאה שהוא פונה לשרת הוא נדחה ומפסיק לגבות.
 
-### Subscriptions, quotas and enforcement
+### מנויים, מכסות ואכיפה
 
-The agent sends a heartbeat (`/agent/sync`) every `poll-seconds`, 5 minutes by default. While a backup is running it sends one every 60 seconds. The server replies with `backup_allowed` plus a reason:
+הסוכן שולח "דופק" לשרת (`/agent/sync`) כל 5 דקות כברירת מחדל, וכל דקה בזמן שגיבוי רץ. השרת עונה אם מותר לגבות, ואם לא, מה הסיבה:
 
-| Server state | Agent behaviour |
+| מצב בשרת | מה הסוכן עושה |
 |---|---|
-| `subscription_inactive` | Cancels any running backup **immediately**: the upload stops mid-stream and no snapshot is published. Google Drive tokens are refused. |
-| `quota_exceeded` (account usage ≥ quota) | No new backups. Retention still runs once a day so expired snapshots free space. |
-| active, under quota | Backs up. During a run the agent stops *before* an upload would cross the remaining quota and saves a partial snapshot. |
-| server unreachable | Keeps working on the cached policy for `offline_grace_hours` (72 h by default), then suspends until it can confirm the subscription. |
+| המנוי לא פעיל (`subscription_inactive`) | עוצר **מיד** גיבוי שרץ: ההעלאה נקטעת באמצע, ולא נשמרת גרסה חלקית. השרת מפסיק להנפיק לו הרשאות ל-Google Drive. |
+| חריגה ממכסה (`quota_exceeded`): השימוש של החשבון הגיע למכסה | לא מתחיל גיבויים חדשים. ניקוי גרסאות ישנות עדיין רץ פעם ביום, כדי לפנות מקום. |
+| מנוי פעיל ומתחת למכסה | מגבה. אם במהלך הגיבוי קובץ עומד לחרוג מהמכסה, הסוכן עוצר לפניו ושומר גרסה חלקית. |
+| אין חיבור לשרת | ממשיך לעבוד לפי המדיניות האחרונה שקיבל במשך 72 שעות (`offline_grace_hours`), ואחר כך עוצר עד שהוא מצליח לאמת את המנוי שוב. |
 
-Usage is the sum of `stored_bytes` across the account's devices. Each agent reports its repository size after every run and in progress reports.
+השימוש של חשבון הוא סכום נפח האחסון של כל המחשבים שלו. כל סוכן מדווח לשרת את הנפח שלו אחרי כל גיבוי ובמהלכו.
 
-### Backup engine
+### מנוע הגיבוי
 
-- **Change detection.** Files are walked per source; sources may contain wildcards and environment variables, e.g. `C:\Users\*\Documents`. If a file's size and mtime match the local index, its hash is reused. Otherwise it is re-hashed with SHA-256. The engine always hashes the bytes on disk before uploading.
-- **Dedup and incremental.** Content is stored once per unique hash as `blobs/<id>`. Unchanged and duplicate files cost nothing. Each run writes one manifest, `snapshots/<UTC time>-<rand>`, listing every file, so each snapshot can be restored on its own while storage holds only the differences.
-- **Pipeline.** file → gzip (skipped for already-compressed types such as jpg, mp4, zip and docx) → AES-256-GCM in 64 KiB authenticated segments → token-bucket throttle → backend. The file is re-hashed during upload; if it changed mid-upload, the blob is discarded and retried next run.
-- **Encryption** (`options.encrypt`). A master key is derived from the passphrase with PBKDF2 (600k iterations). From it come separate content and blob-name keys, so storage learns neither the content nor its hashes. The repository `config` stores only a salt and a key check. If no passphrase is given at enrollment, a **recovery key** is generated and printed once. Keep it off the PC: without it an encrypted backup cannot be restored.
-- **Retention.** A snapshot is kept if it is among the newest `keep_last` or younger than `keep_days`. Then every blob no kept snapshot references is deleted, including orphans from interrupted runs. If any kept manifest cannot be read, nothing is deleted.
-- **Default excludes.** pagefile, hiberfil, swapfile, `$Recycle.Bin`, System Volume Information, Temp and INetCache, `*.tmp`, Office `~$` lock files, Thumbs.db. The agent's own data directory is never backed up.
-- **Being a good citizen.** The service runs at below-normal CPU priority and honours `bandwidth_kbps`. An OS-level lock stops a console `backup-now` from racing the service.
+- **זיהוי שינויים.** הסוכן סורק את התיקיות שבמדיניות. אפשר להשתמש בתווים כלליים ובמשתני סביבה, למשל `C:\Users\*\Documents` לכל המשתמשים במחשב. אם הגודל ותאריך השינוי של קובץ לא השתנו, הסוכן מסתמך על טביעת האצבע (SHA-256) השמורה. אחרת הוא מחשב אותה מחדש. לפני העלאה הוא תמיד מחשב אותה מהקובץ שבדיסק.
+- **גיבוי מצטבר ומניעת כפילויות.** כל תוכן ייחודי נשמר פעם אחת בלבד. קבצים שלא השתנו וקבצים זהים לא עולים שוב. כל ריצה שומרת רשימה מלאה של הקבצים (גרסה), כך שאפשר לשחזר כל גרסה בנפרד, אבל האחסון מכיל רק את ההבדלים.
+- **מסלול הנתונים.** קובץ ← דחיסה ← הצפנת AES-256 ← הגבלת קצב ← העלאה. הדחיסה מדולגת בסוגים שכבר דחוסים, כמו jpg, mp4, zip ו-docx. בזמן ההעלאה הסוכן מחשב שוב את טביעת האצבע. אם הקובץ השתנה באמצע, ההעלאה נמחקת והקובץ יגובה בריצה הבאה.
+- **הצפנה** (`options.encrypt`). מסיסמת ההצפנה נגזר מפתח, וממנו שני מפתחות נפרדים: אחד לתוכן ואחד לשמות הקבצים באחסון. כך יעד האחסון לא רואה לא את התוכן ולא את טביעות האצבע שלו. באחסון נשמרים רק נתוני עזר שמאפשרים לבדוק שהסיסמה נכונה. אם לא נותנים סיסמת הצפנה בזמן הרישום, נוצר **מפתח שחזור** שמוצג פעם אחת בלבד. צריך לשמור אותו מחוץ למחשב: בלעדיו אי אפשר לשחזר גיבוי מוצפן.
+- **שמירת גרסאות.** גרסה נשמרת אם היא בין `keep_last` האחרונות, או אם היא צעירה מ-`keep_days` ימים. אחרי מחיקת גרסאות ישנות, נמחק כל תוכן שאף גרסה שנשמרה לא משתמשת בו, כולל שאריות מגיבויים שנקטעו. אם רשימת קבצים של גרסה כלשהי שנשמרת לא נקראת, שום תוכן לא נמחק.
+- **מה לא מגובה כברירת מחדל.** קובצי pagefile, hiberfil ו-swapfile, סל המיחזור, System Volume Information, תיקיות Temp ו-INetCache, קובצי `*.tmp`, קובצי נעילה של Office (`~$`) ו-Thumbs.db. גם תיקיית הנתונים של הסוכן עצמו לא מגובה.
+- **לא מפריע למשתמש.** השירות רץ בעדיפות מעבד נמוכה ומכבד את מגבלת רוחב הפס (`bandwidth_kbps`). נעילה ברמת מערכת ההפעלה מונעת התנגשות בין גיבוי ידני (`backup-now`) לבין השירות.
 
-### Storage backends
+### יעדי אחסון
 
-**Google Drive.** Layout: `<root>/<device-id>/{config, blobs/, snapshots/}`.
-- Uploads use the **resumable upload protocol** in 8 MiB chunks. After a network failure the agent asks Drive how many bytes it committed and resumes from there. It retries 429, 5xx and rate-limit 403s with backoff.
-- **Google credentials never reach the PC.** The server holds an OAuth refresh token or a service-account key and gives agents 1-hour access tokens through `/agent/storage-token`. Deactivating a customer therefore also cuts their Drive access within the hour.
-- Drive file IDs are recorded in the local index, as the spec requires.
-- All calls set `supportsAllDrives`, so Shared Drives work.
+**Google Drive.** מבנה התיקיות: `<root>/<device-id>/{config, blobs/, snapshots/}`.
+- קבצים עולים במקטעים של 8 MiB בשיטת ההעלאה הניתנת להמשך של Google. אם הרשת נפלה, הסוכן שואל את Drive כמה הגיע אליו וממשיך משם. בעומס או בשגיאות זמניות הוא מנסה שוב בהמתנה הולכת וגדלה.
+- **פרטי הגישה ל-Google לא מגיעים למחשב.** השרת מחזיק את הרשאת OAuth או את מפתח חשבון השירות, ונותן לסוכנים הרשאות גישה לשעה אחת (`/agent/storage-token`). לכן ביטול מנוי של לקוח חוסם גם את הגישה שלו ל-Drive, תוך שעה לכל היותר.
+- מזהי הקבצים ב-Drive נשמרים באינדקס המקומי, כפי שנדרש באפיון.
+- יש תמיכה ב-Shared Drives.
 
-**NAS over Tailscale.** The policy gives a UNC path such as `\\office-nas.tailnet-abc.ts.net\backups`, optionally with SMB credentials.
-- Before each run the agent probes TCP 445. If the tailnet is down it fails fast with "is Tailscale connected on this PC?" instead of hanging.
-- It authenticates the share with `WNetAddConnection2`. No drive letter is involved: services cannot see users' mapped drives.
-- Blobs are sharded as `blobs/ab/abcdef…`, and every write goes to a temp file followed by a rename.
+**NAS דרך Tailscale.** המדיניות מגדירה נתיב רשת, למשל `\\office-nas.tailnet-abc.ts.net\backups`, ואפשר גם שם משתמש וסיסמה לשיתוף.
+- לפני כל ריצה הסוכן בודק שה-NAS עונה בפורט 445. אם Tailscale לא מחובר, הוא נכשל מהר עם ההודעה "is Tailscale connected on this PC?" במקום להיתקע.
+- ההתחברות לשיתוף נעשית ישירות לנתיב, בלי אות כונן, כי שירות Windows לא רואה כוננים ממופים של משתמשים.
+- כל קובץ נכתב קודם לקובץ זמני ורק אחר כך מקבל את שמו הסופי, כך שלא נשארים קבצים חצי כתובים.
 
-## Running the server
+## הפעלת השרת
 
 ```bash
 cd backup
 go build -o bsd-backup-server ./cmd/bsd-backup-server
-export BSD_ADMIN_KEY="$(openssl rand -hex 24)"     # keep this secret
+export BSD_ADMIN_KEY="$(openssl rand -hex 24)"     # לשמור בסוד
 ./bsd-backup-server -addr 127.0.0.1:8080 -data /var/lib/bsd-backup/store.json
 ```
 
-Put it behind TLS: `deploy/Caddyfile` gives automatic Let's Encrypt. Alternatively pass `-tls-cert`/`-tls-key`. Agents refuse non-HTTPS servers except on localhost. `deploy/bsd-backup-server.service` is a hardened systemd unit and `deploy/Dockerfile` builds a distroless image.
+השרת צריך לרוץ מאחורי HTTPS. הקובץ `deploy/Caddyfile` נותן תעודת Let's Encrypt אוטומטית. אפשר גם להעביר `-tls-cert` ו-`-tls-key`. הסוכנים מסרבים להתחבר לשרת שאינו HTTPS, חוץ מ-localhost. יש גם `deploy/bsd-backup-server.service` להרצה כשירות systemd, ו-`deploy/Dockerfile` לבניית קונטיינר.
 
-| Flag | Default | Meaning |
+| הגדרה | ברירת מחדל | משמעות |
 |---|---|---|
-| `-addr` | `:8080` | listen address |
-| `-data` | `data/store.json` | JSON data file (mode 0600; back it up) |
-| `-poll-seconds` | `300` | heartbeat interval sent to agents |
-| `-token-ttl` | `15m` | device JWT lifetime |
-| `-allow-restore-when-inactive` | `true` | inactive customers can still *restore* from Google Drive |
+| `-addr` | `:8080` | כתובת האזנה |
+| `-data` | `data/store.json` | קובץ הנתונים (הרשאות 0600; צריך לגבות אותו) |
+| `-poll-seconds` | `300` | כל כמה שניות הסוכנים פונים לשרת |
+| `-token-ttl` | `15m` | תוקף אסימון ההתחברות של מכשיר |
+| `-allow-restore-when-inactive` | `true` | לקוח עם מנוי לא פעיל עדיין יכול *לשחזר* מ-Google Drive |
 
-### Admin API
+### ממשק הניהול
 
-Every call sends `Authorization: Bearer $BSD_ADMIN_KEY`. Secrets (passwords, refresh tokens, keys) are accepted but never echoed back.
+בכל קריאה שולחים `Authorization: Bearer $BSD_ADMIN_KEY`. סיסמאות, אסימונים ומפתחות מתקבלים, אבל אף פעם לא מוחזרים בתשובה.
 
 ```bash
 H="Authorization: Bearer $BSD_ADMIN_KEY"; S=https://backup.example.com/api/v1/admin
 
-curl -H "$H" $S/accounts -d @examples/account-nas.json                 # create (see examples/)
-curl -H "$H" $S/accounts                                                # list with usage
-curl -H "$H" -X PATCH $S/accounts/acc_… -d '{"subscription":"inactive"}'  # suspend customer
-curl -H "$H" -X PATCH $S/accounts/acc_… -d '{"quota_gb":1000}'            # change quota
+curl -H "$H" $S/accounts -d @examples/account-nas.json                 # יצירת לקוח (ראו examples/)
+curl -H "$H" $S/accounts                                                # רשימת לקוחות ושימוש
+curl -H "$H" -X PATCH $S/accounts/acc_… -d '{"subscription":"inactive"}'  # השהיית לקוח
+curl -H "$H" -X PATCH $S/accounts/acc_… -d '{"quota_gb":1000}'            # שינוי מכסה
 curl -H "$H" -X PATCH $S/accounts/acc_… -d @new-policy.json             # {"policy":{…}}
-curl -H "$H" "$S/devices?account=acc_…"                                 # status, online, last run
-curl -H "$H" $S/devices/dev_…                                           # + last 200 events/logs
-curl -H "$H" -X POST $S/devices/dev_…/backup-now                        # run at next heartbeat
-curl -H "$H" -X POST $S/devices/dev_…/revoke
+curl -H "$H" "$S/devices?account=acc_…"                                 # מצב המחשבים, מחובר, ריצה אחרונה
+curl -H "$H" $S/devices/dev_…                                           # כולל 200 האירועים והלוגים האחרונים
+curl -H "$H" -X POST $S/devices/dev_…/backup-now                        # גיבוי בפנייה הבאה של המחשב
+curl -H "$H" -X POST $S/devices/dev_…/revoke                            # ביטול מכשיר
 ```
 
-Agent-facing endpoints, all `POST`: `/api/v1/auth/enroll` and `/api/v1/auth/token`, plus the following, which require the device JWT: `/api/v1/agent/sync`, `/report`, `/logs` and `/storage-token`. The bodies are defined in `internal/api/types.go`.
+הקריאות של הסוכנים הן כולן `POST`: `/api/v1/auth/enroll` ו-`/api/v1/auth/token`, ובנוסף, עם אסימון ההתחברות של המכשיר: `/api/v1/agent/sync`, `/report`, `/logs` ו-`/storage-token`. מבנה הנתונים שלהן מוגדר ב-`internal/api/types.go`.
 
-### Google Drive setup
+### הגדרת Google Drive
 
-Use a dedicated Google account or Shared Drive per customer. A Drive access token is scoped to the whole drive it authorizes.
+מומלץ חשבון Google או Shared Drive נפרד לכל לקוח, כי הרשאת גישה ל-Drive חלה על כל ה-Drive שהיא פותחת.
 
-- **OAuth (personal Google accounts).** Create an OAuth client (Desktop type) in Google Cloud and enable the Drive API. Run the consent flow once with scope `https://www.googleapis.com/auth/drive` to get a refresh token. Store `client_id`, `client_secret` and `refresh_token` under `gdrive_creds.oauth`.
-- **Service account (Workspace).** Service accounts have no My Drive quota, so add the service account as a member of a **Shared Drive**. Store `client_email` and `private_key` under `gdrive_creds.service_account`, and set `policy.gdrive.root_folder_id` to the Shared Drive ID. To use domain-wide delegation instead, set `subject` to the user to impersonate.
-- Leaving `root_folder_id` empty makes the agent use a "BSD Backup" folder in My Drive.
+- **OAuth (חשבונות Google פרטיים).** יוצרים ב-Google Cloud לקוח OAuth מסוג Desktop ומפעילים את Drive API. מבצעים פעם אחת את תהליך האישור עם ההרשאה `https://www.googleapis.com/auth/drive` כדי לקבל refresh token. שומרים את `client_id`, `client_secret` ו-`refresh_token` תחת `gdrive_creds.oauth`.
+- **חשבון שירות (Google Workspace).** לחשבון שירות אין נפח אחסון משלו, ולכן מוסיפים אותו כחבר ב-**Shared Drive**. שומרים את `client_email` ו-`private_key` תחת `gdrive_creds.service_account`, וקובעים את `policy.gdrive.root_folder_id` למזהה ה-Shared Drive. אפשר גם להשתמש בהאצלה ברמת הדומיין: קובעים את `subject` למשתמש שבשמו פועלים.
+- אם `root_folder_id` ריק, הסוכן משתמש בתיקייה בשם "BSD Backup" ב-My Drive.
 
-### NAS over Tailscale setup
+### הגדרת NAS דרך Tailscale
 
-1. Install Tailscale on the NAS and on each PC, in the same tailnet. On PCs, enable "Run unattended" so the tunnel is up without anyone logged in, because the service runs at boot.
-2. Create an SMB share and a share user with access to it.
-3. Use the NAS's MagicDNS name in the policy: `"nas": {"path": "\\\\nas.tailnet-xyz.ts.net\\backups", "username": "…", "password": "…"}`.
-4. Use Tailscale ACLs to limit customer PCs to port 445 on the NAS. Each device writes to its own `<device-id>` folder.
+1. מתקינים Tailscale על ה-NAS ועל כל מחשב, באותה רשת (tailnet). במחשבים מפעילים "Run unattended", כדי שהחיבור יהיה פעיל גם בלי שמישהו מחובר, כי השירות מתחיל עם הדלקת המחשב.
+2. יוצרים ב-NAS שיתוף SMB ומשתמש עם גישה אליו.
+3. במדיניות משתמשים בשם ה-MagicDNS של ה-NAS: `"nas": {"path": "\\\\nas.tailnet-xyz.ts.net\\backups", "username": "…", "password": "…"}`.
+4. ב-ACL של Tailscale מגבילים את מחשבי הלקוחות לפורט 445 של ה-NAS בלבד. כל מחשב כותב לתיקייה משלו (`<device-id>`).
 
-## Installing the agent
+## התקנת הסוכן
 
-Build it on any OS:
+בונים את הסוכן (מכל מערכת הפעלה):
 
 ```bash
 cd backup
 GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o bsd-backup-agent.exe ./cmd/bsd-backup-agent
 ```
 
-On the PC, open an elevated PowerShell in the folder that contains the exe and `deploy/install-agent.ps1`:
+במחשב של הלקוח פותחים PowerShell כמנהל, בתיקייה שבה נמצאים קובץ ה-exe ו-`deploy/install-agent.ps1`:
 
 ```powershell
 .\install-agent.ps1 -Server https://backup.example.com -Username acme
 ```
 
-The script copies the exe to `C:\Program Files\BSDBackup`, prompts for the password and enrolls. It then installs `BSDBackupAgent` with delayed automatic start and restart-on-failure, and starts it. To do the same by hand: `enroll`, `install`, `start`.
+הסקריפט מעתיק את הקובץ ל-`C:\Program Files\BSDBackup`, מבקש את הסיסמה ורושם את המחשב. אחר כך הוא מתקין את השירות `BSDBackupAgent`, שמתחיל אוטומטית (באיחור קל אחרי הדלקה) ומופעל מחדש אם הוא נופל, ומפעיל אותו. אפשר לעשות את אותו הדבר ידנית: `enroll`, `install`, `start`.
 
-Day-to-day commands (run as Administrator):
+פקודות לשימוש שוטף (כמנהל):
 
 ```
-bsd-backup-agent status                       # subscription, quota, backend, last backup
-bsd-backup-agent backup-now                   # foreground run with console log
-bsd-backup-agent snapshots
-bsd-backup-agent restore -target D:\Restore -path "C:\Users\dana\Documents"   # -snapshot <id> for older
-bsd-backup-agent show-recovery-key
+bsd-backup-agent status                       # מנוי, מכסה, יעד, גיבוי אחרון
+bsd-backup-agent backup-now                   # גיבוי מיידי עם פלט למסך
+bsd-backup-agent snapshots                    # רשימת גרסאות
+bsd-backup-agent restore -target D:\Restore -path "C:\Users\dana\Documents"   # -snapshot <id> לגרסה ישנה
+bsd-backup-agent show-recovery-key            # הצגת מפתח השחזור
 ```
 
-Logs go to `%ProgramData%\BSDBackup\logs\agent.log`, rotated at 10 MiB. Warnings and errors are also shipped to the server, and service start failures go to the Windows Event Log. Restores recreate the original layout under the target, for example `C:\Users\dana\x.docx` becomes `D:\Restore\C\Users\dana\x.docx`. Every restored file is checked against its recorded SHA-256.
+הלוגים נכתבים ל-`%ProgramData%\BSDBackup\logs\agent.log`, ומתחלפים כל 10 MiB. אזהרות ושגיאות נשלחות גם לשרת, וכשלים בהפעלת השירות נרשמים ב-Event Log של Windows. השחזור משחזר את מבנה התיקיות המקורי מתחת לתיקיית היעד. למשל, `C:\Users\dana\x.docx` ישוחזר אל `D:\Restore\C\Users\dana\x.docx`. כל קובץ משוחזר נבדק מול טביעת האצבע שנרשמה בזמן הגיבוי.
 
-## Development
+## פיתוח
 
 ```bash
 cd backup
-go test -race ./...                # unit + end-to-end tests (server, agent, engine, fake Drive)
-GOOS=windows go vet ./...          # checks the Windows-only code (service, DPAPI, SMB, locks)
+go test -race ./...                # בדיקות יחידה ובדיקות מקצה לקצה
+GOOS=windows go vet ./...          # בדיקת הקוד הייעודי ל-Windows (שירות, DPAPI, SMB, נעילות)
 ```
 
-The tests cover:
-- crypto tamper and truncation detection
-- Drive resumable uploads against a fake Drive that drops chunks
-- incremental and dedup behaviour, retention GC, quota stops, wrong passphrase, rebuilding the index after a reinstall
-- the server's quota and subscription decisions, revocation, the enrollment lockout, secret redaction and token brokering
-- a full agent↔server run, including suspending a backup mid-upload and the offline grace period
+הבדיקות מכסות:
+- זיהוי שינוי או קטיעה של נתונים מוצפנים
+- העלאה ל-Drive מול Drive מדומה שמפיל מקטעים
+- גיבוי מצטבר ומניעת כפילויות, מחיקת גרסאות ישנות, עצירה במכסה, סיסמת הצפנה שגויה, ובניית האינדקס מחדש אחרי התקנה מחדש
+- החלטות השרת לגבי מנוי ומכסה, ביטול מכשיר, נעילה אחרי ניסיונות כושלים, הסתרת סודות והנפקת הרשאות Google
+- ריצה מלאה של סוכן מול שרת, כולל עצירת גיבוי באמצע העלאה ותקופת העבודה בלי חיבור לשרת
 
-The agent also builds on Linux and macOS for development. There, secrets rely on file permissions instead of DPAPI, and the NAS path must be a mounted directory.
+הסוכן נבנה גם על Linux ו-macOS לצורכי פיתוח. שם הסודות מוגנים בהרשאות קבצים במקום DPAPI, ונתיב ה-NAS צריך להיות תיקייה מחוברת (mount).
 
-## Known limitations and next steps
+## מגבלות ידועות והמשך פיתוח
 
-- **Open/locked files.** Files held exclusively, such as Outlook `.pst` files while Outlook runs or databases, are skipped and reported. A **VSS snapshot** before each run is the main next step for Windows.
-- **Change detection** uses scheduled scans with size and mtime plus hashing. A `ReadDirectoryChangesW` watcher could trigger near-real-time runs.
-- **Server store** is a single JSON file, which suits hundreds of devices. Move to Postgres behind the same `Store` methods for more. Google and NAS credentials in it are protected only by file permissions; add KMS encryption at rest for production.
-- **No admin web UI yet.** The JSON admin API is complete enough to put one on top.
-- **Shipping.** Sign `bsd-backup-agent.exe` with a code-signing certificate and package it as an MSI for GPO/Intune deployment.
+- **קבצים פתוחים ונעולים.** קבצים שתוכנה מחזיקה בבלעדיות, כמו קובצי `.pst` של Outlook כש-Outlook פתוח, או מסדי נתונים, מדולגים ומדווחים. השלב החשוב הבא ל-Windows הוא **צילום VSS** לפני כל ריצה.
+- **זיהוי שינויים** נעשה בסריקות מתוזמנות (גודל ותאריך שינוי ואז טביעת אצבע). מעקב שינויים בזמן אמת (`ReadDirectoryChangesW`) יאפשר גיבוי כמעט מיידי.
+- **מסד הנתונים של השרת** הוא קובץ JSON יחיד, שמתאים למאות מחשבים. מעבר לזה כדאי לעבור ל-Postgres. פרטי הגישה ל-Google ול-NAS בקובץ הזה מוגנים רק בהרשאות קבצים; בסביבת ייצור כדאי להוסיף הצפנה עם KMS.
+- **אין עדיין ממשק ניהול גרפי.** ממשק ה-JSON מלא מספיק כדי לבנות עליו כזה.
+- **הפצה.** כדאי לחתום את `bsd-backup-agent.exe` בתעודת חתימת קוד ולארוז אותו כ-MSI להפצה דרך GPO או Intune.
