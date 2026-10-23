@@ -420,4 +420,8 @@ const PRODUCTS = [
     img: "images/thinkpad-x1c-g12/01.jpg", page: "laptop-thinkpad-x1-carbon-gen12-ultra7-155u-5g-like-new.html", price: "4,459", was: "11,199", deal: "מודם 5G · כמו חדש",
     tagline: "ספינת הדגל של ThinkPad, עם מודם 5G · כמו חדש, שנתיים אחריות",
     specs: ["Intel Core Ultra 7 155U", "32GB LPDDR5X", "512GB SSD", "מודם סלולרי 5G מובנה", "1.09 ק\"ג · סיבי פחמן", "שנתיים אחריות"] },
+  { sku: "BSD-KIT-I7-14700-5060-24", cat: "desktop", also: ['gaming'], brand: "BSD מחשבים", name: "ערכה מלאה · Core i7-14700 · RTX 5060 + מסך 24 אינץ'",
+    img: "images/pc-i7-14700-5060-kit/01.jpg", page: "desktop-kit-i7-14700-rtx5060-monitor-24.html", price: "8,090", deal: "כולל מסך 24 אינץ'",
+    tagline: "מחשב, מסך 24 אינץ' (LG או Dell), מקלדת ועכבר · יש הנחת מזומן",
+    specs: ["Intel Core i7-14700 ‏(20 ליבות)", "RTX 5060 8GB", "32GB DDR4 · ‏1TB SSD", "מסך 24 אינץ' LG או Dell לבחירה", "סט אלחוטי Lenovo", "ספק 850W · ‏Antec VX510"] },
 ];
