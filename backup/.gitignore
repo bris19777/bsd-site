@@ -1,0 +1,5 @@
+# build outputs and local data
+/bsd-backup-server
+/bsd-backup-agent
+*.exe
+/data/

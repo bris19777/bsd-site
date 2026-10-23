@@ -1,0 +1,4 @@
+# Caddy terminates TLS (automatic Let's Encrypt) in front of the server.
+backup.example.com {
+	reverse_proxy 127.0.0.1:8080
+}

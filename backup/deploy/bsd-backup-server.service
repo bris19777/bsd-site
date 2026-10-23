@@ -1,0 +1,19 @@
+[Unit]
+Description=BSD Backup management server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=bsd-backup
+# Put BSD_ADMIN_KEY=... in this file, mode 0600.
+EnvironmentFile=/etc/bsd-backup/server.env
+ExecStart=/usr/local/bin/bsd-backup-server -addr 127.0.0.1:8080 -data /var/lib/bsd-backup/store.json
+Restart=on-failure
+StateDirectory=bsd-backup
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+{
+  "name": "Cohen Family",
+  "username": "cohen",
+  "password": "choose-a-long-password",
+  "subscription": "active",
+  "quota_gb": 200,
+  "gdrive_creds": {
+    "oauth": {
+      "client_id": "1234567890-abc.apps.googleusercontent.com",
+      "client_secret": "GOCSPX-...",
+      "refresh_token": "1//0g..."
+    }
+  },
+  "policy": {
+    "backend": "gdrive",
+    "gdrive": { "root_folder_id": "" },
+    "sources": [
+      { "path": "C:\\Users\\*\\Documents" },
+      { "path": "C:\\Users\\*\\Pictures", "include": ["*.jpg", "*.jpeg", "*.png", "*.heic", "*.mp4"] }
+    ],
+    "schedule": { "interval_minutes": 360, "window_start": "22:00", "window_end": "06:00" },
+    "retention": { "keep_last": 14, "keep_days": 60 },
+    "options": { "compress": true, "encrypt": true, "bandwidth_kbps": 2048 }
+  }
+}

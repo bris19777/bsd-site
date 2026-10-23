@@ -1,0 +1,24 @@
+{
+  "name": "Acme Accounting",
+  "username": "acme",
+  "password": "choose-a-long-password",
+  "subscription": "active",
+  "quota_gb": 500,
+  "policy": {
+    "backend": "nas",
+    "nas": {
+      "path": "\\\\office-nas.tailnet-abc123.ts.net\\backups",
+      "username": "backup-acme",
+      "password": "smb-share-password"
+    },
+    "sources": [
+      { "path": "C:\\Users\\*\\Documents" },
+      { "path": "C:\\Users\\*\\Desktop" },
+      { "path": "D:\\Accounting", "exclude": ["*.bak", "**/Archive/**"] }
+    ],
+    "exclude": ["*.iso", "**/node_modules/**"],
+    "schedule": { "interval_minutes": 120, "window_start": "08:00", "window_end": "20:00" },
+    "retention": { "keep_last": 30, "keep_days": 90 },
+    "options": { "compress": true, "encrypt": true, "bandwidth_kbps": 0, "max_file_size_mb": 20480 }
+  }
+}
