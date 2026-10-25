@@ -172,11 +172,13 @@ const PRODUCTS = [
     tagline: "הכניסה לעולם הגיימינג",
     specs: ["מסך 15.6 אינץ'", "Intel Core i7-13650HX", "16GB זיכרון", "1TB SSD", "RTX 3050 6GB", "אחריות שנה"] },
   { sku: "6320", cat: "arch", also: ["gaming"], brand: "ASUS", name: "ASUS TUF Gaming A16 · Ryzen 9 · RTX 5060",
-    img: "images/fa608pm/01.webp", page: "laptop-asus-tuf-a16-ryzen9-8940hx-rtx5060.html", price: "6,590", deal: "Ryzen 9",
+    img: "images/fa608pm/01.webp", page: "laptop-asus-tuf-a16-ryzen9-8940hx-rtx5060.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "6,590" ולמחוק את soldOut
+    deal: "Ryzen 9",
     tagline: "תחנת עבודה ניידת לאדריכלות, תלת-ממד ועריכת וידאו",
     specs: ["AMD Ryzen 9 8940HX: ‏16 ליבות / 32 תהליכונים", "RTX 5060 8GB", "32GB DDR5", "1TB SSD NVMe", "מסך 16 אינץ' IPS ‏165Hz", "סוללה 90Wh · אחריות 3 שנים"] },
   { sku: "6079", cat: "arch", also: ["gaming"], brand: "Lenovo", name: "Lenovo LOQ 15 · i7-14700HX · RTX 5060",
-    img: "images/loq15irx10/01.jpg", page: "laptop-lenovo-loq15-i7-14700hx-rtx5060.html", price: "6,390", deal: "הנחת מזומן",
+    img: "images/loq15irx10/01.jpg", page: "laptop-lenovo-loq15-i7-14700hx-rtx5060.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "6,390" ולמחוק את soldOut
+    deal: "הנחת מזומן",
     tagline: "תחנת עבודה ניידת לאדריכלות, גרפיקה ותלת-ממד",
     specs: ["Intel Core i7-14700HX: ‏20 ליבות / 28 תהליכונים", "RTX 5060 8GB GDDR7", "32GB DDR5", "1TB SSD NVMe", "מסך 15.6 אינץ' IPS ‏144Hz ‏100% sRGB", "Windows 11 Pro · אחריות 3 שנים"] },
   { sku: "6236", cat: "gaming", brand: "ASUS", name: "ASUS TUF Gaming A16", img: "images/6236.webp",
@@ -186,7 +188,8 @@ const PRODUCTS = [
     tagline: "דגל הגיימינג",
     specs: ["מסך 16 אינץ'", "AMD Ryzen 9 8940HX", "32GB DDR5", "1TB SSD", "RTX 5070 8GB", "אחריות 3 שנים"] },
   { sku: "83LT0065IV", cat: "gaming", also: ["arch"], brand: "Lenovo", name: "Lenovo Legion Pro 5 16 · Ryzen 9 · RTX 5070",
-    img: "images/legion-pro5/01.jpg", page: "laptop-lenovo-legion-pro5-ryzen9-rtx5070.html", price: "7,890", deal: "RTX 5070",
+    img: "images/legion-pro5/01.jpg", page: "laptop-lenovo-legion-pro5-ryzen9-rtx5070.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "7,890" ולמחוק את soldOut
+    deal: "RTX 5070",
     tagline: "מסך ⁦2560×1600⁩ ‏240Hz ‏500 ניט, ביצועים בלי פשרות",
     specs: ["מסך 16 אינץ' ⁦2560×1600⁩ ‏IPS ‏240Hz", "AMD Ryzen 9 8940HX: ‏16 ליבות", "RTX 5070 8GB GDDR7", "32GB DDR5", "1TB SSD + חריץ פנוי", "סוללה 80Wh · אחריות 3 שנים"] },
 
