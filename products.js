@@ -45,7 +45,7 @@ const PRODUCTS = [
     tagline: "מסך IPS בהיר ומעבד i5 מהיר מסדרת H",
     specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "16GB DDR5", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
   { sku: "83K1-I5-8GB", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 8GB",
-    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb.html", price: "2,490",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb.html", price: "2,579",
     tagline: "מסך IPS בהיר ומעבד i5 מהיר, במחיר משתלם",
     specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "8GB DDR5 (ניתן להרחבה)", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
 
