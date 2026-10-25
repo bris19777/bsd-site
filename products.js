@@ -427,4 +427,8 @@ const PRODUCTS = [
     img: "images/pc-i7-14700-5060-kit/01.jpg", page: "desktop-kit-i7-14700-rtx5060-monitor-24.html", price: "8,090", deal: "כולל מסך 24 אינץ'",
     tagline: "מחשב, מסך 24 אינץ' (LG או Dell), מקלדת ועכבר · יש הנחת מזומן",
     specs: ["Intel Core i7-14700 ‏(20 ליבות)", "RTX 5060 8GB", "32GB DDR4 · ‏1TB SSD", "מסך 24 אינץ' LG או Dell לבחירה", "סט אלחוטי Lenovo", "ספק 850W · ‏Antec VX510"] },
+  { sku: "83DV012XIV", cat: "gaming", brand: "Lenovo", name: "Lenovo LOQ 15 · i7-13650HX · RTX 4050 · 32GB · 1TB",
+    img: "images/loq15irx9/01.jpg", page: "laptop-lenovo-loq15-i7-13650hx-rtx4050-32gb.html", price: "5,990", deal: "RTX 4050 · 32GB",
+    tagline: "i7 מסדרת HX, ‏RTX 4050 בהספק מלא ו-32GB · יש הנחת מזומן",
+    specs: ["Intel Core i7-13650HX ‏(14 ליבות)", "RTX 4050 6GB · ‏105W", "32GB DDR5 · ‏1TB SSD", "מסך 15.6 אינץ' ‏144Hz", "מקלדת RGB · רשת RJ-45", "שדרוג ל-3 שנות אחריות: ‏+₪249"] },
 ];
