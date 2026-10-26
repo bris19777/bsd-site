@@ -48,6 +48,10 @@ const PRODUCTS = [
     img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb.html", price: "2,579",
     tagline: "מסך IPS בהיר ומעבד i5 מהיר, במחיר משתלם",
     specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "8GB DDR5 (ניתן להרחבה)", "512GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
+  { sku: "83K1-I5-8GB-256", cat: "home", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 8GB · 256GB",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-8gb-256gb.html", price: "2,356",
+    tagline: "מסך IPS בהיר ומעבד i5 מהיר, במחיר הנמוך ביותר",
+    specs: ["מסך 15.3 אינץ' IPS בהיר (300 ניטים)", "Intel Core i5-13420H, עד 4.6GHz", "8GB DDR5 (ניתן להרחבה)", "256GB SSD NVMe", "Windows 11 Home", "אחריות שנה באתר הלקוח"] },
 
   { sku: "TP14-R-8665U", cat: "refurbished", also: ["recommended"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T490 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
