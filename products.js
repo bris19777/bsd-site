@@ -447,4 +447,8 @@ const PRODUCTS = [
     img: "images/pc-u9-285k-5070/01.jpg", page: "desktop-pc-ultra9-285k-rtx5070-128gb-2tb-4tb.html", deal: "Ultra 9 · ‏128GB",
     tagline: "Core Ultra 9, ‏RTX 5070, ‏128GB ו-6TB: תחנת עבודה ללא פשרות",
     specs: ["Intel Core Ultra 9 285K ‏(24 ליבות)", "RTX 5070 12GB", "128GB DDR5-5600", "2TB Samsung 990 PRO + ‏4TB", "קירור אוויר כפול ‏260W · לוח Z890", "ספק Antec 1000W · מארז P10 FLUX"] },
+  { sku: "83F2003SIV", cat: "gaming", also: ['arch'], brand: "Lenovo", name: "Lenovo Legion Pro 5 16 OLED · Ryzen 9 9955HX · RTX 5060",
+    img: "images/legion-pro5-afr10/01.jpg", page: "laptop-lenovo-legion-pro5-oled-ryzen9-9955hx-rtx5060.html", price: "7,990", was: "8,033", deal: "מסך OLED ‏165Hz",
+    tagline: "מסך OLED ‏165Hz, ‏Ryzen 9 ו-RTX 5060 · עד 6 תשלומים ללא ריבית",
+    specs: ["מסך 16 אינץ' OLED ‏2.5K ‏165Hz", "AMD Ryzen 9 9955HX ‏(16 ליבות)", "RTX 5060 8GB · ‏115W", "32GB DDR5 · ‏1TB SSD", "Wi-Fi 7 · ‏Windows 11 Pro", "3 שנות אחריות Premium Care"] },
 ];
