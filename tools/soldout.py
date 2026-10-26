@@ -2,6 +2,7 @@
 """Mark product pages "חסר זמנית במלאי" (temporarily out of stock), without a price.
 
     python3 tools/soldout.py <category-id> <page.html> [<page.html> ...]
+    python3 tools/soldout.py --restock <page.html> <price, e.g. 7,590> [<badge>]
 
 For each page: title/description/badge say out of stock, the price box shows "חסר זמנית במלאי",
 the struck market price and cash/installment boxes are removed, a notice links to the category,
@@ -59,7 +60,43 @@ def mark_card(f, price):
     pj.write_text(new, encoding="utf-8")
 
 
+def restock(f, price, badge=None):
+    """Back in stock with a price: undoes mark_page/mark_card, and also fixes "מחיר לפי פנייה" pages."""
+    s = (SITE / f).read_text(encoding="utf-8")
+    s = s.replace("– חסר זמנית במלאי – BSD מחשבים", f"– ₪{price} – BSD מחשבים")
+    s = re.sub(r"(<title>(?:(?!₪)[^<])*?) – BSD מחשבים</title>", lambda m: m.group(1) + f" – ₪{price} – BSD מחשבים</title>", s, 1)
+    s = re.sub(r'(<meta name="description" content="[^"]*?)(חסר זמנית במלאי|מחיר לפי פנייה)\.?', lambda m: m.group(1) + f"₪{price}.", s, 1)
+    if badge:
+        s = re.sub(r'<span class="badge-deal">[^<]*</span>', f'<span class="badge-deal">{badge}</span>', s, 1)
+    s = re.sub(r"\n\s*<div class=\"soldout-note\">.*?</div>", "", s, 1)
+    s = re.sub(r'<div class="price-label( price-label-plain)?">(זמינות)</div>', lambda x: f'<div class="price-label{x.group(1) or ""}">המחיר שלנו</div>', s, 1)
+    s = re.sub(r'<div class="price-big( price-big-plain)?"[^>]*>(חסר זמנית במלאי|מחיר לפי פנייה)</div>',
+               lambda x: f'<div class="price-big{x.group(1) or ""}">₪{price}</div>', s, 1)
+    name = re.sub(r"<[^>]+>", "", re.search(r"<h1>(.*?)<br>", s).group(1)).strip()
+    sub = re.sub(r"<[^>]+>", "", re.search(r"<h1>.*?<br><span>(.*?)</span>", s).group(1)).strip()
+    sku = (re.search(r'<span class="sku">מק"ט: ([^<]+)</span>', s) or [None, ""])[1]
+    s = re.sub(r"<a class=\"btn btn-wa btn-lg\" data-wa='[^']*' data-subject='[^']*' data-mail-label=\"[^\"]*\" href=\"#\">[^<]*</a>",
+               f"<a class=\"btn btn-wa btn-lg\" data-wa='שלום, אני רוצה להזמין את {name} ({sub}, מק\"ט {sku}) במחיר ₪{price}' "
+               f"data-subject='הזמנת מחשב: {name} {sub} (מק\"ט {sku})' data-mail-label=\"להזמנה במייל\" href=\"#\">להזמנה בוואטסאפ</a>", s, 1)
+    left = [l.strip()[:80] for l in s.splitlines() if "חסר זמנית" in l or "מחיר לפי פנייה" in l]
+    if left:
+        print(f, ": leftovers", left)
+    (SITE / f).write_text(s, encoding="utf-8")
+    pj = SITE / "products.js"
+    t = pj.read_text(encoding="utf-8")
+    t, n = re.subn(r'page: "' + re.escape(f) + r'",\s*soldOut: true, // [^\n]*\n\s*', f'page: "{f}", price: "{price}",\n    ', t, 1)
+    if not n:
+        t, n = re.subn(r'page: "' + re.escape(f) + r'", price: "[\d,]+",', f'page: "{f}", price: "{price}",', t, 1)
+    if not n:
+        t, n = re.subn(r'page: "' + re.escape(f) + r'",', f'page: "{f}", price: "{price}",', t, 1)
+    pj.write_text(t, encoding="utf-8")
+    print(f, ": back in stock at ₪" + price)
+
+
 if __name__ == "__main__":
+    if sys.argv[1] == "--restock":
+        restock(sys.argv[2], sys.argv[3], sys.argv[4] if len(sys.argv) > 4 else None)
+        sys.exit()
     cat, pages = sys.argv[1], sys.argv[2:]
     for f in pages:
         price = mark_page(f, cat)
