@@ -446,5 +446,5 @@ const PRODUCTS = [
   { sku: "BSD-PC-U9-285K-5070", cat: "desktop", also: ['gaming', 'arch'], brand: "BSD מחשבים", name: "מחשב נייח סופר מקצועי · Core Ultra 9 285K · RTX 5070 · ‏128GB",
     img: "images/pc-u9-285k-5070/01.jpg", page: "desktop-pc-ultra9-285k-rtx5070-128gb-2tb-4tb.html", deal: "Ultra 9 · ‏128GB",
     tagline: "Core Ultra 9, ‏RTX 5070, ‏128GB ו-6TB: תחנת עבודה ללא פשרות",
-    specs: ["Intel Core Ultra 9 285K ‏(24 ליבות)", "RTX 5070 12GB", "128GB DDR5-5600", "2TB Samsung 990 PRO + ‏4TB", "לוח Z890 · ‏Wi-Fi 7", "ספק Antec 1000W · מארז P10 FLUX"] },
+    specs: ["Intel Core Ultra 9 285K ‏(24 ליבות)", "RTX 5070 12GB", "128GB DDR5-5600", "2TB Samsung 990 PRO + ‏4TB", "קירור אוויר כפול ‏260W · לוח Z890", "ספק Antec 1000W · מארז P10 FLUX"] },
 ];
