@@ -292,6 +292,13 @@ function render() {
   share.hidden = true;
   filters.after(share);
 
+  // categories with a downloadable comparison table (CATEGORIES[].pdf)
+  const pdfBar = el("a", "cat-pdf");
+  pdfBar.hidden = true;
+  pdfBar.target = "_blank";
+  pdfBar.rel = "noopener";
+  share.after(pdfBar);
+
   const all = [{ id: "all", name: "הכל" }, ...CATEGORIES];
   const buttons = {};
 
@@ -302,6 +309,11 @@ function render() {
     b.setAttribute("aria-selected", "true");
     current = cat;
     showUnpriced = false;
+    pdfBar.hidden = !cat.pdf;
+    if (cat.pdf) {
+      pdfBar.href = cat.pdf;
+      pdfBar.replaceChildren(el("span", "cat-pdf-ic", "📄"), el("span", null, "טבלת השוואה של כל הדגמים בקטגוריה (PDF להורדה)"));
+    }
     apply();
     b.scrollIntoView({ block: "nearest", inline: "center" });
     if (updateUrl) history.replaceState(null, "", cat.id === "all" ? "#laptops" : "#" + cat.id);
