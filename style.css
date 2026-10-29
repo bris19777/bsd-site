@@ -821,3 +821,7 @@ a.pe-cash:hover { border-color: #11703A; }
 .cat-pdf[hidden] { display: none; }
 .cat-pdf:hover { background: #fff; }
 .cat-pdf-ic { font-size: 18px; }
+
+/* special-order notice in the price box */
+.special-order { background: #FFF4E0; border: 1px solid #F0C27A; color: #6B4200; border-radius: 10px; padding: 9px 12px; font-size: 13.5px; line-height: 1.45; margin-bottom: 10px; }
+.special-order strong { display: block; color: #8A5300; font-size: 15px; margin-bottom: 2px; }
