@@ -448,4 +448,8 @@ const PRODUCTS = [
     img: "images/legion-pro5-afr10/01.jpg", page: "laptop-lenovo-legion-pro5-oled-ryzen9-9955hx-rtx5060.html", price: "7,990", was: "8,033", deal: "הזמנה מיוחדת",
     tagline: "מסך OLED ‏165Hz, ‏Ryzen 9 ו-RTX 5060 · הזמנה מיוחדת",
     specs: ["מסך 16 אינץ' OLED ‏2.5K ‏165Hz", "AMD Ryzen 9 9955HX ‏(16 ליבות)", "RTX 5060 8GB · ‏115W", "32GB DDR5 · ‏1TB SSD", "Wi-Fi 7 · ‏Windows 11 Pro", "3 שנות אחריות Premium Care"] },
+  { sku: "83KR004RIV", cat: "premium", also: ['home'], brand: "Lenovo", name: "Lenovo IdeaPad 5 2-in-1 14 · Ultra 5 · 16GB · 1TB · מסך מגע מתהפך",
+    img: "images/ideapad5-2in1-14ial10/01.jpg", page: "laptop-ideapad5-2in1-14ial10-ultra5-225u-16gb-1tb.html", price: "4,190", deal: "2-in-1 מסך מגע מתהפך",
+    tagline: "נייד וטאבלט במכשיר אחד · 1TB · ‏3 שנות אחריות באתר הלקוח",
+    specs: ["מסך מגע 14 אינץ' מתהפך 360°", "Intel Core Ultra 5 225U", "16GB זיכרון · ‏1TB SSD", "Wi-Fi 7 · ‏1.6 ק\"ג", "3 שנות אחריות באתר הלקוח"] },
 ];
