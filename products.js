@@ -452,4 +452,8 @@ const PRODUCTS = [
     img: "images/ideapad5-2in1-14ial10/01.jpg", page: "laptop-ideapad5-2in1-14ial10-ultra5-225u-16gb-1tb.html", price: "4,190", deal: "2-in-1 מסך מגע מתהפך",
     tagline: "נייד וטאבלט במכשיר אחד · 1TB · ‏3 שנות אחריות באתר הלקוח",
     specs: ["מסך מגע 14 אינץ' מתהפך 360°", "Intel Core Ultra 5 225U", "16GB זיכרון · ‏1TB SSD", "Wi-Fi 7 · ‏1.6 ק\"ג", "3 שנות אחריות באתר הלקוח"] },
+  { sku: "BSD-NEO50T-I7-32-2TB", cat: "desktop", also: ['programming'], brand: "Lenovo", name: "Lenovo ThinkCentre neo 50t Gen 5 · i7-14700 · 32GB · 2TB",
+    img: "images/thinkcentre-neo50t-g5/01.jpg", page: "desktop-thinkcentre-neo50t-g5-i7-14700-32gb-2tb.html", deal: "i7 · ‏32GB · ‏2TB",
+    tagline: "i7 מדור 14, ‏32GB ו-2TB · ‏3 שנות אחריות באתר הלקוח",
+    specs: ["Intel Core i7-14700 ‏(20 ליבות)", "32GB DDR5", "2TB SSD", "צורב DVD · ‏Wi-Fi 6", "כולל מקלדת ועכבר", "3 שנות אחריות באתר"] },
 ];
