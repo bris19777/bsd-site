@@ -455,5 +455,5 @@ const PRODUCTS = [
   { sku: "BSD-NEO50T-I7-32-2TB", cat: "desktop", also: ['programming'], brand: "Lenovo", name: "Lenovo ThinkCentre neo 50t Gen 5 · i7-14700 · 32GB · 2TB",
     img: "images/thinkcentre-neo50t-g5/01.jpg", page: "desktop-thinkcentre-neo50t-g5-i7-14700-32gb-2tb.html", deal: "i7 · ‏32GB · ‏2TB",
     tagline: "i7 מדור 14, ‏32GB ו-2TB · ‏3 שנות אחריות באתר הלקוח",
-    specs: ["Intel Core i7-14700 ‏(20 ליבות)", "32GB DDR5", "2TB SSD", "צורב DVD · ‏Wi-Fi 6", "כולל מקלדת ועכבר", "3 שנות אחריות באתר"] },
+    specs: ["Intel Core i7-14700 ‏(20 ליבות)", "32GB DDR5", "2TB SSD", "אפשרות: RTX A2000 מקצועי", "כולל מקלדת ועכבר", "3 שנות אחריות באתר"] },
 ];
