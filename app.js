@@ -75,8 +75,10 @@ function card(p) {
   if (p.was) {
     const saving = parseInt(p.was.replace(/,/g, ""), 10) - parseInt(p.price.replace(/,/g, ""), 10);
     const w = el("div", "zap-line");
-    w.append(el("span", null, "מחיר שוק: ₪" + p.was));
-    if (saving > 0) w.append(el("b", null, "חוסכים ₪" + saving.toLocaleString("en-US")));
+    // wasApprox: the market price is a rough figure ("around ₪5,000"), so round the saving too
+    w.append(el("span", null, p.wasApprox ? "מחיר רגיל ברשת: באזור ₪" + p.was : "מחיר שוק: ₪" + p.was));
+    if (saving > 0) w.append(el("b", null, p.wasApprox ? "חוסכים כ-₪" + (Math.round(saving / 100) * 100).toLocaleString("en-US")
+                                                         : "חוסכים ₪" + saving.toLocaleString("en-US")));
     body.append(w);
   }
   if (p.stockLow) {
