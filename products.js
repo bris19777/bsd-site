@@ -456,4 +456,8 @@ const PRODUCTS = [
     img: "images/thinkcentre-neo50t-g5/01.jpg", page: "desktop-thinkcentre-neo50t-g5-i7-14700-32gb-2tb.html", deal: "i7 · ‏32GB · ‏2TB",
     tagline: "i7 מדור 14, ‏32GB ו-2TB · ‏3 שנות אחריות באתר הלקוח",
     specs: ["Intel Core i7-14700 ‏(20 ליבות)", "32GB DDR5", "2TB SSD", "אפשרות: RTX A2000 מקצועי", "כולל מקלדת ועכבר", "3 שנות אחריות באתר"] },
+  { sku: "83DJ0067IV", cat: "premium", also: ['deals'], brand: "Lenovo", name: "Lenovo Yoga 7 2-in-1 14 OLED · Ultra 7 155H · 32GB · 1TB · כמו חדש",
+    img: "images/yoga7-2in1-14iml9/01.jpg", page: "laptop-lenovo-yoga7-2in1-14iml9-ultra7-155h-32gb-oled-like-new.html", price: "4,490", was: "8,358", deal: "כמו חדש · מעל ₪3,000 הנחה",
+    tagline: "מעל ₪3,000 הנחה · ‏Ultra 7 מסדרת H, ‏32GB ומסך OLED",
+    specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB זיכרון · ‏1TB SSD", "מסך מגע 14 אינץ' OLED ‏2.8K ‏120Hz", "מתהפך 360° · גוף אלומיניום", "Thunderbolt 4 · ‏Windows 11 Pro", "מצב כמו חדש"] },
 ];
