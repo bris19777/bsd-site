@@ -473,4 +473,8 @@ const PRODUCTS = [
     img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-512gb-like-new.html", deal: "מצב מעולה · כמו חדש",
     tagline: "ThinkPad עסקי במצב מעולה, כמו חדש לגמרי",
     specs: ["Intel Core i5-10210U (דור 10)", "16GB DDR4", "512GB SSD", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · מכסה אלומיניום", "מצב כמו חדש"] },
+  { sku: "PB4G1I-16-C5", cat: "business", also: ['recommended'], brand: "HP", name: "HP ProBook 4 G1i 16 · Core 5 120U · 16GB · 512GB · 3 שנות אחריות",
+    img: "images/probook4-g1i-16/01.jpg", page: "laptop-hp-probook4-g1i-16-core5-120u.html", price: "3,790", deal: "3 שנות אחריות",
+    tagline: "מחשב עסקי 16 אינץ' עם 3 שנות אחריות · כולל התקנת תוכנות",
+    specs: ["Intel Core 5 120U ‏(10 ליבות)", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' ‏16:10 · מקשי ספרות", "רשת RJ-45 · ‏HDMI · ‏USB-C", "כולל התקנת תוכנות", "3 שנות אחריות"] },
 ];
