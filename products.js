@@ -23,6 +23,10 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
+  { sku: "83K1-I7-1TB", cat: "home", also: ["recommended", "programming"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i7-13620H · 1TB",
+    img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-13620h-1tb.html", price: "3,450", deal: "Core i7 · ‏1TB",
+    tagline: "i7 בהספק 45W, ‏1TB, גוף מתכת ומסך 15.3 אינץ' בהיר",
+    specs: ["מסך 15.3 אינץ' WUXGA IPS", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
   { sku: "83K100W3IV", cat: "recommended", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 Touch i7",
     img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-touch.html",
     soldOut: true, // חסר זמנית במלאי: להחזיר price: "3,590" ולמחוק את soldOut
