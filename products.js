@@ -465,4 +465,12 @@ const PRODUCTS = [
     img: "images/yoga7-2in1-14iml9/01.jpg", page: "laptop-lenovo-yoga7-2in1-14iml9-ultra7-155h-32gb-oled-like-new.html", price: "4,490", was: "8,358", deal: "כמו חדש · מעל ₪3,000 הנחה",
     tagline: "מעל ₪3,000 הנחה · ‏Ultra 7 מסדרת H, ‏32GB ומסך OLED",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB זיכרון · ‏1TB SSD", "מסך מגע 14 אינץ' OLED ‏2.8K ‏120Hz", "מתהפך 360° · גוף אלומיניום", "Thunderbolt 4 · ‏Windows 11 Pro", "מצב כמו חדש"] },
+  { sku: "E15-I5G10-16-256", cat: "deals", also: ['business'], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E15 · i5 דור 10 · 16GB · 256GB · כמו חדש",
+    img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-256gb-like-new.html", deal: "מצב מעולה · כמו חדש",
+    tagline: "ThinkPad עסקי במצב מעולה, כמו חדש לגמרי",
+    specs: ["Intel Core i5-10210U (דור 10)", "16GB DDR4", "256GB SSD", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · מכסה אלומיניום", "מצב כמו חדש"] },
+  { sku: "E15-I5G10-16-512", cat: "deals", also: ['business'], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E15 · i5 דור 10 · 16GB · 512GB · כמו חדש",
+    img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-512gb-like-new.html", deal: "מצב מעולה · כמו חדש",
+    tagline: "ThinkPad עסקי במצב מעולה, כמו חדש לגמרי",
+    specs: ["Intel Core i5-10210U (דור 10)", "16GB DDR4", "512GB SSD", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · מכסה אלומיניום", "מצב כמו חדש"] },
 ];
