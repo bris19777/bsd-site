@@ -25,7 +25,8 @@ const CATEGORIES = [
 const PRODUCTS = [
   { sku: "83K100W3IV", cat: "recommended", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 Touch i7",
     img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-touch.html",
-    price: "3,590", deal: "מסך מגע · 1TB",
+    soldOut: true, // חסר זמנית במלאי: להחזיר price: "3,590" ולמחוק את soldOut
+    deal: "מסך מגע · 1TB",
     tagline: "מסך מגע, גוף מתכת, i7 בהספק 45W ו-1TB",
     specs: ["מסך מגע 15.3 אינץ' WUXGA", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
 
