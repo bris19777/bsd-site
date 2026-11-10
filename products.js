@@ -477,4 +477,8 @@ const PRODUCTS = [
     img: "images/probook4-g1i-16/01.jpg", page: "laptop-hp-probook4-g1i-16-core5-120u.html", price: "3,790", deal: "3 שנות אחריות",
     tagline: "מחשב עסקי 16 אינץ' עם 3 שנות אחריות · כולל התקנת תוכנות",
     specs: ["Intel Core 5 120U ‏(10 ליבות)", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' ‏16:10 · מקשי ספרות", "רשת RJ-45 · ‏HDMI · ‏USB-C", "כולל התקנת תוכנות", "3 שנות אחריות"] },
+  { sku: "TM500MH-0R72600030", cat: "desktop", also: ['gaming'], brand: "ASUS", name: "ASUS TUF Gaming T500 · Ryzen 7 260 · RTX 5060 · 32GB · 1TB",
+    img: "images/tuf-tm500mh/01.jpg", page: "desktop-asus-tuf-tm500mh-ryzen7-260-rtx5060-32gb-1tb.html", price: "7,290", was: "7,819", deal: "RTX 5060 · ‏3 שנות אחריות",
+    tagline: "Ryzen 7, ‏RTX 5060 ו-32GB · ‏3 שנות אחריות באתר הלקוח",
+    specs: ["AMD Ryzen 7 260 ‏(8 ליבות)", "RTX 5060 8GB GDDR7", "32GB DDR5 (עד 64GB)", "1TB SSD NVMe", "ספק 330W ‏80+ Platinum · ‏Wi-Fi 6", "3 שנות אחריות באתר הלקוח"] },
 ];
