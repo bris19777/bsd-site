@@ -481,4 +481,8 @@ const PRODUCTS = [
     img: "images/tuf-tm500mh/01.jpg", page: "desktop-asus-tuf-tm500mh-ryzen7-260-rtx5060-32gb-1tb.html", price: "7,290", was: "7,819", deal: "RTX 5060 · ‏3 שנות אחריות",
     tagline: "Ryzen 7, ‏RTX 5060 ו-32GB · ‏3 שנות אחריות באתר הלקוח",
     specs: ["AMD Ryzen 7 260 ‏(8 ליבות)", "RTX 5060 8GB GDDR7", "32GB DDR5 (עד 64GB)", "1TB SSD NVMe", "ספק 330W ‏80+ Platinum · ‏Wi-Fi 6", "3 שנות אחריות באתר הלקוח"] },
+  { sku: "T700TL-9275HX0030", cat: "desktop", also: ['gaming'], brand: "ASUS", name: "ASUS TUF Gaming T700 · Ultra 9 275HX · RTX 5070 · 32GB · 1TB",
+    img: "images/tuf-t700tl/01.jpg", page: "desktop-asus-tuf-t700tl-ultra9-275hx-rtx5070-32gb-1tb.html", price: "9,790", was: "10,376", deal: "Ultra 9 · ‏RTX 5070",
+    tagline: "Ultra 9, ‏RTX 5070 וקירור נוזלי · ‏3 שנות אחריות באתר הלקוח",
+    specs: ["Intel Core Ultra 9 275HX ‏(24 ליבות)", "RTX 5070 12GB GDDR7", "32GB DDR5 (עד 64GB)", "1TB SSD NVMe", "קירור נוזלי · ספק 750W Platinum", "3 שנות אחריות באתר הלקוח"] },
 ];
