@@ -489,4 +489,12 @@ const PRODUCTS = [
     img: "images/lenovo-v15-g3-aba/01.jpg", page: "laptop-lenovo-v15-g3-ryzen7-5825u-8gb-512gb.html", price: "2,490", deal: "Ryzen 7 במחיר Ryzen 5",
     tagline: "Ryzen 7 במחיר של Ryzen 5 · ‏512GB · רשת קווית",
     specs: ["AMD Ryzen 7 5825U ‏(8 ליבות)", "8GB DDR4", "512GB SSD NVMe", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · רשת RJ-45", "שבב אבטחה TPM 2.0"] },
+  { sku: "THIN15-B13VE-16-512", cat: "arch", also: ['gaming'], brand: "MSI", name: "MSI Thin 15 · i7-13620H · RTX 4050 · 16GB · 512GB",
+    img: "images/msi-thin15-b13ve/01.jpg", page: "laptop-msi-thin15-i7-13620h-rtx4050-16gb-512gb.html", price: "4,590", deal: "RTX 4050 · ‏16GB",
+    tagline: "RTX 4050 ומעבד i7 מסדרת H · מסך 144Hz",
+    specs: ["Intel Core i7-13620H ‏(10 ליבות)", "RTX 4050 6GB", "16GB DDR4 (עד 64GB)", "512GB SSD NVMe", "מסך 15.6 אינץ' ‏144Hz", "Wi-Fi 6E · מקלדת מוארת"] },
+  { sku: "THIN15-B13VE-32-512", cat: "arch", also: ['gaming'], brand: "MSI", name: "MSI Thin 15 · i7-13620H · RTX 4050 · 32GB · 512GB",
+    img: "images/msi-thin15-b13ve/01.jpg", page: "laptop-msi-thin15-i7-13620h-rtx4050-32gb-512gb.html", price: "5,190", deal: "RTX 4050 · ‏32GB",
+    tagline: "RTX 4050 ומעבד i7 מסדרת H · מסך 144Hz",
+    specs: ["Intel Core i7-13620H ‏(10 ליבות)", "RTX 4050 6GB", "32GB DDR4 (עד 64GB)", "512GB SSD NVMe", "מסך 15.6 אינץ' ‏144Hz", "Wi-Fi 6E · מקלדת מוארת"] },
 ];
