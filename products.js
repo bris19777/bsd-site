@@ -485,4 +485,8 @@ const PRODUCTS = [
     img: "images/tuf-t700tl/01.jpg", page: "desktop-asus-tuf-t700tl-ultra9-275hx-rtx5070-32gb-1tb.html", price: "9,790", was: "10,376", deal: "Ultra 9 · ‏RTX 5070",
     tagline: "Ultra 9, ‏RTX 5070 וקירור נוזלי · ‏3 שנות אחריות באתר הלקוח",
     specs: ["Intel Core Ultra 9 275HX ‏(24 ליבות)", "RTX 5070 12GB GDDR7", "32GB DDR5 (עד 64GB)", "1TB SSD NVMe", "קירור נוזלי · ספק 750W Platinum", "3 שנות אחריות באתר הלקוח"] },
+  { sku: "V15G3-R7-8-512", cat: "home", also: ['business'], brand: "Lenovo", name: "Lenovo V15 G3 · Ryzen 7 5825U · 8GB · 512GB",
+    img: "images/lenovo-v15-g3-aba/01.jpg", page: "laptop-lenovo-v15-g3-ryzen7-5825u-8gb-512gb.html", price: "2,490", deal: "Ryzen 7 במחיר Ryzen 5",
+    tagline: "Ryzen 7 במחיר של Ryzen 5 · ‏512GB · רשת קווית",
+    specs: ["AMD Ryzen 7 5825U ‏(8 ליבות)", "8GB DDR4", "512GB SSD NVMe", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · רשת RJ-45", "שבב אבטחה TPM 2.0"] },
 ];
