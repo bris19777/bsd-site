@@ -503,6 +503,6 @@ const PRODUCTS = [
     specs: ["Intel Core i7-13620H ‏(10 ליבות)", "RTX 4050 6GB", "32GB DDR4 (עד 64GB)", "512GB SSD NVMe", "מסך 15.6 אינץ' ‏144Hz", "Wi-Fi 6E · מקלדת מוארת"] },
   { sku: "PM16-U7-265H-PRO1000-32-1TB", cat: "arch", also: ['business', 'premium'], brand: "Dell", name: "Dell Pro Max 16 · Ultra 7 265H · RTX PRO 1000 · 32GB · 1TB",
     img: "images/dell-pro-max-16-mc16250/01.jpg", page: "laptop-dell-pro-max-16-ultra7-265h-rtx-pro-1000-32gb-1tb.html", price: "8,000", was: "10,875", deal: "RTX PRO 1000 מקצועי",
-    tagline: "תחנת עבודה ניידת עם כרטיס מסך מקצועי · ‏32GB DDR5 · סוללה 96Wh",
-    specs: ["Intel Core Ultra 7 265H ‏(16 ליבות)", "NVIDIA RTX PRO 1000 ‏8GB", "32GB DDR5-6400", "1TB SSD NVMe", "מסך 16 אינץ' ‏FHD+", "Wi-Fi 7 · מקלדת עברית מוארת"] },
+    tagline: "מחשב חדש · כרטיס מסך מקצועי · ‏3 שנות אחריות",
+    specs: ["Intel Core Ultra 7 265H ‏(16 ליבות)", "NVIDIA RTX PRO 1000 ‏8GB", "32GB DDR5 · ‏1TB SSD", "מסך 16 אינץ' ‏FHD+ · Wi-Fi 7", "Windows 11 מקורי מותקן", "מחשב חדש · 3 שנות אחריות"] },
 ];
