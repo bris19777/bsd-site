@@ -32,7 +32,7 @@ const PRODUCTS = [
     tagline: "תחנת עבודה ניידת כמו חדשה · מחיר במזומן",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB DDR5 (עד 96GB)", "512GB SSD", "2× Thunderbolt 4 · ‏RJ-45", "תחנת עבודה ניידת · אלומיניום", "כמו חדש"] },
   { sku: "P14SG5-U7-32-512", cat: "business", also: ['recommended', 'programming'], brand: "Lenovo", name: "Lenovo ThinkPad P14s Gen 5 · Ultra 7 155H · 32GB · 512GB · חדש לחלוטין",
-    img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-new.html", price: "4,490", was: "9,449", deal: "חדש",
+    img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-new.html", price: "4,890", was: "9,449", deal: "חדש",
     tagline: "תחנת עבודה ניידת חדשה, ‏16 ליבות ו-32GB",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB DDR5 (עד 96GB)", "512GB SSD", "2× Thunderbolt 4 · ‏RJ-45", "תחנת עבודה ניידת · אלומיניום", "חדש לחלוטין"] },
   { sku: "83K100W3IV", cat: "recommended", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 Touch i7",
