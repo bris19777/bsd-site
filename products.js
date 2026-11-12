@@ -502,7 +502,11 @@ const PRODUCTS = [
     tagline: "RTX 4050 ומעבד i7 מסדרת H · מסך 144Hz",
     specs: ["Intel Core i7-13620H ‏(10 ליבות)", "RTX 4050 6GB", "32GB DDR4 (עד 64GB)", "512GB SSD NVMe", "מסך 15.6 אינץ' ‏144Hz", "Wi-Fi 6E · מקלדת מוארת"] },
   { sku: "PM16-U7-265H-PRO1000-32-1TB", cat: "arch", also: ['business', 'premium'], brand: "Dell", name: "Dell Pro Max 16 · Ultra 7 265H · RTX PRO 1000 · 32GB · 1TB",
-    img: "images/dell-pro-max-16-mc16250/01.jpg", page: "laptop-dell-pro-max-16-ultra7-265h-rtx-pro-1000-32gb-1tb.html", price: "8,000", was: "10,875", deal: "RTX PRO 1000 מקצועי",
+    img: "images/dell-pro-max-16-mc16250/01.jpg", page: "laptop-dell-pro-max-16-ultra7-265h-rtx-pro-1000-32gb-1tb.html", price: "7,990", was: "11,957", deal: "RTX PRO 1000 מקצועי",
     tagline: "מחשב חדש · כרטיס מסך מקצועי · ‏3 שנות אחריות",
     specs: ["Intel Core Ultra 7 265H ‏(16 ליבות)", "NVIDIA RTX PRO 1000 ‏8GB", "32GB DDR5 · ‏1TB SSD", "מסך 16 אינץ' ‏FHD+ · Wi-Fi 7", "Windows 11 מקורי מותקן", "מחשב חדש · 3 שנות אחריות"] },
+  { sku: "FX608JMR-I7-32-5060", cat: "arch", also: ['gaming'], brand: "ASUS", name: "ASUS TUF Gaming F16 · i7-14650HX · RTX 5060 · 32GB",
+    img: "images/tuf-f16-fx608jmr/01.jpg", page: "laptop-asus-tuf-f16-i7-14650hx-rtx5060-32gb.html", price: "7,590", deal: "מחיר למזומן",
+    tagline: "i7 מסדרת HX, ‏RTX 5060 ו-32GB · מסך 16 אינץ' ‏165Hz · מחיר למזומן",
+    specs: ["Intel Core i7-14650HX ‏(16 ליבות)", "RTX 5060 8GB · עד 115W", "32GB DDR5 (עד 64GB)", "1TB SSD NVMe", "מסך 16 אינץ' ‏165Hz", "סוללה 90Wh · Thunderbolt 4"] },
 ];
