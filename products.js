@@ -508,5 +508,5 @@ const PRODUCTS = [
   { sku: "FX608JMR-I7-32-5060", cat: "arch", also: ['gaming'], brand: "ASUS", name: "ASUS TUF Gaming F16 · i7-14650HX · RTX 5060 · 32GB",
     img: "images/tuf-f16-fx608jmr/01.jpg", page: "laptop-asus-tuf-f16-i7-14650hx-rtx5060-32gb.html", price: "7,590", deal: "מחיר למזומן",
     tagline: "i7 מסדרת HX, ‏RTX 5060 ו-32GB · מסך 16 אינץ' ‏165Hz · מחיר למזומן",
-    specs: ["Intel Core i7-14650HX ‏(16 ליבות)", "RTX 5060 8GB · עד 115W", "32GB DDR5 (עד 64GB)", "1TB SSD NVMe", "מסך 16 אינץ' ‏165Hz", "סוללה 90Wh · Thunderbolt 4"] },
+    specs: ["Intel Core i7-14650HX ‏(16 ליבות)", "RTX 5060 8GB · עד 115W", "32GB DDR5 (עד 64GB)", "1TB SSD · Windows 11", "מסך 16 אינץ' ‏165Hz", "סוללה 90Wh · Thunderbolt 4"] },
 ];
