@@ -23,6 +23,10 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
+  { sku: "EB840G8-I5-16-256-R", cat: "refurbished", also: ['recommended', 'business'], brand: "HP", name: "HP EliteBook 840 G8 מחודש · i5 דור 11 · 16GB · 256GB",
+    img: "images/elitebook-840-g8/01.jpg", page: "laptop-hp-elitebook-840-g8-i5-gen11-16gb-256gb-refurbished.html", price: "1,990", deal: "מחודש · שנת אחריות",
+    tagline: "מחשב עסקי מאלומיניום · ‏16GB · ‏Windows 11 Pro · שנת אחריות",
+    specs: ["Intel Core i5 דור 11", "16GB זיכרון", "256GB SSD NVMe", "מסך 14 אינץ' Full HD", "גוף אלומיניום · Thunderbolt 4", "Windows 11 Pro · שנת אחריות"] },
   { sku: "83K1-I7-1TB", cat: "home", also: ["recommended", "programming"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i7-13620H · 1TB",
     img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i7-13620h-1tb.html", price: "3,450", deal: "Core i7 · ‏1TB",
     tagline: "i7 בהספק 45W, ‏1TB, גוף מתכת ומסך 15.3 אינץ' בהיר",
