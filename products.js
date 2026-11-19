@@ -211,7 +211,7 @@ const PRODUCTS = [
     specs: ["מסך מגע 14 אינץ' OLED", "Intel Core Ultra 7 255H", "24GB זיכרון", "512GB SSD", "אחריות 3 שנים"] },
 
   { sku: "6320", cat: "arch", also: ["gaming"], brand: "ASUS", name: "ASUS TUF Gaming A16 · Ryzen 9 · RTX 5060",
-    img: "images/fa608pm/01.webp", page: "laptop-asus-tuf-a16-ryzen9-8940hx-rtx5060.html", deal: "Ryzen 9",
+    img: "images/fa608pm/01.webp", page: "laptop-asus-tuf-a16-ryzen9-8940hx-rtx5060.html", price: "8,490", deal: "Ryzen 9",
     tagline: "תחנת עבודה ניידת לאדריכלות, תלת-ממד ועריכת וידאו",
     specs: ["AMD Ryzen 9 8940HX: ‏16 ליבות / 32 תהליכונים", "RTX 5060 8GB", "32GB DDR5", "1TB SSD NVMe", "מסך 16 אינץ' IPS ‏165Hz", "סוללה 90Wh · אחריות 3 שנים"] },
   { sku: "6079", cat: "arch", also: ["gaming"], brand: "Lenovo", name: "Lenovo LOQ 15 · i7-14700HX · RTX 5060",
