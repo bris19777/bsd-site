@@ -115,7 +115,7 @@ const PRODUCTS = [
     tagline: "קל ונייד: 1.38 ק\"ג, מושלם לתלמידים",
     specs: ["מסך 14 אינץ' Full HD", "Intel Core i3-N305: ‏8 ליבות", "8GB זיכרון", "512GB SSD", "NumberPad · עמידות צבאית", "אחריות שנה"] },
   { sku: "6044", cat: "basic", brand: "ASUS", name: "ASUS Vivobook 14 · i3-1315U",
-    img: "images/x1404va/01.jpg", page: "laptop-asus-vivobook14-x1404va-i3-1315u.html", price: "2,090", deal: "ניתן לשדרוג",
+    img: "images/x1404va/01.jpg", page: "laptop-asus-vivobook14-x1404va-i3-1315u.html", price: "2,190", deal: "ניתן לשדרוג",
     tagline: "דור 13, ניתן לשדרוג ל-16GB ו-1TB · כחול או כסוף",
     specs: ["מסך 14 אינץ' Full HD", "Intel Core i3-1315U (דור 13)", "8GB זיכרון (ניתן לשדרוג ל-16GB)", "512GB SSD (ניתן לשדרוג ל-1TB)", "Wi-Fi 6E · ‏1.4 ק\"ג", "אחריות שנה"] },
   { sku: "TP1401KA-EC170WS", cat: "basic", brand: "ASUS", name: "ASUS Vivobook Go 14 Flip · מתהפך",
