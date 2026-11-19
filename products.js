@@ -103,9 +103,14 @@ const PRODUCTS = [
     specs: ["מסך מגע 14 אינץ' מט · אפשר לכבות", "Intel Core i7 דור 8", "8GB זיכרון", "256GB SSD", "גוף אלומיניום · רשת RJ-45", "אחריות מלאה לחצי שנה"] },
 
   { sku: "82XB004UIV", cat: "basic", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i3-N305",
-    img: "images/82xb004uiv/1.avif", page: "laptop-ideapad-slim3-15ian8-i3.html", price: "1,950",
+    img: "images/82xb004uiv/1.avif", page: "laptop-ideapad-slim3-15ian8-i3.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,950" ולמחוק את soldOut
+   
     tagline: "מחשב חדש לגלישה, Office ולימודים, כולל התקנות",
     specs: ["מסך 15.6 אינץ' FHD", "Intel Core i3-N305 (8 ליבות)", "8GB זיכרון", "256GB SSD NVMe", "Wi-Fi 6", "אחריות שנה באתר הלקוח"] },
+  { sku: "82X700H1IV", cat: "basic", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i3-1315U · 8GB · 512GB",
+    img: "images/ideapad-slim3-15iru8/01.jpg", page: "laptop-lenovo-ideapad-slim3-15iru8-i3-1315u-8gb-512gb.html", price: "2,090", deal: "Windows 11 · ‏512GB",
+    tagline: "דור 13 עם 512GB ו-Windows 11, מוכן לעבודה",
+    specs: ["מסך 15.6 אינץ' Full HD", "Intel Core i3-1315U (דור 13)", "8GB זיכרון", "512GB SSD NVMe", "Windows 11 Home · Wi-Fi 6", "אחריות שנה"] },
   { sku: "6092", cat: "basic", brand: "HP", name: "HP 250 G10", img: "images/6092.png",
     tagline: "הכי משתלם לגלישה ו-Office",
     specs: ["מסך 15.6 אינץ' FHD", "Intel Core 3 100U", "8GB זיכרון", "512GB SSD", "אחריות שנה"] },
