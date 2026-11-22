@@ -166,7 +166,7 @@ const PRODUCTS = [
     specs: ["Intel Core Ultra 5 225U · מאיץ AI", "16GB DDR5 · ‏512GB SSD NVMe", "מסך 16 אינץ' WUXGA אנטי-בוהק", "מקלדת מוארת · קורא טביעת אצבע", "Windows 11 Pro מקורית", "4 שנות אחריות HP באתר הלקוח"] },
   { sku: "PC14255-R5-512", cat: "business", also: ["recommended", "deals"], brand: "Dell", name: "Dell Pro 14 · Ryzen 5 · 16GB · 512GB",
     img: "images/deals/dell-pro14/01.jpg", page: "laptop-dell-pro14-pc14255-ryzen5.html",
-    price: "2,990", was: "5,000", wasApprox: true, deal: "מחשב חדש", stockLow: "יחידות בודדות במלאי",
+    price: "3,990", was: "5,000", wasApprox: true, deal: "מחשב חדש", stockLow: "יחידות בודדות במלאי",
     tagline: "מחשב עסקי חדש · תקן צבאי ו-3 שנות אחריות",
     specs: ["AMD Ryzen 5 220: ‏6 ליבות", "16GB DDR5 (עד 64GB)", "512GB SSD NVMe", "מסך 14 אינץ' FHD+ ‏16:10", "‏MIL-STD-810H · ‏1.36 ק\"ג", "3 שנות אחריות יצרן"] },
   { sku: "E14G6-R5-512", cat: "business", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E14 Gen 6 · Ryzen 5 · 16GB",
