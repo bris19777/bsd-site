@@ -17,7 +17,7 @@ function card(p) {
   c.dataset.cat = [p.cat, ...(p.also || [])].join(" ");
   c.dataset.price = p.price ? parseInt(p.price.replace(/,/g, ""), 10) : "";
   const catNames = [p.cat, ...(p.also || [])].map(id => CATEGORIES.find(x => x.id === id).name);
-  c.dataset.search = norm([p.sku, p.brand, p.name, p.tagline, p.deal || "", ...p.specs, ...catNames].join(" "));
+  c.dataset.search = norm([p.sku, p.brand, p.name, p.aka || "", p.tagline, p.deal || "", ...p.specs, ...catNames].join(" "));
   // smart search: facts from the product page (search-index.js) + the card itself
   const idx = (typeof SEARCH_INDEX !== "undefined" && p.page && SEARCH_INDEX[p.page]) || {};
   const all = [p.name, p.tagline, ...p.specs].join(" ");
