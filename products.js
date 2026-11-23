@@ -76,6 +76,11 @@ const PRODUCTS = [
     deal: "מעבד Core 9", soldOut: true, // חסר זמנית במלאי: להחזיר price: "3,590" ולמחוק את soldOut
     tagline: "מעבד Core 9 דור חדש, ביצועים ברמת i9: ‏14 ליבות, עד 5.8GHz",
     specs: ["Intel Core 9 270H: ‏14 ליבות / 20 תהליכונים", "16GB DDR5 (אפשרות ל-24GB או 40GB)", "1TB SSD NVMe", "מסך 16 אינץ' WUXGA ‏16:10", "Windows 11 Pro", "אחריות יצרן לשנה"] },
+  { sku: "X1605VA-MB2783W", cat: "recommended", brand: "ASUS", name: "ASUS Vivobook 16 · Intel Core 9 270H",
+    img: "images/x1605va-mb2558/main.jpg", page: "laptop-asus-vivobook16-core9-270h-mb2783w.html",
+    deal: "מעבד Core 9", // מחיר לפי פנייה
+    tagline: "מעבד Core 9 דור חדש, ביצועים ברמת i9: ‏14 ליבות, עד 5.8GHz",
+    specs: ["Intel Core 9 270H: ‏14 ליבות / 20 תהליכונים", "16GB DDR5 (אפשרות ל-24GB או 40GB)", "1TB SSD NVMe", "מסך 16 אינץ' WUXGA ‏16:10", "Windows 11", "אחריות יצרן לשנה"] },
 
   { sku: "83K100KPIV", cat: "home", also: ["recommended"], brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 · i5-13420H · 16GB",
     img: "images/83K100W3IV/2.avif", page: "laptop-ideapad-slim3-i5-13420h-16gb.html", price: "2,950",
