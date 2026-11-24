@@ -498,6 +498,13 @@ a.card-media { color: inherit; }
 .must { color: #11703A; }
 .mustnot { color: #C62828; }
 @media (max-width: 640px) { .iw-body { grid-template-columns: 1fr; } }
+.setup-win { direction: rtl; }
+.setup-form { display: grid; gap: 3px; padding: 12px 14px 4px; font-size: 12.5px; color: #333; text-align: right; }
+.setup-form > span { margin-top: 6px; }
+.setup-field { border: 1px solid #9AA3AE; background: #fff; padding: 4px 8px; min-height: 26px; font-size: 13px; color: #111; }
+.setup-hl { outline: 3px solid #1FA855; outline-offset: 1px; }
+.setup-muted { color: #888; background: #F3F3F3; }
+.setup-buttons { padding-top: 12px; }
 
 /* 9-image galleries wrap to a second row */
 .thumbs:has(.thumb:nth-child(9)) { grid-template-columns: repeat(9, 1fr); }

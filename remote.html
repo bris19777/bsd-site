@@ -76,29 +76,35 @@
           <ol class="steps">
             <li><strong>מתקשרים או שולחים וואטסאפ</strong> ומספרים מה התקלה.</li>
             <li><strong>מורידים את התוכנה</strong> בכפתור שבעמוד.</li>
-            <li><strong>מפעילים את הקובץ</strong> ומאשרים את חלון ההרשאות של Windows. בחלון ההתקנה לוחצים <strong class="must">Install</strong>, <strong class="mustnot">לא Connect</strong> (<a href="#install-not-connect">ראו תמונה</a>). אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
+            <li><strong>מפעילים את הקובץ</strong>. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>. בחלון ההרשאות של Windows לוחצים <strong>"כן"</strong>.</li>
+            <li><strong>ממלאים את השם ולוחצים "התקנה"</strong> בחלון ההתקנה של BSD מחשבים (<a href="#install-steps">ראו תמונה</a>).</li>
             <li><strong>מודיעים לנו שסיימתם.</strong> נתחבר אחרי שתאשרו את בקשת החיבור במסך.</li>
           </ol>
 
-          <div class="install-warn" id="install-not-connect">
-            <h2>בחלון ההתקנה: לוחצים Install, לא Connect</h2>
+          <div class="install-warn" id="install-steps">
+            <h2>בחלון ההתקנה: ממלאים שם ולוחצים "התקנה"</h2>
             <div class="iw-body">
-              <div class="mesh-win" aria-hidden="true">
-                <div class="mesh-titlebar">BSD Computers Support <span>✕</span></div>
-                <div class="mesh-content">
-                  <img src="bsd-icon-256.png" alt="" width="56" height="56">
-                  <p>BSD Computers support agent. Installed under your support agreement. Remote sessions require your approval.</p>
+              <div class="mesh-win setup-win" aria-hidden="true">
+                <div class="mesh-titlebar">BSD מחשבים - התקנת סוכן תמיכה <span>✕</span></div>
+                <div class="setup-form">
+                  <span>שם הלקוח (חובה):</span>
+                  <div class="setup-field setup-hl">ישראל ישראלי</div>
+                  <span>תיאור המחשב (למשל: קבלה, המחשב של משה):</span>
+                  <div class="setup-field">המחשב בסלון</div>
+                  <span>קבוצה ב-&rlm;MeshCentral:&rlm;</span>
+                  <div class="setup-field setup-muted">משאירים כמו שמופיע ▾</div>
                 </div>
-                <div class="mesh-buttons">
-                  <span class="mesh-btn mesh-yes">Install<span class="mesh-tag">✓ לוחצים כאן</span></span>
-                  <span class="mesh-btn">Uninstall</span>
-                  <span class="mesh-btn mesh-no">Connect<span class="mesh-tag mesh-tag-no">✕ לא כאן</span></span>
-                  <span class="mesh-btn">Cancel</span>
+                <div class="mesh-buttons setup-buttons">
+                  <span class="mesh-btn mesh-yes">התקנה<span class="mesh-tag">✓ לוחצים כאן</span></span>
+                  <span class="mesh-btn">ביטול</span>
                 </div>
               </div>
               <ul class="iw-points">
-                <li class="ok"><strong>Install</strong> מתקין את תוכנת התמיכה, כך שנוכל לעזור לכם גם בפעם הבאה (תמיד באישור שלכם).</li>
-                <li class="no"><strong>Connect</strong> רק פותח חיבור זמני: הוא נסגר עם החלון ולא מתקין כלום, ואז נצטרך להתחיל מההתחלה.</li>
+                <li class="ok"><strong>שם הלקוח (חובה):</strong> השם שלכם או של העסק, כדי שנזהה את המחשב.</li>
+                <li class="ok"><strong>תיאור המחשב:</strong> לא חובה, אבל עוזר אם יש כמה מחשבים, למשל "קבלה" או "המחשב של משה".</li>
+                <li class="ok"><strong>קבוצה:</strong> לא משנים, משאירים כמו שמופיע.</li>
+                <li class="ok">לוחצים <strong>"התקנה"</strong> ומחכים להודעה <strong>"הסוכן הותקן ופועל"</strong>. זהו, אפשר לסגור.</li>
+                <li class="ok">מופיעה ההודעה <strong>"הסוכן כבר מותקן במחשב הזה"</strong>? הכל בסדר, התוכנה כבר מותקנת ואין צורך להתקין שוב.</li>
               </ul>
             </div>
           </div>
@@ -156,8 +162,8 @@
         <aside class="download-card">
           <img src="bsd-icon-256.png" alt="" width="72" height="72">
           <h3>BSD Computers Support</h3>
-          <p class="muted">ל-Windows 10 / 11, ‏64 ביט</p>
-          <a class="btn btn-primary btn-lg" id="agent-download" href="https://rmm.bsd-comp.com/meshagents?id=4&amp;meshid=hPlwLk$QhXnl45C$f3BKNBAgh4hqan74P$HPtiUHevcyYpc8d6W9IgA4PQmtJGMC&amp;installflags=0" download>הורדת תוכנת התמיכה</a>
+          <p class="muted">ל-Windows 10 / 11</p>
+          <a class="btn btn-primary btn-lg" id="agent-download" href="files/BSDSupportAgent64.exe" download>הורדת תוכנת התמיכה</a>
           <a class="btn btn-wa" data-wa="שלום, אני צריך/ה תמיכה מרחוק" data-subject="בקשת תמיכה מרחוק" href="#" data-mail-label="לכתוב לנו במייל">קודם לדבר איתנו</a>
           <div class="notes">
             <p><strong>מופיע חלון כחול של Windows?</strong> לוחצים <strong>"מידע נוסף"</strong> ואז <strong>"הפעל בכל זאת"</strong>. <a href="#smartscreen">הסבר עם תמונה</a></p>
