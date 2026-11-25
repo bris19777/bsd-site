@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=49">
+  <link rel="stylesheet" href="style.css?v=50">
 </head>
 <body>
   <header class="site-header">
@@ -69,12 +69,11 @@
             </ul>
             <h3 class="tool-h3">איך משתמשים?</h3>
             <ol class="steps">
-              <li><strong>מורידים ומפעילים</strong> את הקובץ. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
+              <li><strong>מורידים</strong> בכפתור "הורדת כלי הבדיקה" שב<a href="#downloads">כרטיס ההורדות</a>, <strong>ומפעילים</strong> את הקובץ. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
               <li><strong>לתמיכה מרחוק:</strong> לוחצים "התחל תמיכה מרחוק" ומוסרים לנו את המזהה והסיסמה.</li>
               <li><strong>לבדיקת המחשב:</strong> עוברים ללשונית הבדיקה. לבדיקה מלאה Windows יבקש אישור (לוחצים "כן"), ובסוף לוחצים "ייצוא דוח" ושולחים לנו.</li>
             </ol>
-            <a class="btn btn-primary" href="files/BSD-Support-v3.6.0.exe" download>הורדת BSD Support (גרסה 3.6.0)</a>
-            <p class="ss-note tool-note">ל-Windows 10 / 11 · כ-25MB. התמיכה מרחוק מבוססת על RustDesk, תוכנה חופשית ברישיון AGPL-3.0 (<a href="https://github.com/rustdesk/rustdesk" target="_blank" rel="noopener">קוד המקור</a>).</p>
+            <p class="ss-note tool-note">גרסה 3.6.0 · ל-Windows 10 / 11 · כ-25MB. התמיכה מרחוק מבוססת על RustDesk, תוכנה חופשית ברישיון AGPL-3.0 (<a href="https://github.com/rustdesk/rustdesk" target="_blank" rel="noopener">קוד המקור</a>).</p>
           </div>
 
           <h2>מה זו התוכנה?</h2>
@@ -93,7 +92,7 @@
           <h2>איך מתחילים?</h2>
           <ol class="steps">
             <li><strong>מתקשרים או שולחים וואטסאפ</strong> ומספרים מה התקלה.</li>
-            <li><strong>מורידים את התוכנה</strong> בכפתור שבעמוד.</li>
+            <li><strong>מורידים את התוכנה</strong> בכפתור "הורדת תוכנת התמיכה" שב<a href="#downloads">כרטיס ההורדות</a>.</li>
             <li><strong>מפעילים את הקובץ</strong>. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>. בחלון ההרשאות של Windows לוחצים <strong>"כן"</strong>.</li>
             <li><strong>ממלאים את השם ולוחצים "התקנה"</strong> בחלון ההתקנה של BSD מחשבים (<a href="#install-steps">ראו תמונה</a>).</li>
             <li><strong>מודיעים לנו שסיימתם.</strong> נתחבר אחרי שתאשרו את בקשת החיבור במסך.</li>
@@ -179,14 +178,22 @@
 
         <aside class="download-card">
           <img src="bsd-icon-256.png" alt="" width="72" height="72">
-          <h3>BSD Computers Support</h3>
+          <h3 id="downloads">הורדות</h3>
           <p class="muted">ל-Windows 10 / 11</p>
-          <a class="btn btn-primary btn-lg" id="agent-download" href="files/BSDSupportAgent64.exe" download>הורדת תוכנת התמיכה</a>
+          <div class="dl-item">
+            <strong>BSD Support</strong>
+            <small>כלי בדיקה ותמיכה חד-פעמית, בלי התקנה</small>
+            <a class="btn btn-primary btn-lg" href="files/BSD-Support-v3.6.0.exe" download>הורדת כלי הבדיקה</a>
+          </div>
+          <div class="dl-item">
+            <strong>תוכנת התמיכה הקבועה</strong>
+            <small>מותקנת במחשב, ללקוחות עם תמיכה שוטפת</small>
+            <a class="btn btn-primary btn-lg" id="agent-download" href="files/BSDSupportAgent64.exe" download>הורדת תוכנת התמיכה</a>
+          </div>
           <a class="btn btn-wa" data-wa="שלום, אני צריך/ה תמיכה מרחוק" data-subject="בקשת תמיכה מרחוק" href="#" data-mail-label="לכתוב לנו במייל">קודם לדבר איתנו</a>
           <div class="notes">
             <p><strong>מופיע חלון כחול של Windows?</strong> לוחצים <strong>"מידע נוסף"</strong> ואז <strong>"הפעל בכל זאת"</strong>. <a href="#smartscreen">הסבר עם תמונה</a></p>
             <p><strong>אינטרנט מסונן (נטפרי / רימון)?</strong> ספרו לנו לפני ההתקנה. ייתכן שיהיה צורך לבקש מהסינון לאשר את שרת התמיכה.</p>
-            <p><strong>רק תמיכה חד-פעמית או בדיקת מחשב?</strong> <a href="#bsd-support">כלי BSD Support, בלי התקנה</a></p>
             <p><strong>לא עובד?</strong> <a href="#alt">דרך נוספת: פורטל השירות</a></p>
           </div>
         </aside>
