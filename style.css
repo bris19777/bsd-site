@@ -300,6 +300,7 @@ figcaption { text-align: center; color: var(--muted); font-size: 13.5px; margin-
 .tool-box { border-inline-start: 5px solid var(--accent); }
 .tool-box .trust li { background: #fff; }
 .tool-box .trust li > span { background: #EAF2FD; font-size: 14px; }
+.tool-first { margin-top: 0; }
 .tool-h3 { color: var(--navy); font-size: 18px; margin: 22px 0 10px; }
 .tool-note { margin: 12px 0 0 !important; }
 .remote-main a.btn-primary { color: #fff; }

@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=48">
+  <link rel="stylesheet" href="style.css?v=49">
 </head>
 <body>
   <header class="site-header">
@@ -59,6 +59,24 @@
     <section class="section">
       <div class="wrap remote">
         <div class="remote-main">
+          <div class="alt-support tool-box tool-first" id="bsd-support">
+            <h2>BSD Support: כלי בדיקה ותמיכה, בלי התקנה</h2>
+            <p>כלי קטן שפיתחנו ב-BSD מחשבים. קובץ אחד שמפעילים בלחיצה כפולה, <strong>בלי התקנה</strong>, ויש בו שלושה דברים:</p>
+            <ul class="trust">
+              <li><span>🖥</span><div><strong>תמיכה מרחוק חד-פעמית.</strong> לוחצים "התחל תמיכה מרחוק", ועל המסך מופיעים מספר מזהה וסיסמה שמוסרים לטכנאי בטלפון. החיבור פעיל רק בזמן התמיכה, ונסגר כשלוחצים "סיים תמיכה" או סוגרים את התוכנה.</div></li>
+              <li><span>🔍</span><div><strong>בדיקת המחשב.</strong> מצב הכוננים, בריאות הסוללה, זיכרון, טמפרטורות, ותקלות מ-30 הימים האחרונים (כולל מסכים כחולים וכיבויים לא תקינים). את הדוח אפשר לשמור כתמונה, PDF או טקסט ולשלוח לנו בוואטסאפ.</div></li>
+              <li><span>⚡</span><div><strong>בדיקת מהירות.</strong> מהירות האינטרנט וביצועי המעבד, כדי לראות אם המחשב או הקו איטיים.</div></li>
+            </ul>
+            <h3 class="tool-h3">איך משתמשים?</h3>
+            <ol class="steps">
+              <li><strong>מורידים ומפעילים</strong> את הקובץ. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
+              <li><strong>לתמיכה מרחוק:</strong> לוחצים "התחל תמיכה מרחוק" ומוסרים לנו את המזהה והסיסמה.</li>
+              <li><strong>לבדיקת המחשב:</strong> עוברים ללשונית הבדיקה. לבדיקה מלאה Windows יבקש אישור (לוחצים "כן"), ובסוף לוחצים "ייצוא דוח" ושולחים לנו.</li>
+            </ol>
+            <a class="btn btn-primary" href="files/BSD-Support-v3.6.0.exe" download>הורדת BSD Support (גרסה 3.6.0)</a>
+            <p class="ss-note tool-note">ל-Windows 10 / 11 · כ-25MB. התמיכה מרחוק מבוססת על RustDesk, תוכנה חופשית ברישיון AGPL-3.0 (<a href="https://github.com/rustdesk/rustdesk" target="_blank" rel="noopener">קוד המקור</a>).</p>
+          </div>
+
           <h2>מה זו התוכנה?</h2>
           <p>
             תוכנת התמיכה של BSD מחשבים מבוססת על <strong>MeshCentral</strong>, מערכת תמיכה מרחוק בקוד פתוח
@@ -107,24 +125,6 @@
                 <li class="ok">מופיעה ההודעה <strong>"הסוכן כבר מותקן במחשב הזה"</strong>? הכל בסדר, התוכנה כבר מותקנת ואין צורך להתקין שוב.</li>
               </ul>
             </div>
-          </div>
-
-          <div class="alt-support tool-box" id="bsd-support">
-            <h2>BSD Support: כלי בדיקה ותמיכה, בלי התקנה</h2>
-            <p>כלי קטן שפיתחנו ב-BSD מחשבים. קובץ אחד שמפעילים בלחיצה כפולה, <strong>בלי התקנה</strong>, ויש בו שלושה דברים:</p>
-            <ul class="trust">
-              <li><span>🖥</span><div><strong>תמיכה מרחוק חד-פעמית.</strong> לוחצים "התחל תמיכה מרחוק", ועל המסך מופיעים מספר מזהה וסיסמה שמוסרים לטכנאי בטלפון. החיבור פעיל רק בזמן התמיכה, ונסגר כשלוחצים "סיים תמיכה" או סוגרים את התוכנה.</div></li>
-              <li><span>🔍</span><div><strong>בדיקת המחשב.</strong> מצב הכוננים, בריאות הסוללה, זיכרון, טמפרטורות, ותקלות מ-30 הימים האחרונים (כולל מסכים כחולים וכיבויים לא תקינים). את הדוח אפשר לשמור כתמונה, PDF או טקסט ולשלוח לנו בוואטסאפ.</div></li>
-              <li><span>⚡</span><div><strong>בדיקת מהירות.</strong> מהירות האינטרנט וביצועי המעבד, כדי לראות אם המחשב או הקו איטיים.</div></li>
-            </ul>
-            <h3 class="tool-h3">איך משתמשים?</h3>
-            <ol class="steps">
-              <li><strong>מורידים ומפעילים</strong> את הקובץ. אם מופיע חלון כחול של Windows, <a href="#smartscreen">ראו כאן מה לעשות</a>.</li>
-              <li><strong>לתמיכה מרחוק:</strong> לוחצים "התחל תמיכה מרחוק" ומוסרים לנו את המזהה והסיסמה.</li>
-              <li><strong>לבדיקת המחשב:</strong> עוברים ללשונית הבדיקה. לבדיקה מלאה Windows יבקש אישור (לוחצים "כן"), ובסוף לוחצים "ייצוא דוח" ושולחים לנו.</li>
-            </ol>
-            <a class="btn btn-primary" href="files/BSD-Support-v3.6.0.exe" download>הורדת BSD Support (גרסה 3.6.0)</a>
-            <p class="ss-note tool-note">ל-Windows 10 / 11 · כ-25MB. התמיכה מרחוק מבוססת על RustDesk, תוכנה חופשית ברישיון AGPL-3.0 (<a href="https://github.com/rustdesk/rustdesk" target="_blank" rel="noopener">קוד המקור</a>).</p>
           </div>
 
           <div class="smartscreen" id="smartscreen">
