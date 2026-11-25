@@ -297,6 +297,12 @@ figcaption { text-align: center; color: var(--muted); font-size: 13.5px; margin-
 .alt-support { margin-top: 40px; background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 26px; }
 .alt-support h2 { margin-top: 0 !important; }
 .alt-support .steps { margin-bottom: 20px; }
+.tool-box { border-inline-start: 5px solid var(--accent); }
+.tool-box .trust li { background: #fff; }
+.tool-box .trust li > span { background: #EAF2FD; font-size: 14px; }
+.tool-h3 { color: var(--navy); font-size: 18px; margin: 22px 0 10px; }
+.tool-note { margin: 12px 0 0 !important; }
+.remote-main a.btn-primary { color: #fff; }
 .notes a { color: var(--accent); }
 
 /* ---------- recommended / deal card ---------- */
