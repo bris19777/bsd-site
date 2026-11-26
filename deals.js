@@ -236,7 +236,8 @@ const DEALS = [
     },
     "also": [
       "business"
-    ]
+    ],
+    "soldOut": true
   },
   {
     "sku": "MZ-ZENBOOK14-UX3405CA",
@@ -285,6 +286,7 @@ const DEALS = [
     "zap": {
       "price": "9,149",
       "label": "ThinkPad X1 Carbon חדש (Gen 13, ‏512GB)"
-    }
+    },
+    "soldOut": true
   }
 ];

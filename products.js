@@ -56,11 +56,13 @@ const PRODUCTS = [
     tagline: "i7 בהספק 45W, ‏1TB, גוף מתכת ומסך 15.3 אינץ' בהיר",
     specs: ["מסך 15.3 אינץ' WUXGA IPS", "Intel Core i7-13620H (45W)", "16GB DDR5", "1TB SSD NVMe", "חלק עליון מאלומיניום", "אחריות שנה באתר הלקוח"] },
   { sku: "P14SG5-U7-32-512-LN", cat: "business", also: ['recommended', 'deals', 'programming'], brand: "Lenovo", name: "Lenovo ThinkPad P14s Gen 5 · Ultra 7 155H · 32GB · 512GB · כמו חדש",
-    img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-like-new.html", price: "3,790", was: "9,449", deal: "כמו חדש",
+    img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-like-new.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "3,790" ולמחוק את soldOut
+    was: "9,449", deal: "כמו חדש",
     tagline: "תחנת עבודה ניידת כמו חדשה",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB DDR5 (עד 96GB)", "512GB SSD", "2× Thunderbolt 4 · ‏RJ-45", "תחנת עבודה ניידת · אלומיניום", "כמו חדש"] },
   { sku: "P14SG5-U7-32-512", cat: "business", also: ['recommended', 'programming'], brand: "Lenovo", name: "Lenovo ThinkPad P14s Gen 5 · Ultra 7 155H · 32GB · 512GB · חדש לחלוטין",
-    img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-new.html", price: "4,890", was: "9,449", deal: "חדש",
+    img: "images/thinkpad-p14s-g5/01.jpg", page: "laptop-thinkpad-p14s-gen5-ultra7-155h-new.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "4,890" ולמחוק את soldOut
+    was: "9,449", deal: "חדש",
     tagline: "תחנת עבודה ניידת חדשה, ‏16 ליבות ו-32GB",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB DDR5 (עד 96GB)", "512GB SSD", "2× Thunderbolt 4 · ‏RJ-45", "תחנת עבודה ניידת · אלומיניום", "חדש לחלוטין"] },
   { sku: "83K100W3IV", cat: "recommended", brand: "Lenovo", name: "Lenovo IdeaPad Slim 3 15 Touch i7",
@@ -101,16 +103,19 @@ const PRODUCTS = [
 
   { sku: "TP14-R-8665U", cat: "refurbished", also: ["recommended"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T490 מחודש · i7 · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-refurbished-i7-touch.html",
-    price: "1,390", deal: "מחודש A-Grade",
+    soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,390" ולמחוק את soldOut
+    deal: "מחודש A-Grade",
     tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
     specs: ["מסך מגע 14 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "עמידות צבאית MIL-STD-810G", "אחריות מלאה לחצי שנה"] },
   { sku: "TP15-R-8665U", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T590 מחודש · i7 · מסך מגע 15.6",
-    img: "images/thinkpad-t590/01.jpg", page: "laptop-thinkpad-t590-refurbished-i7-touch.html", price: "1,690", deal: "מחודש A-Grade",
+    img: "images/thinkpad-t590/01.jpg", page: "laptop-thinkpad-t590-refurbished-i7-touch.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,690" ולמחוק את soldOut
+    deal: "מחודש A-Grade",
     tagline: "כמו ה-T490, עם מסך גדול 15.6 אינץ' ומקשי ספרות",
     specs: ["מסך מגע 15.6 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "מקלדת עם מקשי ספרות", "אחריות מלאה לחצי שנה"] },
   { sku: "TP14G1-R-I7-10", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T14 מחודש · i7 דור 10 · 8GB · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-t14-refurbished-i7-gen10.html",
-    price: "1,500", deal: "יחידות בודדות במלאי",
+    soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,500" ולמחוק את soldOut
+    deal: "יחידות בודדות במלאי",
     tagline: "ThinkPad עסקי עם מסך מגע · אפשר גם עם 16GB ב-₪1,650",
     specs: ["מסך מגע 14 אינץ'", "Intel Core i7 דור 10", "8GB זיכרון (או 16GB ב-₪1,650)", "256GB SSD", "סוללה במצב מעולה", "אחריות מלאה לחצי שנה"] },
 
@@ -192,7 +197,8 @@ const PRODUCTS = [
     tagline: "ThinkPad חדש: מקלדת מעולה, עמידות צבאית ושדרוג עד 64GB",
     specs: ["AMD Ryzen 5 7535U: ‏6 ליבות", "16GB DDR5 (עד 64GB)", "512GB SSD + חריץ פנוי", "מסך 14 אינץ' ‏16:10", "מקלדת עמידה לשפיכה · ‏MIL-STD-810H", "אחריות יצרן מלאה"] },
   { sku: "E14G7-R5-16-512", cat: "business", also: ["recommended", "deals"], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E14 Gen 7 · Ryzen 5 · 16GB",
-    img: "images/deals/e14-gen7/01.jpg", page: "laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html", price: "2,990", was: "5,000", wasApprox: true,
+    img: "images/deals/e14-gen7/01.jpg", page: "laptop-thinkpad-e14-gen7-ryzen5-230-16gb.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "2,990" ולמחוק את soldOut
+    was: "5,000", wasApprox: true,
     deal: "מחשב חדש",
     tagline: "ThinkPad עסקי: מכסה אלומיניום, תקן צבאי ו-3 שנות אחריות",
     specs: ["AMD Ryzen 5 230 · מעבד AI", "16GB DDR5 (עד 64GB)", "512GB SSD + חריץ פנוי", "מסך 14 אינץ' WUXGA ‏16:10", "מכסה אלומיניום · ‏MIL-STD-810H", "3 שנות אחריות יצרן"] },
@@ -389,7 +395,8 @@ const PRODUCTS = [
     tagline: "Core Ultra 5 · ‏3 שנות אחריות באתר הלקוח",
     specs: ["מסך 14 אינץ' WUXGA", "Intel Core Ultra 5 225U", "16GB DDR5", "512GB SSD", "Thunderbolt 4 · ‏1.34 ק\"ג", "3 שנות אחריות באתר"] },
   { sku: "21SR004FIV", cat: "business", brand: "Lenovo", name: "Lenovo ThinkPad E16 Gen 3 · Core Ultra 5",
-    img: "images/thinkpad-e16-g3/01.jpg", page: "laptop-thinkpad-e16-gen3-ultra5-225u.html", price: "4,590", deal: "מסך 16 אינץ'",
+    img: "images/thinkpad-e16-g3/01.jpg", page: "laptop-thinkpad-e16-gen3-ultra5-225u.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "4,590" ולמחוק את soldOut
+    deal: "מסך 16 אינץ'",
     tagline: "מסך 16 אינץ' ומקשי ספרות · ‏3 שנות אחריות באתר",
     specs: ["מסך 16 אינץ' WUXGA", "Intel Core Ultra 5 225U", "16GB DDR5", "512GB SSD", "מקלדת עם מקשי ספרות", "3 שנות אחריות באתר"] },
   { sku: "12UD00EJIV", cat: "desktop", brand: "Lenovo", name: "Lenovo ThinkCentre neo 50t Gen 5 · i5-14400 · 32GB · 1TB",
@@ -457,11 +464,13 @@ const PRODUCTS = [
     tagline: "תחנת עבודה לאדריכלות ודפוס עם כרטיס NVIDIA מקצועי",
     specs: ["Intel Core i7-14700 ‏(20 ליבות)", "NVIDIA RTX A2000 מקצועי", "32GB DDR4", "1TB SSD NVMe + ‏4TB", "עד 4 מסכים · צבע 10-bit", "סט אלחוטי Lenovo"] },
   { sku: "X13G5-U7-32-512-R", cat: "refurbished", also: ['business'], brand: "Lenovo", name: "Lenovo ThinkPad X13 Gen 5 · Ultra 7 · 32GB · 512GB · מחודש",
-    img: "images/thinkpad-x13-g5/01.jpg", page: "laptop-thinkpad-x13-gen5-ultra7-155u-32gb-refurbished.html", price: "3,390", was: "12,149", deal: "מחודש · אחריות יצרן",
+    img: "images/thinkpad-x13-g5/01.jpg", page: "laptop-thinkpad-x13-gen5-ultra7-155u-32gb-refurbished.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "3,390" ולמחוק את soldOut
+    was: "12,149", deal: "מחודש · אחריות יצרן",
     tagline: "ThinkPad פרימיום של 1.17 ק\"ג עם 32GB · מחודש עם אחריות יצרן",
     specs: ["Intel Core Ultra 7 155U", "32GB LPDDR5X", "512GB SSD", "מסך 13.3 אינץ' ‏100% sRGB", "1.17 ק\"ג · ‏2× Thunderbolt 4", "אחריות יצרן"] },
   { sku: "X1CG12-U7-32-512-5G", cat: "premium", also: ['business', 'deals'], brand: "Lenovo", name: "Lenovo ThinkPad X1 Carbon Gen 12 · Ultra 7 · 32GB · מודם 5G · כמו חדש",
-    img: "images/thinkpad-x1c-g12/01.jpg", page: "laptop-thinkpad-x1-carbon-gen12-ultra7-155u-5g-like-new.html", price: "4,459", was: "11,199", deal: "מודם 5G · כמו חדש",
+    img: "images/thinkpad-x1c-g12/01.jpg", page: "laptop-thinkpad-x1-carbon-gen12-ultra7-155u-5g-like-new.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "4,459" ולמחוק את soldOut
+    was: "11,199", deal: "מודם 5G · כמו חדש",
     tagline: "ספינת הדגל של ThinkPad, עם מודם 5G · כמו חדש, שנתיים אחריות",
     specs: ["Intel Core Ultra 7 155U", "32GB LPDDR5X", "512GB SSD", "מודם סלולרי 5G מובנה", "1.09 ק\"ג · סיבי פחמן", "שנתיים אחריות"] },
   { sku: "BSD-KIT-I7-14700-5060-24", cat: "desktop", also: ["gaming"], brand: "BSD מחשבים", name: "ערכה מלאה · Core i7-14700 · RTX 5060 + מסך 24 אינץ'",
@@ -517,11 +526,13 @@ const PRODUCTS = [
     tagline: "מעל ₪3,000 הנחה · ‏Ultra 7 מסדרת H, ‏32GB ומסך OLED",
     specs: ["Intel Core Ultra 7 155H ‏(16 ליבות)", "32GB זיכרון · ‏1TB SSD", "מסך מגע 14 אינץ' OLED ‏2.8K ‏120Hz", "מתהפך 360° · גוף אלומיניום", "Thunderbolt 4 · ‏Windows 11 Pro", "מצב כמו חדש"] },
   { sku: "E15-I5G10-16-256", cat: "deals", also: ['business'], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E15 · i5 דור 10 · 16GB · 256GB · כמו חדש",
-    img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-256gb-like-new.html", deal: "מצב מעולה · כמו חדש",
+    img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-256gb-like-new.html", soldOut: true, // חסר זמנית במלאי (היה: מחיר לפי פנייה): למחוק את soldOut
+    deal: "מצב מעולה · כמו חדש",
     tagline: "ThinkPad עסקי במצב מעולה, כמו חדש לגמרי",
     specs: ["Intel Core i5-10210U (דור 10)", "16GB DDR4", "256GB SSD", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · מכסה אלומיניום", "מצב כמו חדש"] },
   { sku: "E15-I5G10-16-512", cat: "deals", also: ['business'], brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad E15 · i5 דור 10 · 16GB · 512GB · כמו חדש",
-    img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-512gb-like-new.html", deal: "מצב מעולה · כמו חדש",
+    img: "images/thinkpad-e15-g1/01.jpg", page: "laptop-thinkpad-e15-i5-10210u-16gb-512gb-like-new.html", soldOut: true, // חסר זמנית במלאי (היה: מחיר לפי פנייה): למחוק את soldOut
+    deal: "מצב מעולה · כמו חדש",
     tagline: "ThinkPad עסקי במצב מעולה, כמו חדש לגמרי",
     specs: ["Intel Core i5-10210U (דור 10)", "16GB DDR4", "512GB SSD", "מסך 15.6 אינץ' Full HD", "מקלדת נומרית · מכסה אלומיניום", "מצב כמו חדש"] },
   { sku: "PB4G1I-16-C5", cat: "business", also: ['recommended'], brand: "HP", name: "HP ProBook 4 G1i 16 · Core 5 120U · 16GB · 512GB · 3 שנות אחריות",
