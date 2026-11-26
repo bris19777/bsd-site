@@ -108,14 +108,12 @@ const PRODUCTS = [
     tagline: "האגדה העסקית: אמין ועמיד לשנים, במחיר של מחשב בסיסי",
     specs: ["מסך מגע 14 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "עמידות צבאית MIL-STD-810G", "אחריות מלאה לחצי שנה"] },
   { sku: "TP15-R-8665U", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T590 מחודש · i7 · מסך מגע 15.6",
-    img: "images/thinkpad-t590/01.jpg", page: "laptop-thinkpad-t590-refurbished-i7-touch.html", soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,690" ולמחוק את soldOut
-    deal: "מחודש A-Grade",
+    img: "images/thinkpad-t590/01.jpg", page: "laptop-thinkpad-t590-refurbished-i7-touch.html", price: "1,690", deal: "מחודש A-Grade",
     tagline: "כמו ה-T490, עם מסך גדול 15.6 אינץ' ומקשי ספרות",
     specs: ["מסך מגע 15.6 אינץ' מט", "Intel Core i7-8665U", "8GB זיכרון (שדרוג ל-16GB)", "256GB SSD (שדרוג ל-512GB)", "מקלדת עם מקשי ספרות", "אחריות מלאה לחצי שנה"] },
   { sku: "TP14G1-R-I7-10", cat: "refurbished", brand: "Lenovo ThinkPad", name: "Lenovo ThinkPad T14 מחודש · i7 דור 10 · 8GB · מסך מגע",
     img: "images/thinkpad-refurb/tp-05.png", page: "laptop-thinkpad-t14-refurbished-i7-gen10.html",
-    soldOut: true, // חסר זמנית במלאי: להחזיר price: "1,500" ולמחוק את soldOut
-    deal: "יחידות בודדות במלאי",
+    price: "1,500", deal: "יחידות בודדות במלאי",
     tagline: "ThinkPad עסקי עם מסך מגע · אפשר גם עם 16GB ב-₪1,650",
     specs: ["מסך מגע 14 אינץ'", "Intel Core i7 דור 10", "8GB זיכרון (או 16GB ב-₪1,650)", "256GB SSD", "סוללה במצב מעולה", "אחריות מלאה לחצי שנה"] },
 
