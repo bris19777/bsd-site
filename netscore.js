@@ -2,7 +2,7 @@
 var NS = (function () {
   'use strict';
 
-  var WEIGHTS = { real: 25, il: 20, world: 15, bw: 15, stab: 15, eff: 10 };
+  var WEIGHTS = { real: 30, il: 20, world: 15, bw: 10, stab: 15, eff: 10 };
   var LABELS = {
     real: 'הורדות אמיתיות',
     il: 'אתרים ישראליים',
@@ -26,14 +26,21 @@ var NS = (function () {
   function mean(a) { var s = 0; for (var i = 0; i < a.length; i++) s += a[i]; return a.length ? s / a.length : 0; }
   function median(a) { if (!a.length) return 0; var b = a.slice().sort(function (x, y) { return x - y; }); var m = b.length >> 1; return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2; }
 
+  // 65% plain average + 35% average of the worst 1/part of the results
+  function tailWeighted(a, part) {
+    if (!a.length) return 0;
+    var b = a.slice().sort(function (x, y) { return x - y; });
+    return 0.65 * mean(b) + 0.35 * mean(b.slice(0, Math.max(1, Math.ceil(b.length / part))));
+  }
   function siteGroup(r, g) {
     var list = (r.sites || []).filter(function (s) { return s.group === g && !s.blocked && !s.skipped; });
     if (!list.length) return null;
-    var sc = list.map(function (s) { return s.ok ? lo(s.total_ms, 400, 6000) : 0; }).sort(function (a, b) { return a - b; });
-    // one slow site is usually the site's own server, not the line - drop the single worst result
-    if (sc.length >= 6) sc.shift();
+    var sc = list.map(function (s) { return s.ok ? lo(s.total_ms, 300, 4000) : 0; }).sort(function (a, b) { return a - b; });
+    // a slow site here and there is usually the site's own server, not the line - drop the worst 1 in 12
+    if (sc.length >= 6) sc = sc.slice(Math.max(1, Math.floor(sc.length / 12)));
     var okT = list.filter(function (s) { return s.ok; }).map(function (s) { return s.total_ms; });
-    return { score: mean(sc), median_ms: median(okT), n: list.length, failed: list.length - okT.length };
+    // the slow third counts extra: a line that opens some sites fast and others slowly does not feel fast
+    return { score: tailWeighted(sc, 3), median_ms: median(okT), n: list.length, failed: list.length - okT.length };
   }
 
   function compute(r) {
@@ -41,7 +48,7 @@ var NS = (function () {
     var dls = (r.downloads || []).filter(function (d) { return !d.blocked; });
     var okD = dls.filter(function (d) { return d.ok; });
     if (dls.length) {
-      c.real = mean(dls.map(function (d) { return d.ok ? hi(d.mbps, 0.5, 100) : 0; }));
+      c.real = tailWeighted(dls.map(function (d) { return d.ok ? hi(d.mbps, 1, 150) : 0; }), 2);
       info.realMedian = median(okD.map(function (d) { return d.mbps; }));
     }
     var il = siteGroup(r, 'il'), wo = siteGroup(r, 'world');
@@ -49,23 +56,23 @@ var NS = (function () {
     if (wo) { c.world = wo.score; info.world = wo; }
 
     var bd = r.bandwidth && r.bandwidth.down, bu = r.bandwidth && r.bandwidth.up;
-    if (bd && bd.ok && bu && bu.ok) c.bw = 0.7 * hi(bd.mbps, 0.5, 100) + 0.3 * hi(bu.mbps, 0.2, 20);
-    else if (bd && bd.ok) c.bw = hi(bd.mbps, 0.5, 100);
+    if (bd && bd.ok && bu && bu.ok) c.bw = 0.7 * hi(bd.mbps, 1, 200) + 0.3 * hi(bu.mbps, 0.3, 50);
+    else if (bd && bd.ok) c.bw = 0.85 * hi(bd.mbps, 1, 200);
 
     var all = (r.sites || []).filter(function (s) { return !s.blocked && !s.skipped; }).concat(dls);
     var okN = all.filter(function (x) { return x.ok; }).length;
     var rate = all.length ? okN / all.length : 1;
     info.successRate = rate;
-    var relScore = clamp((rate - 0.7) / 0.3 * 100);
+    var relScore = clamp((rate - 0.8) / 0.2 * 100);
     var L = r.latency;
-    if (L && L.ok) c.stab = 0.5 * lo(L.median_ms, 25, 600) + 0.25 * lo(L.jitter_ms, 3, 150) + 0.25 * relScore;
+    if (L && L.ok) c.stab = 0.5 * lo(L.median_ms, 20, 400) + 0.25 * lo(L.jitter_ms, 3, 100) + 0.25 * relScore;
     else if (all.length) c.stab = relScore * 0.6; // could not even measure latency
 
     if (bd && bd.ok && okD.length) {
       // anything above 100 Mbps in a real download is "all you can use"
       var ratio = Math.min(1, info.realMedian / Math.min(bd.mbps, 100));
       info.ratio = ratio;
-      c.eff = hi(ratio, 0.05, 0.6);
+      c.eff = hi(ratio, 0.1, 0.8);
     }
 
     var wsum = 0, tot = 0, comps = [];
@@ -76,16 +83,20 @@ var NS = (function () {
     Object.keys(WEIGHTS).forEach(function (k) {
       comps.push({ key: k, label: LABELS[k], hint: HINTS[k], weight: WEIGHTS[k], score: c[k] == null ? null : Math.round(c[k]) });
     });
-    var total = wsum ? Math.round(tot / wsum) : 0;
+    var total = wsum ? tot / wsum : 0;
+    // the weakest of the three "real use" parts pulls the total down: a fast speed test cannot hide slow real use
+    var weak = [c.real, c.il, c.world].filter(function (x) { return x != null; });
+    if (weak.length) total = 0.7 * total + 0.3 * Math.min.apply(null, weak);
+    total = Math.round(total);
     return { total: total, grade: grade(total), comps: comps, info: info, insights: insights(r, c, info) };
   }
 
   function grade(s) {
     if (s >= 90) return { text: 'מצוין', color: '#12805c' };
-    if (s >= 75) return { text: 'טוב מאוד', color: '#2f8f3a' };
-    if (s >= 60) return { text: 'טוב', color: '#7a9a1c' };
-    if (s >= 40) return { text: 'בינוני', color: '#c98a0a' };
-    if (s >= 20) return { text: 'חלש', color: '#d2601a' };
+    if (s >= 78) return { text: 'טוב מאוד', color: '#2f8f3a' };
+    if (s >= 65) return { text: 'טוב', color: '#7a9a1c' };
+    if (s >= 45) return { text: 'בינוני', color: '#c98a0a' };
+    if (s >= 25) return { text: 'חלש', color: '#d2601a' };
     return { text: 'גרוע', color: '#c0392b' };
   }
   function colorOf(s) { return grade(s).color; }
@@ -242,7 +253,7 @@ var NS = (function () {
     list.forEach(function (s) {
       h += '<tr><td>' + esc(s.name) + '</td><td>' + statusCell(s) + '</td>';
       if (!web) h += '<td>' + num(s.dns_ms) + '</td><td>' + num(s.tcp_ms) + '</td><td>' + num(s.tls_ms) + '</td><td>' + num(s.ttfb_ms) + '</td>';
-      h += '<td><b style="color:' + (s.ok && !s.blocked ? colorOf(lo(s.total_ms, 400, 6000)) : '#888') + '">' + (s.ok ? num(s.total_ms) : '–') + '</b></td></tr>';
+      h += '<td><b style="color:' + (s.ok && !s.blocked ? colorOf(lo(s.total_ms, 300, 4000)) : '#888') + '">' + (s.ok ? num(s.total_ms) : '–') + '</b></td></tr>';
     });
     return h + '</tbody></table></div><p class="ns-note">כל הזמנים באלפיות שנייה.</p>';
   }
@@ -303,7 +314,7 @@ var NS = (function () {
     h += '<details class="ns-card ns-details"><summary>דוח מפורט</summary>';
     h += '<h3>הורדות אמיתיות</h3><div class="ns-scroll"><table class="ns-table"><thead><tr><th>קובץ</th><th>מצב</th><th>Mbps</th><th>בייט ראשון (ms)</th><th>הורד</th></tr></thead><tbody>';
     (r.downloads || []).forEach(function (x) {
-      h += '<tr><td>' + esc(x.name) + '</td><td>' + statusCell(x) + '</td><td><b style="color:' + (x.ok ? colorOf(hi(x.mbps, 0.5, 100)) : '#888') + '">' + (x.ok ? f1(x.mbps) : '–') + '</b></td><td>' + num(x.ttfb_ms) + '</td><td>' + (x.bytes ? f1(x.bytes / 1048576) + ' MB' : '–') + '</td></tr>';
+      h += '<tr><td>' + esc(x.name) + '</td><td>' + statusCell(x) + '</td><td><b style="color:' + (x.ok ? colorOf(hi(x.mbps, 1, 150)) : '#888') + '">' + (x.ok ? f1(x.mbps) : '–') + '</b></td><td>' + num(x.ttfb_ms) + '</td><td>' + (x.bytes ? f1(x.bytes / 1048576) + ' MB' : '–') + '</td></tr>';
     });
     h += '</tbody></table></div>';
     h += '<h3>אתרים ישראליים</h3>' + sitesTable(r, 'il', web);
@@ -385,7 +396,7 @@ var NSEngine = (function () {
   function runSites(sites, onProgress) {
     var out = new Array(sites.length), next = 0, done = 0;
     var phase = new AbortController();
-    var cap = setTimeout(function () { phase.abort(); }, 11000);
+    var cap = setTimeout(function () { phase.abort(); }, 25000);
     function worker() {
       if (next >= sites.length) return Promise.resolve();
       var i = next++;
@@ -394,7 +405,7 @@ var NSEngine = (function () {
         : probeSite(sites[i], phase.signal);
       return p.then(function (r) { out[i] = r; onProgress(++done, sites.length); return worker(); });
     }
-    var ws = []; for (var k = 0; k < 6; k++) ws.push(worker());
+    var ws = []; for (var k = 0; k < 8; k++) ws.push(worker());
     return Promise.all(ws).then(function () { clearTimeout(cap); return out; });
   }
 
@@ -596,7 +607,7 @@ var NSEngine = (function () {
   }
 
   async function run(cfg, onPhase) {
-    var res = { version: cfg.version || '1.1.0', mode: 'web', started: new Date().toISOString(), duration_s: 0,
+    var res = { version: cfg.version || '1.2.0', mode: 'web', started: new Date().toISOString(), duration_s: 0,
       env: { os: navigator.platform || '', host: '', proxy: '', filter: { detected: false, name: '', issuer: '' } },
       sites: [], latency: {}, bandwidth: { down: {}, up: {} }, downloads: [] };
     var t0 = now();
@@ -621,7 +632,7 @@ var NSEngine = (function () {
   }
   return { run: run };
 })();
-var NS_CONFIG = {"sites": [{"id": "gov", "name": "gov.il", "url": "https://www.gov.il/", "group": "il"}, {"id": "btl", "name": "ביטוח לאומי", "url": "https://www.btl.gov.il/", "group": "il"}, {"id": "leumi", "name": "בנק לאומי", "url": "https://www.leumi.co.il/", "group": "il"}, {"id": "mercantile", "name": "בנק מרכנתיל", "url": "https://www.mercantile.co.il/", "group": "il"}, {"id": "pagi", "name": "בנק פאגי", "url": "https://www.pagi.co.il/", "group": "il"}, {"id": "post", "name": "דואר ישראל", "url": "https://www.israelpost.co.il/", "group": "il"}, {"id": "zap", "name": "זאפ", "url": "https://www.zap.co.il/", "group": "il"}, {"id": "ksp", "name": "KSP", "url": "https://ksp.co.il/", "group": "il"}, {"id": "kikar", "name": "כיכר השבת", "url": "https://www.kikar.co.il/", "group": "il"}, {"id": "kore", "name": "כל רגע", "url": "https://www.kore.co.il/", "group": "il"}, {"id": "jdn", "name": "JDN", "url": "https://www.jdn.co.il/", "group": "il"}, {"id": "hidabroot", "name": "הידברות", "url": "https://www.hidabroot.org/", "group": "il"}, {"id": "kolhalashon", "name": "קול הלשון", "url": "https://www.kolhalashon.com/", "group": "il"}, {"id": "yemot", "name": "ימות המשיח", "url": "https://www.yemot.co.il/", "group": "il"}, {"id": "magicode", "name": "Send מג'יקוד", "url": "https://send.magicode.me/", "group": "il"}, {"id": "google", "name": "Google", "url": "https://www.google.com/", "group": "world"}, {"id": "gmail", "name": "Gmail", "url": "https://mail.google.com/", "group": "world"}, {"id": "drive", "name": "Google Drive", "url": "https://drive.google.com/", "group": "world"}, {"id": "microsoft", "name": "Microsoft", "url": "https://www.microsoft.com/he-il", "group": "world"}, {"id": "office", "name": "Office 365", "url": "https://www.office.com/", "group": "world"}, {"id": "amazon", "name": "Amazon", "url": "https://www.amazon.com/", "group": "world"}, {"id": "aliexpress", "name": "AliExpress", "url": "https://www.aliexpress.com/", "group": "world"}, {"id": "github", "name": "GitHub", "url": "https://github.com/", "group": "world"}, {"id": "wikipedia", "name": "ויקיפדיה", "url": "https://he.wikipedia.org/wiki/", "group": "world"}, {"id": "hebrewbooks", "name": "HebrewBooks", "url": "https://hebrewbooks.org/", "group": "world"}, {"id": "sefaria", "name": "ספריא", "url": "https://www.sefaria.org.il/", "group": "world"}], "bandwidth": {"ping": ["https://speed.cloudflare.com/__down?bytes=0", "https://www.gstatic.com/generate_204"], "down": ["https://speed.cloudflare.com/__down?bytes=99999999", "https://proof.ovh.net/files/1Gb.dat"], "up": ["https://speed.cloudflare.com/__up"]}, "web_downloads": [{"id": "google", "name": "Google Cloud (קובץ 29MB)", "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_heavy/float16/1/pose_landmarker_heavy.task", "group": "world"}, {"id": "jsdelivr", "name": "jsDelivr CDN (קובץ 21MB)", "url": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort-wasm-simd-threaded.jsep.wasm", "group": "world"}, {"id": "github", "name": "GitHub (קובץ 23MB)", "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main/eng.traineddata", "group": "world"}, {"id": "huggingface", "name": "Hugging Face (קובץ 90MB)", "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/main/onnx/model.onnx", "group": "world"}], "version": "1.1.0"};
+var NS_CONFIG = {"sites": [{"id": "gov", "name": "gov.il", "url": "https://www.gov.il/", "group": "il"}, {"id": "btl", "name": "ביטוח לאומי", "url": "https://www.btl.gov.il/", "group": "il"}, {"id": "leumi", "name": "בנק לאומי", "url": "https://www.leumi.co.il/", "group": "il"}, {"id": "mercantile", "name": "בנק מרכנתיל", "url": "https://www.mercantile.co.il/", "group": "il"}, {"id": "pagi", "name": "בנק פאגי", "url": "https://www.pagi.co.il/", "group": "il"}, {"id": "post", "name": "דואר ישראל", "url": "https://www.israelpost.co.il/", "group": "il"}, {"id": "zap", "name": "זאפ", "url": "https://www.zap.co.il/", "group": "il"}, {"id": "ksp", "name": "KSP", "url": "https://ksp.co.il/", "group": "il"}, {"id": "kikar", "name": "כיכר השבת", "url": "https://www.kikar.co.il/", "group": "il"}, {"id": "kore", "name": "כל רגע", "url": "https://www.kore.co.il/", "group": "il"}, {"id": "jdn", "name": "JDN", "url": "https://www.jdn.co.il/", "group": "il"}, {"id": "hidabroot", "name": "הידברות", "url": "https://www.hidabroot.org/", "group": "il"}, {"id": "kolhalashon", "name": "קול הלשון", "url": "https://www.kolhalashon.com/", "group": "il"}, {"id": "yemot", "name": "ימות המשיח", "url": "https://www.yemot.co.il/", "group": "il"}, {"id": "magicode", "name": "Send מג'יקוד", "url": "https://send.magicode.me/", "group": "il"}, {"id": "clalit", "name": "כללית", "url": "https://www.clalit.co.il/", "group": "il"}, {"id": "maccabi", "name": "מכבי", "url": "https://www.maccabi4u.co.il/", "group": "il"}, {"id": "meuhedet", "name": "מאוחדת", "url": "https://www.meuhedet.co.il/", "group": "il"}, {"id": "leumit", "name": "לאומית", "url": "https://www.leumit.co.il/", "group": "il"}, {"id": "iec", "name": "חברת החשמל", "url": "https://www.iec.co.il/", "group": "il"}, {"id": "bezeq", "name": "בזק", "url": "https://www.bezeq.co.il/", "group": "il"}, {"id": "egged", "name": "אגד", "url": "https://www.egged.co.il/", "group": "il"}, {"id": "ravkav", "name": "רב-קו אונליין", "url": "https://ravkavonline.co.il/", "group": "il"}, {"id": "mizrahi", "name": "מזרחי טפחות", "url": "https://www.mizrahi-tefahot.co.il/", "group": "il"}, {"id": "poalim", "name": "בנק הפועלים", "url": "https://www.bankhapoalim.co.il/", "group": "il"}, {"id": "discount", "name": "בנק דיסקונט", "url": "https://www.discountbank.co.il/", "group": "il"}, {"id": "fibi", "name": "הבינלאומי", "url": "https://www.fibi.co.il/", "group": "il"}, {"id": "max", "name": "max", "url": "https://www.max.co.il/", "group": "il"}, {"id": "isracard", "name": "ישראכרט", "url": "https://www.isracard.co.il/", "group": "il"}, {"id": "shufersal", "name": "שופרסל", "url": "https://www.shufersal.co.il/", "group": "il"}, {"id": "ramilevy", "name": "רמי לוי", "url": "https://www.rami-levy.co.il/", "group": "il"}, {"id": "superpharm", "name": "סופר-פארם", "url": "https://www.super-pharm.co.il/", "group": "il"}, {"id": "ivory", "name": "Ivory", "url": "https://www.ivory.co.il/", "group": "il"}, {"id": "bug", "name": "Bug", "url": "https://www.bug.co.il/", "group": "il"}, {"id": "yad2", "name": "יד2", "url": "https://www.yad2.co.il/", "group": "il"}, {"id": "govmap", "name": "GovMap", "url": "https://www.govmap.gov.il/", "group": "il"}, {"id": "ims", "name": "השירות המטאורולוגי", "url": "https://www.ims.gov.il/", "group": "il"}, {"id": "otzar", "name": "אוצר החכמה", "url": "https://www.otzar.org/", "group": "il"}, {"id": "hamichlol", "name": "המכלול", "url": "https://www.hamichlol.org.il/", "group": "il"}, {"id": "emess", "name": "אמס", "url": "https://www.emess.co.il/", "group": "il"}, {"id": "google", "name": "Google", "url": "https://www.google.com/", "group": "world"}, {"id": "gmail", "name": "Gmail", "url": "https://mail.google.com/", "group": "world"}, {"id": "drive", "name": "Google Drive", "url": "https://drive.google.com/", "group": "world"}, {"id": "microsoft", "name": "Microsoft", "url": "https://www.microsoft.com/he-il", "group": "world"}, {"id": "office", "name": "Office 365", "url": "https://www.office.com/", "group": "world"}, {"id": "amazon", "name": "Amazon", "url": "https://www.amazon.com/", "group": "world"}, {"id": "aliexpress", "name": "AliExpress", "url": "https://www.aliexpress.com/", "group": "world"}, {"id": "github", "name": "GitHub", "url": "https://github.com/", "group": "world"}, {"id": "wikipedia", "name": "ויקיפדיה", "url": "https://he.wikipedia.org/wiki/", "group": "world"}, {"id": "hebrewbooks", "name": "HebrewBooks", "url": "https://hebrewbooks.org/", "group": "world"}, {"id": "sefaria", "name": "ספריא", "url": "https://www.sefaria.org.il/", "group": "world"}, {"id": "apple", "name": "Apple", "url": "https://www.apple.com/", "group": "world"}, {"id": "bing", "name": "Bing", "url": "https://www.bing.com/", "group": "world"}, {"id": "cloudflare", "name": "Cloudflare", "url": "https://www.cloudflare.com/", "group": "world"}, {"id": "dropbox", "name": "Dropbox", "url": "https://www.dropbox.com/", "group": "world"}, {"id": "zoom", "name": "Zoom", "url": "https://zoom.us/", "group": "world"}, {"id": "mozilla", "name": "Mozilla", "url": "https://www.mozilla.org/", "group": "world"}, {"id": "python", "name": "Python.org", "url": "https://www.python.org/", "group": "world"}, {"id": "lenovo", "name": "Lenovo", "url": "https://www.lenovo.com/", "group": "world"}, {"id": "dell", "name": "Dell", "url": "https://www.dell.com/", "group": "world"}, {"id": "hp", "name": "HP Support", "url": "https://support.hp.com/", "group": "world"}, {"id": "nvidia", "name": "NVIDIA", "url": "https://www.nvidia.com/", "group": "world"}, {"id": "epson", "name": "Epson", "url": "https://www.epson.com/", "group": "world"}, {"id": "brother", "name": "Brother", "url": "https://www.brother.com/", "group": "world"}, {"id": "teamviewer", "name": "TeamViewer", "url": "https://www.teamviewer.com/", "group": "world"}, {"id": "waze", "name": "Waze", "url": "https://www.waze.com/", "group": "world"}, {"id": "translate", "name": "Google Translate", "url": "https://translate.google.com/", "group": "world"}], "bandwidth": {"ping": ["https://speed.cloudflare.com/__down?bytes=0", "https://www.gstatic.com/generate_204"], "down": ["https://speed.cloudflare.com/__down?bytes=99999999", "https://proof.ovh.net/files/1Gb.dat"], "up": ["https://speed.cloudflare.com/__up"]}, "web_downloads": [{"id": "google", "name": "Google Cloud (קובץ 29MB)", "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_heavy/float16/1/pose_landmarker_heavy.task", "group": "world"}, {"id": "jsdelivr", "name": "jsDelivr CDN (קובץ 21MB)", "url": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort-wasm-simd-threaded.jsep.wasm", "group": "world"}, {"id": "github", "name": "GitHub (קובץ 23MB)", "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main/eng.traineddata", "group": "world"}, {"id": "huggingface", "name": "Hugging Face (קובץ 90MB)", "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/main/onnx/model.onnx", "group": "world"}], "version": "1.2.0"};
 (function () {
   var go = document.getElementById('ns-go'), prog = document.getElementById('ns-prog'), bar = document.getElementById('ns-prog-i'),
       phase = document.getElementById('ns-phase'), root = document.getElementById('ns-root');
