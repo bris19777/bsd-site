@@ -185,6 +185,7 @@ var NS = (function () {
     else if (n.country && n.country !== 'IL') { out.isp = n.org || 'לא מזוהה'; out.ispSub = 'כתובת מחוץ לישראל (' + n.country + '): ייתכן VPN או שרת סינון'; }
     else if (fname) { out.isp = 'ספק לא מזוהה'; out.ispSub = raw; }
     else { out.isp = n.org || 'לא מזוהה'; out.ispSub = n.asn ? 'AS' + n.asn : ''; }
+    if (n.carrier && n.local === 'cellular') out.ispSub = 'רשת סלולרית: ' + n.carrier + (out.ispSub ? ' · ' + out.ispSub : '');
     if (n.netfree_isp) out.ispSub = 'לפי נטפרי: ' + n.netfree_isp + (out.ispSub ? ' · ' + out.ispSub : '');
 
     // wired or cellular
@@ -330,13 +331,13 @@ var NS = (function () {
     h += '</tbody></table>';
     h += '<h3>סביבת הבדיקה</h3><table class="ns-table ns-kv"><tbody>';
     h += kv('מועד', esc(when)) + kv('משך הבדיקה', r.duration_s + ' שניות');
-    h += kv('סוג בדיקה', web ? 'דף אינטרנט (מדידה מקורבת)' : 'תוכנה (מדידה מלאה)');
+    h += kv('סוג בדיקה', web ? 'דף אינטרנט (מדידה מקורבת)' : r.mode === 'android' ? 'אפליקציית אנדרואיד (מדידה מלאה)' : 'תוכנה (מדידה מלאה)');
     var f = r.env && r.env.filter;
     if (!web) {
       h += kv('סינון מפענח', f && f.detected ? 'זוהה' + (f.name ? ' – ' + esc(f.name) : '') : 'לא זוהה');
       if (f && f.issuer) h += kv('מנפיק התעודות', '<span dir="ltr">' + esc(f.issuer) + '</span>');
       if (r.env && r.env.proxy) h += kv('פרוקסי', '<span dir="ltr">' + esc(r.env.proxy) + '</span>');
-      if (r.env && r.env.host) h += kv('מחשב', '<span dir="ltr">' + esc(r.env.host) + '</span>');
+      if (r.env && r.env.host && r.mode !== 'android') h += kv('מחשב', '<span dir="ltr">' + esc(r.env.host) + '</span>');
     }
     if (r.net && r.net.ip) {
       h += kv('כתובת IP', '<span dir="ltr">' + esc(r.net.ip4 || r.net.ip) + '</span>');
@@ -348,7 +349,10 @@ var NS = (function () {
     h += kv('גרסה', esc(r.version)) + '</tbody></table>';
     h += '</details>';
 
-    h += '<div class="ns-actions"><button type="button" class="ns-btn" id="ns-copy">העתקת סיכום</button><button type="button" class="ns-btn ns-btn2" id="ns-print">הדפסה / PDF</button></div>';
+    var app = typeof NSNative !== 'undefined'; // inside the Android app
+    h += '<div class="ns-actions">' + (app ? '<button type="button" class="ns-btn" id="ns-share">שיתוף התוצאה</button>' : '') +
+      '<button type="button" class="ns-btn' + (app ? ' ns-btn2' : '') + '" id="ns-copy">העתקת סיכום</button>' +
+      (app ? '<button type="button" class="ns-btn ns-btn2" id="ns-again">בדיקה חוזרת</button>' : '<button type="button" class="ns-btn ns-btn2" id="ns-print">הדפסה / PDF</button>') + '</div>';
     h += '<p class="ns-foot">הציון משוקלל מבדיקות מול שרתים אמיתיים, ולכן ייתכנו הבדלים קלים בין בדיקה לבדיקה. BSD מחשבים · 054-457-8946</p>';
     root.innerHTML = h;
 
@@ -356,9 +360,15 @@ var NS = (function () {
     cp.onclick = function () {
       var t = summaryText(r, sc);
       function done() { cp.textContent = 'הועתק ✓'; setTimeout(function () { cp.textContent = 'העתקת סיכום'; }, 1800); }
+      if (app) { NSNative.copy(t); done(); return; }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, fallback); else fallback();
       function fallback() { var ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) { } ta.remove(); }
     };
+    if (app) {
+      root.querySelector('#ns-share').onclick = function () { NSNative.share(summaryText(r, sc)); };
+      root.querySelector('#ns-again').onclick = function () { NSNative.restart(); };
+      return sc;
+    }
     root.querySelector('#ns-print').onclick = function () { var dt = root.querySelector('details'); if (dt) dt.open = true; window.print(); };
     return sc;
   }

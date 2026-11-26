@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=50">
-  <link rel="stylesheet" href="netscore.css?v=3">
+  <link rel="stylesheet" href="netscore.css?v=4">
 </head>
 <body>
   <header class="site-header">
@@ -68,7 +68,7 @@
             <div class="ns-prog" id="ns-prog" hidden><i id="ns-prog-i"></i></div>
             <div class="ns-phase" id="ns-phase">הבדיקה נמשכת כדקה. מומלץ לא לגלוש או להוריד בזמן הבדיקה.</div>
           </section>
-          <div class="ns-warnbox">בדיקה מהדפדפן היא מקורבת: היא לא יכולה למדוד הורדת דרייברים בפועל ולא לזהות אתרים חסומים. לבדיקה מלאה ומדויקת הורידו את <a href="#exe">תוכנת הבדיקה ל-Windows</a>.</div>
+          <div class="ns-warnbox">בדיקה מהדפדפן היא מקורבת: היא לא יכולה למדוד הורדת דרייברים בפועל ולא לזהות אתרים חסומים. לבדיקה מלאה ומדויקת הורידו את <a href="#exe">תוכנת הבדיקה ל-Windows</a> או את <a href="#android">האפליקציה לאנדרואיד</a>.</div>
           <div id="ns-root"></div>
         </div>
 
@@ -77,7 +77,7 @@
           <p>כלי קטן שפיתחנו ב-BSD מחשבים. קובץ אחד, <strong>בלי התקנה</strong>: מפעילים, מחכים כדקה ומקבלים דוח עם הציון.</p>
           <div class="ns-dl">
             <a class="btn btn-primary btn-lg" href="files/BSD-NetScore.exe" download>הורדת תוכנת הבדיקה</a>
-            <small>גרסה 1.2.0 · ל-Windows 10 / 11 · כ-7MB</small>
+            <small>גרסה 1.3.0 · ל-Windows 10 / 11 · כ-7MB</small>
           </div>
           <h3>איך מפעילים?</h3>
           <ol class="steps">
@@ -89,25 +89,44 @@
           </ol>
         </div>
 
+        <div class="box ns-noprint" id="android">
+          <h2>בדיקה מלאה בטלפון: אפליקציית BSD NetScore לאנדרואיד</h2>
+          <p>אותה בדיקה מלאה כמו בתוכנה ל-Windows, בטלפון או בטאבלט אנדרואיד. האפליקציה יודעת אם הטלפון מחובר ב-Wi-Fi או ברשת הסלולרית, ומציגה בסוף את אותו דוח עם הציון.</p>
+          <div class="ns-dl">
+            <a class="btn btn-primary btn-lg" href="files/BSD-NetScore.apk" download>הורדת האפליקציה לאנדרואיד</a>
+            <small>גרסה 1.3.0 · לאנדרואיד 7 ומעלה · כ-3MB</small>
+          </div>
+          <h3>איך מתקינים?</h3>
+          <p>האפליקציה מורדת מהאתר שלנו ולא מחנות Google Play, ולכן אנדרואיד מבקש אישור חד-פעמי להתקנה:</p>
+          <ol class="steps">
+            <li><strong>מורידים</strong> את הקובץ בכפתור שלמעלה, מהדפדפן שבטלפון. אם הדפדפן מזהיר שהקובץ עלול להזיק, בוחרים <strong>"הורד בכל זאת"</strong>.</li>
+            <li><strong>פותחים את הקובץ</strong> מההתראה על ההורדה, או מתיקיית ההורדות.</li>
+            <li><strong>מאשרים התקנה ממקור לא ידוע:</strong> אם מופיעה הודעה שהדפדפן לא מורשה להתקין אפליקציות, לוחצים <strong>"הגדרות"</strong>, מפעילים את <strong>"אפשר ממקור זה"</strong> וחוזרים אחורה.</li>
+            <li><strong>לוחצים "התקן".</strong> אם Google Play Protect שואל על אפליקציה לא מוכרת, בוחרים להתקין בכל זאת.</li>
+            <li><strong>פותחים</strong> את BSD NetScore, לוחצים <strong>"התחל בדיקה"</strong> ומחכים כדקה. בסוף אפשר ללחוץ <strong>"שיתוף התוצאה"</strong> ולשלוח לנו בוואטסאפ.</li>
+          </ol>
+          <p class="ss-note">שמות הכפתורים משתנים מעט בין יצרני הטלפונים וגרסאות אנדרואיד. הבדיקה מורידה קבצים למדידה (כמה מאות מגה-בייט בקו מהיר), אז בחבילת גלישה סלולרית מוגבלת כדאי לקחת את זה בחשבון. לאייפון אין אפליקציה; אפשר להשתמש בבדיקה מהדפדפן.</p>
+        </div>
+
         <div class="box ns-noprint" id="compare">
           <h2>בדיקה מהדפדפן או תוכנה? מה ההבדל</h2>
           <p>שתי הבדיקות נותנות ציון באותה שיטה, אבל דפדפן מוגבל במה שמותר לו למדוד. לכן הבדיקה מהדפדפן טובה לתמונה מהירה, והתוכנה נותנת את התמונה המלאה.</p>
           <div class="cmp-table-wrap">
             <table class="cmp-table">
-              <thead><tr><th></th><th>מהדפדפן<small>בעמוד הזה</small></th><th class="win">תוכנה ל-Windows<small>BSD NetScore</small></th></tr></thead>
+              <thead><tr><th></th><th>מהדפדפן<small>בעמוד הזה</small></th><th class="win">תוכנה ל-Windows או אפליקציה לאנדרואיד<small>BSD NetScore</small></th></tr></thead>
               <tbody>
-                <tr><th>איך מפעילים</th><td>לוחצים "התחל בדיקה", בלי להוריד כלום</td><td class="win">מורידים קובץ אחד ומפעילים, בלי התקנה</td></tr>
-                <tr><th>איפה עובד</th><td>בכל מכשיר עם דפדפן: מחשב, טלפון, טאבלט, מק</td><td class="win">מחשב Windows 10 / 11</td></tr>
+                <tr><th>איך מפעילים</th><td>לוחצים "התחל בדיקה", בלי להוריד כלום</td><td class="win">Windows: קובץ אחד, בלי התקנה. אנדרואיד: מתקינים אפליקציה</td></tr>
+                <tr><th>איפה עובד</th><td>בכל מכשיר עם דפדפן: מחשב, טלפון, טאבלט, מק</td><td class="win">מחשב Windows 10 / 11, או טלפון וטאבלט אנדרואיד</td></tr>
                 <tr><th>דיוק</th><td>מדידה מקורבת</td><td class="win"><b>מדידה מלאה</b></td></tr>
                 <tr><th>הורדות אמיתיות</th><td>קבצים שמותר לדפדפן להוריד, לא דרייברים והתקנות</td><td class="win"><b>דרייברים והתקנות אמיתיים</b>, כמו שמורידים בפועל</td></tr>
                 <tr><th>אתרים חסומים</th><td>לא מזהה. אתר חסום עלול להיראות כאתר שנפתח</td><td class="win"><b>מזהה</b> אתר שנחסם בסינון ולא מוריד עליו ציון</td></tr>
-                <tr><th>ספק, כתובת IP וסוג חיבור</th><td>מוצגים: ספק התקשורת, כתובת ה-IP, וקווי או סלולרי כשאפשר לדעת</td><td class="win">מוצגים, ובנוסף מזהה מודם סלולרי שמחובר ישירות למחשב</td></tr>
+                <tr><th>ספק, כתובת IP וסוג חיבור</th><td>מוצגים: ספק התקשורת, כתובת ה-IP, וקווי או סלולרי כשאפשר לדעת</td><td class="win">מוצגים. האפליקציה יודעת בוודאות אם הטלפון על Wi-Fi או על סלולרי</td></tr>
                 <tr><th>זיהוי סינון</th><td>חלקי: רק כשאפשר לזהות לפי הכתובת (למשל נטפרי או רימון)</td><td class="win"><b>מלא</b>: מזהה סינון שמפענח את התעבורה (נטפרי, אתרוג, רימון, נתיב ועוד) ופרוקסי</td></tr>
-                <tr><th>הדוח</th><td>מוצג בעמוד; אפשר להעתיק סיכום או להדפיס</td><td class="win">נשמר כקובץ ליד התוכנה; אפשר להעתיק סיכום או להדפיס</td></tr>
+                <tr><th>הדוח</th><td>מוצג בעמוד; אפשר להעתיק סיכום או להדפיס</td><td class="win">Windows: נשמר כקובץ ליד התוכנה. אנדרואיד: מוצג באפליקציה, עם כפתור שיתוף</td></tr>
               </tbody>
             </table>
           </div>
-          <p><strong>מה לבחור?</strong> לבדיקה מהירה, או מטלפון, מספיקה הבדיקה מהדפדפן. כשהאינטרנט מסונן, כשמשהו מרגיש איטי ורוצים לדעת למה, או כששולחים לנו תוצאה לבדיקה, עדיף להריץ את התוכנה.</p>
+          <p><strong>מה לבחור?</strong> לבדיקה מהירה, או מטלפון, מספיקה הבדיקה מהדפדפן. כשהאינטרנט מסונן, כשמשהו מרגיש איטי ורוצים לדעת למה, או כששולחים לנו תוצאה לבדיקה, עדיף להריץ את התוכנה או את האפליקציה.</p>
         </div>
 
         <div class="box ns-noprint" id="score">
@@ -226,6 +245,6 @@
   </footer>
 
   <script src="contact.js?v=9"></script>
-  <script src="netscore.js?v=3"></script>
+  <script src="netscore.js?v=4"></script>
 </body>
 </html>
