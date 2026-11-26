@@ -11,6 +11,8 @@ const GUIDE_SECTIONS = [
 ];
 
 const GUIDES = [
+  { section: "guides", type: "page", title: "בדיקת אינטרנט: ציון אינטרנט אמיתי (BSD NetScore)",
+    desc: "לא רק מהירות: ציון אחד מ-0 עד 100 לפי גלישה לאתרים אמיתיים והורדת קבצים אמיתיים, גם באינטרנט מסונן. בדיקה מהדפדפן או תוכנה ל-Windows.", href: "internet-test.html" },
   { section: "guides", type: "page", title: "סינון אינטרנט במחשב: נטפרי, רימון, אתרוג ונתיב – ההסבר הטכני",
     desc: "סינון על הקו מול תוכנה על המחשב, תעודת האבטחה (רישיון הגנה), ומה עושה תוכנת WiFree בגרסאות 2 ו-3. הסבר טכני בלבד.", href: "guide-internet-filtering.html" },
   { section: "guides", type: "page", title: "מחשב חדש או מחודש? היתרונות, החסרונות ומה חשוב לבדוק",
@@ -35,6 +37,9 @@ const GUIDES = [
     desc: "הורדה והסבר על חיבור לתמיכה מרחוק, רק באישור שלכם.", href: "remote.html" },
   { section: "guides", type: "page", title: "תמיכה מרחוק עם AnyDesk",
     desc: "הוראות פשוטות: מורידים, מוסרים לנו את הכתובת ומאשרים את החיבור.", href: "anydesk.html" },
+  { section: "files", type: "exe", title: "BSD NetScore: תוכנת בדיקת האינטרנט",
+    desc: "בדיקה מלאה ל-Windows, בלי התקנה. הסבר והוראות הפעלה בעמוד בדיקת האינטרנט.",
+    href: "files/BSD-NetScore.exe", size: "6.2MB" },
   { section: "files", type: "exe", title: "AnyDesk",
     desc: "תוכנת שליטה מרחוק פופולרית. הקישור מוריד תמיד את הגרסה האחרונה מהאתר הרשמי.",
     href: "https://download.anydesk.com/AnyDesk.exe", size: "8.6MB" },

@@ -1,0 +1,60 @@
+/* BSD NetScore (internet-test.html) */
+.ns-card{background:#fff;border:1px solid #e3e7ee;border-radius:14px;padding:16px 18px;margin:0 0 14px}
+.ns-card h2{font-size:17px;margin:0 0 12px}
+.ns-card h3{font-size:15px;margin:18px 0 8px;color:#15396B}
+.ns-hero{background:#fff;border:1px solid #e3e7ee;border-radius:14px;padding:18px;margin:0 0 14px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ns-hero-g{flex:0 0 240px;text-align:center;margin:0 auto}
+.ns-gauge{width:100%;max-width:240px;display:block;margin:0 auto}
+.ns-gnum{font-size:54px;font-weight:800}
+.ns-gsub{font-size:12px;fill:#7b8496}
+.ns-grade{font-size:24px;font-weight:800;margin-top:2px}
+.ns-hero-k{flex:1 1 300px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ns-kpi{background:#f6f8fb;border-radius:10px;padding:10px 8px;text-align:center}
+.ns-kpi span{display:block;font-size:12.5px;color:#5b6577}
+.ns-kpi b{display:block;font-size:22px;line-height:1.25;direction:ltr}
+.ns-kpi small{font-size:11.5px;color:#7b8496}
+.ns-comp{margin:0 0 12px}
+.ns-comp-h{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.ns-comp-h small{font-weight:400;color:#7b8496}
+.ns-bar{height:10px;background:#e9edf3;border-radius:6px;overflow:hidden;margin:4px 0 3px}
+.ns-bar i{display:block;height:100%;border-radius:6px}
+.ns-comp-d{font-size:12.5px;color:#6b7486}
+.ns-ins{list-style:none;margin:0;padding:0}
+.ns-ins li{padding:9px 12px;border-radius:9px;margin:0 0 8px;border-inline-start:4px solid #8aa0c2;background:#f4f7fb}
+.ns-ins li.ns-good{border-color:#2f8f3a;background:#f0f8f1}
+.ns-ins li.ns-warn{border-color:#c98a0a;background:#fdf7e8}
+.ns-ins li.ns-bad{border-color:#c0392b;background:#fdf0ee}
+.ns-details summary{cursor:pointer;font-weight:700;font-size:17px}
+.ns-scroll{overflow-x:auto}
+.ns-table{width:100%;border-collapse:collapse;font-size:14px}
+.ns-table th,.ns-table td{padding:7px 8px;border-bottom:1px solid #edf0f5;text-align:start;white-space:nowrap}
+.ns-table thead th{font-size:12.5px;color:#5b6577;font-weight:600;background:#f6f8fb}
+.ns-kv th{width:42%;font-weight:600;color:#44506a}
+.ns-kv td{white-space:normal}
+.ns-tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:12px}
+.ns-tag.ns-good{background:#e4f4e6;color:#216b2a}
+.ns-tag.ns-bad{background:#fbe3df;color:#a02a1e}
+.ns-tag.ns-info{background:#e6ecf7;color:#34507e}
+.ns-note{font-size:12px;color:#7b8496;margin:6px 0 0}
+.ns-actions{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px}
+.ns-btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:11px 20px;background:#15396B;color:#fff;cursor:pointer}
+.ns-btn2{background:#fff;color:#15396B;border:1px solid #c9d1de}
+.ns-btn:disabled{opacity:.55;cursor:default}
+.ns-foot{font-size:12.5px;color:#7b8496;margin:0}
+/* web runner */
+.ns-run{text-align:center;padding:26px 18px}
+.ns-go{font:inherit;font-size:20px;font-weight:800;border:0;border-radius:50%;width:150px;height:150px;background:#2F7FE6;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(20,33,61,.18)}
+.ns-go:disabled{background:#d9dee7;color:#6b7486;box-shadow:none;cursor:default}
+.ns-prog{height:12px;background:#e9edf3;border-radius:8px;overflow:hidden;margin:18px auto 8px;max-width:480px}
+.ns-prog i{display:block;height:100%;width:0;background:#15396B;border-radius:8px;transition:width .3s linear}
+.ns-phase{color:#44506a;min-height:24px}
+.ns-warnbox{background:#fdf7e8;border:1px solid #f0dcaa;border-radius:10px;padding:10px 12px;font-size:14px;margin:0 0 14px}
+@media (max-width:560px){.ns-hero-k{grid-template-columns:repeat(2,1fr)}.ns-gnum{font-size:50px}}
+.ns-run{margin:0}
+.ns-warnbox a{color:#15396B;font-weight:700}
+.ns-dl{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:14px 0 4px}
+.ns-dl small{color:#5b6577}
+.box a.btn-primary{color:#fff}
+.box ol.steps{margin-bottom:12px}
+.box h3{margin:18px 0 8px;color:#15396B;font-size:17px}
+@media print{.ns-actions,.ns-run,.ns-warnbox{display:none!important}main:has(.ns-hero) .hero,main:has(.ns-hero) .ns-noprint{display:none!important}.ns-card,.ns-hero{break-inside:avoid;border-color:#ccc}}
