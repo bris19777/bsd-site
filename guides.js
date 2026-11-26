@@ -39,7 +39,7 @@ const GUIDES = [
     desc: "הוראות פשוטות: מורידים, מוסרים לנו את הכתובת ומאשרים את החיבור.", href: "anydesk.html" },
   { section: "files", type: "exe", title: "BSD NetScore: תוכנת בדיקת האינטרנט",
     desc: "בדיקה מלאה ל-Windows, בלי התקנה. הסבר והוראות הפעלה בעמוד בדיקת האינטרנט.",
-    href: "files/BSD-NetScore.exe", size: "6.2MB" },
+    href: "files/BSD-NetScore.exe", size: "7.1MB" },
   { section: "files", type: "exe", title: "AnyDesk",
     desc: "תוכנת שליטה מרחוק פופולרית. הקישור מוריד תמיד את הגרסה האחרונה מהאתר הרשמי.",
     href: "https://download.anydesk.com/AnyDesk.exe", size: "8.6MB" },

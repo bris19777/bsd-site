@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=50">
-  <link rel="stylesheet" href="netscore.css?v=1">
+  <link rel="stylesheet" href="netscore.css?v=2">
 </head>
 <body>
   <header class="site-header">
@@ -77,7 +77,7 @@
           <p>כלי קטן שפיתחנו ב-BSD מחשבים. קובץ אחד, <strong>בלי התקנה</strong>: מפעילים, מחכים פחות מדקה ומקבלים דוח עם הציון.</p>
           <div class="ns-dl">
             <a class="btn btn-primary btn-lg" href="files/BSD-NetScore.exe" download>הורדת תוכנת הבדיקה</a>
-            <small>גרסה 1.0.0 · ל-Windows 10 / 11 · כ-6MB</small>
+            <small>גרסה 1.1.0 · ל-Windows 10 / 11 · כ-7MB</small>
           </div>
           <h3>איך מפעילים?</h3>
           <ol class="steps">
@@ -101,7 +101,8 @@
                 <tr><th>דיוק</th><td>מדידה מקורבת</td><td class="win"><b>מדידה מלאה</b></td></tr>
                 <tr><th>הורדות אמיתיות</th><td>קבצים שמותר לדפדפן להוריד, לא דרייברים והתקנות</td><td class="win"><b>דרייברים והתקנות אמיתיים</b>, כמו שמורידים בפועל</td></tr>
                 <tr><th>אתרים חסומים</th><td>לא מזהה. אתר חסום עלול להיראות כאתר שנפתח</td><td class="win"><b>מזהה</b> אתר שנחסם בסינון ולא מוריד עליו ציון</td></tr>
-                <tr><th>זיהוי סינון</th><td>אין</td><td class="win">מזהה סינון שמפענח את התעבורה (נטפרי, אתרוג, רימון, נתיב ועוד) ופרוקסי</td></tr>
+                <tr><th>ספק, כתובת IP וסוג חיבור</th><td>מוצגים: ספק התקשורת, כתובת ה-IP, וקווי או סלולרי כשאפשר לדעת</td><td class="win">מוצגים, ובנוסף מזהה מודם סלולרי שמחובר ישירות למחשב</td></tr>
+                <tr><th>זיהוי סינון</th><td>חלקי: רק כשאפשר לזהות לפי הכתובת (למשל נטפרי או רימון)</td><td class="win"><b>מלא</b>: מזהה סינון שמפענח את התעבורה (נטפרי, אתרוג, רימון, נתיב ועוד) ופרוקסי</td></tr>
                 <tr><th>הדוח</th><td>מוצג בעמוד; אפשר להעתיק סיכום או להדפיס</td><td class="win">נשמר כקובץ ליד התוכנה; אפשר להעתיק סיכום או להדפיס</td></tr>
               </tbody>
             </table>
@@ -125,6 +126,7 @@
               </tbody>
             </table>
           </div>
+          <p><strong>בנוסף לציון</strong> הדוח מציג את פרטי החיבור: ספק התקשורת, כתובת ה-IP, סוג החיבור (קווי או סלולרי) והסינון, אם זוהה. הזיהוי הוא הערכה לפי כתובת ה-IP ומאגרים ציבוריים: ספקי משנה וסינונים עובדים לעיתים על תשתית של ספק אחר, ואז יופיע שם ספק התשתית.</p>
           <p>הבדיקה נעשית מול שרתים אמיתיים, ולכן ייתכנו הבדלים קלים בין בדיקה לבדיקה. רוצים להבין את המושגים? ראו את <a href="guide-internet-connection.html">המדריך למהירות גלישה</a> ואת <a href="guide-internet-filtering.html">המדריך לסינון אינטרנט</a>.</p>
         </div>
 
@@ -223,6 +225,6 @@
   </footer>
 
   <script src="contact.js?v=9"></script>
-  <script src="netscore.js?v=1"></script>
+  <script src="netscore.js?v=2"></script>
 </body>
 </html>

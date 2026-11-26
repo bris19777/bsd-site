@@ -1,15 +1,15 @@
 /* BSD NetScore (internet-test.html) */
-.ns-card{background:#fff;border:1px solid #e3e7ee;border-radius:14px;padding:16px 18px;margin:0 0 14px}
-.ns-card h2{font-size:17px;margin:0 0 12px}
+.ns-card{background:#fff;border:1px solid #E3E8F0;box-shadow:0 1px 2px rgba(21,57,107,.06),0 6px 20px rgba(21,57,107,.07);border-radius:14px;padding:16px 18px;margin:0 0 14px}
+.ns-card h2{font-size:17px;margin:0 0 12px;color:#15396B}
 .ns-card h3{font-size:15px;margin:18px 0 8px;color:#15396B}
-.ns-hero{background:#fff;border:1px solid #e3e7ee;border-radius:14px;padding:18px;margin:0 0 14px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ns-hero{background:#fff;border:1px solid #E3E8F0;box-shadow:0 1px 2px rgba(21,57,107,.06),0 6px 20px rgba(21,57,107,.07);border-radius:14px;padding:18px;margin:0 0 14px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .ns-hero-g{flex:0 0 240px;text-align:center;margin:0 auto}
 .ns-gauge{width:100%;max-width:240px;display:block;margin:0 auto}
 .ns-gnum{font-size:54px;font-weight:800}
 .ns-gsub{font-size:12px;fill:#7b8496}
 .ns-grade{font-size:24px;font-weight:800;margin-top:2px}
 .ns-hero-k{flex:1 1 300px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.ns-kpi{background:#f6f8fb;border-radius:10px;padding:10px 8px;text-align:center}
+.ns-kpi{background:#F4F7FB;border-radius:10px;padding:10px 8px;text-align:center}
 .ns-kpi span{display:block;font-size:12.5px;color:#5b6577}
 .ns-kpi b{display:block;font-size:22px;line-height:1.25;direction:ltr}
 .ns-kpi small{font-size:11.5px;color:#7b8496}
@@ -37,19 +37,26 @@
 .ns-tag.ns-info{background:#e6ecf7;color:#34507e}
 .ns-note{font-size:12px;color:#7b8496;margin:6px 0 0}
 .ns-actions{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 12px}
-.ns-btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:11px 20px;background:#15396B;color:#fff;cursor:pointer}
+.ns-btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:11px 20px;background:#2F7FE6;color:#fff;cursor:pointer}
 .ns-btn2{background:#fff;color:#15396B;border:1px solid #c9d1de}
 .ns-btn:disabled{opacity:.55;cursor:default}
 .ns-foot{font-size:12.5px;color:#7b8496;margin:0}
 /* web runner */
 .ns-run{text-align:center;padding:26px 18px}
-.ns-go{font:inherit;font-size:20px;font-weight:800;border:0;border-radius:50%;width:150px;height:150px;background:#2F7FE6;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(20,33,61,.18)}
+.ns-go{font:inherit;font-size:20px;font-weight:800;border:0;border-radius:50%;width:150px;height:150px;background:#2F7FE6;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(21,57,107,.22)}
 .ns-go:disabled{background:#d9dee7;color:#6b7486;box-shadow:none;cursor:default}
 .ns-prog{height:12px;background:#e9edf3;border-radius:8px;overflow:hidden;margin:18px auto 8px;max-width:480px}
 .ns-prog i{display:block;height:100%;width:0;background:#15396B;border-radius:8px;transition:width .3s linear}
 .ns-phase{color:#44506a;min-height:24px}
 .ns-warnbox{background:#fdf7e8;border:1px solid #f0dcaa;border-radius:10px;padding:10px 12px;font-size:14px;margin:0 0 14px}
 @media (max-width:560px){.ns-hero-k{grid-template-columns:repeat(2,1fr)}.ns-gnum{font-size:50px}}
+.ns-line{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ns-line div{background:#F4F7FB;border-radius:10px;padding:10px 12px;min-width:0}
+.ns-line span{display:block;font-size:12.5px;color:#5b6577}
+.ns-line b{display:block;font-size:16px;line-height:1.35;color:#15396B;overflow-wrap:anywhere}
+.ns-line small{display:block;font-size:12px;color:#7b8496;line-height:1.4;overflow-wrap:anywhere}
+@media (max-width:760px){.ns-line{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.ns-line{grid-template-columns:1fr}}
 .ns-run{margin:0}
 .ns-warnbox a{color:#15396B;font-weight:700}
 .ns-dl{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:14px 0 4px}

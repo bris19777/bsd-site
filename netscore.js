@@ -134,6 +134,85 @@ var NS = (function () {
     return out;
   }
 
+
+  // ---------- line identity: provider / link type / filter (a best guess from the public address) ----------
+  // Israeli networks by AS number. kind: cell / wired / fiber / mixed (sells both) / '' (unknown).
+  var ISPS = {
+    8551: ['בזק בינלאומי', 'wired'], 8203: ['בזק בינלאומי', 'wired'], 51606: ['בזק בינלאומי', 'wired'], 6810: ['בזק', 'wired'],
+    12400: ['פרטנר', 'mixed'], 9116: ['פרטנר (012 סמייל)', 'wired'], 5486: ['פרטנר (012 סמייל)', 'wired'],
+    1680: ['סלקום / נטוויז\'ן', 'mixed'], 12849: ['HOT נט', 'wired'], 21450: ['HOT מובייל', 'cell'], 16116: ['פלאפון', 'cell'],
+    47956: ['018 אקספון', 'mixed'], 51825: ['019 טלזר', 'mixed'], 210625: ['ווי-קום (Wecom)', 'cell'], 213783: ['Live Mobile', 'cell'],
+    42925: ['אינטרנט רימון', ''], 39159: ['R.L אינטרנט', ''], 219504: ['יוסי תקשורת', ''], 200495: ['פרי טלקום', ''],
+    21145: ['IBC (אנלימיטד)', 'fiber'], 213487: ['GFiber', 'fiber'], 201397: ['XFiber', 'fiber'], 206815: ['United Fiber', 'fiber'],
+    218875: ['Quantum Fiber', 'fiber'], 212698: ['N Fiber', 'fiber'], 204160: ['Bee Fiber', 'fiber'], 215423: ['Flash Fiber', 'fiber'],
+    199270: ['015 השקמה', ''], 8948: ['099 פרימו', ''], 60636: ['016 קולנט', ''], 12491: ['גילת טלקום', ''],
+    204814: ['Annatel', ''], 209472: ['Annatel', ''], 50463: ['טריפל C', 'wired'], 201073: ['yes', '']
+  };
+  var FILTER_WORDS = [['netfree', 'נטפרי'], ['rimon', 'רימון'], ['etrog', 'אתרוג'], ['enativ', 'נתיב'], ['nativ', 'נתיב'], ['hadran', 'הדרן']];
+
+  function lineInfo(r) {
+    var n = r.net || {}, web = r.mode === 'web';
+    var out = { ip: n.ip4 || n.ip || '', ip6: n.ip4 && n.ip !== n.ip4 ? n.ip : '', isp: '', ispSub: '', conn: '', connSub: '', filter: '', filterSub: '' };
+    var known = n.asn ? ISPS[n.asn] : null;
+    var hay = ((n.org || '') + ' ' + (n.ptr || '')).toLowerCase();
+
+    // filter
+    var f = r.env && r.env.filter, fname = '';
+    if (f && f.detected) { fname = f.name || 'סינון מפענח (לא מזוהה)'; out.filterSub = 'לפי תעודות האבטחה בקו'; }
+    if (n.netfree && (!fname || !(f && f.name))) { fname = 'נטפרי'; out.filterSub = 'לפי כתובת פנימית של נטפרי'; }
+    if (!fname || !(f && f.name || n.netfree)) {
+      for (var i = 0; i < FILTER_WORDS.length; i++) if (hay.indexOf(FILTER_WORDS[i][0]) >= 0) { fname = FILTER_WORDS[i][1]; out.filterSub = 'לפי כתובת ה-IP'; break; }
+    }
+    out.filtered = !!fname;
+    out.filter = fname || 'לא זוהה';
+    if (!fname) out.filterSub = web ? 'מהדפדפן מזהים רק חלק מהסינונים' : 'ייתכן קו פתוח או סינון שלא מחליף תעודות';
+
+    // provider
+    var raw = (n.org || '') + (n.asn ? ' · AS' + n.asn : '');
+    if (known) { out.isp = known[0]; out.ispSub = raw; }
+    else if (!n.ip) { out.isp = 'לא זוהה'; out.ispSub = 'לא התקבלה כתובת IP'; }
+    else if (n.country && n.country !== 'IL') { out.isp = n.org || 'לא מזוהה'; out.ispSub = 'כתובת מחוץ לישראל (' + n.country + '): ייתכן VPN או שרת סינון'; }
+    else if (fname) { out.isp = 'ספק לא מזוהה'; out.ispSub = raw; }
+    else { out.isp = n.org || 'לא מזוהה'; out.ispSub = n.asn ? 'AS' + n.asn : ''; }
+    if (n.netfree_isp) out.ispSub = 'לפי נטפרי: ' + n.netfree_isp + (out.ispSub ? ' · ' + out.ispSub : '');
+
+    // wired or cellular
+    var kind = known ? known[1] : '';
+    var up = r.bandwidth && r.bandwidth.up && r.bandwidth.up.ok ? r.bandwidth.up.mbps : 0;
+    var localTxt = n.local === 'wifi' ? 'המכשיר מחובר ב-Wi-Fi' : n.local === 'ethernet' ? 'המחשב מחובר בכבל רשת' : '';
+    // words in the registry record of the range (strongest hint), then in the reverse name / owner name
+    function words(t) { var o = {}; String(t || '').toLowerCase().split(/[^a-z0-9]+/).forEach(function (w) { if (w) o[w] = 1; }); return o; }
+    function has(o, list) { for (var i = 0; i < list.length; i++) if (o[list[i]]) return true; return false; }
+    var CELL = ['cellular', 'cellucar', 'wireless', 'mobile', 'gprs', 'ggsn', 'lte', 'umts', '3g', '4g', '5g'];
+    var FIBER = ['fiber', 'fibre', 'ftth', 'fttx', 'fttb', 'gpon'], DSL = ['adsl', 'vdsl', 'xdsl', 'dsl'], CABLE = ['cable', 'cables', 'docsis', 'hfc'], WIRED = ['broadband', 'bb'];
+    var ww = words(n.whois), wp = words(n.ptr), wo = words(n.org), src = 'לפי רישום טווח הכתובות';
+    function pick(o) { return has(o, CELL) ? 'cell' : has(o, FIBER) ? 'fiber' : has(o, DSL) ? 'dsl' : has(o, CABLE) ? 'cable' : has(o, WIRED) ? 'wired' : ''; }
+    var k = pick(ww);
+    if (!k) { k = pick(wp); src = 'לפי רישום כתובת ה-IP'; }
+    if (!k && has(wo, CELL)) { k = 'cell'; src = 'הספק הוא ספק סלולרי'; }
+    if (!k && kind && kind !== 'mixed') { k = kind; src = kind === 'cell' ? 'הספק הוא ספק סלולרי' : kind === 'fiber' ? 'הספק הוא ספק סיבים' : ''; }
+    if (n.local === 'cellular') { out.conn = 'סלולרי'; out.connSub = 'המכשיר מחובר ישירות לרשת סלולרית'; }
+    else if (k === 'cell') { out.conn = 'סלולרי'; out.connSub = src; }
+    else if (k === 'fiber') { out.conn = 'קווי: סיבים אופטיים'; out.connSub = src; }
+    else if (k === 'dsl') { out.conn = 'קווי: DSL (קו טלפון)'; out.connSub = src; }
+    else if (k === 'cable') { out.conn = 'קווי: כבלים'; out.connSub = src; }
+    else if (k === 'wired') { out.conn = up >= 50 ? 'קווי: כנראה סיבים' : 'קווי'; out.connSub = up >= 50 ? 'לפי מהירות ההעלאה' : 'סיבים, כבלים או DSL: לא ניתן לדעת מהכתובת'; }
+    else if (kind === 'mixed') { out.conn = 'לא ניתן לקבוע'; out.connSub = 'הספק נותן גם קווי וגם סלולרי'; }
+    else { out.conn = 'לא ניתן לקבוע'; out.connSub = ''; }
+    out.kind = k;
+    if (localTxt && n.local !== 'cellular') out.connSub = out.connSub ? out.connSub + ' · ' + localTxt : localTxt;
+    return out;
+  }
+
+  function lineCard(r) {
+    if (!r.net) return '';
+    var L = lineInfo(r);
+    function cell(label, v, sub, ltr) { return '<div><span>' + label + '</span><b' + (ltr ? ' dir="ltr"' : '') + '>' + esc(v || '–') + '</b>' + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div>'; }
+    return '<section class="ns-card"><h2>החיבור שלך</h2><div class="ns-line">' +
+      cell('ספק תקשורת', L.isp, L.ispSub) + cell('סוג חיבור', L.conn, L.connSub) + cell('סינון', L.filter, L.filterSub) + cell('כתובת IP', L.ip || 'לא זוהתה', L.ip6 ? 'IPv6: ' + L.ip6 : '', true) +
+      '</div><p class="ns-note">הזיהוי הוא הערכה לפי כתובת ה-IP ומאגרים ציבוריים. ספקי משנה וסינונים עובדים לעיתים על תשתית של ספק אחר, ואז יופיע שם ספק התשתית.</p></section>';
+  }
+
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]; }); }
 
   function gauge(score, color) {
@@ -177,10 +256,16 @@ var NS = (function () {
     if (sc.info.il && sc.info.il.median_ms) p.push('אתרים בארץ ' + secs(sc.info.il.median_ms) + ' שנ\'');
     if (sc.info.world && sc.info.world.median_ms) p.push('אתרים בחו"ל ' + secs(sc.info.world.median_ms) + ' שנ\'');
     if (r.latency && r.latency.ok) p.push('תגובה ' + Math.round(r.latency.median_ms) + 'ms');
-    var f = r.env && r.env.filter;
-    if (f && f.detected) p.push('סינון: ' + (f.name || 'זוהה'));
+    var extra = '';
+    if (r.net) {
+      var li = lineInfo(r);
+      extra = '\nספק: ' + li.isp + ' | חיבור: ' + li.conn + ' | סינון: ' + li.filter + (li.ip ? ' | IP: ' + li.ip : '');
+    } else {
+      var f = r.env && r.env.filter;
+      if (f && f.detected) p.push('סינון: ' + (f.name || 'זוהה'));
+    }
     var sub = sc.comps.filter(function (c) { return c.score != null; }).map(function (c) { return c.label + ' ' + c.score; });
-    return p.join(' | ') + '\nציוני משנה: ' + sub.join(', ');
+    return p.join(' | ') + extra + '\nציוני משנה: ' + sub.join(', ');
   }
 
   function render(root, r) {
@@ -198,6 +283,8 @@ var NS = (function () {
     h += kpi('אתר בחו"ל', sc.info.world && sc.info.world.median_ms ? secs(sc.info.world.median_ms) : '–', 'שניות');
     h += kpi('זמן תגובה', L.ok ? Math.round(L.median_ms) : '–', 'ms');
     h += '</div></section>';
+
+    h += lineCard(r);
 
     h += '<section class="ns-card"><h2>ממה מורכב הציון</h2>';
     sc.comps.forEach(function (c) {
@@ -240,6 +327,13 @@ var NS = (function () {
       if (r.env && r.env.proxy) h += kv('פרוקסי', '<span dir="ltr">' + esc(r.env.proxy) + '</span>');
       if (r.env && r.env.host) h += kv('מחשב', '<span dir="ltr">' + esc(r.env.host) + '</span>');
     }
+    if (r.net && r.net.ip) {
+      h += kv('כתובת IP', '<span dir="ltr">' + esc(r.net.ip4 || r.net.ip) + '</span>');
+      if (r.net.ip4 && r.net.ip4 !== r.net.ip) h += kv('כתובת IPv6', '<span dir="ltr">' + esc(r.net.ip) + '</span>');
+      if (r.net.org || r.net.asn) h += kv('רשת (ASN)', '<span dir="ltr">' + esc((r.net.asn ? 'AS' + r.net.asn + ' ' : '') + (r.net.org || '')) + '</span>');
+      if (r.net.whois) h += kv('רישום טווח הכתובות', '<span dir="ltr">' + esc(r.net.whois) + '</span>');
+      if (r.net.ptr) h += kv('רישום הכתובת (PTR)', '<span dir="ltr">' + esc(r.net.ptr) + '</span>');
+    }
     h += kv('גרסה', esc(r.version)) + '</tbody></table>';
     h += '</details>';
 
@@ -260,7 +354,7 @@ var NS = (function () {
   function kpi(label, v, unit) { return '<div class="ns-kpi"><span>' + label + '</span><b>' + v + '</b><small>' + unit + '</small></div>'; }
   function kv(k, v) { return '<tr><th>' + k + '</th><td>' + v + '</td></tr>'; }
 
-  return { compute: compute, render: render, summaryText: summaryText };
+  return { compute: compute, render: render, summaryText: summaryText, lineInfo: lineInfo };
 })();
 if (typeof module !== 'undefined') module.exports = NS;
 /* BSD NetScore - browser engine. Produces the same result structure as the EXE (approximate measurements). */
@@ -441,11 +535,73 @@ var NSEngine = (function () {
     return res;
   }
 
+  function getJSON(u, ms, headers) {
+    var ac = new AbortController(), tm = setTimeout(function () { ac.abort(); }, ms);
+    return fetch(u, { cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer', headers: headers || {}, signal: ac.signal })
+      .then(function (x) { return x.ok ? x.json() : null; }).catch(function () { return null; })
+      .then(function (j) { clearTimeout(tm); return j; });
+  }
+  function asnNum(v) { var m = /(\d+)/.exec(String(v == null ? '' : v)); return m ? parseInt(m[1], 10) : 0; }
+
+  // public address + network owner + hints about the line (no measurements)
+  async function identifyLine() {
+    var n = { ip: '', ip4: '', asn: 0, org: '', country: '', ptr: '', whois: '', local: '', netfree: false, netfree_isp: '', source: '' };
+    var nf = (function () { // NetFree's internal address answers only from inside NetFree
+      var ac = new AbortController(), tm = setTimeout(function () { ac.abort(); }, 3000);
+      return fetch('https://api.internal.netfree.link/user/0', { mode: 'no-cors', cache: 'no-store', credentials: 'omit', signal: ac.signal })
+        .then(function () { return true; }, function () { return false; }).then(function (v) { clearTimeout(tm); return v; });
+    })();
+    var g = await getJSON('https://get.geojs.io/v1/ip/geo.json', 5000);
+    if (g && g.ip) { n.ip = g.ip; n.asn = asnNum(g.asn); n.org = g.organization_name || ''; n.country = g.country_code || ''; n.source = 'geojs'; }
+    if (!n.asn) {
+      var w = await getJSON('https://ipwho.is/', 5000);
+      if (w && w.ip && w.connection) { n.ip = w.ip; n.asn = asnNum(w.connection.asn); n.org = w.connection.isp || w.connection.org || ''; n.country = w.country_code || ''; n.source = 'ipwho.is'; }
+    }
+    if (!n.ip) {
+      try {
+        var ac = new AbortController(), tm = setTimeout(function () { ac.abort(); }, 4000);
+        var t = await (await fetch('https://www.cloudflare.com/cdn-cgi/trace', { cache: 'no-store', credentials: 'omit', signal: ac.signal })).text();
+        clearTimeout(tm);
+        var m = /^ip=(.+)$/m.exec(t), c = /^loc=(.+)$/m.exec(t);
+        if (m) { n.ip = m[1].trim(); n.source = 'cloudflare'; }
+        if (c && !n.country) n.country = c[1].trim();
+      } catch (e) { }
+    }
+    if (n.ip.indexOf(':') >= 0) { // also learn the IPv4 address (this host has no IPv6)
+      try {
+        var ac4 = new AbortController(), tm4 = setTimeout(function () { ac4.abort(); }, 2500);
+        var t4 = await (await fetch('https://1.1.1.1/cdn-cgi/trace', { cache: 'no-store', credentials: 'omit', signal: ac4.signal })).text();
+        clearTimeout(tm4);
+        var m4 = /^ip=(\d+\.\d+\.\d+\.\d+)\s*$/m.exec(t4);
+        if (m4) n.ip4 = m4[1];
+      } catch (e) { }
+    }
+    // registry (RIPE) name / description of the address range, e.g. "PARTNERCOM-CELLULAR-NETS"
+    var ws = [], ips = [n.ip4, n.ip].filter(function (x) { return x; });
+    for (var k = 0; k < ips.length; k++) {
+      var wj = await getJSON('https://stat.ripe.net/data/whois/data.json?resource=' + encodeURIComponent(ips[k]), 6000);
+      var rec = wj && wj.data && wj.data.records && wj.data.records[0];
+      if (rec) { var parts = rec.filter(function (x) { return x.key === 'netname' || x.key === 'descr'; }).map(function (x) { return String(x.value).trim(); }); if (parts.length) ws.push(parts.join(' | ')); }
+    }
+    n.whois = ws.join(' || ');
+    var v4 = n.ip4 || n.ip;
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(v4)) { // reverse name of the address (IPv4 only)
+      var d = await getJSON('https://cloudflare-dns.com/dns-query?name=' + v4.split('.').reverse().join('.') + '.in-addr.arpa&type=PTR', 3000, { accept: 'application/dns-json' });
+      if (d && d.Answer && d.Answer.length && d.Answer[0].data) n.ptr = String(d.Answer[0].data).replace(/\.$/, '');
+    }
+    var c2 = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (c2 && (c2.type === 'cellular' || c2.type === 'wifi' || c2.type === 'ethernet')) n.local = c2.type;
+    n.netfree = await nf;
+    return n;
+  }
+
   async function run(cfg, onPhase) {
-    var res = { version: cfg.version || '1.0.0', mode: 'web', started: new Date().toISOString(), duration_s: 0,
+    var res = { version: cfg.version || '1.1.0', mode: 'web', started: new Date().toISOString(), duration_s: 0,
       env: { os: navigator.platform || '', host: '', proxy: '', filter: { detected: false, name: '', issuer: '' } },
       sites: [], latency: {}, bandwidth: { down: {}, up: {} }, downloads: [] };
     var t0 = now();
+    onPhase('מזהה את החיבור…', 1);
+    res.net = await identifyLine();
     onPhase('בודק אתרים אמיתיים בארץ ובחו"ל…', 2);
     res.sites = await runSites(cfg.sites, function (d, n) { onPhase('בודק אתרים אמיתיים (' + d + '/' + n + ')…', 2 + 20 * d / n); });
     onPhase('מודד זמן תגובה ויציבות…', 24);
@@ -465,7 +621,7 @@ var NSEngine = (function () {
   }
   return { run: run };
 })();
-var NS_CONFIG = {"sites": [{"id": "gov", "name": "gov.il", "url": "https://www.gov.il/", "group": "il"}, {"id": "btl", "name": "ביטוח לאומי", "url": "https://www.btl.gov.il/", "group": "il"}, {"id": "leumi", "name": "בנק לאומי", "url": "https://www.leumi.co.il/", "group": "il"}, {"id": "mercantile", "name": "בנק מרכנתיל", "url": "https://www.mercantile.co.il/", "group": "il"}, {"id": "pagi", "name": "בנק פאגי", "url": "https://www.pagi.co.il/", "group": "il"}, {"id": "post", "name": "דואר ישראל", "url": "https://www.israelpost.co.il/", "group": "il"}, {"id": "zap", "name": "זאפ", "url": "https://www.zap.co.il/", "group": "il"}, {"id": "ksp", "name": "KSP", "url": "https://ksp.co.il/", "group": "il"}, {"id": "kikar", "name": "כיכר השבת", "url": "https://www.kikar.co.il/", "group": "il"}, {"id": "kore", "name": "כל רגע", "url": "https://www.kore.co.il/", "group": "il"}, {"id": "jdn", "name": "JDN", "url": "https://www.jdn.co.il/", "group": "il"}, {"id": "hidabroot", "name": "הידברות", "url": "https://www.hidabroot.org/", "group": "il"}, {"id": "kolhalashon", "name": "קול הלשון", "url": "https://www.kolhalashon.com/", "group": "il"}, {"id": "yemot", "name": "ימות המשיח", "url": "https://www.yemot.co.il/", "group": "il"}, {"id": "magicode", "name": "Send מג'יקוד", "url": "https://send.magicode.me/", "group": "il"}, {"id": "google", "name": "Google", "url": "https://www.google.com/", "group": "world"}, {"id": "gmail", "name": "Gmail", "url": "https://mail.google.com/", "group": "world"}, {"id": "drive", "name": "Google Drive", "url": "https://drive.google.com/", "group": "world"}, {"id": "microsoft", "name": "Microsoft", "url": "https://www.microsoft.com/he-il", "group": "world"}, {"id": "office", "name": "Office 365", "url": "https://www.office.com/", "group": "world"}, {"id": "amazon", "name": "Amazon", "url": "https://www.amazon.com/", "group": "world"}, {"id": "aliexpress", "name": "AliExpress", "url": "https://www.aliexpress.com/", "group": "world"}, {"id": "github", "name": "GitHub", "url": "https://github.com/", "group": "world"}, {"id": "wikipedia", "name": "ויקיפדיה", "url": "https://he.wikipedia.org/wiki/", "group": "world"}, {"id": "hebrewbooks", "name": "HebrewBooks", "url": "https://hebrewbooks.org/", "group": "world"}, {"id": "sefaria", "name": "ספריא", "url": "https://www.sefaria.org.il/", "group": "world"}], "bandwidth": {"ping": ["https://speed.cloudflare.com/__down?bytes=0", "https://www.gstatic.com/generate_204"], "down": ["https://speed.cloudflare.com/__down?bytes=99999999", "https://proof.ovh.net/files/1Gb.dat"], "up": ["https://speed.cloudflare.com/__up"]}, "web_downloads": [{"id": "google", "name": "Google Cloud (קובץ 29MB)", "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_heavy/float16/1/pose_landmarker_heavy.task", "group": "world"}, {"id": "jsdelivr", "name": "jsDelivr CDN (קובץ 21MB)", "url": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort-wasm-simd-threaded.jsep.wasm", "group": "world"}, {"id": "github", "name": "GitHub (קובץ 23MB)", "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main/eng.traineddata", "group": "world"}, {"id": "huggingface", "name": "Hugging Face (קובץ 90MB)", "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/main/onnx/model.onnx", "group": "world"}], "version": "1.0.0"};
+var NS_CONFIG = {"sites": [{"id": "gov", "name": "gov.il", "url": "https://www.gov.il/", "group": "il"}, {"id": "btl", "name": "ביטוח לאומי", "url": "https://www.btl.gov.il/", "group": "il"}, {"id": "leumi", "name": "בנק לאומי", "url": "https://www.leumi.co.il/", "group": "il"}, {"id": "mercantile", "name": "בנק מרכנתיל", "url": "https://www.mercantile.co.il/", "group": "il"}, {"id": "pagi", "name": "בנק פאגי", "url": "https://www.pagi.co.il/", "group": "il"}, {"id": "post", "name": "דואר ישראל", "url": "https://www.israelpost.co.il/", "group": "il"}, {"id": "zap", "name": "זאפ", "url": "https://www.zap.co.il/", "group": "il"}, {"id": "ksp", "name": "KSP", "url": "https://ksp.co.il/", "group": "il"}, {"id": "kikar", "name": "כיכר השבת", "url": "https://www.kikar.co.il/", "group": "il"}, {"id": "kore", "name": "כל רגע", "url": "https://www.kore.co.il/", "group": "il"}, {"id": "jdn", "name": "JDN", "url": "https://www.jdn.co.il/", "group": "il"}, {"id": "hidabroot", "name": "הידברות", "url": "https://www.hidabroot.org/", "group": "il"}, {"id": "kolhalashon", "name": "קול הלשון", "url": "https://www.kolhalashon.com/", "group": "il"}, {"id": "yemot", "name": "ימות המשיח", "url": "https://www.yemot.co.il/", "group": "il"}, {"id": "magicode", "name": "Send מג'יקוד", "url": "https://send.magicode.me/", "group": "il"}, {"id": "google", "name": "Google", "url": "https://www.google.com/", "group": "world"}, {"id": "gmail", "name": "Gmail", "url": "https://mail.google.com/", "group": "world"}, {"id": "drive", "name": "Google Drive", "url": "https://drive.google.com/", "group": "world"}, {"id": "microsoft", "name": "Microsoft", "url": "https://www.microsoft.com/he-il", "group": "world"}, {"id": "office", "name": "Office 365", "url": "https://www.office.com/", "group": "world"}, {"id": "amazon", "name": "Amazon", "url": "https://www.amazon.com/", "group": "world"}, {"id": "aliexpress", "name": "AliExpress", "url": "https://www.aliexpress.com/", "group": "world"}, {"id": "github", "name": "GitHub", "url": "https://github.com/", "group": "world"}, {"id": "wikipedia", "name": "ויקיפדיה", "url": "https://he.wikipedia.org/wiki/", "group": "world"}, {"id": "hebrewbooks", "name": "HebrewBooks", "url": "https://hebrewbooks.org/", "group": "world"}, {"id": "sefaria", "name": "ספריא", "url": "https://www.sefaria.org.il/", "group": "world"}], "bandwidth": {"ping": ["https://speed.cloudflare.com/__down?bytes=0", "https://www.gstatic.com/generate_204"], "down": ["https://speed.cloudflare.com/__down?bytes=99999999", "https://proof.ovh.net/files/1Gb.dat"], "up": ["https://speed.cloudflare.com/__up"]}, "web_downloads": [{"id": "google", "name": "Google Cloud (קובץ 29MB)", "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_heavy/float16/1/pose_landmarker_heavy.task", "group": "world"}, {"id": "jsdelivr", "name": "jsDelivr CDN (קובץ 21MB)", "url": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort-wasm-simd-threaded.jsep.wasm", "group": "world"}, {"id": "github", "name": "GitHub (קובץ 23MB)", "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main/eng.traineddata", "group": "world"}, {"id": "huggingface", "name": "Hugging Face (קובץ 90MB)", "url": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/main/onnx/model.onnx", "group": "world"}], "version": "1.1.0"};
 (function () {
   var go = document.getElementById('ns-go'), prog = document.getElementById('ns-prog'), bar = document.getElementById('ns-prog-i'),
       phase = document.getElementById('ns-phase'), root = document.getElementById('ns-root');
