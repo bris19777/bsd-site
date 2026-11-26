@@ -258,7 +258,7 @@ const PRODUCTS = [
     tagline: "הדור האחרון עם Intel: אפשר להתקין גם Windows",
     specs: ["Intel Core i9 דור 9: ‏8 ליבות", "32GB זיכרון · ‏1TB SSD", "כרטיס מסך AMD Radeon Pro", "מסך 16 אינץ' Retina", "Touch Bar · ‏4 × Thunderbolt 3", "אחריות BSD לחצי שנה"] },
   { sku: "M70QG5-14500T", cat: "desktop", also: ["recommended"], brand: "Lenovo ThinkCentre", name: "Lenovo ThinkCentre M70q Tiny Gen 5",
-    img: "images/m70q-gen5/m70q-01.jpg", page: "desktop-lenovo-m70q-gen5-i5-14500t.html", price: "2,790", deal: "מעבד שולחני",
+    img: "images/m70q-gen5/m70q-01.jpg", page: "desktop-lenovo-m70q-gen5-i5-14500t.html", price: "2,990", deal: "מעבד שולחני",
     tagline: "מעבד שולחני אמיתי, לא מעבד נייד, בגוף זעיר",
     specs: ["Intel Core i5-14500T (שולחני): ‏14 ליבות", "16GB DDR5", "512GB SSD NVMe + חריץ פנוי", "Windows 11 Pro מקורית", "כולל תושבת VESA לגב המסך", "אחריות 3 שנים באתר הלקוח"] },
   { sku: "PM400G9-16-512", cat: "desktop", also: ["recommended"], brand: "HP", name: "HP Pro Mini 400 G9 · 16GB · 512GB",
