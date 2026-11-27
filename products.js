@@ -260,7 +260,7 @@ const PRODUCTS = [
   { sku: "MBP16-I9-32-1TB", cat: "mac", also: ["recommended"], brand: "Apple", name: "MacBook Pro 16 · Intel i9 · 32GB זיכרון · 1TB",
     img: "images/macbook-pro-16-intel/01.jpg", page: "laptop-macbook-pro-16-intel-i9-32gb-1tb.html", price: "2,990", deal: "32GB זיכרון",
     tagline: "32GB זיכרון וכרטיס מסך ייעודי · כולל Windows, התקנות מלאות ושנת אחריות",
-    specs: ["32GB זיכרון DDR4", "Intel Core i9 דור 9: ‏8 ליבות", "1TB SSD", "כרטיס מסך Radeon Pro 5500M ‏4GB", "מצב כמו חדש · נבדק במעבדה", "כולל Windows והתקנות · שנת אחריות"] },
+    specs: ["32GB זיכרון DDR4", "Intel Core i9 דור 9: ‏8 ליבות", "1TB SSD", "כרטיס מסך Radeon Pro 5500M ‏4GB", "מחודש כמו חדש · בדוק במעבדה מקצועית", "כולל Windows והתקנות · שנת אחריות"] },
   { sku: "M70QG5-14500T", cat: "desktop", also: ["recommended"], brand: "Lenovo ThinkCentre", name: "Lenovo ThinkCentre M70q Tiny Gen 5",
     img: "images/m70q-gen5/m70q-01.jpg", page: "desktop-lenovo-m70q-gen5-i5-14500t.html", price: "2,990", deal: "מעבד שולחני",
     tagline: "מעבד שולחני אמיתי, לא מעבד נייד, בגוף זעיר",
